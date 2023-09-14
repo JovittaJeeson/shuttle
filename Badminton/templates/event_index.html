@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Ticket Card</title>
+    <link rel="icon" href="{% static 'img/favicon.icon' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'lib/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+</head>
+ <!-- Header Start -->
+<div class="container-fluid bg-dark px-0">
+    <!-- ... (header content) ... -->
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <h1 class="m-0 display-4 text-primary text-uppercase">SMASHZONE</h1>
+            </a>
+        </div>
+        <div class="col-lg-9">
+            <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                <div class="col-lg-7 px-5 text-start">
+                    <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                        <i class="fa fa-envelope text-primary me-2"></i>
+                        <h6 class="mb-0">smashzone@gmail.com</h6>
+                    </div>
+                    <div class="h-100 d-inline-flex align-items-center py-2">
+                        <i class="fa fa-phone-alt text-primary me-2"></i>
+                        <h6 class="mb-0">+91124567778</h6>
+                    </div>
+                </div>
+                <div class="col-lg-5 px-5 text-end">
+                    <div class="d-inline-flex align-items-center py-2">
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="btn btn-light btn-square rounded-circle" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                <a href="{% url 'index' %}" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">Badminton Academy</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                     <!-- <a href="class.html" class="nav-item nav-link">Classes</a>
+                        <a href="team.html" class="nav-item nav-link">Trainers</a>-->  
+                    <!--    <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>-->
+                        <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                    </div>
+                    <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Hero Start -->
+<div class="container-fluid bg-dark p-2 bg-hero mb-2">
+    <div class="row py-2">
+        <div class="col-12 text-center">
+            <h1 class="display-2 text-uppercase text-white mb-md-4">Images</h1>
+      <!--   <a href="{% url 'index' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+            <a href="" class="btn btn-light py-md-3 px-md-5">JOIN </a>-->   
+        </div>
+    </div>
+</div>
+<!-- Hero End --> 
+<!-- old code-->
+ <div class="container">
+    <div class="item-container">
+       
+        <div class="img-container">
+            <img src="{% static './img/img1.jpg' %}" alt="Event image">
+        </div>
+
+        <div class="body-container">
+            <div class="overlay"></div>
+
+            <div class="event-info">
+                <p class="title">SINGLES WOMENS</p>
+                <div class="separator"></div>
+                <p class="info">Shuttle Queen Serena</p>
+                <p class="price">Free</p>
+
+                <div class="additional-info">
+                    <p class="info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Court 1
+                    </p>
+                    <p class="info">
+                        <i class="far fa-calendar-alt"></i>
+                        Sat, Sep 19, 10:00 AM 2023
+                    </p>
+
+                    <p class="info description">
+                        "🏸 Welcome to the Singles Women's Badminton Extravaganza! 🏸
+                        Ladies, prepare to unleash your inner badminton warrior on the court!
+                         We're thrilled to have you join us for a day of intense rallies, 
+                         lightning-fast smashes, and strategic drop shots.
+                          Whether you're a seasoned player or just getting started, this event is all about celebrating the power and grace of women in badminton.<span>.</span>
+                    </p>
+                </div>
+            </div>
+            <button class="action">Book it</button>
+        </div>
+    </div>
+
+    <div class="item-container">
+        <div class="img-container">
+            <img src="{% static './img/img2.jpg' %}" alt="Event image">
+        </div>
+
+        <div class="body-container">
+            <div class="overlay"></div>
+
+            <div class="event-info">
+                <p class="title">SINGLES MEN</p>
+                <div class="separator"></div>
+                <p class="info">Smashmaster Sam</p>
+                <p class="price">Free</p>
+
+                <div class="additional-info">
+                    <p class="info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Court 2
+                    </p>
+                    <p class="info">
+                        <i class="far fa-calendar-alt"></i>
+                        Sat, Sep 18, 2:00 PM 2023
+                    </p>
+
+                    <p class="info description">
+                        "🏸 Welcome, Gentlemen, to the Singles Men's Badminton Showdown! 🏸
+
+                        Ladies and gentlemen, get ready to witness an electrifying display of athleticism, skill,
+                         and determination as our male badminton champions take center stage. It's a day dedicated 
+                         to the power of the shuttlecock,the precision of the serve, and the intensity of the rally. <span>..</span>
+                    </p>
+                </div>
+            </div>
+            <button class="action">Book it</button>
+        </div>
+    </div>
+
+    <div class="item-container">
+        <div class="img-container">
+            <img src="{% static './img/img3.jpg' %}" alt="Event image">
+        </div>
+
+        <div class="body-container">
+            <div class="overlay"></div>
+
+            <div class="event-info">
+                <p class="title">DOUBLES WOMENS</p>
+                <div class="separator"></div>
+                <p class="info">Volant Vicki</p>
+                <p class="price">Free</p>
+
+                <div class="additional-info">
+                    <p class="info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        SMASHONE COURT 1 
+                    </p>
+                    <p class="info">
+                        <i class="far fa-calendar-alt"></i>
+                        Sat, Sep 19, 10:00 AM 2023
+                    </p>
+
+                    <p class="info description">
+                        "🏸 Welcome to the Women's Doubles Badminton Championship! 🏸
+
+Ladies, get ready to partner up and take your places on the court for an exhilarating day of teamwork, strategy, and badminton brilliance. This event is all about the power of collaboration, the thrill of the rally, and the joy of playing side by side with a fellow badminton enthusiast<span>...</span>
+                    </p>
+                </div>
+            </div>
+            <button class="action">Book it</button>
+        </div>
+    </div>
+
+    <div class="item-container">
+        <div class="img-container">
+            <img src="{% static './img/img4.jpg' %}" alt="Event image">
+        </div>
+
+        <div class="body-container">
+            <div class="overlay"></div>
+
+            <div class="event-info">
+                <p class="title">DOUBLES MENS</p>
+                <div class="separator"></div>
+                <p class="info">Backhand Blaze Brandon</p>
+                <p class="price">Free</p>
+
+                <div class="additional-info">
+                    <p class="info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Smashzone court 2
+                    </p>
+                    <p class="info">
+                        <i class="far fa-calendar-alt"></i>
+                        Sat, Sep 19, 10:00 AM 2023
+                    </p>
+
+                    <p class="info description">
+                        "🏸 Welcome to the Men's Doubles Badminton Showdown! 🏸
+
+Gentlemen, prepare to unleash your synergy and dominance on the court as you embark on a day filled with strategic rallies, lightning-fast exchanges, and the camaraderie that comes with partnering up in doubles badminton. This event is a celebration of teamwork, skill, and the unbreakable bond between partners. <span>...</span>
+                    </p>
+                </div>
+            </div>
+            <button class="action">Book it</button>
+        </div>
+        <link rel="stylesheet" href="{% static 'event.css' %}">
+    </div>
+</div>
+    

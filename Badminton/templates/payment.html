@@ -1,0 +1,767 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Badminton Academy</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.icon' %}"  rel="icon" >
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{% static 'lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet ">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Start -->
+    <div class="container-fluid bg-dark px-0">
+        <div class="row gx-0">
+            <div class="col-lg-3 bg-dark d-none d-lg-block">
+                <a href="{% url 'index' %}" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                    <h1 class="m-0 display-4 text-primary text-uppercase">SMASHZONE</h1>
+                </a>
+            </div>
+            <div class="col-lg-9">
+                <div class="row gx-0 bg-secondary d-none d-lg-flex">
+                    <div class="col-lg-7 px-5 text-start">
+                        <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                            <i class="fa fa-envelope text-primary me-2"></i>
+                            <h6 class="mb-0">smashzone@gmail.com</h6>
+                        </div>
+                        <div class="h-100 d-inline-flex align-items-center py-2">
+                            <i class="fa fa-phone-alt text-primary me-2"></i>
+                            <h6 class="mb-0">+91124567778</h6>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 px-5 text-end">
+                        <div class="d-inline-flex align-items-center py-2">
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a class="btn btn-light btn-square rounded-circle" href="">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+                    {% comment %} <a href="{% url 'index' %}" class="navbar-brand d-block d-lg-none">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">Badminton Academy</h1>
+                    </a> {% endcomment %}
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                            <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                         <!-- <a href="class.html" class="nav-item nav-link">Classes</a>
+                            <a href="team.html" class="nav-item nav-link">Trainers</a>-->  
+                        <!--    <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="blog.html" class="dropdown-item">Blog Grid</a>
+                                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                    <a href={% static '' %}"testimonial.html" class="dropdown-item">Testimonial</a>
+                                </div>
+                            </div>-->
+                            <a href="{% url 'contact' %}" class="nav-item nav-link active">Contact</a>
+                        </div>
+                        <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    {% comment %} <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Snippet - BBBootstrap</title>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    } @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+body{
+background-color:#f5eee7;
+font-family: "Poppins", sans-serif;
+font-weight: 300;
+}
+
+.container{
+
+height: 100vh;
+
+}
+
+.card{
+
+border: none;
+}
+
+.card-header {
+padding: .5rem 1rem;
+margin-bottom: 0;
+background-color: rgba(0,0,0,.03);
+border-bottom: none;
+}
+
+.btn-light:focus {
+color: #212529;
+background-color: #e2e6ea;
+border-color: #dae0e5;
+box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+}
+
+.form-control{
+
+height: 50px;
+border: 2px solid #eee;
+border-radius: 6px;
+font-size: 14px;
+}
+
+.form-control:focus {
+color: #495057;
+background-color: #fff;
+border-color: #039be5;
+outline: 0;
+box-shadow: none;
+
+}
+
+.input{
+
+position: relative;
+}
+
+.input i{
+
+position: absolute;
+top: 16px;
+left: 11px;
+color: #989898;
+}
+
+.input input{
+
+text-indent: 25px;
+}
+
+.card-text{
+
+font-size: 13px;
+margin-left: 6px;
+}
+
+.certificate-text{
+
+font-size: 12px;
+}
+
+
+.billing{
+font-size: 11px;
+}  
+
+.super-price{
+
+top: 0px;
+font-size: 22px;
+}
+
+.super-month{
+
+font-size: 11px;
+}
+
+
+.line{
+color: #bfbdbd;
+}
+
+.free-button{
+
+background: #1565c0;
+height: 52px;
+font-size: 15px;
+border-radius: 8px;
+}
+
+
+.payment-card-body{
+
+flex: 1 1 auto;
+padding: 24px 1rem !important;
+
+}</style>
+    </head>
+    <body className='snippet-body'>
+    <div class="container d-flex justify-content-center mt-5 mb-5">
+
+
+
+<div class="row g-3">
+
+<div class="col-md-6">  
+
+<span>Payment Method</span>
+<div class="card">
+
+<div class="accordion" id="accordionExample">
+
+<div class="card">
+<div class="card-header p-0" id="headingTwo">
+<h2 class="mb-0">
+<button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+<div class="d-flex align-items-center justify-content-between">
+
+  <span>Paypal</span>
+  <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+  
+</div>
+</button>
+</h2>
+</div>
+<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+<div class="card-body">
+<input type="text" class="form-control" placeholder="Paypal email">
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header p-0">
+<h2 class="mb-0">
+<button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+<div class="d-flex align-items-center justify-content-between">
+
+  <span>Credit card</span>
+  <div class="icons">
+    <img src="https://i.imgur.com/2ISgYja.png" width="30">
+    <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+    <img src="https://i.imgur.com/35tC99g.png" width="30">
+    <img src="https://i.imgur.com/2ISgYja.png" width="30">
+  </div>
+  
+</div>
+</button>
+</h2>
+</div>
+
+<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+<div class="card-body payment-card-body">
+
+<span class="font-weight-normal card-text">Card Number</span>
+<div class="input">
+
+<i class="fa fa-credit-card"></i>
+<input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+
+</div> 
+
+<div class="row mt-3 mb-3">
+
+<div class="col-md-6">
+
+  <span class="font-weight-normal card-text">Expiry Date</span>
+  <div class="input">
+
+    <i class="fa fa-calendar"></i>
+    <input type="text" class="form-control" placeholder="MM/YY">
+    
+  </div> 
+  
+</div>
+
+
+<div class="col-md-6">
+
+  <span class="font-weight-normal card-text">CVC/CVV</span>
+  <div class="input">
+
+    <i class="fa fa-lock"></i>
+    <input type="text" class="form-control" placeholder="000">
+    
+  </div> 
+  
+</div>
+
+
+</div>
+
+<span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+<span>Summary</span>
+
+<div class="card">
+
+<div class="d-flex justify-content-between p-3">
+
+<div class="d-flex flex-column">
+
+<span>Pro(Billed Monthly) <i class="fa fa-caret-down"></i></span>
+<a href="#" class="billing">Save 20% with annual billing</a>
+
+</div>
+
+<div class="mt-1">
+<sup class="super-price">$9.99</sup>
+<span class="super-month">/Month</span>
+</div>
+
+</div>
+
+<hr class="mt-0 line">
+
+<div class="p-3">
+
+<div class="d-flex justify-content-between mb-2">
+
+<span>Refferal Bonouses</span>
+<span>-$2.00</span>
+
+</div>
+
+<div class="d-flex justify-content-between">
+
+  <span>Vat <i class="fa fa-clock-o"></i></span>
+  <span>-20%</span>
+
+</div>
+
+
+</div>
+
+<hr class="mt-0 line">
+
+
+<div class="p-3 d-flex justify-content-between">
+
+<div class="d-flex flex-column">
+
+    <span>Today you pay(US Dollars)</span>
+    <small>After 30 days $9.59</small>
+
+</div>
+      <span>$0</span>
+
+
+
+</div>
+
+
+<div class="p-3">
+
+        <button class="btn btn-primary btn-block free-button">Try it free for 30 days</button> 
+<div class="text-center">
+        <a href="#">Have a promo code?</a>
+</div>
+
+</div>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js'></script>
+    <script type='text/javascript' src='#'></script>
+    <script type='text/javascript' src='#'></script>
+    <script type='text/javascript' src='#'></script>
+    <script type='text/javascript'>#</script>
+    <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+    myLink.addEventListener('click', function(e) {
+      e.preventDefault();
+    });</script>
+  </div> {% endcomment %}
+  <div class="container d-flex justify-content-center mt-5 mb-5">
+
+        <div class="row g-3">
+
+          <div class="col-md-6">  
+            
+            <span>Payment Method</span>
+            <div class="card">
+
+              <div class="accordion" id="accordionExample">
+                
+                <div class="card">
+                  <div class="card-header p-0" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <div class="d-flex align-items-center justify-content-between">
+
+                          <span>UPI</span>
+                          <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                          
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <input type="text" class="form-control" placeholder="Paypal email">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header p-0">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="d-flex align-items-center justify-content-between">
+
+                          <span>Credit card/Debit Card</span>
+                          <div class="icons">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                            <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                            <img src="https://i.imgur.com/35tC99g.png" width="30">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                          </div>
+                          
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body payment-card-body">
+                      
+                      <span class="font-weight-normal card-text">Card Number</span>
+                      <div class="input">
+
+                        <i class="fa fa-credit-card"></i>
+                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                        
+                      </div> 
+
+                      <div class="row mt-3 mb-3">
+
+                        <div class="col-md-6">
+
+                          <span class="font-weight-normal card-text">Expiry Date</span>
+                          <div class="input">
+
+                            <i class="fa fa-calendar"></i>
+                            <input type="text" class="form-control" placeholder="MM/YY">
+                            
+                          </div> 
+                          
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                          <span class="font-weight-normal card-text">CVC/CVV</span>
+                          <div class="input">
+
+                            <i class="fa fa-lock"></i>
+                            <input type="text" class="form-control" placeholder="000">
+                            
+                          </div> 
+                          
+                        </div>
+                        
+
+                      </div>
+
+                      <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+                     
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+              <span>Summary</span>
+
+              <div class="card">
+
+                <div class="d-flex justify-content-between p-3">
+
+                  <div class="d-flex flex-column">
+
+                    <span>Pro(Billed Monthly) <i class="fa fa-caret-down"></i></span>
+                    <a href="#" class="billing">Save 20% with annual billing</a>
+                    
+                  </div>
+
+                  <div class="mt-1">
+                    <sup class="super-price">Rs.1000</sup>
+                    <span class="super-month">/Month</span>
+                  </div>
+                  
+                </div>
+
+                <hr class="mt-0 line">
+
+                <div class="p-3">
+
+                  <div class="d-flex justify-content-between mb-2">
+
+                    {% comment %} <span>Refferal Bonouses</span>
+                    <span>-$2.00</span> {% endcomment %}
+                    
+                  </div>
+
+                  <div class="d-flex justify-content-between">
+
+                    <span>Vat <i class="fa fa-clock-o"></i></span>
+                    <span>-20%</span>
+                    
+                  </div>
+                  
+
+                </div>
+
+                <hr class="mt-0 line">
+
+
+                <div class="p-3 d-flex justify-content-between">
+
+                  <div class="d-flex flex-column">
+{% comment %} 
+                    <span>Today you pay()</span>
+                    <small>After 30 days $9.59</small>
+                     {% endcomment %}
+                  </div>
+                  <span>0</span>
+
+                  
+
+                </div>
+
+
+                <div class="p-3">
+
+                <button class="btn btn-primary btn-block free-button" >Try it free for 30 days</button> 
+               <div class="text-center">
+                 <a href="#">Have a promo code?</a>
+               </div>
+                  
+                </div>
+
+
+
+                
+              </div>
+          </div>
+          
+        </div>
+        
+
+      </div>
+      <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+       body{
+        background-color:#f5eee7;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+       }
+
+       .container{
+
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 0 20px; /* Add some horizontal padding */
+        box-sizing: border-box; /* Adjust the box-sizing for padding */
+
+       }
+
+       .row.g-3 {
+        width: 100%;
+        max-width: 800px; /* Limit the width for better readability */
+    }
+
+       .card{
+
+        border: none;
+        width: 100%;
+        margin: 0;   
+       }
+
+       .card-header {
+            padding: .5rem 1rem;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.03);
+            border-bottom: none;
+            padding: 1rem;
+        }
+        .icons img {
+          margin-right: 5px; /* Add some space between icon images */
+      }
+        .btn-light:focus {
+            color: #212529;
+            background-color: #e2e6ea;
+            border-color: #dae0e5;
+            box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+        }
+
+        .form-control{
+
+          height: 50px;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    font-size: 14px;
+        }
+
+        .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #039be5;
+    outline: 0;
+    box-shadow: none;
+
+    }
+
+    .input{
+
+      position: relative;
+    }
+
+    .input i{
+
+          position: absolute;
+    top: 16px;
+    left: 11px;
+    color: #989898;
+    }
+
+    .input input{
+
+      text-indent: 25px;
+      width: 100%;
+    }
+
+    .card-text{
+
+      font-size: 13px;
+    margin-left: 6px;
+    }
+
+    .certificate-text{
+
+      font-size: 12px;
+    }
+
+       
+    .billing{
+      font-size: 11px;
+    }  
+
+    .super-price{
+
+          top: 0px;
+    font-size: 22px;
+    }
+
+    .super-month{
+
+          font-size: 11px;
+    }
+
+
+    .line{
+      color: #bfbdbd;
+    }
+
+    .free-button{
+
+     background: #1565c0;
+     height: 52px;
+     font-size: 15px;
+     border-radius: 8px;
+     margin-top: 15px;
+    }
+    .d-flex.justify-content-between.p-3 {
+      align-items: center;
+      }
+  
+
+    .payment-card-body{
+
+    flex: 1 1 auto;
+    padding: 24px 1rem !important;
+
+    }
+</style>  
+</body>
+</html>

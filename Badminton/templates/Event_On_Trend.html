@@ -1,0 +1,941 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="icon" href="{% static 'img/favicon.icon' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'lib/flaticon/font/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<!-- Header Start -->
+<div class="container-fluid bg-dark px-0">
+<!-- ... (header content) ... -->
+<div class="row gx-0">
+    <div class="col-lg-3 bg-dark d-none d-lg-block">
+        <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <h1 class="m-0 display-4 text-primary text-uppercase">SMASHZONE</h1>
+        </a>
+    </div>
+    <div class="col-lg-9">
+        <div class="row gx-0 bg-secondary d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                    <i class="fa fa-envelope text-primary me-2"></i>
+                    <h6 class="mb-0">smashzone@gmail.com</h6>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-2">
+                    <i class="fa fa-phone-alt text-primary me-2"></i>
+                    <h6 class="mb-0">+91124567778</h6>
+                </div>
+            </div>
+            <!-- <div class="col-lg-5 px-5 text-end">
+                <div class="d-inline-flex align-items-center py-2">
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="btn btn-light btn-square rounded-circle" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+            {% comment %} <a href="{% url 'index' %}" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-primary text-uppercase">Badminton Academy</h1>
+            </a> {% endcomment %}
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                
+                    <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                </div>
+                <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</a>
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+<!-- Header End -->
+<!-- Hero Start -->
+<div class="container-fluid bg-dark p-2 bg-hero mb-2">
+<div class="row py-2">
+    <div class="col-12 text-center">
+        <h1 class="display-2 text-uppercase text-white mb-md-4">EVENTS LISTS</h1>
+  <!--   <a href="{% url 'index' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+        <a href="" class="btn btn-light py-md-3 px-md-5">JOIN </a>-->   
+    </div>
+</div>
+</div>
+<!-- Hero End --> 
+<style type="text/css">
+    	body {
+    margin-top: 20px;
+}
+
+.event .title {
+    margin: 0px 0 0;
+}
+
+.event .nav-content {
+    float: right;
+    width: 70%;
+}
+
+.event .btn {
+    background: #ff007a;
+}
+
+.event .nav-content strong {
+    display: block;
+    font-family: Montserrat;
+    font-size: 20px;
+    color: #002691;
+}
+
+.event nav > div a.nav-item.nav-link.active .event .spicel-features {
+    background: #fafaff;
+}
+
+.event .nav-fill .nav-item {
+    text-align: left;
+    text-transform: uppercase;
+    margin: 0 5px;
+    font-size: 12px;
+    margin-right: 16px;
+}
+
+.event .nav-fill .nav-item text-t i {
+    margin-right: 10px;
+}
+
+.event .nav-fill .nav-item i::before {
+    font-size: 26px;
+    margin-right: 13px;
+    position: relative;
+    top: 4px;
+}
+
+.event nav > .nav.nav-tabs {
+    border: none;
+    color: #fff;
+    border-radius: 0;
+    flex-wrap: inherit;
+    padding: 0 30px;
+}
+
+.event .nav-item {
+    margin: 0 0;
+}
+
+.event a.nav-item.nav-link.active {
+    
+    background: #270943 !important;
+    color: #fff !important;
+}
+
+.event a.nav-item.nav-link.active strong {
+    color: #fff;
+}
+
+.event nav > div a.nav-item.nav-link,
+.event nav > div a.nav-item.nav-link.active {
+    border: none;
+    padding: 18px 25px;
+    color: #47759d;
+    border-radius: 0;
+    background: #fff;
+    position: relative;
+    background: #f5faff;
+}
+
+.event nav > div a.nav-item.nav-link.active:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #e7015e transparent transparent;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    content: '';
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    border-color: transparent #ff007a transparent transparent;
+}
+
+.event .tab-content {
+    padding: 50px 25px 0 !important;
+}
+
+.event .user h5 {
+    margin-top: 20px;
+}
+
+.event .user p {
+    font-weight: bold;
+    color: #ff007a;
+}
+
+.event .user ul {
+    padding-top: 10px;
+    border-top: 1px solid #edf5ff;
+}
+
+.event .user ul li {
+    margin-top: 10px;
+}
+
+.event .user ul li i {
+    margin-right: 5px;
+}
+
+.event-list-content {
+    margin-left: 50px;
+    margin-right: 20px;
+    padding: 50px;
+    position: relative;
+    border: 10px solid #edf5ff;
+    transition: all 0.3s ease 0s;
+}
+
+.event-list-content:hover {
+    border: 10px solid #270943;
+}
+
+.event-list-content .crical {
+    position: absolute;
+    background: #270943;
+    right: -66px;
+    bottom: -73px;
+    font-size: 30px;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 50px;
+}
+
+.event-list-content h2 {
+    margin-bottom: 30px;
+}
+
+.event-list-content .btn {
+    background: none;
+    border: 2px solid #edf5ff;
+    color: #47759d;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.event-list-content .btn:hover {
+    background: #270943;
+    border: 2px solid #270943;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+    box-shadow: 0px 10px 19px 0px #ff007a66 !important;
+}
+
+.event-list-content ul li {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color: #ff007a;
+}
+
+.event-list-content ul li i {
+    margin-right: 5px;
+}
+
+.event nav > div a.nav-item.nav-link .lgt-icon {
+    display: none;
+}
+
+.event nav > div a.nav-item.nav-link.active .lgt-icon {
+    display: inline-block;
+}
+
+.event nav > div a.nav-item.nav-link.active .drk-icon {
+    display: none;
+}
+
+.event nav > div a.nav-item.nav-link.active .drk-icon {
+    display: none;
+}
+
+.img, img {
+    max-width: 100%;
+    transition: all 0.3s ease-out 0s;
+}
+
+.event .user h5 {
+    margin-top: 20px;
+}
+a, h1, h2, h3, h4, h5, h6, p, span {
+    overflow-wrap: break-word;
+}
+h5 {
+    font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #002691;
+    margin-top: 0px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: normal;
+}
+
+.event .user p {
+    font-weight: bold;
+    color: #ff007a;
+}
+.event .user ul {
+    padding-top: 10px;
+    border-top: 1px solid #edf5ff;
+}
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.event-list-content .crical {
+    position: absolute;
+    background: #270943;
+    right: -66px;
+    bottom: -73px;
+    font-size: 30px;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 50px;
+}
+.fix {
+    overflow: hidden;
+}
+
+.event nav > div a.nav-item.nav-link.active:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #e7015e transparent transparent;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    content: '';
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    border-color: transparent #ff007a transparent transparent;
+}
+
+
+ </style>
+
+
+
+{% comment %} <div class="event">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 ">
+<nav class="wow fadeInDown  animated" data-animation="fadeInDown animated" data-delay=".2s" style="visibility: visible; animation-name: fadeInDown;">
+<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+<a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#one" role="tab" aria-selected="true">
+<div class="nav-content">
+<strong>First Day</strong>
+<span>10th December 2023</span>
+</div>
+</a>
+<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#two" role="tab" aria-selected="false">
+<div class="nav-content">
+<strong>Second Day</strong>
+<span>21th December 2023</span>
+</div>
+</a>
+<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#three" role="tab" aria-selected="false">
+<div class="nav-content">
+<strong>Third Day</strong>
+<span>21th December 2023</span>
+</div>
+</a>
+<a class="nav-item nav-link" id="nav-contact-tab2" data-toggle="tab" href="#four" role="tab" aria-selected="false">
+<div class="nav-content">
+<strong>Fourth Day</strong>
+<span>13th January 2024</span>
+</div>
+</a> 
+</div>
+</nav>
+<div class="tab-content py-3 px-3 px-sm-0 wow fadeInDown  animated" data-animation="fadeInDown animated" data-delay=".2s" id="nav-tabContent" style="visibility: visible; animation-name: fadeInDown;">
+<div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="nav-home-tab"> {% endcomment %}
+{% for item in eventUser %}
+ <div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+ <div class="title">
+<img src="{{ item.image.url }}" alt="img">
+<h5>CATEGORY</h5>
+<p>UNDER 13 YEARS OLD</p> 
+</div>
+ <!-- <ul>
+<li>CATEGORY</li>
+<li>UNDER 13 YEARS OLD</li>
+</ul>  -->
+</div>
+</div> 
+
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li>{{ item.location }}</li> 
+<li>{{ item.date|date:"M d D" }}<br>{{ item.time|time:"g:i A" }}</li>
+</ul>
+<h2>{{ item.name }}</h2>
+ <p> {{ item.description }} </p> 
+ <span>Event ID: {{ item.id }}</span>
+ <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+ <a href="{% url 'ProfileVerification' %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Verify profile</a>
+<!-- <a href="#" class="btn mt-20">Read More</a> -->
+<div class="crical"><i class="fal fa-video"></i> </div>
+</div>
+</div>
+</div>
+
+{% endfor %} 
+ {% comment %} <div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrDOkIMw3P97Vbra734WHkZiS-tVABo2-ocw&usqp=CAU" alt="img">
+<h5>CATEGORY</h5>
+<p>UNDER 13 YEARS OLD</p>
+</div>
+<!-- <ul>
+<li>CATEGORY </li>
+<li>UNDER 13 YEARS OLD</li>
+</ul>  -->
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT 1</li>
+<li><i class="far fa-clock"></i> Sat, Sep 19, 10:00 AM 2023</li>
+</ul>
+<h2>SINGLES MEN</h2>
+<p> Welcome, Gentlemen, to the Singles Men's Badminton Showdown! 🏸
+
+    Ladies and gentlemen, get ready to witness an electrifying display of athleticism, skill,
+     and determination as our male badminton champions take center stage. It's a day dedicated 
+     to the power of the shuttlecock,the precision of the serve, and the intensity of the rally..</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+<!-- <a href="#" class="btn mt-20">Read More</a> -->
+<div class="crical"><i class="fal fa-magic"></i> </div>
+</div>
+</div>
+</div>
+
+
+<div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk10AJvblj1hQ4jc95WZvb7kkioUKHs-mhQA&usqp=CAU" alt="img">
+<h5>CATEGORY</h5>
+<p>UNDER 13 YEARS OLD</p>
+</div>
+<!-- <ul>
+<li>Coffe &amp; Snacks</li>
+<li>Video Streming</li>
+</ul> -->
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT-2 </li>
+<li><i class="far fa-clock"></i> Sat, Sep 19, 4:00 PM 2023</li>
+</ul>
+<h2>DOUBLES WOMENS</h2>
+<p>"🏸 Welcome to the Women's Doubles Badminton Championship! 🏸
+
+    Ladies, get ready to partner up and take your places on the court for an exhilarating day of teamwork, strategy, and badminton brilliance. This event is all about the power of collaboration, the thrill of the rally, and the joy of playing side by side with a fellow badminton enthusiast</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+<!-- <a href="#" class="btn mt-20">Read More</a> -->
+<div class="crical"><i class="far fa-cogs"></i> </div>
+</div>
+</div>
+</div>
+
+
+<div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk10AJvblj1hQ4jc95WZvb7kkioUKHs-mhQA&usqp=CAU" alt="img">
+<h5>CATEGORY</h5>
+<p>UNDER 13 YEARS OLD</p>
+</div>
+<!-- <ul>
+<li>Coffe &amp; Snacks</li>
+<li>Video Streming</li>
+</ul> -->
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT 1</li>
+<li><i class="far fa-clock"></i> Sat, Sep 19, 4:00 PM 2023</li>
+</ul>
+<h2>DOUBLES MENS</h2>
+<p> "🏸 Welcome to the Men's Doubles Badminton Showdown! 🏸
+
+    Gentlemen, prepare to unleash your synergy and dominance on the court as you embark on a day filled with strategic rallies, lightning-fast exchanges, and the camaraderie that comes with partnering up in doubles badminton. This event is a celebration of teamwork, skill, and the unbreakable bond between partners..</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+<!-- <a href="#" class="btn mt-20">Read More</a> -->
+<div class="crical"><i class="fal fa-ban"></i></div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+    <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+         <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQymeWNE2UJdYw8vD96rrm9njy2_sPX1Hueog&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>UNDER 35 YEARS OLD</p> 
+        </div>
+         <!-- <ul>
+        <li>CATEGORY</li>
+        <li>UNDER 13 YEARS OLD</li>
+        </ul>  -->
+        </div>
+        </div> 
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li>SMASHZONE COURT-2</li>
+        <li>Sat, Sep 19, 10:00 AM 2023</li>
+        </ul>
+        <h2>SINGLES WOMENS</h2>
+        <p>🏸 Welcome to the Singles Women's Badminton Extravaganza! 🏸
+            Ladies, prepare to unleash your inner badminton warrior on the court!
+             We're thrilled to have you join us for a day of intense rallies, 
+             lightning-fast smashes, and strategic drop shots.
+              Whether you're a seasoned player or just getting started, this event is all about celebrating the power and grace of women in badminton</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="fal fa-video"></i> </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+        <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrDOkIMw3P97Vbra734WHkZiS-tVABo2-ocw&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>UNDER 35 YEARS OLD</p>
+        </div>
+        <!-- <ul>
+        <li>CATEGORY </li>
+        <li>UNDER 13 YEARS OLD</li>
+        </ul>  -->
+        </div>
+        </div>
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT 1</li>
+        <li><i class="far fa-clock"></i> Sat, Sep 19, 10:00 AM 2023</li>
+        </ul>
+        <h2>SINGLES MEN</h2>
+        <p> Welcome, Gentlemen, to the Singles Men's Badminton Showdown! 🏸
+        
+            Ladies and gentlemen, get ready to witness an electrifying display of athleticism, skill,
+             and determination as our male badminton champions take center stage. It's a day dedicated 
+             to the power of the shuttlecock,the precision of the serve, and the intensity of the rally..</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="fal fa-magic"></i> </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+        <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk10AJvblj1hQ4jc95WZvb7kkioUKHs-mhQA&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>UNDER 35 YEARS OLD</p>
+        </div>
+        <!-- <ul>
+        <li>Coffe &amp; Snacks</li>
+        <li>Video Streming</li>
+        </ul> -->
+        </div>
+        </div>
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT-2 </li>
+        <li><i class="far fa-clock"></i> Sat, Sep 21, 4:00 PM 2023</li>
+        </ul>
+        <h2>DOUBLES WOMENS</h2>
+        <p>"🏸 Welcome to the Women's Doubles Badminton Championship! 🏸
+        
+            Ladies, get ready to partner up and take your places on the court for an exhilarating day of teamwork, strategy, and badminton brilliance. This event is all about the power of collaboration, the thrill of the rally, and the joy of playing side by side with a fellow badminton enthusiast</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="far fa-cogs"></i> </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+        <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk10AJvblj1hQ4jc95WZvb7kkioUKHs-mhQA&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>UNDER  34 YEARS OLD</p>
+        </div>
+        <!-- <ul>
+        <li>Coffe &amp; Snacks</li>
+        <li>Video Streming</li>
+        </ul> -->
+        </div>
+        </div>
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT 1</li>
+        <li><i class="far fa-clock"></i> Sat, Sep 21, 4:00 PM 2023</li>
+        </ul>
+        <h2>DOUBLES MENS</h2>
+        <p> "🏸 Welcome to the Men's Doubles Badminton Showdown! 🏸
+        
+            Gentlemen, prepare to unleash your synergy and dominance on the court as you embark on a day filled with strategic rallies, lightning-fast exchanges, and the camaraderie that comes with partnering up in doubles badminton. This event is a celebration of teamwork, skill, and the unbreakable bond between partners..</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="fal fa-ban"></i></div>
+        </div>
+        </div>
+        </div>
+        
+        </div>
+<div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+    <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+         <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQymeWNE2UJdYw8vD96rrm9njy2_sPX1Hueog&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>ABOVE 35 YEARS OLD</p> 
+        </div>
+         <!-- <ul>
+        <li>CATEGORY</li>
+        <li>UNDER 13 YEARS OLD</li>
+        </ul>  -->
+        </div>
+        </div> 
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li>SMASHZONE COURT-2</li>
+        <li>Sat, Sep 22, 10:00 AM 2023</li>
+        </ul>
+        <h2>SINGLES WOMENS</h2>
+        <p>🏸 Welcome to the Singles Women's Badminton Extravaganza! 🏸
+            Ladies, prepare to unleash your inner badminton warrior on the court!
+             We're thrilled to have you join us for a day of intense rallies, 
+             lightning-fast smashes, and strategic drop shots.
+              Whether you're a seasoned player or just getting started, this event is all about celebrating the power and grace of women in badminton</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="fal fa-video"></i> </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+        <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrDOkIMw3P97Vbra734WHkZiS-tVABo2-ocw&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>ABOVE 35 YEARS OLD</p>
+        </div>
+        <!-- <ul>
+        <li>CATEGORY </li>
+        <li>UNDER 13 YEARS OLD</li>
+        </ul>  -->
+        </div>
+        </div>
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT 1</li>
+        <li><i class="far fa-clock"></i> Sat, Sep 22, 10:00 AM 2023</li>
+        </ul>
+        <h2>SINGLES MEN</h2>
+        <p> Welcome, Gentlemen, to the Singles Men's Badminton Showdown! 🏸
+        
+            Ladies and gentlemen, get ready to witness an electrifying display of athleticism, skill,
+             and determination as our male badminton champions take center stage. It's a day dedicated 
+             to the power of the shuttlecock,the precision of the serve, and the intensity of the rally..</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="fal fa-magic"></i> </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+        <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk10AJvblj1hQ4jc95WZvb7kkioUKHs-mhQA&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>ABOVE 35 YEARS OLD</p>
+        </div>
+        <!-- <ul>
+        <li>Coffe &amp; Snacks</li>
+        <li>Video Streming</li>
+        </ul> -->
+        </div>
+        </div>
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT-2 </li>
+        <li><i class="far fa-clock"></i> Sat, Sep 22, 4:00 PM 2023</li>
+        </ul>
+        <h2>DOUBLES WOMENS</h2>
+        <p>"🏸 Welcome to the Women's Doubles Badminton Championship! 🏸
+        
+            Ladies, get ready to partner up and take your places on the court for an exhilarating day of teamwork, strategy, and badminton brilliance. This event is all about the power of collaboration, the thrill of the rally, and the joy of playing side by side with a fellow badminton enthusiast</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="far fa-cogs"></i> </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="row mb-30">
+        <div class="col-lg-2">
+        <div class="user">
+        <div class="title">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk10AJvblj1hQ4jc95WZvb7kkioUKHs-mhQA&usqp=CAU" alt="img">
+        <h5>CATEGORY</h5>
+        <p>ABOVE 35 YEARS OLD</p>
+        </div>
+        <!-- <ul>
+        <li>Coffe &amp; Snacks</li>
+        <li>Video Streming</li>
+        </ul> -->
+        </div>
+        </div>
+        <div class="col-lg-10">
+        <div class="event-list-content fix">
+        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+        <li><i class="fas fa-map-marker-alt"></i> SMASHZONE COURT 1</li>
+        <li><i class="far fa-clock"></i> Sat, Sep 22, 4:00 PM 2023</li>
+        </ul>
+        <h2>DOUBLES MENS</h2>
+        <p> "🏸 Welcome to the Men's Doubles Badminton Showdown! 🏸
+        
+            Gentlemen, prepare to unleash your synergy and dominance on the court as you embark on a day filled with strategic rallies, lightning-fast exchanges, and the camaraderie that comes with partnering up in doubles badminton. This event is a celebration of teamwork, skill, and the unbreakable bond between partners..</p>
+        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+        <!-- <a href="#" class="btn mt-20">Read More</a> -->
+        <div class="crical"><i class="fal fa-ban"></i></div>
+        </div>
+        </div>
+        </div>
+         
+        </div> {% endcomment %}
+        <!-- <div class="tab-pane fade" id="four" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+<div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="img">
+<h5>Rosalina William</h5>
+<p>UX Deisgn</p>
+</div>
+<ul>
+<li><i class="fal fa-coffee"></i> Coffe &amp; Snacks</li>
+<li><i class="fal fa-video"></i> Video Streming</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
+<li><i class="far fa-clock"></i> 9.30 - 10.30 AM</li>
+</ul>
+<h2>UX Design Trend Party 2019</h2>
+<p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
+<a href="#" class="btn mt-20">Read More</a>
+<div class="crical"><i class="fal fa-video"></i> </div>
+</div>
+</div>
+</div>
+
+
+<div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="img">
+<h5>Kelian M. Bappe</h5>
+<p>youtubing</p>
+</div>
+<ul>
+<li><i class="fal fa-coffee"></i> Coffe &amp; Snacks</li>
+<li><i class="fal fa-video"></i> Video Streming</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
+<li><i class="far fa-clock"></i> 9.30 - 10.30 AM</li>
+</ul>
+<h2>Rokolo DJ Dancing 2019</h2>
+<p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
+<a href="#" class="btn mt-20">Read More</a>
+<div class="crical"><i class="fal fa-video"></i> </div>
+</div>
+</div>
+</div>
+
+
+<div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="img">
+<h5>Hiliniam Nelson</h5>
+<p>single women</p>
+</div>
+
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> Waterfront Hotel, London</li>
+<li><i class="far fa-clock"></i> 9.30 - 10.30 AM</li>
+</ul>
+<h2>singles men</h2>
+<p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Buy Ticket</a>
+<a href="#" class="btn mt-20">Read More</a>
+<div class="crical"><i class="fal fa-video"></i> </div>
+</div>
+</div>
+</div>
+
+
+<div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+<div class="title">
+<img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="img">
+<h5>Kimjing J. Jalim</h5>
+<p>UX Deisgn</p>
+</div>
+<ul>
+<li><i class="fal fa-coffee"></i> Coffe &amp; Snacks</li>
+<li><i class="fal fa-video"></i> Video Streming</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li><i class="fas fa-map-marker-alt"></i> court 5 smashzone</li>
+<li><i class="far fa-clock"></i> 9.30 - 10.30 AM</li>
+</ul>
+<h2>badminton </h2>
+<p>In order to save time you have to break down the content strategy for the event or conference you are planning step by step. Creating this process from scratch will take the longest amount of time to build, but once you have content production foundation.</p>
+<a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+<a href="#" class="btn mt-20">Read More</a>
+<div class="crical"><i class="fal fa-video"></i> </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<div class="col-lg-12 justify-content-center text-center">
+<a href="#" class="btn mt-20 mr-10">More Program +</a>
+</div>
+</div>
+</div>
+</div> -->
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" /> -->
