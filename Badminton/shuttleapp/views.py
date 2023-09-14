@@ -322,40 +322,104 @@ def ProfileVerification(request):
 
 #     return render(request, 'Guestbooking.html')
 
+# from django.shortcuts import render, redirect
+# from .models import Booking
+# from datetime import datetime, timedelta  # Import datetime
+
+# def Guestbooking(request):
+#     if request.method == 'POST':
+#         client_name = request.POST.get('client-name')
+#         client_email = request.POST.get('client-email')
+#         client_phone = request.POST.get('client-phone')
+#         booking_date = request.POST.get('booking-date')
+#         booking_time = request.POST.get('booking-time')
+
+#         # Process the booking request and save it to the database
+#         if client_name and client_email and booking_date and booking_time:
+#             # Parse the booking date and time
+#             booking_datetime = datetime.strptime(f"{booking_date} {booking_time}", "%Y-%m-%d %I:%M%p")
+
+#             # Calculate end time (assuming each booking lasts for 1 hour)
+#             end_time = booking_datetime + timedelta(hours=1)
+
+#             # Save the booking to the database
+#             Booking.objects.create(
+#                 client_name=client_name,
+#                 client_email=client_email,
+#                 client_phone=client_phone,
+#                 booking_date=booking_datetime.date(),
+#                 booking_start_time=booking_datetime.time(),
+#                 booking_end_time=end_time.time()
+#             )
+
+#             # Handle the rest of your booking logic here
+
+#             return render(request, 'booking_success.html', {'client_name': client_name})
+
+#     return render(request, 'Guestbooking.html')
+
+
 from django.shortcuts import render, redirect
 from .models import Booking
 from datetime import datetime, timedelta  # Import datetime
 
+
 def Guestbooking(request):
-    if request.method == 'POST':
-        client_name = request.POST.get('client-name')
-        client_email = request.POST.get('client-email')
-        client_phone = request.POST.get('client-phone')
-        booking_date = request.POST.get('booking-date')
-        booking_time = request.POST.get('booking-time')
+    if request.method == "POST":
+        client_name = request.POST.get("client-name")
+        print(client_name)
+        client_email = request.POST.get("client-email")
+        print(client_email)
+        client_phone = request.POST.get("client-phone")
+        print(client_phone)
+        booking_date = request.POST.get("booking-date")
+        print(booking_date)
+        booking_time = request.POST.get("booking-time")
+        print(booking_time)
 
         # Process the booking request and save it to the database
+
+        # Your this condition is not matching..........🫵
         if client_name and client_email and booking_date and booking_time:
             # Parse the booking date and time
-            booking_datetime = datetime.strptime(f"{booking_date} {booking_time}", "%Y-%m-%d %I:%M%p")
+            # Split the time range into start and end times
+            start_time, end_time = booking_time.split(" - ")
+
+            # Create a datetime object for the booking date
+            booking_datetime = datetime.strptime(booking_date, "%B %Y")
+
+            # Add the start time to the datetime
+            booking_datetime = booking_datetime.replace(
+                hour=int(start_time.split(":")[0]),
+                minute=int(start_time.split(":")[1][:-2]),  # Remove 'AM' or 'PM'
+            )
+
+            print("Booking datetime start:", booking_datetime)
+
+            # Now, create another datetime object for the end time
+            end_datetime = booking_datetime.replace(
+                hour=int(end_time.split(":")[0]),
+                minute=int(end_time.split(":")[1][:-2]),  # Remove 'AM' or 'PM'
+            )
+
+            print("Booking datetime end:", end_datetime)
 
             # Calculate end time (assuming each booking lasts for 1 hour)
             end_time = booking_datetime + timedelta(hours=1)
 
             # Save the booking to the database
+
             Booking.objects.create(
                 client_name=client_name,
                 client_email=client_email,
                 client_phone=client_phone,
                 booking_date=booking_datetime.date(),
                 booking_start_time=booking_datetime.time(),
-                booking_end_time=end_time.time()
+                booking_end_time=end_time.time(),
             )
 
             # Handle the rest of your booking logic here
 
-            return render(request, 'booking_success.html', {'client_name': client_name})
+            return render(request, "booking_success.html", {"client_name": client_name})
 
-    return render(request, 'Guestbooking.html')
-
-
+    return render(request, "Guestbooking.html")
