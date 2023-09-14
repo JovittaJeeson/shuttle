@@ -24,6 +24,8 @@ def EventRegform(request):
 def Guestbooking(request):
      return render(request,'Guestbooking.html')
 
+def Gallery(request):
+     return render(request,'Gallery.html')
 
 
 from django.shortcuts import render, redirect, get_object_or_404

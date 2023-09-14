@@ -20,7 +20,7 @@ urlpatterns=[
      path('RegistrationSucess/',views.RegistrationSucess,name='RegistrationSucess'),
      path('ProfileVerification/',views.ProfileVerification,name='ProfileVerification'),
      path('refere/',views.refere,name='refere'),
-
+     path('Gallery/',views.Gallery,name='Gallery'),
      # path('Guestbooking/<int:timeslot_id>/', views.Guestbooking, name='Guestbooking'),
      # path('book/<int:timeslot_id>/', views.book_time_slot, name='book_time_slot'),
      # path('booking_success/', views.booking_success, name='booking_success'),
