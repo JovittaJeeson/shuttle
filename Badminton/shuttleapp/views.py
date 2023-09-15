@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
-from.models import EventUser
+from.models import EventUser,Winner
 # from .forms import BookingForm1,BookingForm2,BookingForm3
 # Create your views here.
 def index(request):
@@ -24,9 +24,14 @@ def EventRegform(request):
 def Guestbooking(request):
      return render(request,'Guestbooking.html')
 
-def Gallery(request):
-     return render(request,'Gallery.html')
 
+
+
+def Gallery(request):
+    # Query the database to get all Winner objects
+    winners = Winner.objects.all()
+    # Render the gallery page template and pass the winners data to it
+    return render(request, 'Gallery.html', {'winners': winners})
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import EventUser, Registration
@@ -164,117 +169,16 @@ def refere(request):
 #     return render(request, 'GuestBooking/booking_time.html', {'time_slots': time_slots})
 
 
-# from django.shortcuts import render
-# from django.http import HttpResponseBadRequest
-# from datetime import datetime
-# from .models import TimeSlot
-
-# def booking_time(request):
-#     # Get the date parameter from the URL
-#     date_str = request.GET.get('date')
-    
-#     # Validate and parse the date string into a datetime object
-#     try:
-#         booking_date = datetime.strptime(date_str, '%B %d, %Y')
-#     except ValueError:
-#         return HttpResponseBadRequest("Invalid date format in the URL")
-
-#     # Query TimeSlot objects based on the booking_date
-#     time_slots = TimeSlot.objects.filter(is_active=True)
-
-#     # Pass the time_slots and booking_date to the template
-#     return render(request, 'GuestBooking/booking_time.html', {'time_slots': time_slots, 'booking_date': booking_date})
 
 
-# # *************booking form views in guest booking*****************
+
+
+# from django.contrib.auth.decorators import login_required  # Import the login_required decorator
+# # Use the login_required decorator to ensure the user is logged in
 # from django.shortcuts import render, redirect
-# from .models import Booking
 # from django.contrib import messages
-
-# def booking(request):
-#     if request.method == "POST":
-#         client_name = request.POST.get('client-name')
-#         client_email = request.POST.get('client-email')
-#         client_phone = request.POST.get('client-phone', '')
-#         booking_date = request.POST.get('booking_date')
-#         booking_time = request.POST.get('booking_time')
-
-#         # Create a new Booking instance and save it to the database
-#         booking = Booking(
-#             client_name=client_name,
-#             client_email=client_email,
-#             client_phone=client_phone,
-#             booking_date=booking_date,
-#             booking_time=booking_time,
-#         )
-#         booking.save()
-
-#         # Add a success message
-#         messages.success(request, 'Booking successful!')
-        
-#         # Redirect to the home page or any other appropriate page
-#         return redirect('index')  
-
-#     return render(request, 'GuestBooking/booking.html')
-
-# from django.shortcuts import render, redirect
-# from .forms import BookingForm1, BookingForm2, BookingForm3
-
-# def Guestbooking(request):
-    
-#     if request.method == 'POST':
-#         form1 = BookingForm1(request.POST)
-#         form2 = BookingForm2(request.POST)
-#         form3 = BookingForm3(request.POST)
-
-#         if form3.is_valid():
-#             Booking.date = form1.cleaned_data['date']
-#             Booking.time_slot=form2.cleaned_data['time_slot']
-#             Booking.client_name = form3.cleaned_data['client_name']
-#             Booking.client_email = form3.cleaned_data['client_email']
-#             Booking.client_phone = form3.cleaned_data['client_phone']
-#             Booking.save()
-#             return redirect('index')
-
-#     else:
-#         form1 = BookingForm1()
-#         form2 = BookingForm2()
-#         form3 = BookingForm3()
-
-#     context = {
-#         'form1': form1,
-#         'form2': form2,
-#         'form3': form3,
-#     }
-#     return render(request, 'Guestbooking.html', context)
-
-# from django.shortcuts import render, redirect
-
-# from .forms import BookingForm
-
-# def Guestbooking(request):
-#     if request.method == 'POST':
-#         form = BookingForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             # Redirect to a success page or do something else
-#             return redirect('RegistrationSucess')
-#     else:
-#         form = BookingForm()
-
-#     return render(request, 'Guestbooking.html', {'form': form})
-
-
-
-
-
-
-from django.contrib.auth.decorators import login_required  # Import the login_required decorator
-# Use the login_required decorator to ensure the user is logged in
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Profile_Verification
-from django.contrib.auth.decorators import login_required
+# from .models import Profile_Verification
+# from django.contrib.auth.decorators import login_required
  
 
 from .models import Profile_Verification
@@ -296,69 +200,6 @@ def ProfileVerification(request):
         return redirect('RegistrationSucess')  # Redirect to a success page URL
 
     return render(request, 'ProfileVerification.html')  # Render the 'ProfileVerification.html' template
-
-# Rest of your code remains the same# views.py guestbooking
-# from django.shortcuts import render, redirect
-# from .models import Booking
-# from datetime import timedelta 
-# def Guestbooking(request):
-#     if request.method == 'POST':
-#         client_name = request.POST.get('client_name')
-#         client_email = request.POST.get('client_email')
-#         client_phone = request.POST.get('client_phone')
-#         booking_date = request.POST.get('booking_date')
-#         booking_time = request.POST.get('booking_time')
-
-#         # Process the booking request and save it to the database
-#         if client_name and client_email and booking_date and booking_time:
-#             # Save the booking to the database
-#             Booking.objects.create(
-#                 start_time=booking_time,
-#                 end_time=(booking_time + timedelta(hours=1)),
-#                 date=booking_date
-#             )
-
-#             # Handle the rest of your booking logic here
-
-#             return render(request, 'booking_success.html', {'client_name': client_name})
-
-#     return render(request, 'Guestbooking.html')
-
-# from django.shortcuts import render, redirect
-# from .models import Booking
-# from datetime import datetime, timedelta  # Import datetime
-
-# def Guestbooking(request):
-#     if request.method == 'POST':
-#         client_name = request.POST.get('client-name')
-#         client_email = request.POST.get('client-email')
-#         client_phone = request.POST.get('client-phone')
-#         booking_date = request.POST.get('booking-date')
-#         booking_time = request.POST.get('booking-time')
-
-#         # Process the booking request and save it to the database
-#         if client_name and client_email and booking_date and booking_time:
-#             # Parse the booking date and time
-#             booking_datetime = datetime.strptime(f"{booking_date} {booking_time}", "%Y-%m-%d %I:%M%p")
-
-#             # Calculate end time (assuming each booking lasts for 1 hour)
-#             end_time = booking_datetime + timedelta(hours=1)
-
-#             # Save the booking to the database
-#             Booking.objects.create(
-#                 client_name=client_name,
-#                 client_email=client_email,
-#                 client_phone=client_phone,
-#                 booking_date=booking_datetime.date(),
-#                 booking_start_time=booking_datetime.time(),
-#                 booking_end_time=end_time.time()
-#             )
-
-#             # Handle the rest of your booking logic here
-
-#             return render(request, 'booking_success.html', {'client_name': client_name})
-
-#     return render(request, 'Guestbooking.html')
 
 
 from django.shortcuts import render, redirect
@@ -425,3 +266,26 @@ def Guestbooking(request):
             return render(request, "booking_success.html", {"client_name": client_name})
 
     return render(request, "Guestbooking.html")
+
+#gallery page
+
+from django.shortcuts import render, redirect
+from .models import Winner
+
+def Gallery(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        name = request.POST.get('name')
+        prize = request.POST.get('prize')
+        image = request.FILES['image']
+        
+        new_winner = Winner(
+            title=title,
+            name=name,
+            prize=prize,
+            image=image,
+        )
+        new_winner.save()
+        return redirect('Gallery')  # You can specify the URL name you want to redirect to
+    
+    return render(request, 'Gallery.html')  # Replace 'add_winner.html' with your template name

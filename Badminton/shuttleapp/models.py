@@ -64,48 +64,6 @@ class Registration(models.Model):
 
 
 
-# #***************************guest booking time slots********************8
-# from django.db import models
-
-# class TimeSlot(models.Model):
-#     start_time = models.TimeField()
-#     end_time = models.TimeField()
-#     capacity = models.PositiveIntegerField(default=4)
-#     is_active = models.BooleanField(default=True)
-
-#     def __str__(self):
-#         return f"{self.start_time.strftime('%I:%M%p')} - {self.end_time.strftime('%I:%M%p')}"
-
-#     def is_full(self):
-#         return self.capacity <= 0
-
-
-# # *************booking form models in guest booking*****************
-# from django.db import models
-
-# class Booking(models.Model):
-#     client_name = models.CharField(max_length=255)
-#     client_email = models.EmailField()
-#     client_phone = models.CharField(max_length=15, blank=True, null=True)
-#     booking_date = models.DateField()
-#     booking_time = models.TimeField()
-
-#     def __str__(self):
-#         return f"Booking by {self.client_name} on {self.booking_date} at {self.booking_time}"
-
-
-# class Booking(models.Model):
-#     date = models.DateField()
-#     time_slot = models.CharField(max_length=20,null=True)
-#     client_name = models.CharField(max_length=100)
-#     client_email = models.EmailField()
-#     client_phone = models.CharField(max_length=15)
-
-#     def __str__(self):
-#         return f"{self.date} - {self.time_slot} - {self.client_name}"
-
-
-
 
 #verify profile
 from django.db import models
@@ -143,3 +101,16 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.client_name
+
+
+#gallery  page
+from django.db import models
+
+class Winner(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='winners/')
+    name = models.CharField(max_length=100)
+    prize = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.title
