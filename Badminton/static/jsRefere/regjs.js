@@ -1,10 +1,10 @@
- reg.js
+// reg.js
 
 function validateName() {
     var nameInput = document.getElementById('t1');
     var nameError = document.getElementById('nc');
     
-    var namePattern = ^[A-Za-z ]+$;  Regular expression for letters only
+    var namePattern = /^[A-Za-z ]+$/; // Regular expression for letters only
     
     if (!namePattern.test(nameInput.value)) {
         nameError.textContent = 'Name should only contain letters';
@@ -18,12 +18,12 @@ function validateName() {
     }
 }
 
- Function to validate the email field
+// Function to validate the email field
 function validateEmail() {
     var emailInput = document.getElementById('t2');
     var emailError = document.getElementById('em');
     
-    var emailPattern = ^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$;    
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;    
     if (!emailPattern.test(emailInput.value)) {
         emailError.textContent = 'Enter a valid email address';
         return false;
@@ -33,13 +33,13 @@ function validateEmail() {
     }
 }
 
- Function to validate the password field
+// Function to validate the password field
 
 function validatePwd() {
     var pwdInput = document.getElementById('t3');
     var pwdError = document.getElementById('pwd');
     
-    var pwdPattern = ^(=.[A-Z])(=.d)(=.[!@#$%^&])[A-Za-zd!@#$%^&]{8,}$;
+    var pwdPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
     
     if (!pwdPattern.test(pwdInput.value)) {
         pwdError.textContent = 'Password must have at least 8 characters, one uppercase letter, one digit, and one special character';
@@ -50,7 +50,7 @@ function validatePwd() {
     }
 }
 
- Function to validate confirm password field
+// Function to validate confirm password field
 function validateCpwd() {
     var pwdInput = document.getElementById('t3');
     var cpwdInput = document.getElementById('confirmpassword');
@@ -67,34 +67,34 @@ function validateCpwd() {
 
 
 
- Function to perform overall form validation before submission
- function checkall() {
-      event.preventDefault();
-     var name = document.getElementById('t1').value;
-     var email = document.getElementById('t2').value;
-     var password = document.getElementById('t3').value;
-     var confirmPassword = document.getElementById('confirmpassword').value;
+// Function to perform overall form validation before submission
+// function checkall() {
+//     // event.preventDefault();
+//     var name = document.getElementById('t1').value;
+//     var email = document.getElementById('t2').value;
+//     var password = document.getElementById('t3').value;
+//     var confirmPassword = document.getElementById('confirmpassword').value;
 
-     if (name && email && password && confirmPassword) {
-         swal.fire({
-             title Registered Successfully,
-             text Congratulations, you are registered!,
-             icon success,
-             allowOutsideClick false
+//     if (name && email && password && confirmPassword) {
+//         swal.fire({
+//             title: "Registered Successfully",
+//             text: "Congratulations, you are registered!",
+//             icon: "success",
+//             //allowOutsideClick: false
             
-         }).then(function() {
-             window.location.href = ..templateslogin.html;
-         });
+//         }).then(function() {
+//             window.location.href = "../templates/login.html";
+//         });
                 
-     } else {
-             swal.fire({
-             title Error,
-             text Please fill in all required fields.,
-             icon error,
-         });
-     }
- }
- Attach event listeners to input fields to trigger validation
+//     } else {
+//             swal.fire({
+//             title: "Error",
+//             text: "Please fill in all required fields.",
+//             icon: "error",
+//         });
+//     }
+// }
+// Attach event listeners to input fields to trigger validation
 document.getElementById('t1').addEventListener('keyup', validateName);
 document.getElementById('t2').addEventListener('keyup', validateEmail);
 document.getElementById('t3').addEventListener('keyup', validatePwd);

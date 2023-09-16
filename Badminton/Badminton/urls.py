@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('shuttleapp.urls')),
     path('',include('loginapp.urls')),
-     path('',include('membershipapp.urls')),
+    path('',include('membershipapp.urls')),
+    path('',include('refereapp.urls')),
 ]
 
 if settings.DEBUG:
