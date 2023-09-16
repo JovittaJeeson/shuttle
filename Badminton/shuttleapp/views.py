@@ -210,21 +210,12 @@ from datetime import datetime, timedelta  # Import datetime
 def Guestbooking(request):
     if request.method == "POST":
         client_name = request.POST.get("client-name")
-        print(client_name)
         client_email = request.POST.get("client-email")
         print(client_email)
-        client_phone = request.POST.get("client-phone")
-        print(client_phone)
         booking_date = request.POST.get("booking-date")
-        print(booking_date)
         booking_time = request.POST.get("booking-time")
-        print(booking_time)
 
-        # Process the booking request and save it to the database
-
-        # Your this condition is not matching..........🫵
         if client_name and client_email and booking_date and booking_time:
-            # Parse the booking date and time
             # Split the time range into start and end times
             start_time, end_time = booking_time.split(" - ")
 
@@ -236,8 +227,6 @@ def Guestbooking(request):
                 hour=int(start_time.split(":")[0]),
                 minute=int(start_time.split(":")[1][:-2]),  # Remove 'AM' or 'PM'
             )
-
-            print("Booking datetime start:", booking_datetime)
 
             # Now, create another datetime object for the end time
             end_datetime = booking_datetime.replace(
