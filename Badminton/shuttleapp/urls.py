@@ -22,11 +22,8 @@ urlpatterns=[
      path('refere/',views.refere,name='refere'),
      path('Gallery/',views.Gallery,name='Gallery'),
      # path('Guestbooking/<int:timeslot_id>/', views.Guestbooking, name='Guestbooking'),
-     # path('book/<int:timeslot_id>/', views.book_time_slot, name='book_time_slot'),
-     # path('booking_success/', views.booking_success, name='booking_success'),
-     # path('booking_time/', views.booking_time, name='booking_time'),
-     # path('Booking/', views.Booking, name='Booking'),
-    
+     path('ticket/', views.download_ticket, name='download_ticket'),
+     
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

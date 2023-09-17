@@ -202,16 +202,47 @@ def ProfileVerification(request):
     return render(request, 'ProfileVerification.html')  # Render the 'ProfileVerification.html' template
 
 
+
+# #gallery page
+
+# from django.shortcuts import render, redirect
+# from .models import Winner
+
+# def Gallery(request):
+#     if request.method == 'POST':
+#         title = request.POST.get('title')
+#         name = request.POST.get('name')
+#         prize = request.POST.get('prize')
+#         image = request.FILES['image']
+        
+#         new_winner = Winner(
+#             title=title,
+#             name=name,
+#             prize=prize,
+#             image=image,
+#         )
+#         new_winner.save()
+#         return redirect('Gallery')  # You can specify the URL name you want to redirect to
+    
+#     return render(request, 'Gallery.html')  # Replace 'add_winner.html' with your template name
 from django.shortcuts import render, redirect
 from .models import Booking
 from datetime import datetime, timedelta  # Import datetime
+
+
+def get_booking_count_for_time_slot(booking_date, start_time, end_time):
+    return Booking.objects.filter(
+        booking_date=booking_date,
+        booking_start_time__lte=start_time,
+        booking_end_time__gte=end_time,
+    ).count()
 
 
 def Guestbooking(request):
     if request.method == "POST":
         client_name = request.POST.get("client-name")
         client_email = request.POST.get("client-email")
-        print(client_email)
+        client_phone = request.POST.get("client-phone")
         booking_date = request.POST.get("booking-date")
         booking_time = request.POST.get("booking-time")
 
@@ -220,7 +251,7 @@ def Guestbooking(request):
             start_time, end_time = booking_time.split(" - ")
 
             # Create a datetime object for the booking date
-            booking_datetime = datetime.strptime(booking_date, "%B %Y")
+            booking_datetime = datetime.strptime(booking_date, "%B %d, %Y")
 
             # Add the start time to the datetime
             booking_datetime = booking_datetime.replace(
@@ -234,47 +265,74 @@ def Guestbooking(request):
                 minute=int(end_time.split(":")[1][:-2]),  # Remove 'AM' or 'PM'
             )
 
-            print("Booking datetime end:", end_datetime)
-
-            # Calculate end time (assuming each booking lasts for 1 hour)
-            end_time = booking_datetime + timedelta(hours=1)
-
-            # Save the booking to the database
-
-            Booking.objects.create(
-                client_name=client_name,
-                client_email=client_email,
-                client_phone=client_phone,
-                booking_date=booking_datetime.date(),
-                booking_start_time=booking_datetime.time(),
-                booking_end_time=end_time.time(),
+            # Calculate the booking count for the selected time slot
+            booking_count = get_booking_count_for_time_slot(
+                booking_datetime.date(), booking_datetime.time(), end_datetime.time()
             )
 
-            # Handle the rest of your booking logic here
+            # Check if the time slot is available
+            if booking_count < 4:
+                # Save the booking to the database
+                Booking.objects.create(
+                    client_name=client_name,
+                    client_email=client_email,
+                    client_phone=client_phone,
+                    booking_date=booking_datetime.date(),
+                    booking_start_time=booking_datetime.time(),
+                    booking_end_time=end_datetime.time(),
+                )
 
-            return render(request, "booking_success.html", {"client_name": client_name})
+                
+                return render(
+                    request,
+                    "booking_success.html",
+                    {
+                        "client_name": client_name,
+                        "booking_count": booking_count + 1,  # Increment the count
+                    },
+                )
+            else:
+                return render(
+                    request,
+                    "booking_error.html",
+                    {
+                        "error_message": "This time slot is already fully booked.",
+                    },
+                )
 
-    return render(request, "Guestbooking.html")
+    return render(
+        request,
+        "Guestbooking.html",
+    )
 
-#gallery page
 
-from django.shortcuts import render, redirect
-from .models import Winner
 
-def Gallery(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        name = request.POST.get('name')
-        prize = request.POST.get('prize')
-        image = request.FILES['image']
-        
-        new_winner = Winner(
-            title=title,
-            name=name,
-            prize=prize,
-            image=image,
-        )
-        new_winner.save()
-        return redirect('Gallery')  # You can specify the URL name you want to redirect to
-    
-    return render(request, 'Gallery.html')  # Replace 'add_winner.html' with your template name
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from io import BytesIO
+
+def download_ticket(request):
+    # Retrieve the booking information (you may need to adjust this part)
+    booking = Booking.objects.latest('id')  # Get the latest booking (you may need a more specific query)
+
+    # Generate the PDF ticket
+    pdf_buffer = BytesIO()
+    p = canvas.Canvas(pdf_buffer)
+
+    # Customize the content of the PDF ticket here
+    p.drawString(100, 750, "Booking Ticket")
+    p.drawString(100, 730, f"Client Name: {booking.client_name}")
+    p.drawString(100, 690, f"Phone: {booking.client_phone}")
+    p.drawString(100, 710, f"Email: {booking.client_email}")
+    p.drawString(100, 710, f"Booking Date: {booking.booking_date}")
+    # Add more information as needed
+
+    # Save the PDF to the buffer and close it
+    p.showPage()
+    p.save()
+    pdf_buffer.seek(0)
+
+    # Create a Django response to send the PDF as a download
+    response = HttpResponse(pdf_buffer, content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename=booking_ticket.pdf'
+    return response

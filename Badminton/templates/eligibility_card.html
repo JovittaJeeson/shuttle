@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'download_ticket' %}" class="btn btn-primary">Download Your Ticket</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eligibility Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .eligibility-card {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .eligibility-card h2 {
+            text-align: center;
+        }
+        .eligibility-card label {
+            font-weight: bold;
+        }
+        .eligibility-card p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="eligibility-card">
+        <h2>Eligibility Card</h2>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                <label for="id_name">Name:</label> {{ form.name }}
+            </p>
+            <p>
+                <label for="id_date_of_birth">Date of Birth:</label> {{ form.date_of_birth }}
+            </p>
+            <p>
+                <label for="id_rules">Rules:</label> {{ form.rules }}
+            </p>
+            <p>
+                <label for="id_event_time">Event Time:</label> {{ form.event_time }}
+            </p>
+            <p>
+                <label for="id_event_name">Event Name:</label> {{ form.event_name }}
+            </p>
+            <a href="{% url 'download_ticket' %}" onclick="document.forms[0].submit(); return false;">Generate Eligibility Card</a>
+            {% comment %} <button type="submit" >Generate Eligibility Card</button> {% endcomment %}
+        </form>
+    </div>
+</body>
+</html>

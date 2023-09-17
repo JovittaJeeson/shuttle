@@ -22,10 +22,10 @@ def register(request):
                 user.set_password(password)
                 user.save() 
                 messages.success(request, "Registered Successfully") 
-                return redirect('login') 
+                return redirect('Referelogin') 
     return render(request, 'Refere/register.html')
 
-def login(request):
+def Referelogin(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('pass')
@@ -37,5 +37,5 @@ def login(request):
                 return redirect('/')  
             else:
                 error_message = "Invalid login credentials."
-                return render(request, 'login.html', {'error_message': error_message})
-    return render(request,'Refere/login.html')
+                return render(request, 'Refere/Referelogin.html', {'error_message': error_message})
+    return render(request,'Refere/Referelogin.html')

@@ -1,24 +1,37 @@
+
+
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db import models
 from loginapp.models import CustomUser
-# # Create your models here.
+from django.utils import timezone
 
+# # Create your models here.
 
 
 # Create your models here.
 class EventUser(models.Model):
-    status=models.BooleanField(default=False,help_text="0=default,1=Hidden")
+    status = models.BooleanField(default=False, help_text="0=default,1=Hidden")
     name = models.CharField(max_length=200)
     description = models.TextField()
-    date = models.DateField()
+    date = models.DateField()  # 15 sep 2023
     time = models.TimeField()
     location = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='img/', null=True, blank=True)
-     
-    
-     
-    def __str__(self):    
+    image = models.ImageField(upload_to="img/", null=True, blank=True)
+    close_event_date = models.DateField(null=True, blank=True)  # 2023-09-13
+
+    # def is_booking_closed(self):
+    #     current_date = timezone.now().date()
+    #     return current_date >= self.close_event_date
+
+    @property
+    def is_event_closed(self):
+        if self.close_event_date:
+            current_date = timezone.now().date()
+            return current_date <= self.close_event_date
+        return True
+
+    def __str__(self):
         return self.name
     
 
