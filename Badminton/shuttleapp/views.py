@@ -24,7 +24,12 @@ def EventRegform(request):
 def Guestbooking(request):
      return render(request,'Guestbooking.html')
 
-
+def indexadmin(request):
+     return render(request,'admin/indexadmin.html')
+def patients(request):
+     return render(request,'admin/patients.html')
+def doctors(request):
+     return render(request,'admin/doctors.html')
 
 
 def Gallery(request):

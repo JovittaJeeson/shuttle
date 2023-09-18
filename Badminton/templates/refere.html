@@ -32,11 +32,27 @@
 </head>
 
 <body>
+    <header>
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
+    
+        <a href="#" class="logo">SMASHZONE<span>$</span></a>
+    
+        <nav class="navbar">
+            <a href="#home">CONTACT</a>
+            {% comment %} <a href="#about">about</a>
+            <a href="#products">products</a> {% endcomment %}
+            <a href="order.html">PAYMENT</a>
+            
+        </nav>
+    
+        
+    </header>
     <!-- Header Start -->
-    <div class="container-fluid bg-dark px-0">
+    {% comment %} <div class="container-fluid bg-dark px-0">
         <div class="row gx-0">
             <div class="col-lg-3 bg-dark d-none d-lg-block">
-                <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <a href="#" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                     <h1 class="m-0 display-4 text-primary text-uppercase">Badminton</h1>
                 </a>
             </div>
@@ -86,21 +102,472 @@
             </div>
         </div>
     </div>
-    <!-- Header End -->
+    <!-- Header End --> {% endcomment %}
 
 
     <!-- Hero Start -->
-    <div class="container-fluid bg-dark p-2 bg-hero mb-2">
+    <div class="container-fluid bg-dark p-1 bg-hero mb-2">
         <div class="row py-2">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Refere</h1>
+                <h3 class="display-2 text-uppercase text-white mb-md-4">Refere</h3>
                 {% comment %} <a href="{% url 'index' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
                 <a href="" class="btn btn-light py-md-3 px-md-5">Contact</a> {% endcomment %}
             </div>
         </div>
     </div>
     <!-- Hero End -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    
+    
+    <title>Event Schedule list </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        /* Style the navigation links with a bold font */
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    font-weight: bold; /* Add this line to make the font bold */
+    transition: color 0.3s ease;
+}
 
+        /* Reset some default styles */
+        body, h1, h2, p, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        /* Style the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        /* Style the logo */
+        .logo {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ffcc00; /* Change this to your desired color */
+            margin-left: 5px;
+        }
+        
+        /* Style the navigation links */
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar a:hover {
+            color: #ffcc00; /* Change this to your desired hover color */
+        }
+        
+        /* Style the toggler icon (Hamburger menu) */
+        #toggler {
+            display: none;
+        }
+        
+        .fas.fa-bars {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            display: none;
+        }
+        
+        /* Style the shopping cart icon */
+        .fas.fa-shopping-cart {
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        
+        /* Media query for mobile responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                background-color: #333;
+                width: 100%;
+            }
+        
+            .navbar.active {
+                display: flex;
+            }
+        
+            #toggler:checked + .fas.fa-bars {
+                display: block;
+            }
+        
+            .navbar a {
+                margin: 10px 0;
+            }
+        }
+        
+
+
+            body{margin-top:20px;}
+    .event-schedule-area .section-title .title-text {
+        margin-bottom: 50px;
+    }
+    
+    .event-schedule-area .tab-area .nav-tabs {
+        border-bottom: inherit;
+    }
+    
+    .event-schedule-area .tab-area .nav {
+        border-bottom: inherit;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin-top: 80px;
+    }
+    
+    .event-schedule-area .tab-area .nav-item {
+        margin-bottom: 75px;
+    }
+    .event-schedule-area .tab-area .nav-item .nav-link {
+        text-align: center;
+        font-size: 22px;
+        color: #333;
+        font-weight: 600;
+        border-radius: inherit;
+        border: inherit;
+        padding: 0px;
+        text-transform: capitalize !important;
+    }
+    .event-schedule-area .tab-area .nav-item .nav-link.active {
+        color: #4125dd;
+        background-color: transparent;
+    }
+    
+    .event-schedule-area .tab-area .tab-content .table {
+        margin-bottom: 0;
+        width: 80%;
+    }
+    .event-schedule-area .tab-area .tab-content .table thead td,
+    .event-schedule-area .tab-area .tab-content .table thead th {
+        border-bottom-width: 1px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #252525;
+    }
+    .event-schedule-area .tab-area .tab-content .table td,
+    .event-schedule-area .tab-area .tab-content .table th {
+        border: 1px solid #b7b7b7;
+        padding-left: 30px;
+    }
+    .event-schedule-area .tab-area .tab-content .table tbody th .heading,
+    .event-schedule-area .tab-area .tab-content .table tbody td .heading {
+        font-size: 16px;
+        text-transform: capitalize;
+        margin-bottom: 16px;
+        font-weight: 500;
+        color: #252525;
+        margin-bottom: 6px;
+    }
+    .event-schedule-area .tab-area .tab-content .table tbody th span,
+    .event-schedule-area .tab-area .tab-content .table tbody td span {
+        color: #4125dd;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+        display: block;
+    }
+    .event-schedule-area .tab-area .tab-content .table tbody th span.date,
+    .event-schedule-area .tab-area .tab-content .table tbody td span.date {
+        color: #656565;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 15px;
+    }
+    .event-schedule-area .tab-area .tab-content .table tbody th p {
+        font-size: 14px;
+        margin: 0;
+        font-weight: normal;
+    }
+    
+    .event-schedule-area-two .section-title .title-text h2 {
+        margin: 0px 0 15px;
+    }
+    
+    .event-schedule-area-two ul.custom-tab {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        border-bottom: 1px solid #dee2e6;
+        margin-bottom: 30px;
+    }
+    .event-schedule-area-two ul.custom-tab li {
+        margin-right: 70px;
+        position: relative;
+    }
+    .event-schedule-area-two ul.custom-tab li a {
+        color: #252525;
+        font-size: 25px;
+        line-height: 25px;
+        font-weight: 600;
+        text-transform: capitalize;
+        padding: 35px 0;
+        position: relative;
+    }
+    .event-schedule-area-two ul.custom-tab li a:hover:before {
+        width: 100%;
+    }
+    .event-schedule-area-two ul.custom-tab li a:before {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: "";
+        background: #4125dd;
+        width: 0;
+        height: 2px;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    .event-schedule-area-two ul.custom-tab li a.active {
+        color: #4125dd;
+    }
+    
+    .event-schedule-area-two .primary-btn {
+        margin-top: 40px;
+    }
+    
+    .event-schedule-area-two .tab-content .table {
+        -webkit-box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 0;
+    }
+    .event-schedule-area-two .tab-content .table thead {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 20px;
+    }
+    .event-schedule-area-two .tab-content .table thead tr th {
+        padding: 20px;
+        border: 0;
+    }
+    .event-schedule-area-two .tab-content .table tbody {
+        background: #fff;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr.inner-box {
+        border-bottom: 1px solid #dee2e6;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr th {
+        border: 0;
+        padding: 30px 20px;
+        vertical-align: middle;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr th .event-date {
+        color: #252525;
+        text-align: center;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr th .event-date span {
+        font-size: 50px;
+        line-height: 50px;
+        font-weight: normal;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td {
+        padding: 30px 20px;
+        vertical-align: middle;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .r-no span {
+        color: #252525;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a {
+        font-size: 20px;
+        line-height: 20px;
+        color: #cf057c;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a:hover {
+        color: #4125dd;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        margin: 10px 0;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a {
+        color: #252525;
+        font-size: 16px;
+        margin-left: 10px;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a:before {
+        content: "\f07b";
+        font-family: fontawesome;
+        padding-right: 5px;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .time span {
+        color: #252525;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        margin: 10px 0;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a {
+        color: #cc00cc;
+        font-size: 16px;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:hover {
+        color: #4125dd;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:before {
+        content: "\f007";
+        font-family: fontawesome;
+        padding-right: 5px;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .primary-btn {
+        margin-top: 0;
+        text-align: center;
+    }
+    .event-schedule-area-two .tab-content .table tbody tr td .event-img img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+    }
+    
+        </style>
+    </head>
+    <body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <div class="event-schedule-area-two bg-color pad100">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="section-title text-center">
+    <div class="title-text">
+    <h2>Event Schedule</h2>
+    </div>
+    {% comment %} <p>
+        Referees gather, complete registration, and receive a warm welcome from the event organizers.
+    </p> {% endcomment %}
+    </div>
+    </div>
+    
+    </div>
+    
+  
+    <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade active show" id="home" role="tabpanel">
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+    <tr>
+    <th class="text-center" scope="col">Date</th>
+    
+    <th scope="col">Event Name</th>
+    <th scope="col">Time</th>
+    <th class="text-center" scope="col">Venue</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="inner-box">
+    <th scope="row">
+    <div class="event-date">
+    <span>16</span>
+    <p>Novembar</p>
+    </div>
+    </th>
+    <td>
+     <div class="event-img">
+    <h3>Harman Kardon</h3>
+    </div> 
+    </td>
+    <td>
+    <div class="event-wrap">
+    
+   
+    <div class="time">
+    <span>05:35 AM - 08:00 AM 2h 25'</span>
+    </div>
+    </div>
+    </div>
+    </td>
+    <td>
+    <div class="r-no">
+    <span>Court 3</span>
+    </div>
+    </td>
+    <td>
+    <div class="primary-btn">
+    {% comment %} <a class="btn btn-primary" href="#">Accept</a>
+    <a class="btn btn-primary" href="#">Reject</a> {% endcomment %}
+    <a class="btn btn-primary" href="#" onclick="setChoice(1)">Accept</a>
+<a class="btn btn-primary" href="#" onclick="setChoice(0)">Reject</a>
+
+<script>
+  function setChoice(value) {
+    // You can now use the 'value' variable (1 for Accept, 0 for Reject) as needed.
+    // For example, you can send it to a server, display it, or perform other actions.
+    alert("Choice: " + value);
+  }
+</script>
+    </div>
+    </td>
+    </tr>
+    
+       
+{% comment %}         
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div> {% endcomment %}
+    {% comment %} <div class="primary-btn text-center">
+    <a href="#" class="btn btn-primary">Download Schedule</a>
+    </div>
+    </div>
+    
+    </div> {% endcomment %}
+    
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+    </body>
+    </html>
 
    
 

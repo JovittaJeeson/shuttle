@@ -24,6 +24,11 @@ urlpatterns=[
      # path('Guestbooking/<int:timeslot_id>/', views.Guestbooking, name='Guestbooking'),
      # path('ticket/', views.download_ticket, name='download_ticket'),
      
+
+
+     path('indexadmin/',views.indexadmin,name='indexadmin'),
+     path('patients/',views.patients,name='patients'),
+     path('doctors/',views.doctors,name='doctors')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

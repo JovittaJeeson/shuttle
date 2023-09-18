@@ -1,0 +1,176 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- patients23:17-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>VoyageVue</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
+    <!--[if lt IE 9]>
+    <script src="admin/js/html5shiv.min.js"></script>
+    <script src="admin/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+      <div class="header-left">
+        <a href="index-2.html" class="logo">
+          <span>VoyageVue</span>
+        </a>
+      </div>
+      <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <ul class="nav user-menu float-right">
+                <li class="nav-item dropdown d-none d-sm-block">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class=""></i> <span class="badge badge-pill bg-danger float-right"></span></a>
+                    
+                <li class="nav-item dropdown d-none d-sm-block">
+                    <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><i class=""></i> <span class="badge badge-pill bg-danger float-right"></span></a>
+                </li>
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        <span class="user-img"><img class="rounded-circle" src="{% static 'admin/img/user.jpg' %}" width="40" alt="Admin">
+              <span class="status online"></span></span>
+                        <span>Admin</span>
+                    </a>
+          <div class="dropdown-menu">
+            {% if user.is_authenticated %}
+                        <p><i class="dropdown-item"></i><a href="{% url 'logout' %}">Logout</a></p>
+                    {% else %}
+                        <p><i class="fa fa-sign-in-alt mr-2"></i><a href="{% url 'login' %}">Login</a></p>
+                    {% endif %}
+          </div>
+                </li>
+            </ul>
+           
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li>
+                            <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+                        {% if user.is_travelagent %}                            
+                        <li>
+                            <a href=""><i class="fa fa-user-md"></i> <span>Packages</span></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-home"></i> <span>Stays</span></a>
+                        </li>
+                    {% else %}
+                         <li>
+                            <a href=""><i class="fa fa-user"></i> <span>Users</span></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-globe"></i> <span>Destinations</span></a>
+                        </li>
+                        <li>
+
+
+<a href=""><i class="fa fa-plane"></i> <span>Packages</span></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-home"></i> <span>Stays</span></a>
+                        </li>
+                        <li class="active">
+                            <a href=""><i class="fa fa-compass"></i> <span>Travel Guides</span></a>
+                        </li>
+                    {% endif %}
+                        
+                        {% comment %} <li>
+                            <a href="calendar.html"><i class="fa fa-calendar"></i> <span>Calendar</span></a>
+                        </li> {% endcomment %}
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Travel guides</h4>
+                    </div>
+                    <div class="col-sm-8 col-9 text-right m-b-20">
+                        <a href="" class="btn btn-success btn-rounded float-right"><i class="fa fa-plus"></i> Add Events</a>
+                    </div>
+                </div>
+        <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table datatable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Experience</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for guide in guides %}
+                                    <tr>
+                                        <td>{{ guide.name }}</td>
+                                        <td>{{ guide.email }}</td>
+                                        <td>{{ guide.phone }}</td>
+                                        <td>{{ guide.experience_years }} years</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary">Edit</a>
+                                            <a href="#" class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    <div id="delete_patient" class="modal fade delete-modal" role="dialog">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <img src="{% static 'admin/img/sent.png' %}" alt="" width="50" height="46">
+            <h3>Are you sure want to delete this Patient?</h3>
+            <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'admin/js/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static 'admin/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.slimscroll.js' %}"></script>
+
+
+<script src="{% static 'admin/js/select2.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script src="{% static 'admin/js/app.js' %}"></script>
+</body>
+
+
+<!-- patients23:19-->
+</html>
