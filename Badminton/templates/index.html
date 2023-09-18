@@ -71,10 +71,10 @@
                          <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="{% url 'user_profile' %}">
                                 <h6>User Profile</h6>
                             </a><br> 
-                            <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="{% url 'add_event' %}">
+                            {% comment %} <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="{% url 'add_event' %}">
                                 <h6>add Event</h6>
                             </a><br> 
-                            
+                             {% endcomment %}
                              
                            <!-- <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-linkedin-in"></i>
@@ -99,15 +99,16 @@
                             <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                             <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Events</a>
                             <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
-                           <div class="nav-item dropdown">
+                            <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Refere</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{% url 'Referelogin' %}" class="dropdown-item">Refere Login</a>
                                     <a href="{% url 'register' %}" class="dropdown-item">Refere Registration</a>
                                     
                                 </div>
-                            </div>
-                            <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            </div> 
+                            
                         </div>
                         <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">JOIN US</a>
                     </div>
@@ -140,7 +141,7 @@
                             <h5 class="text-white text-uppercase">Best Badminton Academy</h5>
                             <h1 class="display-2 text-white text-uppercase mb-md-4">Your path to badminton greatness starts here</h1>
                             <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Join Us</a>
-                            <a href="{% url 'contact' %}" class="btn btn-light py-md-3 px-md-5">JOIN US GUEST</a>
+                            <a href="{% url 'Guestbooking' %}" class="btn btn-light py-md-3 px-md-5">JOIN US GUEST</a>
                             
                         </div>
                     </div>

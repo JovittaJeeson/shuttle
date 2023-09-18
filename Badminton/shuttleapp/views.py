@@ -307,32 +307,3 @@ def Guestbooking(request):
 
 
 
-from django.http import HttpResponse
-from reportlab.pdfgen import canvas
-from io import BytesIO
-
-def download_ticket(request):
-    # Retrieve the booking information (you may need to adjust this part)
-    booking = Booking.objects.latest('id')  # Get the latest booking (you may need a more specific query)
-
-    # Generate the PDF ticket
-    pdf_buffer = BytesIO()
-    p = canvas.Canvas(pdf_buffer)
-
-    # Customize the content of the PDF ticket here
-    p.drawString(100, 750, "Booking Ticket")
-    p.drawString(100, 730, f"Client Name: {booking.client_name}")
-    p.drawString(100, 690, f"Phone: {booking.client_phone}")
-    p.drawString(100, 710, f"Email: {booking.client_email}")
-    p.drawString(100, 710, f"Booking Date: {booking.booking_date}")
-    # Add more information as needed
-
-    # Save the PDF to the buffer and close it
-    p.showPage()
-    p.save()
-    pdf_buffer.seek(0)
-
-    # Create a Django response to send the PDF as a download
-    response = HttpResponse(pdf_buffer, content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename=booking_ticket.pdf'
-    return response

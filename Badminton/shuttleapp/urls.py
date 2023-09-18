@@ -22,7 +22,7 @@ urlpatterns=[
      path('refere/',views.refere,name='refere'),
      path('Gallery/',views.Gallery,name='Gallery'),
      # path('Guestbooking/<int:timeslot_id>/', views.Guestbooking, name='Guestbooking'),
-     path('ticket/', views.download_ticket, name='download_ticket'),
+     # path('ticket/', views.download_ticket, name='download_ticket'),
      
 ]
 if settings.DEBUG:

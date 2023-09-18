@@ -28,7 +28,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST">
 					 {% csrf_token %}
-					{% if messages %}
+					{% comment %} {% if messages %}
 					{% for message in messages %}
 						<script>
 							
@@ -41,7 +41,7 @@
 									})
 						</script>
 					{% endfor %}
-					{% endif%} 
+					{% endif%}  {% endcomment %}
 					<span class="login100-form-title p-b-26">
 						Login
 					</span>

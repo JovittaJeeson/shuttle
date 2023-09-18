@@ -25,6 +25,20 @@ def register(request):
                 return redirect('Referelogin') 
     return render(request, 'Refere/register.html')
 
+# def Referelogin(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         password = request.POST.get('pass')
+
+#         if email and password:
+#             user = authenticate(request, email=email, password=password)
+#             if user is not None:
+#                 auth_login(request, user)                
+#                 return redirect('refere.html')  
+#             else:
+#                 error_message = "Invalid login credentials."
+#                 return render(request, 'Refere/Referelogin.html', {'error_message': error_message})
+#     return render(request,'Refere/Referelogin.html')
 def Referelogin(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -33,9 +47,11 @@ def Referelogin(request):
         if email and password:
             user = authenticate(request, email=email, password=password)
             if user is not None:
-                auth_login(request, user)                
-                return redirect('/')  
+                auth_login(request, user)
+                return redirect('refere')
             else:
-                error_message = "Invalid login credentials."
-                return render(request, 'Refere/Referelogin.html', {'error_message': error_message})
-    return render(request,'Refere/Referelogin.html')
+                messages.error(request, 'Invalid login credentials.')
+                # Use messages.error to store the error message
+                # This message will be available in the template
+
+    return render(request, 'Refere/Referelogin.html')

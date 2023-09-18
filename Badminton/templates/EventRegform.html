@@ -1,126 +1,151 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/eventRegstyles.css">
-  <title>Event Registration Form</title>
-</head>
-<!-- ... previous HTML code ... -->
 
-<!-- ... previous HTML code ... -->
+ {% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/eventRegstyles.css">
+   <title>Event Registration Form</title>
+ </head>
+ <!-- ... previous HTML code ... -->
+ 
+ 
+ <body>
+   <div class="video-container">
+     <video src="{% static 'bg_v.mp4' %}" id="video-slider" loop autoplay muted></video>
+ </div>
+ <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url('your-background-image.jpg');">
+   <div class="container">
+     <h2>Registration Form</h2>
+     <form id="registration-form" method="post">
+       {% csrf_token %}
+       
+     <!-- Other form fields -->
+     {% comment %} <select id="registration-type" name="registration-type">
+       <option value="single" selected>Single</option>
+       <option value="team">Team</option>
+     </select>
+ <!-- ... previous HTML code ... -->
+ 
+ <div id="single-fields" class="form-section">
+   <input type="text" placeholder="Enter Name" id="single-name" name="single-name">
+   <label for="date_of_birth">Date of Birth:</label>
+ <input type="date" id="single-dob" name="single-dob">
+   
+ </div>
+ 
+ <div id="team-fields" class="form-section">
+   <input type="text" placeholder="Enter Name 1" id="team-name1" name="team-name1">
+   <label for="date_of_birth">Date of Birth:</label>
+ <input type="date" id="team-dob1" name="team-dob1">
+ <input type="text" placeholder="Enter Name 2" id="team-name2" name="team-name2">
+ <label for="date_of_birth">Date of Birth:</label>
+ <input type="date" id="team-dob2" name="team-dob2" >
+ 
+   
+ </div> {% endcomment %}
+ 
+ 
 
-<body>
-  <div class="video-container">
-    <video src="{% static 'bg_v.mp4' %}" id="video-slider" loop autoplay muted></video>
-</div>
-  <div class="container">
-    <h2>Registration Form</h2>
-    <form id="registration-form" method="post">
-      {% csrf_token %}
-      
-    <!-- Other form fields -->
-    <select id="registration-type" name="registration-type">
-      <option value="single" selected>Single</option>
-      <option value="team">Team</option>
-    </select>
-<!-- ... previous HTML code ... -->
+ <select id="registration-type" name="registration-type">
+  <option value="single" selected>Single</option>
+  <option value="team">Team</option>
+</select>
 
+ 
 <div id="single-fields" class="form-section">
-  <input type="text" placeholder="Enter Name" id="single-name" name="single-name">
-<input type="date" id="single-dob" name="single-dob">
-  {% comment %} <input type="text" placeholder="Enter Name" id="single-name" name="single-name">
-  <input type="text" placeholder="Enter Name" id="single-name" name="fname">
-  <span class="error" id="name-error"></span>
-  <input type="date" id="single-dob" name="birth">
-  <span class="error" id="dob-error"></span> {% endcomment %}
+  <div class="row">
+    <div class="column">
+      <label for="single-name">Full Name:</label>
+      <input type="text" placeholder="Enter your name" id="single-name" name="single-name">
+    </div>
+    <div class="column">
+      <label for="single-dob">Date of Birth:</label>
+      <input type="date" id="single-dob" name="single-dob">
+    </div>
+  </div>
 </div>
 
 <div id="team-fields" class="form-section">
-  <input type="text" placeholder="Enter Name 1" id="team-name1" name="team-name1">
-<input type="date" id="team-dob1" name="team-dob1">
-<input type="text" placeholder="Enter Name 2" id="team-name2" name="team-name2">
-<input type="date" id="team-dob2" name="team-dob2">
-
-  {% comment %} <input type="text" placeholder="Enter Name 1" id="team-name1">
-  <span class="error" id="team-name1-error"></span>
-  <input type="date" id="team-dob1">
-  <span class="error" id="team-dob1-error"></span>
-  <input type="text" placeholder="Enter Name 2" id="team-name2">
-  <span class="error" id="team-name2-error"></span>
-  <input type="date" id="team-dob2">
-  <span class="error" id="team-dob2-error"></span> {% endcomment %}
-</div>
-
-<!-- ... remaining HTML code ... -->
-<input type="tel" placeholder="Contact Number" id="contact-number" name="contact-number">
-   {% comment %} <input type="tel" placeholder="Contact Number" id="contact-number"> {% endcomment %}
-<span class="error" id="contact-error"></span>
-     <p class="rules-text">Rules:</p>
-      <div class="rules-section">
-        <p class="rule">
-          <strong>General Rules</strong><br>
-          Eligibility:<br>
-          - Open to players meeting age and skill requirements.<br>
-          - Accurate registration is required.<br>
-          Format:<br>
-          - Knockout or round-robin format.<br>
-          - Best-of-three games.<br>
-          Scoring:<br>
-          - Games to 21 points, two-point lead.<br>
-          - Tiebreaker at 20-20.<br>
-          Shuttles:<br>
-          - Feather shuttles used.<br>
-
-       <!-- ... additional rules ... -->
-        <label class="declaration-label">
-          <input type="checkbox" id="declaration-checkbox" name="declaration-checkbox">
-          {% comment %} <input type="checkbox" id="declaration-checkbox"> {% endcomment %}
-          I have read this
-        </label>
-      </div>
-      {% comment %} <a class="btn btn-primary btn-block" href="{% url 'RegistrationSucess'  %}" style="height: 47px; margin-top: -2px; display: inline-block; width: auto; padding: 10px 20px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; color: #ffffff; background-color: #007bff; border: 2px solid #007bff;">SUBMIT</a> {% endcomment %}
-
-       <button type="submit">Submit</button> 
-    </form>
+  <div class="row">
+    <div class="column">
+      <label for="team-name1">Full Name 1:</label>
+      <input type="text" placeholder="Enter Name 1" id="team-name1" name="team-name1">
+    </div>
+    <div class="column">
+      <label for="team-dob1">Date of Birth 1:</label>
+      <input type="date" id="team-dob1" name="team-dob1">
+    </div>
   </div>
-  <script src="EventRegscript.js"></script>
-<!-- ... previous HTML code ... -->
-
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    
-  }
   
-  .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    margin-top: 0;
-    text-align: center;
-  }
-  
-  form {
+  <div class="row">
+    <div class="column">
+      <label for="team-name2">Full Name 2:</label>
+      <input type="text" placeholder="Enter Name 2" id="team-name2" name="team-name2">
+    </div>
+    <div class="column">
+      <label for="team-dob2">Date of Birth 2:</label>
+      <input type="date" id="team-dob2" name="team-dob2">
+    </div>
+  </div>
+</div>
+ <!-- ... remaining HTML code ... -->
+ <input type="tel" placeholder="Contact Number" id="contact-number" name="contact-number">
+    {% comment %} <input type="tel" placeholder="Contact Number" id="contact-number"> {% endcomment %}
+ <span class="error" id="contact-error"></span>
+      <p class="rules-text">Rules:</p>
+       <div class="rules-section">
+         <p class="rule">
+           <strong>General Rules</strong><br>
+           Eligibility:<br>
+           - Open to players meeting age and skill requirements.<br>
+           - Birth Certificate is required.<br>
+          
+           Scoring:<br>
+           - Games to 21 points, two-point lead.<br>
+           - Tiebreaker at 20-20.<br>
+           Shuttles:<br>
+           - Feather shuttles used.<br>
+ 
+        <!-- ... additional rules ... -->
+         <label class="declaration-label">
+           <input type="checkbox" id="declaration-checkbox" name="declaration-checkbox">
+           {% comment %} <input type="checkbox" id="declaration-checkbox"> {% endcomment %}
+           I have read this
+         </label>
+       </div>
+       {% comment %} <a class="btn btn-primary btn-block" href="{% url 'RegistrationSucess'  %}" style="height: 47px; margin-top: -2px; display: inline-block; width: auto; padding: 10px 20px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; color: #ffffff; background-color: #007bff; border: 2px solid #007bff;">SUBMIT</a> {% endcomment %}
+ 
+        <button type="submit">Submit</button> 
+     </form>
+   </div>
+   <script src="EventRegscript.js"></script>
+ <!-- ... previous HTML code ... -->
+ 
+ <style>
+  .row {
     display: flex;
-    flex-direction: column;
-  }
-  
-  .form-section {
-    display: none;
-  }
-  
-  select, input, button {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
+  }
+  
+  .column {
+    flex: 1;
+    margin-right: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -128,205 +153,128 @@
     font-size: 16px;
   }
   
-  button {
-    background-color: #007BFF;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  #team-fields {
-    display: none;
-  }
-  #single-fields {
-    display: block;
-  }
-  /* ... previous CSS code ... */
-  
-  .rules-text {
-    font-weight: bold;
-    margin-top: 15px;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  label {
-    display: block;
-    margin-top: 5px;
-  }
-  
-  label input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  /* ... previous CSS code ... */
-  
-  .rules-text {
-    font-weight: bold;
-    margin-top: 15px;
-  }
-  
-  .rules-section {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-  }
-  
-  .declaration-label {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .declaration-label input[type="checkbox"] {
-    margin-right: 5px;
-  }  
-  .video-container video{
-    position: absolute;
-    top:0; left: 0;
-    z-index: -1;
-    height: 100%;
-    width:100%;
-    object-fit: cover;
-  }
-</style>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const registrationType = document.getElementById('registration-type');
-    const singleFields = document.getElementById('single-fields');
-    const teamFields = document.getElementById('team-fields');
-  
-    registrationType.addEventListener('change', function() {
-      if (registrationType.value === 'single') {
-        singleFields.style.display = 'block';
-        teamFields.style.display = 'none';
-      } else if (registrationType.value === 'team') {
-        singleFields.style.display = 'none';
-        teamFields.style.display = 'block';
-      }
-    });
-  });
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    // Get references to the input fields
-    const singleNameInput = document.getElementById("single-name");
-    const singleDobInput = document.getElementById("single-dob");
-    const teamName1Input = document.getElementById("team-name1");
-    const teamDob1Input = document.getElementById("team-dob1");
-    const teamName2Input = document.getElementById("team-name2");
-    const teamDob2Input = document.getElementById("team-dob2");
-    const phoneNumberInput = document.getElementById("contact-number");
+   body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f4f4f4;
+     
+   }
+   
+   .container {
+   max-width: 1000px;
+   width: 100%;
+   background-color:rgb(243, 246, 247);
+   opacity: 0.9;
+   padding: 25px 30px;
+   border-radius: 5px;
+   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+   
+     {% comment %} max-width: 400px;
+     margin: 0 auto;
+     padding: 20px;
+     background-color: #fff;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); {% endcomment %}
+   }
+   
+   h2 {
+     margin-top: 0;
+     text-align: center;
+   }
+   
+   form {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .form-section {
+     display: none;
+   }
+   
+   select, input, button {
+     margin-bottom: 15px;
+     padding: 10px;
+     border: none;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     font-size: 16px;
+   }
+   
+   button {
+     background-color: #007BFF;
+     color: #fff;
+     cursor: pointer;
+     transition: background-color 0.3s;
+   }
+   
+   button:hover {
+     background-color: #0056b3;
+   }
+   #team-fields {
+     display: none;
+   }
+   #single-fields {
+     display: block;
+   }
+   /* ... previous CSS code ... */
+   
+   .rules-text {
+     font-weight: bold;
+     margin-top: 15px;
+   }
+   
+   textarea {
+     width: 100%;
+     height: 100px;
+     padding: 10px;
+     margin-bottom: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+   }
+   
+   label {
+     display: block;
+     margin-top: 5px;
+   }
+   
+   label input[type="checkbox"] {
+     margin-right: 5px;
+   }
+   /* ... previous CSS code ... */
+   
+   .rules-text {
+     font-weight: bold;
+     margin-top: 15px;
+   }
+   
+   .rules-section {
+     border: 1px solid #ccc;
+     padding: 10px;
+     border-radius: 5px;
+     margin-bottom: 15px;
+   }
+   
+   .declaration-label {
+     display: flex;
+     align-items: center;
+     margin-top: 10px;
+   }
+   
+   .declaration-label input[type="checkbox"] {
+     margin-right: 5px;
+   }  
+   .video-container video{
+     position: absolute;
+     top:0; left: 0;
+     z-index: -1;
+     height: 100%;
+     width:100%;
+     object-fit: cover;
+   }
+ </style>
 
-    // Validation functions
-    function validateName(input) {
-      var letters = /^[A-Za-z ]*$/;
-      var fname = input.value;
-      var errorElement = input.nextElementSibling;
-      if (!letters.test(fname) || fname.length <= 2) {
-        errorElement.textContent = "Name should only contain letters and be at least 3 characters long";
-        errorElement.style.color = "red";
-        return false;
-      }
-      errorElement.textContent = "";
-      return true;
-    }
-
-    function validateDateOfBirth(input) {
-      const dobInput = input.value;
-      var errorElement = input.nextElementSibling;
-
-      const currentDate = new Date();
-      const inputDate = new Date(dobInput);
-
-      const minAge = 10;
-      
-      if (isNaN(inputDate)) {
-        errorElement.textContent = "Please provide a valid date in the format YYYY-MM-DD.";
-        errorElement.style.color = "red";
-        return false;
-      }
-
-      const ageInMilliseconds = currentDate - inputDate;
-      const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365);
-
-      if (ageInYears < minAge) {
-        errorElement.textContent = `You must be at least ${minAge} years old.`;
-        errorElement.style.color = "red";
-        return false;
-      } else {
-        errorElement.textContent = "";
-        return true;
-      }
-    }
-
-    function validatePhone(input) {
-      var phone = input.value;
-      var errorElement = input.nextElementSibling;
-
-      // Remove spaces and dashes from the input
-      phone = phone.replace(/\s+/g, '').replace(/-/g, '');
-
-      // Indian phone number pattern
-      var ph_exp = /^[789]\d{9}$/;
-
-      if (!ph_exp.test(phone) || phone.length !== 10) {
-        errorElement.textContent = "Please enter a valid 10-digit Indian phone number starting with 7, 8, or 9";
-        errorElement.style.color = "red";
-        return false;
-      } else {
-        errorElement.textContent = "";
-        return true;
-      }
-    }
-
-    // Add event listeners
-    singleNameInput.addEventListener("blur", function() {
-      validateName(singleNameInput);
-    });
-
-    singleDobInput.addEventListener("blur", function() {
-      validateDateOfBirth(singleDobInput);
-    });
-
-    teamName1Input.addEventListener("blur", function() {
-      validateName(teamName1Input);
-    });
-
-    teamDob1Input.addEventListener("blur", function() {
-      validateDateOfBirth(teamDob1Input);
-    });
-
-    teamName2Input.addEventListener("blur", function() {
-      validateName(teamName2Input);
-    });
-
-    teamDob2Input.addEventListener("blur", function() {
-      validateDateOfBirth(teamDob2Input);
-    });
-
-    phoneNumberInput.addEventListener("blur", function() {
-      validatePhone(phoneNumberInput);
-    });
-  });
-
-{% if messages %}
-{%for message in messages%}
-{{message}}
-{% endfor%}
-{%endif%}
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
- <script src="{% static 'jquery.vide.js' %}"></script>
-<!-- ... previous HTML code ... -->
-</body>
-</html>
+ <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="{% static 'jquery.vide.js' %}"></script>
+ <!-- ... previous HTML code ... -->
+ </body>
+ </html>

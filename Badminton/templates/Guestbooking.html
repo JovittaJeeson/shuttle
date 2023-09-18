@@ -22,9 +22,9 @@
         <!--==================== MAIN ====================-->
         <main class="main">
             <!--==================== CALENDAR ====================-->
-            <div class="calendar-wrapper">
+            <div class="calendar-wrapper" id="booking-calendar">
                 <header>
-                    <p class="current-date">October 2022</p>
+                    <p class="current-date">October 2023</p>
                     <div class="icons">
                         <span id="prev" class="material-symbols-rounded">chevron_left</span>
                         <span id="next" class="material-symbols-rounded">chevron_right</span>
@@ -86,6 +86,7 @@
                             <li class="inactive">5</li>
                         </ul>
                     </div>
+                    
                     <!--==================== BOOKING TIME MODAL ====================-->
                     <div class="booking-time-modal" id="booking-time-modal">
                         <!-- Modal content-->
@@ -161,8 +162,11 @@
                                     </div>
                                 </div> {% endcomment %}
                                 <button type="submit" id="booking-submit-button" style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+                                <button type="button" class="close-btn" onclick="closeBookingModal()">&times;</button>
+                            </div>
+                                {% comment %} <button type="submit" id="booking-submit-button" style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
                             </form>
-                            <button type="button" class="close-btn" onclick="closeBookingModal()">&times;</button>
+                            <button type="button" class="close-btn" onclick="closeBookingModal()">&times;</button> {% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -183,7 +187,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
         crossorigin="anonymous"></script>
-        
+     
         <!--==================== MAIN JS ====================-->
         <!-- <script src="js/main.js"></script> -->
     </body>
