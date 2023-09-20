@@ -1,16 +1,17 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
-from.models import EventUser,Winner
+from .models import EventUser,Winner,Registration,CustomUser,Winner,Booking
 from loginapp.models import CustomUser
 from membershipapp.models import SubscriptionPlan
 from django.shortcuts import render, redirect
 from membershipapp.models import SubscriptionPlan
 from django.http import HttpResponse
 from shuttleapp.models import Winner
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import CustomUser
-from .models import EventUser
-from .models import Winner
+from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+
+
 
 # from .forms import BookingForm1,BookingForm2,BookingForm3
 # Create your views here.
@@ -33,12 +34,10 @@ def EventRegform(request):
      return render(request,'EventRegform.html')
 def Guestbooking(request):
      return render(request,'Guestbooking.html')
-#**************************************************************ADMIN PANEL VIEWS**************************************************************
+#**************************************************************ADMIN PANEL VIEWS.py**************************************************************
 #admin panel        
 def indexadmin(request):
      return render(request,'admin/indexadmin.html')
-def patients(request):
-     return render(request,'admin/patients.html')
 
 
 def dashboard(request):
@@ -46,6 +45,33 @@ def dashboard(request):
     user_count = CustomUser.objects.count()
 
     return render(request, 'dashboard.html', {'user_count': user_count})
+
+
+#this is code for event registred deleteion
+def delete_registration(request, pk):
+    # Get the registration object or return a 404 error if it doesn't exist
+    registration = get_object_or_404(Registration, pk=pk)
+
+    if request.method == 'POST':
+        # Perform the deletion
+        registration.delete()
+
+        # Add a success message (optional)
+        messages.success(request, 'Registration deleted successfully.')
+
+        # Redirect to a page after successful deletion
+        return redirect('event_reg_player')  # Change this to your desired URL name
+
+    # Handle GET request or other methods here
+    return redirect('event_reg_player')  # Change this to your desired URL name
+
+def event_reg_player(request):
+    # Retrieve all registrations from the database
+    registrations = Registration.objects.all()
+
+    # Render the template with the registrations data
+    return render(request, 'admin/event_reg_player.html', {'registrations': registrations})
+
 
 def member(request):
     subscription_plans = SubscriptionPlan.objects.all()
@@ -73,8 +99,6 @@ def edit_member(request, plan_id):
 
     return render(request, 'admin/edit_member.html', {'plan': plan})
 
-from django.shortcuts import render, redirect, get_object_or_404
-from membershipapp.models import SubscriptionPlan
 
 def delete_subscription_plan(request, plan_id):
     plan = get_object_or_404(SubscriptionPlan, pk=plan_id)
@@ -184,6 +208,31 @@ def indexadmin(request):
     new_users = CustomUser.objects.filter(date_joined__gte=threshold_date)
 
     return render(request, 'admin/indexadmin.html', {'new_users': new_users})
+
+
+  # this is guest booking player list in admin panel
+
+def guestbook_player(request):
+    # Fetch all booking records from the database
+    bookings = Booking.objects.all()
+
+    # Render the template with the bookings data
+    return render(request, 'admin/guestbook_player.html', {'bookings': bookings})
+
+# views.py guestbooking  page delete acton
+
+
+def delete_booking(request, booking_id):
+    # Get the Booking object to delete
+    booking = get_object_or_404(Booking, id=booking_id)
+
+    if request.method == 'POST':
+        # Handle the POST request (Delete confirmation)
+        booking.delete()
+        return redirect('guestbook_player') 
+    return render(request, 'delete_booking_confirm.html', {'booking': booking})
+
+
 #**************************************************************************************************************************
 def Gallery(request):
     # Query the database to get all Winner objects
@@ -260,7 +309,7 @@ def EventRegform(request, event_id):
           registration.save()
 
           messages.success(request, 'Registration successfully submitted.')
-          return redirect('RegistrationSucess')  # Redirect to a success page
+          return redirect('RegistrationSucess')  # Redir
 
      return render(request, 'EventRegform.html', {'event': event})
 
@@ -277,102 +326,13 @@ def refere(request):
 
 
 
-# #add event
-# from django.shortcuts import render, redirect
-# from .models import EventUser
-
-# def create_event(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         description = request.POST.get('description')
-#         date = request.POST.get('date')
-#         time = request.POST.get('time')
-#         location = request.POST.get('location')
-#         image = request.FILES.get('image')  # Uploaded image file
-
-#         # Create an EventUser instance and save it to the database
-#         event_user = EventUser()
-#         event_user.name = name
-#         event_user.description = description
-#         event_user.date = date
-#         event_user.time = time
-#         event_user.location = location
-#         event_user.image = image
-#         event_user.save()
-
-#         return redirect('Event_On_Trend')  # Redirect to a view displaying the list of events
-
-#     return render(request, 'add_event.html')
-
-
-# from django.shortcuts import render, HttpResponse
-# from .models import Event
-# from django.contrib.auth.decorators import login_required
-
-# def add_event(request):
-#     if request.method == "POST":
-#         name = request.POST.get('name')
-#         description = request.POST.get('description')
-#         date = request.POST.get('date')
-#         time = request.POST.get('time')
-#         location = request.POST.get('location')
-#         image = request.FILES.get('image')
-
-#         # Find the last event's ID, and increment by 1 to get the new event's ID
-#         last_event = Event.objects.last()
-#         if last_event:
-#             event_id = last_event.id + 1
-#         else:
-#             event_id = 1
-
-#         new_event = Event(
-#             id=event_id,  # Set the event ID
-#             user=request.user,
-#             name=name,
-#             description=description,
-#             date=date,
-#             time=time,
-#             location=location,
-#             image=image
-#         )
-#         new_event.save()
-#      #    sucess_message = 'Event added successfully'
-#         return HttpResponse('Event added successfully.')
-
-#     return render(request, 'add_event.html'  )
-
-
-# from django.shortcuts import render
-# from .models import Event # Import your Event model
-
-# def show_events(request):
-#     events = Event.objects.all()  # Get all events from the database
-#     context = {
-#         'events': events,  # Pass the events to the template context
-#     }
-#     return render(request, 'Event_On_Trend.html', context)
-
-#************************guset booking time slots*************************************
-# from django.shortcuts import render
-# from .models import TimeSlot
-
-# def booking_time(request):
-#     time_slots = TimeSlot.objects.filter(is_active=True)
-    
-#     return render(request, 'GuestBooking/booking_time.html', {'time_slots': time_slots})
+#
 
 
 
 
 
 
-# from django.contrib.auth.decorators import login_required  # Import the login_required decorator
-# # Use the login_required decorator to ensure the user is logged in
-# from django.shortcuts import render, redirect
-# from django.contrib import messages
-# from .models import Profile_Verification
-# from django.contrib.auth.decorators import login_required
- 
 
 from .models import Profile_Verification
 from django.shortcuts import render, redirect
@@ -401,23 +361,7 @@ def ProfileVerification(request):
 # from django.shortcuts import render, redirect
 # from .models import Winner
 
-# def Gallery(request):
-#     if request.method == 'POST':
-#         title = request.POST.get('title')
-#         name = request.POST.get('name')
-#         prize = request.POST.get('prize')
-#         image = request.FILES['image']
-        
-#         new_winner = Winner(
-#             title=title,
-#             name=name,
-#             prize=prize,
-#             image=image,
-#         )
-#         new_winner.save()
-#         return redirect('Gallery')  # You can specify the URL name you want to redirect to
-    
-#     return render(request, 'Gallery.html')  # Replace 'add_winner.html' with your template name
+# 
 from django.shortcuts import render, redirect
 from .models import Booking
 from datetime import datetime, timedelta  # Import datetime

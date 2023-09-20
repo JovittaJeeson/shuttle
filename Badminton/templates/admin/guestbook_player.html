@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Badminton</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
+    <!--[if lt IE 9]>
+    <script src="{% static 'admin/js/html5shiv.min.js' %}"></script>
+    <script src="{% static 'admin/js/respond.min.js' %}"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="{% url "indexadmin" %}" class="logo">
+                    <span>SMASHZONE</span>
+                </a>
+            </div>
+            <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <!-- Your navigation menu here -->
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li class="active">
+                            <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+						<li>
+                            <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "Eventlist" %}"><i class="fa fa-user fa-lg"></i> <span>Event Listing</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "event_reg_player" %}"><i class="fa fa-calendar"></i> <span>Event Registered players</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "winner_Gallery" %}"><i class="fa fa-calendar-check-o"></i> <span>Winners</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "guestbook_player" %}"><i class="fa fa-user fa-lg"></i> <span>Guest user Booking</span></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Guest user - Court Access List</h4>
+                    </div>
+                </div>
+                <!-- Your table content -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped custom-table datatable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Booking Date</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Action</th> <!-- Added an Action column -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for booking in bookings %}
+                                    <tr>
+                                        <td>{{ booking.id }}</td>
+                                        <td>{{ booking.client_name }}</td>
+                                        <td>{{ booking.client_email }}</td>
+                                        <td>{{ booking.client_phone }}</td>
+                                        <td>{{ booking.booking_date }}</td>
+                                        <td>{{ booking.booking_start_time }}</td>
+                                        <td>{{ booking.booking_end_time }}</td>
+                                        <td>
+                                                    <!-- Button to trigger delete confirmation modal -->
+                                    <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#delete_modal_{{ booking.id }}">Delete</button>
+
+                                    <!-- Delete confirmation modal -->
+                            <div class="modal fade" id="delete_modal_{{ booking.id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this record?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Cancel</button>
+                                            <form id="deleteForm_{{ booking.id }}" method="post"
+                                                action="{% url 'delete_booking' booking.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'admin/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'admin/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'admin/js/select2.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script src="{% static 'admin/js/app.js' %}"></script>
+</body>
+
+</html>

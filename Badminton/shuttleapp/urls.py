@@ -26,7 +26,7 @@ urlpatterns=[
 
 #admin panel path
      path('indexadmin/',views.indexadmin,name='indexadmin'),
-     path('patients/',views.patients,name='patients'),
+     
      path('member/',views.member,name='member'),
      path('add_member/',views.add_member,name='add_member'),
      # path('edit_member/',views.edit_member,name='edit_member'),
@@ -37,6 +37,14 @@ urlpatterns=[
      path('delete_winner/<int:winner_id>/', views.delete_winner, name='delete_winner'),
      path('Eventlist/',views.Eventlist,name='Eventlist'),
      path('add_event/',views.add_event,name='add_event'),
+     path('event_reg_player/', views.event_reg_player, name='event_reg_player'),
+     path('delete_registration/<int:pk>/', views.delete_registration, name='delete_registration'),
+     path('guestbook_player/', views.guestbook_player,name='guestbook_player'),
+     # url of guestbooking page delete action
+     path('delete_booking/<int:booking_id>/', views.delete_booking, name='delete_booking')
+
+
+
      
 ]
 if settings.DEBUG:
