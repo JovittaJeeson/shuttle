@@ -1,6 +1,17 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from.models import EventUser,Winner
+from loginapp.models import CustomUser
+from membershipapp.models import SubscriptionPlan
+from django.shortcuts import render, redirect
+from membershipapp.models import SubscriptionPlan
+from django.http import HttpResponse
+from shuttleapp.models import Winner
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import CustomUser
+from .models import EventUser
+from .models import Winner
+
 # from .forms import BookingForm1,BookingForm2,BookingForm3
 # Create your views here.
 def index(request):
@@ -17,21 +28,163 @@ def Event_On_Trend(request):
      eventUser=EventUser.objects.filter(status=0)
      return render(request,'Event_On_Trend.html',{"eventUser":eventUser})
 
-def add_event(request):
-     return render(request,'add_event.html')
+
 def EventRegform(request):
      return render(request,'EventRegform.html')
 def Guestbooking(request):
      return render(request,'Guestbooking.html')
-
+#**************************************************************ADMIN PANEL VIEWS**************************************************************
+#admin panel        
 def indexadmin(request):
      return render(request,'admin/indexadmin.html')
 def patients(request):
      return render(request,'admin/patients.html')
-def doctors(request):
-     return render(request,'admin/doctors.html')
 
 
+def dashboard(request):
+    # Retrieve the count of users
+    user_count = CustomUser.objects.count()
+
+    return render(request, 'dashboard.html', {'user_count': user_count})
+
+def member(request):
+    subscription_plans = SubscriptionPlan.objects.all()
+    return render(request, 'admin/member.html', {'subscription_plans': subscription_plans})
+
+
+def edit_member(request, plan_id):
+    plan = get_object_or_404(SubscriptionPlan, pk=plan_id)
+
+    if request.method == 'POST':
+        # Get the updated data from the POST request
+        title = request.POST.get('title')
+        price = request.POST.get('price')
+        duration = request.POST.get('duration')
+        features = request.POST.get('features')
+
+        # Update the plan object with the new data
+        plan.title = title
+        plan.price = price
+        plan.duration = duration
+        plan.features = features
+        plan.save()
+
+        return redirect('member')  # Redirect to a success page after saving
+
+    return render(request, 'admin/edit_member.html', {'plan': plan})
+
+from django.shortcuts import render, redirect, get_object_or_404
+from membershipapp.models import SubscriptionPlan
+
+def delete_subscription_plan(request, plan_id):
+    plan = get_object_or_404(SubscriptionPlan, pk=plan_id)
+
+    if request.method == 'POST':
+        # Handle the deletion logic when the user confirms deletion
+        plan.delete()
+        return redirect('member')  # Redirect to the membership view after deletion
+
+    return redirect('member')
+
+def add_event(request):
+    if request.method == 'POST':
+        # Get data from the POST request
+        name = request.POST['name']
+        description = request.POST['description']
+        date = request.POST['date']
+        time = request.POST['time']
+        location = request.POST['location']
+        image = request.FILES.get('image')
+        close_event_date = request.POST.get('close_event_date')
+        max_registrations = request.POST['max_registrations']
+        current_registrations = request.POST['current_registrations']
+
+        # Create a new EventUser object and save it to the database
+        event = EventUser(
+            name=name,
+            description=description,
+            date=date,
+            time=time,
+            location=location,
+            image=image,
+            close_event_date=close_event_date,
+            max_registrations=max_registrations,
+            current_registrations=current_registrations
+        )
+        event.save()
+
+        # Redirect to the event list page or another page as needed
+        return redirect('Eventlist')
+
+    return render(request, 'add_event.html')  # Replace 'add_event.html' with your template path
+
+
+def Eventlist(request):
+    events = EventUser.objects.all()
+    return render(request, 'admin/Eventlist.html', {'events': events})
+
+def add_winner(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        name = request.POST.get('name')
+        prize = request.POST.get('prize')
+        image = request.FILES.get('image')
+
+        # Create a Winner object and save it to the database
+        Winner.objects.create(title=title, name=name, prize=prize, image=image)
+
+        return redirect('winner_Gallery')  
+
+    return render(request, 'admin/add_winner.html')
+
+
+def add_member(request):
+    if request.method == 'POST':
+        # Get data from the POST request
+        title = request.POST['title']
+        price = request.POST['price']
+        duration = request.POST['duration']
+        features = request.POST['features']
+
+        # Create a new SubscriptionPlan object and save it
+        plan = SubscriptionPlan(title=title, price=price, duration=duration, features=features)
+        plan.save()
+
+        # Redirect to the membership page or any other page you want
+        return redirect('member')
+    else:
+        return render(request, 'admin/add_member.html')
+
+
+
+
+def winner_Gallery(request):
+    # Fetch all winners from the database
+    winners = Winner.objects.all()
+
+    # Pass the winners to the template for rendering
+    return render(request, 'admin/winner_Gallery.html', {'winners': winners})
+
+
+def delete_winner(request, winner_id):
+    winner = get_object_or_404(Winner, pk=winner_id)
+
+    if request.method == 'POST':
+        # Handle the deletion logic when the user confirms deletion
+        winner.delete()
+        return redirect('winner_Gallery')  # Redirect to the winners page after deletion
+
+    return redirect('winner_Gallery')  # Redirect back to the winners page if not a POST request
+
+def indexadmin(request):
+    # Calculate the date threshold for "new" users (e.g., users created within the last 7 days)
+    threshold_date = datetime.now() - timedelta(days=7)
+
+    # Query new users from the database
+    new_users = CustomUser.objects.filter(date_joined__gte=threshold_date)
+
+    return render(request, 'admin/indexadmin.html', {'new_users': new_users})
+#**************************************************************************************************************************
 def Gallery(request):
     # Query the database to get all Winner objects
     winners = Winner.objects.all()
@@ -43,11 +196,45 @@ from .models import EventUser, Registration
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 
+# def EventRegform(request, event_id):
+#      event = get_object_or_404(EventUser, id=event_id)
+#      if request.method == 'POST':
+#           registration_type = request.POST.get('registration-type')
+        
+#           name1 = request.POST.get('single-name') if registration_type == 'single' else request.POST.get('team-name1')
+#           dob1 = request.POST.get('single-dob') if registration_type == 'single' else request.POST.get('team-dob1')
+#           name2 = request.POST.get('team-name2') if registration_type == 'team' else None
+#           dob2 = request.POST.get('team-dob2') if registration_type == 'team' else None
+#           contact_number = request.POST.get('contact-number')
+#           declaration_accepted = 'declaration-checkbox' in request.POST
+#           print(registration_type)
+#         # Check if registration_type is not empty
+#           if not registration_type:
+#                messages.error(request, 'Registration type is required.')
+#                return redirect('EventRegform', event_id=event_id)
+
+#           registration = Registration(
+#                event=event,
+#                registration_type=registration_type,
+#                name1=name1,
+#                dob1=dob1,
+#                name2=name2,
+#                dob2=dob2,
+#                contact_number=contact_number,
+#                declaration_accepted=declaration_accepted,
+#           )
+#           registration.save()
+
+#           messages.success(request, 'Registration successfully submitted.')
+#           return redirect('RegistrationSucess')  # Redirect to a success page
+
+#      return render(request, 'EventRegform.html', {'event': event})
 def EventRegform(request, event_id):
      event = get_object_or_404(EventUser, id=event_id)
      if request.method == 'POST':
           registration_type = request.POST.get('registration-type')
-        
+          event.current_registrations += 1
+          event.save()
           name1 = request.POST.get('single-name') if registration_type == 'single' else request.POST.get('team-name1')
           dob1 = request.POST.get('single-dob') if registration_type == 'single' else request.POST.get('team-dob1')
           name2 = request.POST.get('team-name2') if registration_type == 'team' else None
@@ -76,6 +263,7 @@ def EventRegform(request, event_id):
           return redirect('RegistrationSucess')  # Redirect to a success page
 
      return render(request, 'EventRegform.html', {'event': event})
+
 
 
 
@@ -310,5 +498,10 @@ def Guestbooking(request):
         "Guestbooking.html",
     )
 
+# views.py
+
+
+
+   
 
 

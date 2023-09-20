@@ -122,21 +122,36 @@ body {
         <h3>Add Event Details</h3>
         <form method="post" enctype="multipart/form-data" class="event-form" id="event-form">
             {% csrf_token %}
-            <label for="event-name">Event Name</label>
-            <input type="text" id="event-name" name="name" required>
-            <label for="event-description">Event Description</label>
-            <textarea id="event-description" name="description" rows="4" required></textarea>
-            <label for="event-image">Event Image</label>
-            <input type="file" id="event-image" name="image">
-            <label for="event-date">Date</label>
-            <input type="date" id="event-date" name="date" required>
-            <label for="event-time">Time</label>
-            <input type="time" id="event-time" name="time" required>
-            <label for="event-location">Location</label>
-            <input type="text" id="event-location" name="location" required>
-            <button type="submit" value="Add Event">add event</button>
-            <p id="image-error" class="error-message"></p>
             
+        <label for="event-name">Event Name</label>
+        <input type="text" id="event-name" name="name" required>
+        
+        <label for="event-description">Event Description</label>
+        <textarea id="event-description" name="description" rows="4" required></textarea>
+        
+        <label for="event-image">Event Image</label>
+        <input type="file" id="event-image" name="image">
+        
+        <label for="event-date">Date</label>
+        <input type="date" id="event-date" name="date" required>
+        
+        <label for="event-time">Time</label>
+        <input type="time" id="event-time" name="time" required>
+        
+        <label for="event-location">Location</label>
+        <input type="text" id="event-location" name="location" required>
+        
+        <label for="close-event-date">Close Event Date (Optional)</label>
+        <input type="date" id="close-event-date" name="close_event_date">
+        
+        <label for="max-registrations">Max Registrations</label>
+        <input type="number" id="max-registrations" name="max_registrations" value="100" min="1">
+        
+        <label for="current-registrations">Current Registrations</label>
+        <input type="number" id="current-registrations" name="current_registrations" value="0" min="0">
+        
+        <button type="submit" value="Add Event">Add Event</button>
+        <p id="image-error" class="error-message"></p>
         </form>
         
     </div>

@@ -3,6 +3,11 @@ from django.contrib.auth.models import User,auth
 from .models import CustomUser
 # Create your views here.
 from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login, logout
+from django.shortcuts import render
+from .models import CustomUser
+from datetime import datetime, timedelta
 
 def jovilogin(request):
      return render(request,'jovilogin.html')
@@ -30,18 +35,14 @@ def index_reg(request):
             return redirect('login')
     return render(request, 'index_reg.html')
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login , logout
 
-
-
-from django.shortcuts import render, redirect
-from django.contrib import messages  # Import messages module
-from django.contrib.auth import authenticate, login as auth_login
-
-from django.contrib import messages
 
 def jovilogin(request):
+     # Calculate the date threshold for "new" users (e.g., users created within the last 7 days)
+    threshold_date = datetime.now() - timedelta(days=7)
+
+    # Query new users from the database
+    new_users = CustomUser.objects.filter(date_joined__gte=threshold_date)
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('pwd')
@@ -50,11 +51,13 @@ def jovilogin(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 auth_login(request, user)
-                return redirect('/')
+                if email == 'admin1@gmail.com':
+                    
+                    return render(request, 'admin/indexadmin.html')
+                else:
+                    return redirect('/')
             else:
                 messages.error(request, 'Invalid login credentials.')
-                # Use messages.error to store the error message
-                # This message will be available in the template
 
     return render(request, 'jovilogin.html')
 

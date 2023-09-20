@@ -8,13 +8,12 @@ urlpatterns=[
      path('',views.index,name='index'),
      path('about/',views.about,name='about'),
      path('contact/',views.contact,name='contact'),
-     # path('membership/',views.membership,name='membership'),
+     
      path('event_index/',views.event_index,name='event_index'),
      path('payment/',views.payment,name='payment'),
      path('Event_On_Trend/',views.Event_On_Trend,name='Event_On_Trend'),
      
-     path('add_event/',views.add_event,name='add_event'),
-     # path('EventRegform/<int:event_id>', views.EventRegform,name='EventRegform'),
+     
      path('EventRegform/<int:event_id>/', views.EventRegform, name='EventRegform'),  # Define the URL pattern
      path('Guestbooking/',views.Guestbooking,name='Guestbooking'),
      path('RegistrationSucess/',views.RegistrationSucess,name='RegistrationSucess'),
@@ -25,10 +24,20 @@ urlpatterns=[
      # path('ticket/', views.download_ticket, name='download_ticket'),
      
 
-
+#admin panel path
      path('indexadmin/',views.indexadmin,name='indexadmin'),
      path('patients/',views.patients,name='patients'),
-     path('doctors/',views.doctors,name='doctors')
+     path('member/',views.member,name='member'),
+     path('add_member/',views.add_member,name='add_member'),
+     # path('edit_member/',views.edit_member,name='edit_member'),
+     path('edit_member/<int:plan_id>/', views.edit_member, name='edit_member'),
+     path('delete_subscription_plan/<int:plan_id>/', views.delete_subscription_plan, name='delete_subscription_plan'),
+     path('winner_Gallery/',views.winner_Gallery,name='winner_Gallery'),
+     path('add_winner/',views.add_winner,name='add_winner'),
+     path('delete_winner/<int:winner_id>/', views.delete_winner, name='delete_winner'),
+     path('Eventlist/',views.Eventlist,name='Eventlist'),
+     path('add_event/',views.add_event,name='add_event'),
+     
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

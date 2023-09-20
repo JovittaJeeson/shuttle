@@ -1,0 +1,233 @@
+<!-- winners.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Badminton Academy - Winners</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="indexadmin" class="logo">
+                    <span>SMASHZONE</span>
+                </a>
+            </div>
+            <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class=""></i></a>
+            <ul class="nav user-menu float-right">
+                <li class="nav-item dropdown d-none d-sm-block">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class=""></i> <span class="badge badge-pill bg-danger float-right"></span></a>
+                </li>
+                <li class="nav-item dropdown d-none d-sm-block">
+                    <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><i class=""></i> <span class="badge badge-pill bg-danger float-right"></span></a>
+                </li>
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        <span class="user-img">
+                            <img class="rounded-circle" src="{% static 'admin/img/user.jpg' %}" width="24" alt="Admin">
+                            <span class="status online"></span>
+                        </span>
+                        <span>Admin</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <p><i class="dropdown-item"></i><a href="{% url 'logout' %}">Logout</a></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="dropdown mobile-user-menu float-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    
+                    <a class="dropdown-item" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+        < <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li class="active">
+                            <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+						<li>
+                            <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "Eventlist" %}"><i class="fa fa-user fa-lg"></i> <span>Event Listing</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "patients" %}"><i class="fa fa-calendar"></i> <span>Guest user Booking</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "winner_Gallery" %}"><i class="fa fa-calendar-check-o"></i> <span>Winners</span></a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-user fa-lg"></i> <span>Departments</span></a>
+                        </li>
+						{% comment %} <li class="submenu">
+							<a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
+							<ul style="display: none;">
+								<li><a href="">Employees List</a></li>
+								<li><a href="">Leaves</a></li>
+								<li><a href="">Holidays</a></li>
+								<li><a href="">Attendance</a></li>
+							</ul>
+						</li>
+					 {% endcomment %}
+						
+                        
+							
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="col-sm-8 col-9 text-right m-b-20">
+                    <a href="{% url "add_winner" %}" class="btn btn-success btn-rounded float-right"><i class="fa fa-plus"></i> Add winners</a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Winners</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for winner in winners %}
+                    <div class="col-md-4 col-sm-4 col-lg-3">
+                        <div class="profile-widget">
+                            <div class="doctor-img">
+                                {% if winner.image %}
+                                <img alt="{{ winner.title }}" src="{{ winner.image.url }}">
+                            {% else %}
+                                <img alt="No Image" src="{% static 'images/1.jpg' %}">
+                            {% endif %}
+                                {% comment %} <img alt="{{ winner.title }}" src="{{ winner.image.url }}"> {% endcomment %}
+                            </div>
+                            <h4 class="doctor-name text-ellipsis">{{ winner.name }}</h4>
+                            <div class="doc-prof">{{ winner.prize }}</div>
+                            <div class="doc-prof">{{ winner.title }}</div>
+                                <!-- Dropdown menu -->
+            <div class="dropdown profile-action">
+                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="" class="dropdown-item update-winner">
+                        <i class="fa fa-pencil m-r-5"></i> Edit
+                    </a>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_winner_{{ winner.id }}">
+                        <i class="fa fa-trash-o m-r-5"></i> Delete
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Modal for delete confirmation -->
+    <div class="modal fade" id="delete_winner_{{ winner.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteWinnerModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteWinnerModal">Confirm Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this winner?</p>
+                </div>
+                {% comment %} <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="" class="btn btn-danger">Delete</a>
+                </div> {% endcomment %}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <form method="post" action="{% url 'delete_winner' winner.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+{% comment %} {% empty %}
+<div class="col-md-12">
+    <p>No winners available.</p>
+</div>
+{% endfor %}{% endcomment %}
+        <style> 
+            /* winners.html */
+/* ... Your existing styles ... */
+
+/* Add these new styles for better layout */
+
+/* Style for profile-widget container */
+.profile-widget {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for doctor-name */
+.doctor-name {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Style for doc-prof */
+.doc-prof {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* Style for doctor-img */
+.doctor-img {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Adjust the height as needed */
+    overflow: hidden;
+}
+
+/* Style for doctor-img img */
+.doctor-img img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for doctor-img img */
+.doctor-img img:hover {
+    transform: scale(1.1);
+}
+
+/* ... Your existing styles ... */
+
+        </style>
+    
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'admin/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'admin/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'admin/js/Chart.bundle.js' %}"></script>
+    <script src="{% static 'admin/js/chart.js' %}"></script>
+    <script src="{% static 'admin/js/app.js' %}"></script>
+</body>
+</html>

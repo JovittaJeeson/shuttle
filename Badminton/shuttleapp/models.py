@@ -19,7 +19,8 @@ class EventUser(models.Model):
     location = models.CharField(max_length=200)
     image = models.ImageField(upload_to="img/", null=True, blank=True)
     close_event_date = models.DateField(null=True, blank=True)  # 2023-09-13
-
+    max_registrations = models.PositiveIntegerField(default=100)  # Maximum registrations allowed
+    current_registrations = models.PositiveIntegerField(default=0)  # Current registrations
     # def is_booking_closed(self):
     #     current_date = timezone.now().date()
     #     return current_date >= self.close_event_date

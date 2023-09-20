@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'shuttleapp',
     'membershipapp',
     'refereapp',
+    
 ]
 
 MIDDLEWARE = [

@@ -24,6 +24,7 @@ urlpatterns = [
     path('',include('loginapp.urls')),
     path('',include('membershipapp.urls')),
     path('',include('refereapp.urls')),
+    
 ]
 
 if settings.DEBUG:
