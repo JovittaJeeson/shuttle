@@ -70,10 +70,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                    <a href="{% url 'index' %} " class="nav-item nav-link active">Home</a>
                     <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                
-                    <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                    <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Events</a>
+                    <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
+                    <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
                 </div>
                 <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</a>
             </div>
@@ -431,12 +432,13 @@ ul {
 <h2>{{ item.name }}</h2>
  <p> {{ item.description }} </p> 
  <span>Event ID: {{ item.id }}</span>
- {% comment %} {% if item.is_event_closed %}  {% endcomment %}
- {% if item.is_event_closed or item.current_registrations >= item.max_registrations %}
- <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
- {% else %}
- <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Booking Closed</a>
- {% endif %}
+ {% if item.is_event_closed %}  
+ {% comment %} {% if item.is_event_closed or item.current_registrations >= item.max_registrations %} {% endcomment %}
+  <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Booking Closed</a>
+{% else %}
+  <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
+{% endif %}
+ 
  <a href="{% url 'ProfileVerification' %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Verify profile</a>
 <!-- <a href="#" class="btn mt-20">Read More</a> -->
 <div class="crical"><i class="fal fa-video"></i> </div>

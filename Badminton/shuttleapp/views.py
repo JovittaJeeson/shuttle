@@ -11,6 +11,8 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
+from django.shortcuts import get_object_or_404, redirect
+from .models import EventUser
 
 
 # from .forms import BookingForm1,BookingForm2,BookingForm3
@@ -140,12 +142,84 @@ def add_event(request):
         # Redirect to the event list page or another page as needed
         return redirect('Eventlist')
 
-    return render(request, 'add_event.html')  # Replace 'add_event.html' with your template path
+    return render(request, 'admin/add_event.html')  # Replace 'add_event.html' with your template path
 
 
 def Eventlist(request):
+    events_with_images = EventUser.objects.exclude(image__isnull=True)
+
+    context = {
+        'events': events_with_images,
+    }
+
     events = EventUser.objects.all()
     return render(request, 'admin/Eventlist.html', {'events': events})
+
+
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import EventUser
+
+def edit_event(request, event_id):
+    # Get the event instance by its ID
+    event = get_object_or_404(EventUser, pk=event_id)
+
+    if request.method == 'POST':
+        # Update event fields based on POST data
+        event.name = request.POST.get('name')
+        event.description = request.POST.get('description')
+        event.date = request.POST.get('date')
+        event.time = request.POST.get('time')
+        event.location = request.POST.get('location')
+        event.max_registrations = request.POST.get('max_registrations')
+        event.close_event_date = request.POST.get('close_event_date')
+
+        # Handle the event image upload if needed
+        if 'image' in request.FILES:
+            event.image = request.FILES['image']
+        
+        event.save()
+
+        # Redirect to the event details page or any other appropriate URL
+        # return redirect('Eventlist', event_id=event_id)
+        return redirect('Eventlist')
+
+ # Replace 'event_detail' with your detail view name
+
+    return render(request, 'admin/edit_Eventlist.html', {'event': event})
+
+
+# def edit_event(request, event_id):
+#     # Get the event instance by its ID
+#     event = get_object_or_404(EventUser, pk=event_id)
+
+#     if request.method == 'POST':
+#         # Update event fields based on POST data
+#         event.name = request.POST.get('name')
+#         event.description = request.POST.get('description')
+#         event.date = request.POST.get('date')
+#         event.time = request.POST.get('time')
+#         event.location = request.POST.get('location')
+#         event.max_registrations = request.POST.get('max_registrations')
+#         event.close_event_date = request.POST.get('close_event_date')
+        
+#         event.save()
+
+#         # Redirect to the event details page or any other appropriate URL
+#         return redirect('Eventlist', event_id=event_id)  # Replace 'event_detail' with your detail view name
+
+#     return render(request, 'admin\edit_Eventlist.html', {'event': event})
+
+
+
+def delete_event(request, event_id):
+    try:
+        event = EventUser.objects.get(pk=event_id)
+        event.delete()
+    except EventUser.DoesNotExist:
+        # Handle the case where the event with the given ID doesn't exist
+        pass
+    return redirect('Eventlist') 
+
 
 def add_winner(request):
     if request.method == 'POST':
@@ -153,6 +227,7 @@ def add_winner(request):
         name = request.POST.get('name')
         prize = request.POST.get('prize')
         image = request.FILES.get('image')
+        print(image)
 
         # Create a Winner object and save it to the database
         Winner.objects.create(title=title, name=name, prize=prize, image=image)
@@ -245,45 +320,25 @@ from .models import EventUser, Registration
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 
-# def EventRegform(request, event_id):
-#      event = get_object_or_404(EventUser, id=event_id)
-#      if request.method == 'POST':
-#           registration_type = request.POST.get('registration-type')
-        
-#           name1 = request.POST.get('single-name') if registration_type == 'single' else request.POST.get('team-name1')
-#           dob1 = request.POST.get('single-dob') if registration_type == 'single' else request.POST.get('team-dob1')
-#           name2 = request.POST.get('team-name2') if registration_type == 'team' else None
-#           dob2 = request.POST.get('team-dob2') if registration_type == 'team' else None
-#           contact_number = request.POST.get('contact-number')
-#           declaration_accepted = 'declaration-checkbox' in request.POST
-#           print(registration_type)
-#         # Check if registration_type is not empty
-#           if not registration_type:
-#                messages.error(request, 'Registration type is required.')
-#                return redirect('EventRegform', event_id=event_id)
-
-#           registration = Registration(
-#                event=event,
-#                registration_type=registration_type,
-#                name1=name1,
-#                dob1=dob1,
-#                name2=name2,
-#                dob2=dob2,
-#                contact_number=contact_number,
-#                declaration_accepted=declaration_accepted,
-#           )
-#           registration.save()
-
-#           messages.success(request, 'Registration successfully submitted.')
-#           return redirect('RegistrationSucess')  # Redirect to a success page
-
-#      return render(request, 'EventRegform.html', {'event': event})
+#
 def EventRegform(request, event_id):
      event = get_object_or_404(EventUser, id=event_id)
      if request.method == 'POST':
           registration_type = request.POST.get('registration-type')
+
+          # Check if registration_type is not empty
+          if not registration_type:
+               messages.error(request, 'Registration type is required.')
+               return redirect('EventRegform', event_id=event_id)
+
+          # Check if maximum registrations limit is reached
+          if event.current_registrations >= event.max_registrations:
+               messages.error(request, 'Booking is closed. Maximum registrations reached.')
+               return redirect('EventRegform', event_id=event_id)
+
           event.current_registrations += 1
           event.save()
+
           name1 = request.POST.get('single-name') if registration_type == 'single' else request.POST.get('team-name1')
           dob1 = request.POST.get('single-dob') if registration_type == 'single' else request.POST.get('team-dob1')
           name2 = request.POST.get('team-name2') if registration_type == 'team' else None
@@ -291,10 +346,6 @@ def EventRegform(request, event_id):
           contact_number = request.POST.get('contact-number')
           declaration_accepted = 'declaration-checkbox' in request.POST
           print(registration_type)
-        # Check if registration_type is not empty
-          if not registration_type:
-               messages.error(request, 'Registration type is required.')
-               return redirect('EventRegform', event_id=event_id)
 
           registration = Registration(
                event=event,
@@ -309,11 +360,9 @@ def EventRegform(request, event_id):
           registration.save()
 
           messages.success(request, 'Registration successfully submitted.')
-          return redirect('RegistrationSucess')  # Redir
+          return redirect('RegistrationSucess')  # Redirect to a success page
 
      return render(request, 'EventRegform.html', {'event': event})
-
-
 
 
 
@@ -326,7 +375,7 @@ def refere(request):
 
 
 
-#
+
 
 
 

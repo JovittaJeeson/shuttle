@@ -35,8 +35,14 @@ urlpatterns=[
      path('winner_Gallery/',views.winner_Gallery,name='winner_Gallery'),
      path('add_winner/',views.add_winner,name='add_winner'),
      path('delete_winner/<int:winner_id>/', views.delete_winner, name='delete_winner'),
+
+     # path('Eventlist/<int:event_id>/', views.Eventlist, name='Eventlist'),
+
      path('Eventlist/',views.Eventlist,name='Eventlist'),
+     path('edit_event/<int:event_id>/', views.edit_event, name='edit_event'),
+     path('delete_event/<int:event_id>/', views.delete_event, name='delete_event'),
      path('add_event/',views.add_event,name='add_event'),
+     
      path('event_reg_player/', views.event_reg_player, name='event_reg_player'),
      path('delete_registration/<int:pk>/', views.delete_registration, name='delete_registration'),
      path('guestbook_player/', views.guestbook_player,name='guestbook_player'),

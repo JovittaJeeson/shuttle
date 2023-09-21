@@ -109,7 +109,9 @@
                     <div class="col-md-4 col-sm-4 col-lg-3">
                         <div class="profile-widget">
                             <div class="doctor-img">
-                                {% if winner.image %}
+                                <script>console.log("{{winner.image}}")</script>
+                            {% if winner.image %}
+                            
                                 <img alt="{{ winner.title }}" src="{{ winner.image.url }}">
                             {% else %}
                                 <img alt="No Image" src="{% static 'images/1.jpg' %}">

@@ -1,0 +1,168 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- edit-doctor24:06-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'admin/img/favicon.ico' %}">
+    <title>VoyageVue</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
+    <!--[if lt IE 9]>
+    <script src="admin/js/html5shiv.min.js"></script>
+    <script src="admin/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+      <div class="header-left">
+        <a href="index-2.html" class="logo">
+          <span>Badminton</span>
+        </a>
+      </div>
+      <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <ul class="nav user-menu float-right">
+                <li class="nav-item dropdown d-none d-sm-block">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><i class=""></i> <span class="badge badge-pill bg-danger float-right"></span></a>
+                   
+                <li class="nav-item dropdown d-none d-sm-block">
+                    <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><i class=""></i> <span class="badge badge-pill bg-danger float-right"></span></a>
+                </li>
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        <span class="user-img"><img class="rounded-circle" src="{% static 'admin/img/user.jpg' %}" width="40" alt="Admin">
+              <span class="status online"></span></span>
+                        <span>Admin</span>
+                    </a>
+          <div class="dropdown-menu">
+            {% if user.is_authenticated %}
+                        <p><i class="dropdown-item"></i><a href="{% url 'logout' %}">Logout</a></p>
+                    {% else %}
+                        <p><i class="fa fa-sign-in-alt mr-2"></i><a href="{% url 'login' %}">Login</a></p>
+                    {% endif %}
+          </div>
+                </li>
+            </ul>
+            <div class="dropdown mobile-user-menu float-right">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                   
+                    <a class="dropdown-item" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li class="active">
+                            <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li>
+						<li>
+                            <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "Eventlist" %}"><i class="fa fa-user fa-lg"></i> <span>Event Listing</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "event_reg_player" %}"><i class="fa fa-calendar"></i> <span>Event Registered players</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "winner_Gallery" %}"><i class="fa fa-calendar-check-o"></i> <span>Winners</span></a>
+                        </li>
+                        <li>
+                            <a href="{% url "guestbook_player" %}"><i class="fa fa-user fa-lg"></i> <span>Guest user Booking list</span></a>
+                        </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-wrapper">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <h4 class="page-title">Edit Event Details</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <form method="post" enctype="multipart/form-data"> <!-- Add enctype="multipart/form-data" -->
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="event-name">Event Name <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" id="event-name" name="name" value="{{ event.name }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="event-description">Event Description <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="event-description" name="description" rows="4" required>{{ event.description }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="event-image">Event Image</label>
+                                        <input type="file" class="form-control-file" id="event-image" name="image">
+                                    </div>
+                                    
+                                
+                                    <div class="form-group">
+                                        <label for="event-date">Date <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="date" id="event-date" name="date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="event-time">Time <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="time" id="event-time" name="time" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="event-location">Location <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" id="event-location" name="location" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="close-event-date">Close Event Date (Optional)</label>
+                                        <input class="form-control" type="date" id="close-event-date" name="close_event_date">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="max-registrations">Max Registrations</label>
+                                        <input class="form-control" type="number" id="max-registrations" name="max_registrations" value="100" min="1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="current-registrations">Current Registrations</label>
+                                        <input class="form-control" type="number" id="current-registrations" name="current_registrations" value="0" min="0">
+                                    </div>
+                                    <div class="m-t-20 text-center">
+                                        <button class="btn btn-primary submit-btn" type="submit">Add Event</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      
+    <div class="sidebar-overlay" data-reff=""></div>
+    <script src="{% static 'admin/js/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static 'admin/js/popper.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'admin/js/select2.min.js' %}"></script>
+  <script src="{% static 'admin/js/moment.min.js' %}"></script>
+  <script src="{% static 'admin/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script src="{% static 'admin/js/app.js' %}"></script>
+    <script src="{% static 'admin/js/main.js' %}"></script>
+
+    
+</body>
+
+
+<!-- edit-doctor24:06-->
+</html>
