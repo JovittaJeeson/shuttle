@@ -1,4 +1,4 @@
-
+{% comment %} 
  {% load static %}
  <!DOCTYPE html>
  <html lang="en">
@@ -21,30 +21,7 @@
      <form id="registration-form" method="post">
        {% csrf_token %}
        
-     <!-- Other form fields -->
-     {% comment %} <select id="registration-type" name="registration-type">
-       <option value="single" selected>Single</option>
-       <option value="team">Team</option>
-     </select>
- <!-- ... previous HTML code ... -->
- 
- <div id="single-fields" class="form-section">
-   <input type="text" placeholder="Enter Name" id="single-name" name="single-name">
-   <label for="date_of_birth">Date of Birth:</label>
- <input type="date" id="single-dob" name="single-dob">
    
- </div>
- 
- <div id="team-fields" class="form-section">
-   <input type="text" placeholder="Enter Name 1" id="team-name1" name="team-name1">
-   <label for="date_of_birth">Date of Birth:</label>
- <input type="date" id="team-dob1" name="team-dob1">
- <input type="text" placeholder="Enter Name 2" id="team-name2" name="team-name2">
- <label for="date_of_birth">Date of Birth:</label>
- <input type="date" id="team-dob2" name="team-dob2" >
- 
-   
- </div> {% endcomment %}
  
  
 
@@ -92,7 +69,7 @@
 </div>
  <!-- ... remaining HTML code ... -->
  <input type="tel" placeholder="Contact Number" id="contact-number" name="contact-number">
-    {% comment %} <input type="tel" placeholder="Contact Number" id="contact-number"> {% endcomment %}
+    {% comment %} <input type="tel" placeholder="Contact Number" id="contact-number"> 
  <span class="error" id="contact-error"></span>
       <p class="rules-text">Rules:</p>
        <div class="rules-section">
@@ -111,13 +88,13 @@
         <!-- ... additional rules ... -->
          <label class="declaration-label">
            <input type="checkbox" id="declaration-checkbox" name="declaration-checkbox">
-           {% comment %} <input type="checkbox" id="declaration-checkbox"> {% endcomment %}
+            <input type="checkbox" id="declaration-checkbox"> 
            I have read this
          </label>
        </div>
        {% comment %} <a class="btn btn-primary btn-block" href="{% url 'RegistrationSucess'  %}" style="height: 47px; margin-top: -2px; display: inline-block; width: auto; padding: 10px 20px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; color: #ffffff; background-color: #007bff; border: 2px solid #007bff;">SUBMIT</a> {% endcomment %}
  
-        <button type="submit">Submit</button> 
+ {% comment %}        <button type="submit">Submit</button> 
      </form>
    </div>
    <script src="EventRegscript.js"></script>
@@ -170,11 +147,7 @@
    border-radius: 5px;
    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
    
-     {% comment %} max-width: 400px;
-     margin: 0 auto;
-     padding: 20px;
-     background-color: #fff;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); {% endcomment %}
+    
    }
    
    h2 {
@@ -273,6 +246,413 @@
    }
  </style>
 
+ <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="{% static 'jquery.vide.js' %}"></script>
+ <!-- ... previous HTML code ... -->
+ </body>
+ </html> {% endcomment %}
+ {% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/eventRegstyles.css">
+   <title>Event Registration Form</title>
+ </head>
+ <!-- ... previous HTML code ... -->
+ <body>
+   <div class="video-container">
+     <video src="{% static 'bg_v.mp4' %}" id="video-slider" loop autoplay muted></video>
+ </div>
+ <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url('your-background-image.jpg');">
+   <div class="container">
+     <h2>Registration Form</h2>
+     <form id="registration-form" method="post" action="{% url 'RegistrationSucess' %}">
+       {% csrf_token %}
+     
+       
+     <!-- Other form fields -->
+   <select id="registration-type" name="registration-type">
+       <option value="single" selected>Single</option>
+       <option value="team">Team</option>
+     </select>
+ <!-- ... previous HTML code ... -->
+ 
+ <div id="single-fields" class="form-section">
+ <input type="text" placeholder="Enter Name" id="single-name" name="single-name"  required>
+ <label for="date_of_birth">Date of Birth:</label>
+ <input type="date" id="single-dob" name="single-dob" required>
+ </div>
+ 
+ <div id="team-fields" class="form-section">
+  <div class="row">
+    <div class="column">
+      <label for="team-name1">Full Name 1:</label>
+       <input type="text" placeholder="Enter Name 1" id="team-name1" name="team-name1" pattern="[A-Za-z\s]+" required>
+    </div>
+    <div class="column">
+      <label for="team-dob1">Date of Birth 1:</label>
+      <input type="date" id="team-dob1" name="team-dob1" required>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="column">
+      <label for="team-name2">Full Name 2:</label>
+      <input type="text" placeholder="Enter Name 2" id="team-name2" name="team-name2" pattern="[A-Za-z\s]+" required>
+    </div>
+    <div class="column">
+      <label for="team-dob2">Date of Birth 2:</label>
+      <input type="date" id="team-dob2" name="team-dob2" required>
+    </div>
+  </div>
+ </div>
+ <!-- ... remaining HTML code ... -->
+ <input type="tel" placeholder="Contact Number" id="contact-number" name="contact-number" required>
+      <p class="rules-text">Rules:</p>
+       <div class="rules-section">
+         <p class="rule">
+           <strong>General Rules</strong><br>
+           Eligibility:<br>
+           - Open to players meeting age and skill requirements.<br>
+           - Birth Certificate is required.<br>
+          
+           Scoring:<br>
+           - Games to 21 points, two-point lead.<br>
+           - Tiebreaker at 20-20.<br>
+           Shuttles:<br>
+           - Feather shuttles used.<br>
+ 
+        <!-- ... additional rules ... -->
+         <label class="declaration-label">
+           <input type="checkbox" id="declaration-checkbox" name="declaration-checkbox">
+         
+           I have read this
+         </label>
+       </div>
+        <!-- <a class="btn btn-primary btn-block" href="{% url 'RegistrationSucess'  %}" style="height: 47px; margin-top: -2px; display: inline-block; width: auto; padding: 10px 20px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; color: #ffffff; background-color: #007bff; border: 2px solid #007bff;">SUBMIT</a>  -->
+ 
+        <button type="submit">Submit</button> 
+     </form>
+   </div>
+   <script src="EventRegscript.js"></script>
+ <!-- ... previous HTML code ... -->
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+     const registrationType = document.getElementById('registration-type');
+     const singleFields = document.getElementById('single-fields');
+     const teamFields = document.getElementById('team-fields');
+     const teamTable = document.getElementById('team-table');
+     const nameInput = document.getElementById("single-name");
+     const dateOfBirthInput = document.getElementById("single-dob");
+     const contactNumberInput = document.getElementById("contact-number");
+     const fullName2Input = document.getElementById("team-name2");
+     const dateOfBirth2Input = document.getElementById("team-dob2")
+     const fullName1Input = document.getElementById("team-name1");
+     const dateOfBirth1Input = document.getElementById("team-dob1");
+     dateOfBirth1Input.addEventListener("change", validateDateOfBirth1);
+ 
+ 
+     nameInput.addEventListener("input", validateName);
+     dateOfBirthInput.addEventListener("change", validateDateOfBirth);
+     contactNumberInput.addEventListener("input", validateContactNumber);
+     fullName2Input.addEventListener("input", validateFullName2);
+     dateOfBirth2Input.addEventListener("change", validateDateOfBirth2);
+     fullName1Input.addEventListener("input", validateFullName1);
+ 
+ function validateName(event) {
+     const nameRegex = /^[A-Za-z\s]+$/;
+     const isValid = nameRegex.test(event.target.value);
+     if (!isValid) {
+         event.target.setCustomValidity("Only letters and spaces are allowed.");
+     } else {
+         event.target.setCustomValidity("");
+     }
+ }
+ 
+ function validateDateOfBirth(event) {
+     const selectedDate = new Date(event.target.value);
+     const today = new Date();
+     const minDate = new Date();
+     minDate.setFullYear(today.getFullYear() - 10); // Minimum age of 10 years
+ 
+     if (selectedDate > minDate) {
+         event.target.setCustomValidity("You must be at least 10 years old.");
+     } else {
+         event.target.setCustomValidity("");
+     }
+ 
+     // Display error message
+     const errorElement = event.target.nextElementSibling; // Assuming the error message is a sibling element
+     if (event.target.validationMessage) {
+         errorElement.textContent = event.target.validationMessage;
+     } else {
+         errorElement.textContent = ""; // Clear the error message if there is no error
+     }
+ }
+      // Added this line
+      function validateContactNumber() {
+     const contactNumberRegex = /^[6-9]\d{9}$/; // Indian phone numbers start with 6, 7, 8, or 9 and have 10 digits.
+     const isValid = contactNumberRegex.test(contactNumberInput.value);
+     
+     if (!isValid) {
+         contactNumberInput.setCustomValidity("Please enter a valid 10-digit Indian phone number.");
+     } else {
+         contactNumberInput.setCustomValidity("");
+     }
+     
+     // Display error message
+     const errorElement = contactNumberInput.nextElementSibling; // Assuming the error message is a sibling element
+     if (contactNumberInput.validationMessage) {
+         errorElement.textContent = contactNumberInput.validationMessage;
+     } else {
+         errorElement.textContent = ""; // Clear the error message if there is no error
+     }
+ }
+ 
+ function validateFullName1() {
+     const fullNameRegex = /^[A-Za-z\s]+$/; // Only letters (both uppercase and lowercase) and spaces are allowed
+     const isValid = fullNameRegex.test(fullName1Input.value);
+     
+     if (!isValid) {
+         fullName1Input.setCustomValidity("Only letters and spaces are allowed.");
+     } else {
+         fullName1Input.setCustomValidity("");
+     }
+     
+     // Display error message
+     const errorElement = fullName1Input.nextElementSibling; // Assuming the error message is a sibling element
+     if (fullName1Input.validationMessage) {
+         errorElement.textContent = fullName1Input.validationMessage;
+     } else {
+         errorElement.textContent = ""; // Clear the error message if there is no error
+     }
+ }
+ 
+ function validateDateOfBirth1() {
+     const selectedDate = new Date(dateOfBirth1Input.value);
+     const today = new Date();
+     const minDate = new Date();
+     minDate.setFullYear(today.getFullYear() - 10); // Minimum age of 10 years
+     
+     if (selectedDate > minDate) {
+         dateOfBirth1Input.setCustomValidity("You must be at least 10 years old.");
+     } else {
+         dateOfBirth1Input.setCustomValidity("");
+     }
+     
+     // Display error message
+     const errorElement = dateOfBirth1Input.nextElementSibling; // Assuming the error message is a sibling element
+     if (dateOfBirth1Input.validationMessage) {
+         errorElement.textContent = dateOfBirth1Input.validationMessage;
+     } else {
+         errorElement.textContent = ""; // Clear the error message if there is no error
+     }
+ }
+ 
+ function validateFullName2() {
+     const fullNameRegex = /^[A-Za-z\s]+$/; // Only letters and spaces are allowed
+     const isValid = fullNameRegex.test(fullName2Input.value);
+     
+     if (!isValid) {
+         fullName2Input.setCustomValidity("Only letters and spaces are allowed.");
+     } else {
+         fullName2Input.setCustomValidity("");
+     }
+     
+     // Display error message
+     const errorElement = fullName2Input.nextElementSibling; // Assuming the error message is a sibling element
+     if (fullName2Input.validationMessage) {
+         errorElement.textContent = fullName2Input.validationMessage;
+     } else {
+         errorElement.textContent = ""; // Clear the error message if there is no error
+     }
+ }
+ 
+ function validateDateOfBirth2() {
+     const selectedDate = new Date(dateOfBirth2Input.value);
+     const today = new Date();
+     const minDate = new Date();
+     minDate.setFullYear(today.getFullYear() - 10); // Minimum age of 10 years
+     
+     if (selectedDate > minDate) {
+         dateOfBirth2Input.setCustomValidity("You must be at least 10 years old.");
+     } else {
+         dateOfBirth2Input.setCustomValidity("");
+     }
+     
+     // Display error message
+     const errorElement = dateOfBirth2Input.nextElementSibling; // Assuming the error message is a sibling element
+     if (dateOfBirth2Input.validationMessage) {
+         errorElement.textContent = dateOfBirth2Input.validationMessage;
+     } else {
+         errorElement.textContent = ""; // Clear the error message if there is no error
+     }
+ }
+ 
+ 
+     registrationType.addEventListener('change', function() {
+       if (registrationType.value === 'single') {
+         singleFields.style.display = 'block';
+         teamFields.style.display = 'none';
+         teamTable.style.display = 'none'; // Hide the table when switching to Single
+       } else if (registrationType.value === 'team') {
+         singleFields.style.display = 'none';
+         teamFields.style.display = 'block';
+         teamTable.style.display = 'block'; // Show the table when switching to Team
+       }
+     });
+   });
+   
+ </script>
+ 
+ <style>
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .column {
+    flex: 1;
+    margin-right: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+  
+   body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 0;
+     background-color: #f4f4f4;
+     
+   }
+   
+   .container {
+   max-width: 1000px;
+   width: 100%;
+   background-color:rgb(243, 246, 247);
+   opacity: 0.9;
+   padding: 25px 30px;
+   border-radius: 5px;
+   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+   
+ 
+   }
+   
+   h2 {
+     margin-top: 0;
+     text-align: center;
+   }
+   
+   form {
+     display: flex;
+     flex-direction: column;
+   }
+   
+   .form-section {
+     display: none;
+   }
+   
+   select, input, button {
+     margin-bottom: 15px;
+     padding: 10px;
+     border: none;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     font-size: 16px;
+   }
+   
+   button {
+     background-color: #007BFF;
+     color: #fff;
+     cursor: pointer;
+     transition: background-color 0.3s;
+   }
+   
+   button:hover {
+     background-color: #0056b3;
+   }
+   #team-fields {
+     display: none;
+   }
+   #single-fields {
+     display: block;
+   }
+   /* ... previous CSS code ... */
+   
+   .rules-text {
+     font-weight: bold;
+     margin-top: 15px;
+   }
+   
+   textarea {
+     width: 100%;
+     height: 100px;
+     padding: 10px;
+     margin-bottom: 10px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+   }
+   
+   label {
+     display: block;
+     margin-top: 5px;
+   }
+   
+   label input[type="checkbox"] {
+     margin-right: 5px;
+   }
+   /* ... previous CSS code ... */
+   
+   .rules-text {
+     font-weight: bold;
+     margin-top: 15px;
+   }
+   
+   .rules-section {
+     border: 1px solid #ccc;
+     padding: 10px;
+     border-radius: 5px;
+     margin-bottom: 15px;
+   }
+   
+   .declaration-label {
+     display: flex;
+     align-items: center;
+     margin-top: 10px;
+   }
+   
+   .declaration-label input[type="checkbox"] {
+     margin-right: 5px;
+   }  
+   .video-container video{
+     position: absolute;
+     top:0; left: 0;
+     z-index: -1;
+     height: 100%;
+     width:100%;
+     object-fit: cover;
+   }
+ </style>
+ 
  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="{% static 'jquery.vide.js' %}"></script>
  <!-- ... previous HTML code ... -->

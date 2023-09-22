@@ -11,6 +11,12 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import EventUser, Registration
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
+
+
 from django.shortcuts import get_object_or_404, redirect
 from .models import EventUser
 
@@ -32,8 +38,7 @@ def Event_On_Trend(request):
      return render(request,'Event_On_Trend.html',{"eventUser":eventUser})
 
 
-def EventRegform(request):
-     return render(request,'EventRegform.html')
+
 def Guestbooking(request):
      return render(request,'Guestbooking.html')
 #**************************************************************ADMIN PANEL VIEWS.py**************************************************************
@@ -77,6 +82,9 @@ def event_reg_player(request):
 
 def member(request):
     subscription_plans = SubscriptionPlan.objects.all()
+     # Split the features field of each plan by line breaks
+    for plan in subscription_plans:
+        plan.features = plan.features.split('\n')
     return render(request, 'admin/member.html', {'subscription_plans': subscription_plans})
 
 
@@ -155,7 +163,6 @@ def Eventlist(request):
     events = EventUser.objects.all()
     return render(request, 'admin/Eventlist.html', {'events': events})
 
-
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import EventUser
 
@@ -183,9 +190,39 @@ def edit_event(request, event_id):
         # return redirect('Eventlist', event_id=event_id)
         return redirect('Eventlist')
 
- # Replace 'event_detail' with your detail view name
-
+    # If it's a GET request, pre-fill the form fields with existing event details
     return render(request, 'admin/edit_Eventlist.html', {'event': event})
+
+# from django.shortcuts import render, get_object_or_404, redirect
+# from .models import EventUser
+
+# def edit_event(request, event_id):
+#     # Get the event instance by its ID
+#     event = get_object_or_404(EventUser, pk=event_id)
+
+#     if request.method == 'POST':
+#         # Update event fields based on POST data
+#         event.name = request.POST.get('name')
+#         event.description = request.POST.get('description')
+#         event.date = request.POST.get('date')
+#         event.time = request.POST.get('time')
+#         event.location = request.POST.get('location')
+#         event.max_registrations = request.POST.get('max_registrations')
+#         event.close_event_date = request.POST.get('close_event_date')
+
+#         # Handle the event image upload if needed
+#         if 'image' in request.FILES:
+#             event.image = request.FILES['image']
+        
+#         event.save()
+
+#         # Redirect to the event details page or any other appropriate URL
+#         # return redirect('Eventlist', event_id=event_id)
+#         return redirect('Eventlist')
+
+#  # Replace 'event_detail' with your detail view name
+
+#     return render(request, 'admin/edit_Eventlist.html', {'event': event})
 
 
 # def edit_event(request, event_id):
@@ -315,12 +352,6 @@ def Gallery(request):
     # Render the gallery page template and pass the winners data to it
     return render(request, 'Gallery.html', {'winners': winners})
 
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import EventUser, Registration
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib import messages
-
-#
 def EventRegform(request, event_id):
      event = get_object_or_404(EventUser, id=event_id)
      if request.method == 'POST':
@@ -364,14 +395,13 @@ def EventRegform(request, event_id):
 
      return render(request, 'EventRegform.html', {'event': event})
 
-
-
 def RegistrationSucess(request):
     return render(request, 'RegistrationSucess.html')
 
 
 def refere(request):
      return render(request,'refere.html')
+
 
 
 
@@ -406,10 +436,6 @@ def ProfileVerification(request):
 
 
 # #gallery page
-
-# from django.shortcuts import render, redirect
-# from .models import Winner
-
 # 
 from django.shortcuts import render, redirect
 from .models import Booking
@@ -437,7 +463,7 @@ def Guestbooking(request):
             start_time, end_time = booking_time.split(" - ")
 
             # Create a datetime object for the booking date
-            booking_datetime = datetime.strptime(booking_date, "%B %d, %Y")
+            booking_datetime = datetime.strptime(booking_date, "%B %Y")
 
             # Add the start time to the datetime
             booking_datetime = booking_datetime.replace(

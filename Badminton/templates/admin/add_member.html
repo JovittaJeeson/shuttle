@@ -119,10 +119,21 @@
                                 <label for="duration">Duration <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="duration" name="duration" required>
                             </div>
-                            <div class="form-group">
+                            {% comment %} <div class="form-group">
                                 <label for="features">Features <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="features" name="features" rows="5" required></textarea>
+                            </div> {% endcomment %}
+                            
+                            <div class="form-group">
+                                <label for="features">Features <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="features" name="features" required>
+                                <small class="form-text text-muted">Separate features with commas (e.g., Feature1, Feature2, Feature3).</small>
                             </div>
+                            
+                            {% comment %} <div class="form-group">
+                                <label for="features">Features <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="features" name="features" rows="5" required></textarea>
+                            </div> {% endcomment %}
                             <div class="m-t-20 text-center">
                                 <button class="btn btn-primary submit-btn" type="submit">Save</button>
                             </div>

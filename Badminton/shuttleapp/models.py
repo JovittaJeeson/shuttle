@@ -1,4 +1,6 @@
 
+# # Create your models here.
+
 
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -21,16 +23,17 @@ class EventUser(models.Model):
     close_event_date = models.DateField(null=True, blank=True)  # 2023-09-13
     max_registrations = models.PositiveIntegerField(default=100)  # Maximum registrations allowed
     current_registrations = models.PositiveIntegerField(default=0)  # Current registrations
-    
+
     @property
     def is_event_closed(self):
         if self.close_event_date:
             current_date = timezone.now().date()
-            return current_date <= self.close_event_date
+            return current_date >= self.close_event_date
         return True
 
     def __str__(self):
         return self.name
+
     
 
 class Registration(models.Model):
@@ -42,6 +45,7 @@ class Registration(models.Model):
     dob2 = models.DateField(blank=True, null=True)
     contact_number = models.CharField(max_length=15)
     declaration_accepted = models.BooleanField(default=False)
+
     def __str__(self):
         return f'Registration for {self.event.name}'
 

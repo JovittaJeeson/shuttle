@@ -18,7 +18,7 @@
 
 .subscription-price {
   font-size: 18px;
-  color: #3498db;
+  color: #db34db;
   margin-bottom: 15px;
 }
 
@@ -29,7 +29,7 @@
 
 .subscription-button {
   display: inline-block;
-  background-color: #3498db;
+  background-color: #d334db;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
@@ -38,7 +38,7 @@
 }
 
 .subscription-button:hover {
-  background-color: #2980b9;
+  background-color: #b929af;
 }
 
 /* Additional Styling for Responsiveness */

@@ -432,8 +432,7 @@ ul {
 <h2>{{ item.name }}</h2>
  <p> {{ item.description }} </p> 
  <span>Event ID: {{ item.id }}</span>
- {% if item.is_event_closed %}  
- {% comment %} {% if item.is_event_closed or item.current_registrations >= item.max_registrations %} {% endcomment %}
+ {% if item.is_event_closed or item.current_registrations >= item.max_registrations %}
   <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Booking Closed</a>
 {% else %}
   <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>

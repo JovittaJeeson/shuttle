@@ -13,6 +13,9 @@ class CustomUser(AbstractUser):
     password = models.CharField(max_length=128) 
     phone =   models.CharField(max_length=12,default='')
     gender = models.CharField(max_length=128)   
+    is_customer = models.BooleanField(default=False)
+    is_refere = models.BooleanField(default=False)
+    
     
     REQUIRED_FIELDS = []   
     def __str__(self):    
