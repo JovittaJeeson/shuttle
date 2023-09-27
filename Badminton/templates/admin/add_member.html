@@ -58,6 +58,9 @@
                         <li class="active">
                             <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
+                        <li>
+                            <a href="{% url "new_user" %}"><i class="fa fa-user"></i> <span>New Users</span></a>
+                        </li>
 						<li>
                             <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
                         </li>
@@ -105,7 +108,48 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <form method="post">
+                        <form method="post" onsubmit="return checkall()">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="title">Title <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="title" name="title" required>
+                                <span id="titleError" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="price">Price <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="price" name="price" required>
+                                <span id="priceError" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration">Duration <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="duration" name="duration" required>
+                                <span id="durationError" class="text-danger"></span>
+                            </div>
+                            {% comment %} <div class="form-group">
+                                <label for="features">Features <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="features" name="features" rows="4" required></textarea>
+                                <small class="form-text text-muted">Separate features with commas (e.g., Feature1, Feature2, Feature3).</small>
+                                <span id="featuresError" class="text-danger"></span>
+                            </div> {% endcomment %}
+                            <div class="form-group">
+                                <label for="features">Features <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="features" name="features" rows="4" required></textarea>
+                                <small class="form-text text-muted">Enter features on separate lines.</small>
+                                <span id="featuresError" class="text-danger"></span>
+                            </div>
+                            
+                            {% comment %} <div class="form-group">
+                                <label for="features">Features <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="features" name="features" required>
+                                <small class="form-text text-muted">Separate features with commas (e.g., Feature1, Feature2, Feature3).</small>
+                                <span id="featuresError" class="text-danger"></span>
+                            </div> {% endcomment %}
+                            <div class="m-t-20 text-center">
+                                <button class="btn btn-primary submit-btn" type="submit">Save</button>
+                            </div>
+                        </form>
+                        
+                        {% comment %} <form method="post">
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="title">Title <span class="text-danger">*</span></label>
@@ -119,10 +163,7 @@
                                 <label for="duration">Duration <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="duration" name="duration" required>
                             </div>
-                            {% comment %} <div class="form-group">
-                                <label for="features">Features <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="features" name="features" rows="5" required></textarea>
-                            </div> {% endcomment %}
+                           
                             
                             <div class="form-group">
                                 <label for="features">Features <span class="text-danger">*</span></label>
@@ -130,14 +171,11 @@
                                 <small class="form-text text-muted">Separate features with commas (e.g., Feature1, Feature2, Feature3).</small>
                             </div>
                             
-                            {% comment %} <div class="form-group">
-                                <label for="features">Features <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="features" name="features" rows="5" required></textarea>
-                            </div> {% endcomment %}
+                           
                             <div class="m-t-20 text-center">
                                 <button class="btn btn-primary submit-btn" type="submit">Save</button>
                             </div>
-                        </form>
+                        </form> {% endcomment %}
                     </div>
                 </div>
             </div>
@@ -145,6 +183,77 @@
         
     </div>
     <div class="sidebar-overlay" data-reff=""></div>
+    <script>
+        // Add event listeners to form fields for real-time validation
+        document.getElementById("title").addEventListener("input", validateTitle);
+        document.getElementById("price").addEventListener("input", validatePrice);
+        document.getElementById("duration").addEventListener("input", validateDuration);
+        document.getElementById("features").addEventListener("input", validateFeatures);
+      
+        function validateTitle() {
+          var title = document.getElementById("title").value;
+          var letters = /^[A-Za-z ]*$/;
+          if (!letters.test(title) || title.length < 3) {
+            document.getElementById("titleError").textContent =
+              "Title should only contain alphabets and be at least 3 characters long";
+            return false;
+          } else {
+            document.getElementById("titleError").textContent = "";
+            return true;
+          }
+        }
+      
+        function validatePrice() {
+          var price = document.getElementById("price").value;
+          if (isNaN(price) || price <= 0) {
+            document.getElementById("priceError").textContent =
+              "Price should be a valid number greater than 0";
+            return false;
+          } else {
+            document.getElementById("priceError").textContent = "";
+            return true;
+          }
+        }
+      
+        function validateDuration() {
+          var duration = document.getElementById("duration").value;
+          var letters = /^[A-Za-z]+$/;
+          if (!letters.test(duration)) {
+            document.getElementById("durationError").textContent =
+              "Duration should only contain letters";
+            return false;
+          } else {
+            document.getElementById("durationError").textContent = "";
+            return true;
+          }
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            var featuresTextarea = document.getElementById('features');
+    
+            featuresTextarea.addEventListener('input', function () {
+                // Do nothing, just preserve newline characters
+            });
+    
+            // Handle form submission
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function (event) {
+                var featuresText = featuresTextarea.value;
+                // You can use the featuresText as it is or process it further as needed
+                console.log('Features entered by the user:');
+                console.log(featuresText);
+                event.preventDefault(); // Prevent the actual form submission for this example
+            });
+        });
+     
+    
+    
+    
+          
+          
+    
+        </script>
+      
     <script src="{% static "admin/js/jquery-3.2.1.min.js" %}"></script>
 	<script src="{% static "admin/js/popper.min.js" %}"></script>
     <script src="{% static "admin/js/bootstrap.min.js" %}"></script>
@@ -155,6 +264,4 @@
     <script src="{% static "admin/js/app.js" %}"></script>
 </body>
 
-
-<!-- add-doctor24:06-->
 </html>

@@ -5,7 +5,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns=[
-      path('refere/',views.refere,name='refere'),
+      # path('refere/',views.refere,name='refere'),
       path('register/',views.register,name='register'),
       path('Referelogin/',views.Referelogin,name='Referelogin'),
+      # path('refere/<int:event_id>/', views.refere, name='refere'),
+      path('user_logout/',views.user_logout,name='user_logout'),
 ]

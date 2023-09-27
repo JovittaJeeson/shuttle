@@ -1,4 +1,4 @@
-{% load static %}
+ {% comment %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,42 +41,35 @@
         <nav class="navbar">
            
             <a href="#home">CONTACT</a>
-            {% comment %} <a href="#about">about</a>
-            <a href="#products">products</a> {% endcomment %}
+            
             <a href="">PAYMENT</a>
-            <a class= "h-100 d-inline-flex align-items-center py-2 me-2 " href="">
-                <h6 style="color: white;">{{ user.name }}</h6>
-            </a><br>
-            <div class="dropdown-menu">
-						
-                <a class="dropdown-item" href="">Logout</a>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.name }}
+                </a>
+              
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Logout</a>
+                </div>
             </div>
+            
         </nav>
     
         
     </header>
 
 
-    {% comment %} <!-- Hero Start -->
-    <div class="container-fluid bg-dark p-1 bg-hero mb-2">
-        <div class="row py-2">
-            <div class="col-12 text-center">
-                <h3 class="display-2 text-uppercase text-white mb-md-4">Refere</h3>
-                {% comment %} <a href="{% url 'index' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                <a href="" class="btn btn-light py-md-3 px-md-5">Contact</a> 
-            </div>
-        </div>
-    </div>
-    <!-- Hero End --> {% endcomment %}
+    
     <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="utf-8">
     
     
-    <title>Event Schedule list </title>
+    <title>Event Schedule list </title><br>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
     <style type="text/css">
         /* Style the navigation links with a bold font */
 .navbar a {
@@ -213,7 +206,7 @@
         text-transform: capitalize !important;
     }
     .event-schedule-area .tab-area .nav-item .nav-link.active {
-        color: #4125dd;
+        color: #e1139dd4;
         background-color: transparent;
     }
     
@@ -244,7 +237,7 @@
     }
     .event-schedule-area .tab-area .tab-content .table tbody th span,
     .event-schedule-area .tab-area .tab-content .table tbody td span {
-        color: #4125dd;
+        color: #e1139dd4;
         font-size: 18px;
         text-transform: uppercase;
         margin-bottom: 6px;
@@ -279,7 +272,7 @@
         position: relative;
     }
     .event-schedule-area-two ul.custom-tab li a {
-        color: #252525;
+        color: #5f0556;
         font-size: 25px;
         line-height: 25px;
         font-weight: 600;
@@ -295,7 +288,7 @@
         left: 0;
         bottom: 0;
         content: "";
-        background: #4125dd;
+        background: #e1139dd4;
         width: 0;
         height: 2px;
         -webkit-transition: all 0.4s;
@@ -303,7 +296,7 @@
         transition: all 0.4s;
     }
     .event-schedule-area-two ul.custom-tab li a.active {
-        color: #4125dd;
+        color: #e1139dd4;
     }
     
     .event-schedule-area-two .primary-btn {
@@ -316,7 +309,7 @@
         margin-bottom: 0;
     }
     .event-schedule-area-two .tab-content .table thead {
-        background-color: #007bff;
+        background-color: #e1139dd4;
         color: #fff;
         font-size: 20px;
     }
@@ -336,7 +329,7 @@
         vertical-align: middle;
     }
     .event-schedule-area-two .tab-content .table tbody tr th .event-date {
-        color: #252525;
+        color: #5f0556;
         text-align: center;
     }
     .event-schedule-area-two .tab-content .table tbody tr th .event-date span {
@@ -349,18 +342,18 @@
         vertical-align: middle;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .r-no span {
-        color: #252525;
+        color:#5f0556;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a {
         font-size: 20px;
         line-height: 20px;
-        color: #cf057c;
+        color: #ae0869;
         -webkit-transition: all 0.4s;
         -o-transition: all 0.4s;
         transition: all 0.4s;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap h3 a:hover {
-        color: #4125dd;
+        color: #e1139dd4;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories {
         display: -webkit-inline-box;
@@ -369,7 +362,7 @@
         margin: 10px 0;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .categories a {
-        color: #252525;
+        color: #5f0556;
         font-size: 16px;
         margin-left: 10px;
         -webkit-transition: all 0.4s;
@@ -382,7 +375,7 @@
         padding-right: 5px;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .time span {
-        color: #252525;
+        color: #5f0556;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers {
         display: -webkit-inline-box;
@@ -398,7 +391,7 @@
         transition: all 0.4s;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:hover {
-        color: #4125dd;
+        color: #d00e8fd4;
     }
     .event-schedule-area-two .tab-content .table tbody tr td .event-wrap .organizers a:before {
         content: "\f007";
@@ -427,9 +420,7 @@
     <div class="title-text">
     <h2>Event Schedule</h2>
     </div>
-    {% comment %} <p>
-        Referees gather, complete registration, and receive a warm welcome from the event organizers.
-    </p> {% endcomment %}
+    
     </div>
     </div>
     
@@ -450,66 +441,70 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="inner-box">
-    <th scope="row">
-    <div class="event-date">
-    <span>16</span>
-    <p>Novembar</p>
-    </div>
-    </th>
-    <td>
-     <div class="event-img">
-    <h3>Harman Kardon</h3>
-    </div> 
-    </td>
-    <td>
-    <div class="event-wrap">
-    
-   
-    <div class="time">
-    <span>05:35 AM - 08:00 AM 2h 25'</span>
-    </div>
-    </div>
-    </div>
-    </td>
-    <td>
-    <div class="r-no">
-    <span>Court 3</span>
-    </div>
-    </td>
-    <td>
-    <div class="primary-btn">
-    {% comment %} <a class="btn btn-primary" href="#">Accept</a>
-    <a class="btn btn-primary" href="#">Reject</a> {% endcomment %}
-    <a class="btn btn-primary" href="#" onclick="setChoice(1)">Accept</a>
-<a class="btn btn-primary" href="#" onclick="setChoice(0)">Reject</a>
+        {% for event in events %}
+        <tr class="inner-box">
+            <th scope="row">
+                <div class="event-date">
+                    <span>{{ event.date }}</span>
+                    <p>{{ event.date }}</p>
+                </div>
+            </th>
+            <td>
+                <div class="event-img">
+                    <h3>{{ event.name }}</h3>
+                </div>
+            </td>
+            <td>
+                <div class="event-wrap">
+                    <div class="time">
+                        <span>{{ event.time }}</span>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="r-no">
+                    <span>{{ event.location }}</span>
+                </div>
+            </td>
+            <td>
+                <div class="primary-btn">
+                   
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if event.status %}
+                            <button type="button" disabled>Refere Booked</button>
+                        {% else %}
+                            <button type="submit" name="action" value="accept">Accept</button>
+                        {% endif %}
+                        <button type="submit" name="action" value="reject">Reject</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
 
 <script>
   function setChoice(value) {
-    // You can now use the 'value' variable (1 for Accept, 0 for Reject) as needed.
-    // For example, you can send it to a server, display it, or perform other actions.
+   
     alert("Choice: " + value);
   }
-</script>
-    </div>
-    </td>
-    </tr>
+
     
-       
-{% comment %}         
+</script>   
+<!--       
         </td>
         </tr>
         </tbody>
         </table>
         </div>
         </div>
-        </div> {% endcomment %}
-    {% comment %} <div class="primary-btn text-center">
+        </div> 
+     <div class="primary-btn text-center">
     <a href="#" class="btn btn-primary">Download Schedule</a>
     </div>
     </div>
     
-    </div> {% endcomment %}
+    </div> --> 
     
     </div>
     </div>
@@ -537,7 +532,450 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{% static "js/main.js" %}"></script>
 </body>
 
-</html>
+</html>  {% endcomment %}
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="icon" href="{% static 'img/favicon.icon' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'lib/flaticon/font/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<!-- Header Start -->
+<div class="container-fluid bg-dark px-0">
+<!-- ... (header content) ... -->
+<div class="row gx-0">
+    <div class="col-lg-3 bg-dark d-none d-lg-block">
+        <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <h1 class="m-0 display-4 text-primary text-uppercase">SMASHZONE</h1>
+        </a>
+    </div>
+    <div class="col-lg-9">
+        <div class="row gx-0 bg-secondary d-none d-lg-flex">
+            <div class="col-lg-7 px-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center py-2 me-4">
+                    <i class="fa fa-envelope text-primary me-2"></i>
+                    <h6 class="mb-0">smashzone@gmail.com</h6>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center py-2">
+                    <i class="fa fa-phone-alt text-primary me-2"></i>
+                    <h6 class="mb-0">+91124567778</h6>
+                </div>
+            </div>
+         
+        </div>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
+            
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                {% comment %} <a href="#" class="logo">SMASHZONE<span>$</span></a>
+    
+                <nav class="navbar">
+                   
+                    <a href="#home">CONTACT</a>
+                    
+                    <a href="">PAYMENT</a>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.name }}
+                        </a>
+                      
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </div> {% endcomment %}
+                 <div class="navbar-nav mr-auto py-0">
+                    
+                       
+            
+                        
+                    <a href="{% url 'index' %} " class="nav-item nav-link active">Home</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                    <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Refere name:{{ user.name }}</a>
+                    <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
+                    <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                    <a href=" {% url 'user_logout' %}" class="nav-item nav-link">LOGOUT</a>
+                    <a href=" {% url 'view_history' %}" class="nav-item nav-link">View History</a>
+                </div>
+          
+            </div>
+        </nav>
+    </div>
+</div>
+</div>
+<!-- Header End -->
+<!-- Hero Start -->
+<div class="container-fluid bg-dark p-2 bg-hero mb-2">
+<div class="row py-2">
+    <div class="col-12 text-center">
+        <h1 class="display-2 text-uppercase text-white mb-md-4">EVENTS LISTS</h1>
+  <!--   <a href="{% url 'index' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+        <a href="" class="btn btn-light py-md-3 px-md-5">JOIN </a>-->   
+    </div>
+</div>
+</div>
+<!-- Hero End --> 
+<style type="text/css">
+    	body {
+    margin-top: 20px;
+}
+
+.event .title {
+    margin: 0px 0 0;
+}
+
+.event .nav-content {
+    float: right;
+    width: 70%;
+}
+
+.event .btn {
+    background: #ff007a;
+}
+
+.event .nav-content strong {
+    display: block;
+    font-family: Montserrat;
+    font-size: 20px;
+    color: #002691;
+}
+
+.event nav > div a.nav-item.nav-link.active .event .spicel-features {
+    background: #fafaff;
+}
+
+.event .nav-fill .nav-item {
+    text-align: left;
+    text-transform: uppercase;
+    margin: 0 5px;
+    font-size: 12px;
+    margin-right: 16px;
+}
+
+.event .nav-fill .nav-item text-t i {
+    margin-right: 10px;
+}
+
+.event .nav-fill .nav-item i::before {
+    font-size: 26px;
+    margin-right: 13px;
+    position: relative;
+    top: 4px;
+}
+
+.event nav > .nav.nav-tabs {
+    border: none;
+    color: #fff;
+    border-radius: 0;
+    flex-wrap: inherit;
+    padding: 0 30px;
+}
+
+.event .nav-item {
+    margin: 0 0;
+}
+
+.event a.nav-item.nav-link.active {
+    
+    background: #270943 !important;
+    color: #fff !important;
+}
+
+.event a.nav-item.nav-link.active strong {
+    color: #fff;
+}
+
+.event nav > div a.nav-item.nav-link,
+.event nav > div a.nav-item.nav-link.active {
+    border: none;
+    padding: 18px 25px;
+    color: #47759d;
+    border-radius: 0;
+    background: #fff;
+    position: relative;
+    background: #f5faff;
+}
+
+.event nav > div a.nav-item.nav-link.active:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #e7015e transparent transparent;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    content: '';
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    border-color: transparent #ff007a transparent transparent;
+}
+
+.event .tab-content {
+    padding: 50px 25px 0 !important;
+}
+
+.event .user h5 {
+    margin-top: 20px;
+}
+
+.event .user p {
+    font-weight: bold;
+    color: #ff007a;
+}
+
+.event .user ul {
+    padding-top: 10px;
+    border-top: 1px solid #edf5ff;
+}
+
+.event .user ul li {
+    margin-top: 10px;
+}
+
+.event .user ul li i {
+    margin-right: 5px;
+}
+
+.event-list-content {
+    margin-left: 50px;
+    margin-right: 20px;
+    padding: 50px;
+    position: relative;
+    border: 10px solid #edf5ff;
+    transition: all 0.3s ease 0s;
+}
+
+.event-list-content:hover {
+    border: 10px solid #270943;
+}
+
+.event-list-content .crical {
+    position: absolute;
+    background: #270943;
+    right: -66px;
+    bottom: -73px;
+    font-size: 30px;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 50px;
+}
+
+.event-list-content h2 {
+    margin-bottom: 30px;
+}
+
+.event-list-content .btn {
+    background: none;
+    border: 2px solid #edf5ff;
+    color: #47759d;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.event-list-content .btn:hover {
+    background: #270943;
+    border: 2px solid #270943;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 10px;
+    box-shadow: 0px 10px 19px 0px #ff007a66 !important;
+}
+
+.event-list-content ul li {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    color: #ff007a;
+}
+
+.event-list-content ul li i {
+    margin-right: 5px;
+}
+
+.event nav > div a.nav-item.nav-link .lgt-icon {
+    display: none;
+}
+
+.event nav > div a.nav-item.nav-link.active .lgt-icon {
+    display: inline-block;
+}
+
+.event nav > div a.nav-item.nav-link.active .drk-icon {
+    display: none;
+}
+
+.event nav > div a.nav-item.nav-link.active .drk-icon {
+    display: none;
+}
+
+.img, img {
+    max-width: 100%;
+    transition: all 0.3s ease-out 0s;
+}
+
+.event .user h5 {
+    margin-top: 20px;
+}
+a, h1, h2, h3, h4, h5, h6, p, span {
+    overflow-wrap: break-word;
+}
+h5 {
+    font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #002691;
+    margin-top: 0px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: normal;
+}
+
+.event .user p {
+    font-weight: bold;
+    color: #ff007a;
+}
+.event .user ul {
+    padding-top: 10px;
+    border-top: 1px solid #edf5ff;
+}
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.event-list-content .crical {
+    position: absolute;
+    background: #270943;
+    right: -66px;
+    bottom: -73px;
+    font-size: 30px;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 50px;
+}
+.fix {
+    overflow: hidden;
+}
+
+.event nav > div a.nav-item.nav-link.active:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #e7015e transparent transparent;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    content: '';
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    border-color: transparent #ff007a transparent transparent;
+}
+
+
+ </style>
+
+
+
+
+{% for item in eventUser %}
+ <div class="row mb-30">
+<div class="col-lg-2">
+<div class="user">
+ <div class="title">
+{% if item.image %}
+<img src="{{ item.image.url }}" alt="img">
+{% endif %}
+<h5>CATEGORY</h5>
+<p>UNDER 13 YEARS OLD</p> 
+</div>
+
+</div>
+</div> 
+
+<div class="col-lg-10">
+<div class="event-list-content fix">
+<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
+<li>{{ item.location }}</li> 
+<li>{{ item.date|date:"M d D" }}<br>{{ item.time|time:"g:i A" }}</li>
+</ul>
+<h2>{{ item.name }}</h2>
+ <p> {{ item.description }} </p> 
+ <span>Event ID: {{ item.id }}</span>
+ <div id="button-container">
+    {% if item.accept_status %}
+        <button class="btn btn-success mt-20 mr-10" disabled>Accepted</button>
+    {% elif item.reject_status %}
+
+        {% comment %} <button class="btn btn-danger mt-20 mr-10" disabled>Rejected</button> {% endcomment %}
+        <button type="submit" class="btn btn-success mt-20 mr-10" name="action" value="accept">Accept</button>
+        <button type="submit" class="btn btn-danger mt-20 mr-10" name="action" value="reject">Reject</button>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="event_id" value="{{ item.id }}">
+            <button type="submit" class="btn btn-success mt-20 mr-10" name="action" value="accept">Accept</button>
+            <button type="submit" class="btn btn-danger mt-20 mr-10" name="action" value="reject">Reject</button>
+        </form>
+    {% endif %}
+</div>
+
+
+<!-- <a href="#" class="btn mt-20">Read More</a> -->
+<div class="crical"><i class="fal fa-video"></i> </div>
+</div>
+</div>
+</div> 
+{% endfor %} 
+<script>
+    // JavaScript code goes here
+    $(".accept-btn").on("click", function() {
+        // Disable the Accept button
+        $(this).attr("disabled", true);
+        // Change the text to "Refere Booked"
+        $(this).text("Refere Booked");
+        // Disable the Reject button (if needed)
+        $(this).siblings(".reject-btn").attr("disabled", true);
+    });
+</script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html> 

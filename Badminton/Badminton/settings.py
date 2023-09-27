@@ -143,3 +143,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mailtoshowvalidationok@gmail.com'  
 EMAIL_HOST_PASSWORD = 'qtwpnirvgsxzhtdo'   
 DEFAULT_FROM_EMAIL = 'mailtoshowvalidationok@gmail.com'
+
+RAZOR_KEY_ID = 'rzp_test_KHS90zm1JLYytc'
+RAZOR_KEY_SECRET = 'Jigoz3BNJqWUXnIhuK9Bfr8J'

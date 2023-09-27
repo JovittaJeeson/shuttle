@@ -96,15 +96,16 @@
                                 <div class="booking-time">
                                     <ul class="booking-time-list">
                                         <li><div class="time-block" id="open-booking-btn" onclick="openBookingModal()">4:00AM - 5:00AM</div></li>
-                                        <li><div class="time-block">5:00AM - 6:00AM</div></li>
-                                        <li><div class="time-block">6:00AM - 7:00AM</div></li>
-                                        <li><div class="time-block">7:00AM - 8:00AM</div></li>
-                                        <li><div class="time-block">8:00AM - 9:00AM</div></li>
-                                        <li><div class="time-block">9:00AM - 10:00AM</div></li>
-                                        <li><div class="time-block">5:00PM - 7:30PM</div></li>
-                                        <li><div class="time-block">7:00PM - 9:00PM</div></li>
-                                        <li><div class="time-block">9:00PM - 11:30PM</div></li>
-                                        
+                                        <li><div class="time-block" data-time="6:00AM - 7:00AM">6:00AM - 7:00AM</div></li>
+                                        <li><div class="time-block" data-time="7:00AM - 8:00AM">7:00AM - 8:00AM</div></li>
+                                        <li><div class="time-block" data-time="9:00AM - 10:00AM">9:00AM - 10:00AM</div></li>
+                                        <li><div class="time-block" data-time="10:00AM - 11:00PM">10:00AM - 11:00AM</div></li>
+                                        <li><div class="time-block" data-time="5:00PM - 6:00PM">5:00PM - 6:00PM</div></li>
+                                        <li><div class="time-block" data-time="6:00AM - 7:00PM">6:00PM - 7:00PM</div></li>
+                                        <li><div class="time-block" data-time="7:00PM - 8:00PM">7:00PM - 8:00PM</div></li>
+                                        <li><div class="time-block" data-time="8:00PM - 9:00PM">8:00PM - 9:00PM</div></li>
+                                        <li><div class="time-block" data-time="9:00PM - 10:00PM">9:00PM - 10:00PM</div></li>
+                        
                                     </ul>
                                 </div>
                             <button type="button" class="close-btn" onclick="closeBookingTimeModal()">&times;</button>
@@ -135,6 +136,7 @@
                                         <label for="booking-date"><h6>Booking Date:</h6></label>
                                         <input type="tel" id="booking-date" name="booking-date">
                                     </div>
+                                    
                                     <div class="client-phone">
                                         <label for="booking-time"><h6>Booking Time:</h6></label>
                                         <input type="tel" id="booking-time" name="booking-time">

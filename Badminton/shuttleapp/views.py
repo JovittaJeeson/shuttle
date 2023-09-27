@@ -31,16 +31,51 @@ def contact(request):
      return render(request,'contact.html')
 def event_index(request):
      return render(request,'event_index.html')
-def payment(request):
-     return render(request,'payment.html')
+# def payment(request):
+#      return render(request,'payment.html')
 def Event_On_Trend(request):
      eventUser=EventUser.objects.filter(status=0)
      return render(request,'Event_On_Trend.html',{"eventUser":eventUser})
 
+from django.shortcuts import render
+from .models import EventUser  # Import your EventUser model here
 
 
-def Guestbooking(request):
-     return render(request,'Guestbooking.html')
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import EventUser
+
+def refere_view(request):
+    eventUser = EventUser.objects.filter(status=0)
+    
+    if request.method == 'POST':
+        event_id = request.POST.get('event_id')
+        action = request.POST.get('action')
+        
+        event = get_object_or_404(EventUser, pk=event_id)
+        
+        if action == 'accept':
+            event.accept_status = True
+            event.reject_status = False
+            
+        elif action == 'reject':
+            event.accept_status = False
+            event.reject_status = True
+        event.org_user=request.user
+        event.save()
+    
+    return render(request, 'refere.html', {"eventUser": eventUser})
+
+def view_history(request):
+    orgs=request.user
+
+    eventUser=EventUser.objects.filter(org_user=orgs,accept_status=True)
+    # Assuming you have a queryset named eventUser that contains the event data
+    # eventUser = EventUser.objects.all()  # You may need to adjust this query as per your models
+    context = {
+        'eventUser': eventUser
+    }
+    return render(request, 'Refere/view_history.html', context)
+
 #**************************************************************ADMIN PANEL VIEWS.py**************************************************************
 #admin panel        
 def indexadmin(request):
@@ -53,6 +88,41 @@ def dashboard(request):
 
     return render(request, 'dashboard.html', {'user_count': user_count})
 
+from django.shortcuts import render
+from .models import CustomUser  # Import your NewUser model or the appropriate model for new users
+
+# def new_user(request):
+#     # Fetch new user data from your database or another source
+#     new_users = CustomUser.objects.all()  # Assuming you have a NewUser model
+
+#     # Pass the new_users data to the template
+#     context = {
+#         'new_users': new_users,
+#     }
+
+#     # Render the template with the context data
+#     return render(request, 'admin/new_user.html', context)
+from django.shortcuts import render
+from .models import CustomUser  # Import your CustomUser model
+
+def new_user(request, user_type=None):
+    # Determine the user type based on the URL parameter 'user_type'
+    if user_type == 'customer':
+        new_users = CustomUser.objects.filter(is_customer=True)
+    elif user_type == 'referee':
+        new_users = CustomUser.objects.filter(is_refere=True)
+    else:
+        # If 'user_type' is not provided or invalid, show all new users
+        new_users = CustomUser.objects.all()
+
+    # Pass the new_users data to the template
+    context = {
+        'new_users': new_users,
+        'user_type': user_type,  # Pass user_type to the template to distinguish between customers and referees
+    }
+
+    # Render the template with the context data
+    return render(request, 'admin/new_user.html', context)
 
 #this is code for event registred deleteion
 def delete_registration(request, pk):
@@ -436,6 +506,10 @@ def ProfileVerification(request):
 
 
 # #gallery page
+
+# from django.shortcuts import render, redirect
+# from .models import Winner
+
 # 
 from django.shortcuts import render, redirect
 from .models import Booking
@@ -463,7 +537,7 @@ def Guestbooking(request):
             start_time, end_time = booking_time.split(" - ")
 
             # Create a datetime object for the booking date
-            booking_datetime = datetime.strptime(booking_date, "%B %Y")
+            booking_datetime = datetime.strptime(booking_date, '%d %B %Y')
 
             # Add the start time to the datetime
             booking_datetime = booking_datetime.replace(
@@ -517,10 +591,8 @@ def Guestbooking(request):
         "Guestbooking.html",
     )
 
-# views.py
 
 
 
-   
 
 

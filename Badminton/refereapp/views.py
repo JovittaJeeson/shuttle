@@ -60,3 +60,30 @@ def Referelogin(request):
                 messages.error(request, 'Invalid login credentials.')
 
     return render(request, 'Refere/Referelogin.html')
+
+from django.contrib.auth import logout as auth_logout
+def user_logout(request):
+    auth_logout(request)
+    return redirect('index')
+
+from django.shortcuts import render, get_object_or_404, redirect
+from shuttleapp.models import EventUser
+
+from django.shortcuts import render, redirect
+
+from django.contrib import messages
+
+# from django.shortcuts import render
+  # Import your Event model
+
+# def refere_view(request):
+#     # Fetch the events from your database
+#     events = EventUser.objects.all()  # You can customize this queryset as needed
+
+#     # You can perform any additional processing here if necessary
+
+#     context = {
+#         'eventUser': events  # Pass the events to your template
+#     }
+
+#     return render(request, 'refere.html', context)

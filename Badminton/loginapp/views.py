@@ -11,6 +11,9 @@ from datetime import datetime, timedelta
 
 def jovilogin(request):
      return render(request,'jovilogin.html')
+
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='login')
 def user_profile(request):
      return render(request,'user_profile.html')
 
