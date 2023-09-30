@@ -128,7 +128,7 @@
             <div class="dropdown profile-action">
                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a href="" class="dropdown-item update-winner">
+                    <a href="{% url 'edit_winner' winner.id %}" class="dropdown-item update-winner">
                         <i class="fa fa-pencil m-r-5"></i> Edit
                     </a>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_winner_{{ winner.id }}">

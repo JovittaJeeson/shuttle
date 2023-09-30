@@ -5,17 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'admin/img/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.jpg' %}">
     <title>Badminton - Add Event</title>
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/select2.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-datetimepicker.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/style.css' %}">
-    <!--[if lt IE 9]>
-        <script src="{% static 'admin/js/html5shiv.min.js' %}"></script>
-        <script src="{% static 'admin/js/respond.min.js' %}"></script>
-    <![endif]-->
+ 
 </head>
 
 <body>
@@ -23,16 +20,16 @@
         <div class="header">
             <div class="header-left">
                 <a href="" class="logo">
-                    <img src="{% static 'admin/img/logo.png' %}" width="35" height="35" alt=""> <span>SMASHZONE</span>
+                    <img src="{% static 'img/logo.jpg' %}" width="35" height="35" alt=""> <span>SMASHZONE</span>
                 </a>
             </div>
             <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
             <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
             <ul class="nav user-menu float-right">
-                <li class="nav-item dropdown d-none d-sm-block">
+                {% comment %} <li class="nav-item dropdown d-none d-sm-block">
                     <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><i
                             class="fa fa-comment-o"></i> <span class="badge badge-pill bg-danger float-right">8</span></a>
-                </li>
+                </li> {% endcomment %}
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img"><img class="rounded-circle"
@@ -94,39 +91,58 @@
                             <div class="form-group">
                                 <label for="event-name">Event Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="event-name" name="name" required>
+                                <span id="nameError" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label for="event-description">Event Description <span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="event-description" name="description" rows="4" required></textarea>
+                                <span id="descriptionError" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label for="event-image">Event Image</label>
                                 <input type="file" class="form-control-file" id="event-image" name="image">
+                                <span id="imageError" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
-                                <label for="event-date">Date <span class="text-danger">*</span></label>
-                                <input class="form-control" type="date" id="event-date" name="date" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="event-time">Time <span class="text-danger">*</span></label>
-                                <input class="form-control" type="time" id="event-time" name="time" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="event-location">Location <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" id="event-location" name="location" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="close-event-date">Close Event Date (Optional)</label>
-                                <input class="form-control" type="date" id="close-event-date" name="close_event_date">
-                            </div>
-                            <div class="form-group">
-                                <label for="max-registrations">Max Registrations</label>
-                                <input class="form-control" type="number" id="max-registrations" name="max_registrations" value="100" min="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="current-registrations">Current Registrations</label>
-                                <input class="form-control" type="number" id="current-registrations" name="current_registrations" value="0" min="0">
-                            </div>
+                            <!-- Existing code... -->
+
+                                <div class="form-group">
+                                    <label for="event-date">Date <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="date" id="event-date" name="date" required>
+                                    <span id="dateError" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="event-time">Time <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="time" id="event-time" name="time" required>
+                                    <span id="timeError" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="event-location">Location <span class="text-danger">*</span></label>
+                                    <input class="form-control" type="text" id="event-location" name="location" required>
+                                    <span id="locationError" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="close-event-date">Close Event Date (Optional)</label>
+                                    <input class="form-control" type="date" id="close-event-date" name="close_event_date">
+                                    <span id="closeDateError" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="max-registrations">Max Registrations</label>
+                                    <input class="form-control" type="number" id="max-registrations" name="max_registrations" value="100" min="1">
+                                    <span id="maxRegistrationsError" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="current-registrations">Current Registrations</label>
+                                    <input class="form-control" type="number" id="current-registrations" name="current_registrations" value="0" min="0" disabled>
+                                    <span id="currentRegistrationsError" class="text-danger"></span>
+                                </div>
+
+<!-- Existing code... -->
+
                             <div class="m-t-20 text-center">
                                 <button class="btn btn-primary submit-btn" type="submit">Add Event</button>
                             </div>
@@ -137,6 +153,111 @@
         </div>
 
     </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("event-name").addEventListener("input", validateName);
+            document.getElementById("event-description").addEventListener("input", validateDescription);
+            document.getElementById("event-image").addEventListener("change", validateImage);
+            document.getElementById("event-date").addEventListener("change", validateDate);
+            document.getElementById("event-location").addEventListener("input", validateLocation);
+            document.getElementById("close-event-date").addEventListener("change", validateCloseDate);
+
+            function validateName() {
+                var name = document.getElementById("event-name").value;
+                var letters = /^[A-Za-z ]*$/;
+                if (!letters.test(name) || name.length < 3) {
+                    document.getElementById("nameError").textContent =
+                        "Name should only contain alphabets and be at least 3 characters long";
+                    return false;
+                } else {
+                    document.getElementById("nameError").textContent = "";
+                    return true;
+                }
+            }
+
+            function validateDescription() {
+                var description = document.getElementById("event-description").value;
+                var alphanumeric = /^[a-zA-Z0-9\s]+$/;
+                if (!alphanumeric.test(description)) {
+                    document.getElementById("descriptionError").textContent =
+                        "Description should only contain letters and numbers";
+                    return false;
+                } else {
+                    document.getElementById("descriptionError").textContent = "";
+                    return true;
+                }
+            }
+
+            function validateImage() {
+                var image = document.getElementById("event-image").value;
+                if (image === "") {
+                    document.getElementById("imageError").textContent = "Image is required";
+                    return false;
+                } else {
+                    document.getElementById("imageError").textContent = "";
+                    return true;
+                }
+            }
+
+            function validateDate() {
+                var today = new Date();
+                var selectedDate = new Date(document.getElementById("event-date").value);
+                if (selectedDate < today) {
+                    document.getElementById("dateError").textContent = "Date should be in the future";
+                    return false;
+                } else {
+                    document.getElementById("dateError").textContent = "";
+                    return true;
+                }
+            }
+
+            function validateLocation() {
+                var location = document.getElementById("event-location").value;
+                var alphanumeric = /^[a-zA-Z0-9\s]+$/;
+                if (!alphanumeric.test(location)) {
+                    document.getElementById("locationError").textContent =
+                        "Location should only contain letters and numbers";
+                    return false;
+                } else {
+                    document.getElementById("locationError").textContent = "";
+                    return true;
+                }
+            }
+
+            function validateCloseDate() {
+                var today = new Date();
+                var closeDate = new Date(document.getElementById("close-event-date").value);
+                if (closeDate < today) {
+                    document.getElementById("closeDateError").textContent =
+                        "Close Date should be in the future";
+                    return false;
+                } else {
+                    document.getElementById("closeDateError").textContent = "";
+                    return true;
+                }
+            }
+
+            // Handle form submission
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function (event) {
+                var isValid =
+                    validateName() &&
+                    validateDescription() &&
+                    validateImage() &&
+                    validateDate() &&
+                    validateLocation() &&
+                    validateCloseDate();
+
+                if (!isValid) {
+                    event.preventDefault();
+                    // Optionally, you can show a general error message here
+                    console.log("Form submission prevented due to validation errors.");
+                }
+            });
+        });
+    </script>
     <div class="sidebar-overlay" data-reff=""></div>
     <script src="{% static 'admin/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'admin/js/popper.min.js' %}"></script>

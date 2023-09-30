@@ -9,8 +9,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'admin/img/favicon.ico' %}">
-    <title>VoyageVue</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.jpg' %}">
+    <title>Badminton</title>
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/select2.min.css' %}">
@@ -108,43 +108,70 @@
                                     <div class="form-group">
                                         <label for="event-name">Event Name <span class="text-danger">*</span></label>
                                         <input class="form-control" type="text" id="event-name" name="name" value="{{ event.name }}" required>
+                                        <!-- Add a span to display the error message -->
+                                        <span id="nameError" class="text-danger"></span>
                                     </div>
+                        
                                     <div class="form-group">
                                         <label for="event-description">Event Description <span class="text-danger">*</span></label>
                                         <textarea class="form-control" id="event-description" name="description" rows="4" required>{{ event.description }}</textarea>
+                                        <span id="descriptionError" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label for="event-image">Event Image</label>
+                                        {% if event.image %}
+                                            <img src="{{ event.image.url }}" alt="Event Image" style="max-width: 200px; max-height: 200px;">
+                                        {% endif %}
                                         <input type="file" class="form-control-file" id="event-image" name="image">
+                                        <span id="imageError" class="text-danger"></span>
                                     </div>
-                                    
-                                
+                                  <!-- Existing code... -->
+
                                     <div class="form-group">
                                         <label for="event-date">Date <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="date" id="event-date" name="date" required>
+                                        <input class="form-control" type="date" id="event-date" name="date" value="{{ event.date|date:'Y-m-d' }}" required>
+                                        <!-- Add a span to display the error message -->
+                                        <span id="dateError" class="text-danger"></span>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="event-time">Time <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="time" id="event-time" name="time" required>
+                                        <input class="form-control" type="time" id="event-time" name="time" value="{{ event.time|time:'H:i' }}" required>
+                                        <span id="timeError" class="text-danger"></span>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="event-location">Location <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="text" id="event-location" name="location" required>
+                                        <input class="form-control" type="text" id="event-location" name="location" value="{{ event.location }}" required>
+                                        <span id="locationError" class="text-danger"></span>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="close-event-date">Close Event Date (Optional)</label>
-                                        <input class="form-control" type="date" id="close-event-date" name="close_event_date">
+                                        <input class="form-control" type="date" id="close-event-date" name="close_event_date" value="{% if event.close_event_date %}{{ event.close_event_date|date:'Y-m-d' }}{% endif %}">
+                                        <!-- Add a span to display the error message -->
+                                        <span id="closeDateError" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="max-registrations">Max Registrations</label>
-                                        <input class="form-control" type="number" id="max-registrations" name="max_registrations" value="100" min="1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="current-registrations">Current Registrations</label>
-                                        <input class="form-control" type="number" id="current-registrations" name="current_registrations" value="0" min="0">
-                                    </div>
+
+                                  
+                            <div class="form-group">
+                                <label for="max-registrations">Max Registrations</label>
+                                <input class="form-control" type="number" id="max-registrations" name="max_registrations" value="{{ event.max_registrations }}" min="1">
+                                <!-- Add a span to display the error message -->
+                                <span id="maxRegistrationsError" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="current-registrations">Current Registrations</label>
+                                <input class="form-control" type="number" id="current-registrations" name="current_registrations" value="{{ event.current_registrations }}" min="0">
+                                <!-- Add a span to display the error message -->
+                                <span id="currentRegistrationsError" class="text-danger"></span>
+                            </div>
+
+                           
+
                                     <div class="m-t-20 text-center">
-                                        <button class="btn btn-primary submit-btn" type="submit">Add Event</button>
+                                        <button class="btn btn-primary submit-btn" type="submit">Edit Event</button>
                                     </div>
                                 </form>
                             </div>
@@ -153,6 +180,117 @@
                 </div>
       
     <div class="sidebar-overlay" data-reff=""></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById("event-name").addEventListener("input", validateName);
+            document.getElementById("event-description").addEventListener("input", validateDescription);
+            document.getElementById("event-image").addEventListener("change", validateImage);
+            document.getElementById("event-date").addEventListener("change", validateDate);
+            document.getElementById("event-location").addEventListener("input", validateLocation);
+            document.getElementById("close-event-date").addEventListener("change", validateCloseDate);
+    
+            function validateName() {
+                var name = document.getElementById("event-name").value;
+                var letters = /^[A-Za-z ]*$/;
+                if (!letters.test(name) || name.length < 3) {
+                    document.getElementById("nameError").textContent =
+                        "Name should only contain alphabets and be at least 3 characters long";
+                    return false;
+                } else {
+                    document.getElementById("nameError").textContent = "";
+                    return true;
+                }
+            }
+    
+            function validateDescription() {
+                var description = document.getElementById("event-description").value;
+                var alphanumeric = /^[a-zA-Z0-9\s]+$/;
+                if (!alphanumeric.test(description)) {
+                    document.getElementById("descriptionError").textContent =
+                        "Description should only contain letters and numbers";
+                    return false;
+                } else {
+                    document.getElementById("descriptionError").textContent = "";
+                    return true;
+                }
+            }
+    
+     // Existing code...
+
+function validateImage() {
+    var imageInput = document.getElementById("event-image");
+    var image = imageInput.value;
+
+    // Check if a new image is selected or there is an existing image
+    if (image === "" && !imageInput.getAttribute("data-existing-image")) {
+        document.getElementById("imageError").textContent = "Image is required";
+        return false;
+    } else {
+        document.getElementById("imageError").textContent = "";
+        return true;
+    }
+}
+
+// Existing code...
+
+            function validateDate() {
+                var today = new Date();
+                var selectedDate = new Date(document.getElementById("event-date").value);
+                if (selectedDate < today) {
+                    document.getElementById("dateError").textContent = "Date should be in the future";
+                    return false;
+                } else {
+                    document.getElementById("dateError").textContent = "";
+                    return true;
+                }
+            }
+    
+            function validateLocation() {
+                var location = document.getElementById("event-location").value;
+                var alphanumeric = /^[a-zA-Z0-9\s]+$/;
+                if (!alphanumeric.test(location)) {
+                    document.getElementById("locationError").textContent =
+                        "Location should only contain letters and numbers";
+                    return false;
+                } else {
+                    document.getElementById("locationError").textContent = "";
+                    return true;
+                }
+            }
+    
+            function validateCloseDate() {
+                var today = new Date();
+                var closeDate = new Date(document.getElementById("close-event-date").value);
+                if (closeDate < today) {
+                    document.getElementById("closeDateError").textContent =
+                        "Close Date should be in the future";
+                    return false;
+                } else {
+                    document.getElementById("closeDateError").textContent = "";
+                    return true;
+                }
+            }
+    
+            // Handle form submission
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function (event) {
+                var isValid =
+                    validateName() &&
+                    validateDescription() &&
+                    validateImage() &&
+                    validateDate() &&
+                    validateLocation() &&
+                    validateCloseDate();
+    
+                if (!isValid) {
+                    event.preventDefault();
+                    // Optionally, you can show a general error message here
+                    console.log("Form submission prevented due to validation errors.");
+                }
+            });
+        });
+    </script>
+    
     <script src="{% static 'admin/js/jquery-3.2.1.min.js' %}"></script>
   <script src="{% static 'admin/js/popper.min.js' %}"></script>
     <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>

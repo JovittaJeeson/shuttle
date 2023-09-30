@@ -91,17 +91,41 @@ def dashboard(request):
 from django.shortcuts import render
 from .models import CustomUser  # Import your NewUser model or the appropriate model for new users
 
-# def new_user(request):
-#     # Fetch new user data from your database or another source
-#     new_users = CustomUser.objects.all()  # Assuming you have a NewUser model
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseBadRequest
+from .models import EventUser
 
-#     # Pass the new_users data to the template
-#     context = {
-#         'new_users': new_users,
-#     }
+def edit_event(request, event_id):
+    # Get the event instance by its ID
+    event = get_object_or_404(EventUser, pk=event_id)
 
-#     # Render the template with the context data
-#     return render(request, 'admin/new_user.html', context)
+    if request.method == 'POST':
+        # Update event fields based on POST data
+        event.name = request.POST.get('name')
+        event.description = request.POST.get('description')
+        event.date = request.POST.get('date')
+        event.time = request.POST.get('time')
+        event.location = request.POST.get('location')
+        event.max_registrations = request.POST.get('max_registrations')
+        event.close_event_date = request.POST.get('close_event_date')
+
+        # Handle the event image upload if needed
+        if 'image' in request.FILES:
+            event.image = request.FILES['image']
+
+        try:
+            event.save()
+        except Exception as e:
+            return HttpResponseBadRequest("Error saving event data: {}".format(str(e)))
+
+        # Redirect to the event details page or any other appropriate URL
+        return redirect('Eventlist')
+    elif request.method == 'GET':
+        # If it's a GET request, render the edit form with the existing event details
+        return render(request, 'admin/edit_Eventlist.html', {'event': event})
+    else:
+        return HttpResponseBadRequest("Invalid request method")
+
 from django.shortcuts import render
 from .models import CustomUser  # Import your CustomUser model
 
@@ -109,7 +133,7 @@ def new_user(request, user_type=None):
     # Determine the user type based on the URL parameter 'user_type'
     if user_type == 'customer':
         new_users = CustomUser.objects.filter(is_customer=True)
-    elif user_type == 'referee':
+    elif user_type == 'refere':
         new_users = CustomUser.objects.filter(is_refere=True)
     else:
         # If 'user_type' is not provided or invalid, show all new users
@@ -190,35 +214,52 @@ def delete_subscription_plan(request, plan_id):
 
     return redirect('member')
 
+
+
+# views.py
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponseBadRequest
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
+from .models import EventUser
+from datetime import datetime
+
 def add_event(request):
     if request.method == 'POST':
-        # Get data from the POST request
-        name = request.POST['name']
-        description = request.POST['description']
-        date = request.POST['date']
-        time = request.POST['time']
-        location = request.POST['location']
-        image = request.FILES.get('image')
-        close_event_date = request.POST.get('close_event_date')
-        max_registrations = request.POST['max_registrations']
-        current_registrations = request.POST['current_registrations']
+        try:
+            # Get data from the POST request
+            name = request.POST['name']
+            description = request.POST['description']
+            date = request.POST['date']
+            time = request.POST['time']
+            location = request.POST['location']
+            image = request.FILES.get('image')
+            close_event_date = request.POST.get('close_event_date')
+            max_registrations = request.POST['max_registrations']
 
-        # Create a new EventUser object and save it to the database
-        event = EventUser(
-            name=name,
-            description=description,
-            date=date,
-            time=time,
-            location=location,
-            image=image,
-            close_event_date=close_event_date,
-            max_registrations=max_registrations,
-            current_registrations=current_registrations
-        )
-        event.save()
+            # Initialize current_registrations
+            current_registrations = request.POST.get('current_registrations', None)
 
-        # Redirect to the event list page or another page as needed
-        return redirect('Eventlist')
+            # Create a new EventUser object and save it to the database
+            event = EventUser(
+                name=name,
+                description=description,
+                date=date,
+                time=time,
+                location=location,
+                image=image,
+                close_event_date=close_event_date,
+                max_registrations=max_registrations,
+                current_registrations=current_registrations
+            )
+            event.save()
+
+            # Redirect to the event list page or another page as needed
+            return redirect('Eventlist')
+
+        except Exception as e:
+            return HttpResponseBadRequest("Error saving event data: {}".format(str(e)))
 
     return render(request, 'admin/add_event.html')  # Replace 'add_event.html' with your template path
 
@@ -236,87 +277,7 @@ def Eventlist(request):
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import EventUser
 
-def edit_event(request, event_id):
-    # Get the event instance by its ID
-    event = get_object_or_404(EventUser, pk=event_id)
-
-    if request.method == 'POST':
-        # Update event fields based on POST data
-        event.name = request.POST.get('name')
-        event.description = request.POST.get('description')
-        event.date = request.POST.get('date')
-        event.time = request.POST.get('time')
-        event.location = request.POST.get('location')
-        event.max_registrations = request.POST.get('max_registrations')
-        event.close_event_date = request.POST.get('close_event_date')
-
-        # Handle the event image upload if needed
-        if 'image' in request.FILES:
-            event.image = request.FILES['image']
-        
-        event.save()
-
-        # Redirect to the event details page or any other appropriate URL
-        # return redirect('Eventlist', event_id=event_id)
-        return redirect('Eventlist')
-
-    # If it's a GET request, pre-fill the form fields with existing event details
-    return render(request, 'admin/edit_Eventlist.html', {'event': event})
-
-# from django.shortcuts import render, get_object_or_404, redirect
-# from .models import EventUser
-
-# def edit_event(request, event_id):
-#     # Get the event instance by its ID
-#     event = get_object_or_404(EventUser, pk=event_id)
-
-#     if request.method == 'POST':
-#         # Update event fields based on POST data
-#         event.name = request.POST.get('name')
-#         event.description = request.POST.get('description')
-#         event.date = request.POST.get('date')
-#         event.time = request.POST.get('time')
-#         event.location = request.POST.get('location')
-#         event.max_registrations = request.POST.get('max_registrations')
-#         event.close_event_date = request.POST.get('close_event_date')
-
-#         # Handle the event image upload if needed
-#         if 'image' in request.FILES:
-#             event.image = request.FILES['image']
-        
-#         event.save()
-
-#         # Redirect to the event details page or any other appropriate URL
-#         # return redirect('Eventlist', event_id=event_id)
-#         return redirect('Eventlist')
-
-#  # Replace 'event_detail' with your detail view name
-
-#     return render(request, 'admin/edit_Eventlist.html', {'event': event})
-
-
-# def edit_event(request, event_id):
-#     # Get the event instance by its ID
-#     event = get_object_or_404(EventUser, pk=event_id)
-
-#     if request.method == 'POST':
-#         # Update event fields based on POST data
-#         event.name = request.POST.get('name')
-#         event.description = request.POST.get('description')
-#         event.date = request.POST.get('date')
-#         event.time = request.POST.get('time')
-#         event.location = request.POST.get('location')
-#         event.max_registrations = request.POST.get('max_registrations')
-#         event.close_event_date = request.POST.get('close_event_date')
-        
-#         event.save()
-
-#         # Redirect to the event details page or any other appropriate URL
-#         return redirect('Eventlist', event_id=event_id)  # Replace 'event_detail' with your detail view name
-
-#     return render(request, 'admin\edit_Eventlist.html', {'event': event})
-
-
+# 
 
 def delete_event(request, event_id):
     try:
@@ -422,6 +383,29 @@ def Gallery(request):
     # Render the gallery page template and pass the winners data to it
     return render(request, 'Gallery.html', {'winners': winners})
 
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Winner
+
+def edit_winner(request, winner_id):
+    winner = get_object_or_404(Winner, id=winner_id)
+
+    if request.method == 'POST':
+        title = request.POST['title']
+        name = request.POST['name']
+        prize = request.POST['prize']
+        image = request.FILES.get('image', winner.image)
+
+        winner.title = title
+        winner.name = name
+        winner.prize = prize
+        winner.image = image
+        winner.save()
+
+        return redirect('winner_Gallery')  # Redirect to the gallery page or any other desired page
+
+    return render(request, 'admin/edit_Winner.html', {'winner': winner})
+
 def EventRegform(request, event_id):
      event = get_object_or_404(EventUser, id=event_id)
      if request.method == 'POST':
@@ -433,11 +417,12 @@ def EventRegform(request, event_id):
                return redirect('EventRegform', event_id=event_id)
 
           # Check if maximum registrations limit is reached
-          if event.current_registrations >= event.max_registrations:
+          current_registrations = event.current_registrations or 0  # Default to 0 if current_registrations is None
+          if current_registrations >= event.max_registrations:
                messages.error(request, 'Booking is closed. Maximum registrations reached.')
                return redirect('EventRegform', event_id=event_id)
 
-          event.current_registrations += 1
+          event.current_registrations = current_registrations + 1
           event.save()
 
           name1 = request.POST.get('single-name') if registration_type == 'single' else request.POST.get('team-name1')
@@ -465,6 +450,8 @@ def EventRegform(request, event_id):
 
      return render(request, 'EventRegform.html', {'event': event})
 
+
+
 def RegistrationSucess(request):
     return render(request, 'RegistrationSucess.html')
 
@@ -483,34 +470,28 @@ def refere(request):
 
 
 
-from .models import Profile_Verification
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-
-def ProfileVerification(request):
-    if request.method == 'POST':
-        destination_name = request.POST.get('destination_name')
-        category = request.POST.get('category')
-        destination_image = request.FILES['destination_image']
-
-        new_destination = Profile_Verification(
-            name=destination_name,
-            category=category,
-            image=destination_image,
-        )
-        new_destination.save()
-        return redirect('RegistrationSucess')  # Redirect to a success page URL
-
-    return render(request, 'ProfileVerification.html')  # Render the 'ProfileVerification.html' template
-
-
-
-# #gallery page
-
+# from .models import Profile_Verification
 # from django.shortcuts import render, redirect
-# from .models import Winner
+# from django.http import HttpResponse
 
-# 
+# def ProfileVerification(request):
+#     if request.method == 'POST':
+#         destination_name = request.POST.get('destination_name')
+#         category = request.POST.get('category')
+#         destination_image = request.FILES['destination_image']
+
+#         new_destination = Profile_Verification(
+#             name=destination_name,
+#             category=category,
+#             image=destination_image,
+#         )
+#         new_destination.save()
+#         return redirect('RegistrationSucess')  # Redirect to a success page URL
+
+#     return render(request, 'ProfileVerification.html')  # Render the 'ProfileVerification.html' template
+
+
+
 from django.shortcuts import render, redirect
 from .models import Booking
 from datetime import datetime, timedelta  # Import datetime

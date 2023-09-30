@@ -1,3 +1,4 @@
+{% load socialaccount %}
 {% load static %}
 {% comment %} {% load socialaccount %} {% endcomment %}
 <!DOCTYPE html>
@@ -72,23 +73,79 @@
 					{% endif %}
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
+							<div class="button-container">
+								<button type="submit" class="login100-form-btn" onclick="checkall()">
+									Login
+								</button>
+								<a href="{% provider_login_url 'google' %}?next=/" class="google-button">
+									SIGN IN WITH GOOGLE
+								</a>
+							</div>
 							
-							<div class="login100-form-bgbtn"></div>
-							
-							<button type="submit" class="login100-form-btn" onclick="checkall()">
-								Login
-							</button>
-						</div>
-						{% comment %} <div class="button-container">
-							<a href="{% provider_login_url 'google'%}" class="social-btn btn-google">
-								<i class="fa fa-google fa-fw"></i>
-							</a>
-							 
-						</div>
+<style>
+	.button-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.login100-form-btn {
+		width: 200px; /* Adjust the width as needed */
+		margin-bottom: 10px;
+	}
+	
+	.google-button {
+		text-decoration: none;
+		background-color: #4285F4;
+		color: #fff;
+		padding: 10px 20px;
+		border-radius: 5px;
+		text-align: center;
+		width: 200px; /* Adjust the width as needed */
+	}
+	/* Style for the button container */
+	.button-container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center; /* Center buttons horizontally */
+	  gap: 10px; /* Spacing between buttons */
+	}
+	
+	/* Style for the Login button */
+	.login100-form-btn {
+	  background-color: #0074D9;
+	  color: white;
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  text-align: center;
+	}
+	
+	/* Style for the Google button */
+	.google-button {
+	  background-color: #4285F4;
+	  color: #fff;
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 5px;
+	  text-align: center;
+	  text-decoration: none;
+	}
+	
+	/* Hover effect for buttons (optional) */
+	.login100-form-btn:hover,
+	.google-button:hover {
+	  opacity: 0.8;
+	}
+		
 
-{% endcomment %}
+
+	
+</style>							
+				
 						<span class="txt2"><br>
-							<a href="{% url 'reset_password' %}">Forgot password</a>
+							<a href="{% url 'reset_password' %}"> ..Forgot password</a>
 						</span>
 					</div>
 					<div class="text-center p-t-115">

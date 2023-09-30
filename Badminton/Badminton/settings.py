@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'shuttleapp',
     'membershipapp',
     'refereapp',
+
+    'django.contrib.sites', # must
+    'allauth', # must
+    'allauth.account', # must
+    'allauth.socialaccount', # must
+    'allauth.socialaccount.providers.google', # new
     
 ]
 
@@ -54,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
+
 ]
 
 ROOT_URLCONF = 'Badminton.urls'
@@ -146,3 +154,29 @@ DEFAULT_FROM_EMAIL = 'mailtoshowvalidationok@gmail.com'
 
 RAZOR_KEY_ID = 'rzp_test_KHS90zm1JLYytc'
 RAZOR_KEY_SECRET = 'Jigoz3BNJqWUXnIhuK9Bfr8J'
+
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+SOCIALACCOUNT_LOGIN_ON_GET=True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+'SCOPE': ['profile', 'email'],
+'AUTH_PARAMS': {'access_type': 'online'},
+'FIELDS': ['id', 'email', 'name'], 
+}
+}

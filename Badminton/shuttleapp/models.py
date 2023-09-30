@@ -22,7 +22,8 @@ class EventUser(models.Model):
     image = models.ImageField(upload_to="img/", null=True, blank=True)
     close_event_date = models.DateField(null=True, blank=True)  # 2023-09-13
     max_registrations = models.PositiveIntegerField(default=100)  # Maximum registrations allowed
-    current_registrations = models.PositiveIntegerField(default=0)  # Current registrations
+    # current_registrations = models.PositiveIntegerField(default=0)  # Current registrations null=True, blank=True
+    current_registrations = models.PositiveIntegerField(null=True, blank=True)
     accept_status = models.BooleanField(default=False, help_text="Accept Status")
     reject_status = models.BooleanField(default=False, help_text="Reject Status")
     org_user=models.ForeignKey(CustomUser, on_delete=models.CASCADE,null=True,blank=True)

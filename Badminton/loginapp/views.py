@@ -131,57 +131,25 @@ def user_logout(request):
 #***************************************************************************************************************************************8
 
 
-#userprofile
 
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import UserProfile  # Import your UserProfile model
-from .forms import Organizer
-# @login_required
-# def user_profile(request):
-#     user_profile = UserProfile.objects.get(user=request.user)
+from .models import CustomUser
+from django.contrib.auth.decorators import login_required
+
 @login_required
 def user_profile(request):
-    orgs=request.user
-    try:
-        task=UserProfile.objects.get(user=orgs)
-    except UserProfile.DoesNotExist:
-        if request.method == "POST":
-            form = Organizer(request.POST)
-            if form.is_valid():
-                event_organizer = form.save(commit=False)
-                event_organizer.user = orgs  # Set the user association
-                event_organizer.save()
-                return redirect('user_profile')
-        else:
-            form = Organizer()
-    else:
-        form=Organizer(request.POST or None,instance=task)
-        if form.is_valid():
-            form.save()
-            return redirect('user_profile')
-    return render(request, 'user_profile.html', {'form': form})
+    user = request.user  # Get the logged-in user
 
-# @login_required
-# def user_profile(request):
-    
-#     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-    
-#     if request.method == "POST":
-#         # Handle the form submission
-#         user_profile.full_name = request.POST.get('full_name')
-#         user_profile.email = request.POST.get('email')
-#         user_profile.date_of_birth = request.POST.get('date_of_birth')
-#         user_profile.phone_number = request.POST.get('phone_number')
-#         user_profile.gender = request.POST.get('gender')
-#         profile_picture = request.FILES.get('profile_picture')
+    if request.method == 'POST':
+        # Update the user's profile details based on the POST data
+        user.name = request.POST['name']
+        user.birth = request.POST['birth']
+        user.phone = request.POST['phone']
+        user.gender = request.POST['gender']
+        user.save()
+        return redirect('user_profile')  # Redirect to the profile page after saving
 
-#         # Check if a profile picture was uploaded and save it
-#         if profile_picture:
-#             user_profile.profile_picture = profile_picture
-
-#         user_profile.save()
-#         return redirect('user_profile')  # Redirect to the profile page after saving
-
-#     return render(request, 'user_profile.html', {'user_profile': user_profile})
-
+    context = {
+        'user': user,
+    }
+    return render(request, 'user_profile.html', context)

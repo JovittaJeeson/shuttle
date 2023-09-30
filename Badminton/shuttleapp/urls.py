@@ -18,7 +18,7 @@ urlpatterns=[
      path('EventRegform/<int:event_id>/', views.EventRegform, name='EventRegform'),  # Define the URL pattern
      path('Guestbooking/',views.Guestbooking,name='Guestbooking'),
      path('RegistrationSucess/',views.RegistrationSucess,name='RegistrationSucess'),
-     path('ProfileVerification/',views.ProfileVerification,name='ProfileVerification'),
+     # path('ProfileVerification/',views.ProfileVerification,name='ProfileVerification'),
      path('refere/',views.refere_view,name='refere'),
      path('Gallery/',views.Gallery,name='Gallery'),
      # path('Guestbooking/<int:timeslot_id>/', views.Guestbooking, name='Guestbooking'),
@@ -42,6 +42,7 @@ urlpatterns=[
      path('delete_subscription_plan/<int:plan_id>/', views.delete_subscription_plan, name='delete_subscription_plan'),
      path('winner_Gallery/',views.winner_Gallery,name='winner_Gallery'),
      path('add_winner/',views.add_winner,name='add_winner'),
+     path('edit_winner/<int:winner_id>/', views.edit_winner, name='edit_winner'),
      path('delete_winner/<int:winner_id>/', views.delete_winner, name='delete_winner'),
 
      # path('Eventlist/<int:event_id>/', views.Eventlist, name='Eventlist'),

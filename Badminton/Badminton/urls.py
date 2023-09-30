@@ -24,6 +24,8 @@ urlpatterns = [
     path('',include('loginapp.urls')),
     path('',include('membershipapp.urls')),
     path('',include('refereapp.urls')),
+    path('accounts/', include('allauth.urls')),
+
     
 ]
 

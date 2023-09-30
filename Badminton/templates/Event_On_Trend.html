@@ -25,7 +25,7 @@
 <!-- ... (header content) ... -->
 <div class="row gx-0">
     <div class="col-lg-3 bg-dark d-none d-lg-block">
-        <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+        <a href="{% url "index" %}" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
             <h1 class="m-0 display-4 text-primary text-uppercase">SMASHZONE</h1>
         </a>
     </div>
@@ -413,8 +413,8 @@ ul {
 {% if item.image %}
 <img src="{{ item.image.url }}" alt="img">
 {% endif %}
-<h5>CATEGORY</h5>
-<p>UNDER 13 YEARS OLD</p> 
+{% comment %} <h5>CATEGORY</h5> {% endcomment %}
+<p>❤️All age groups are welcome to participate in badminton events❤️</p> 
 </div>
  <!-- <ul>
 <li>CATEGORY</li>
@@ -438,7 +438,7 @@ ul {
   <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
 {% endif %}
  
- <a href="{% url 'ProfileVerification' %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Verify profile</a>
+ {% comment %} <a href="{% url 'ProfileVerification' %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Verify profile</a> {% endcomment %}
 <!-- <a href="#" class="btn mt-20">Read More</a> -->
 <div class="crical"><i class="fal fa-video"></i> </div>
 </div>
@@ -453,4 +453,3 @@ ul {
 </script>
 </body>
 </html>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" /> -->

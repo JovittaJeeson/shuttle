@@ -15,6 +15,13 @@
 
         <!--==================== FONT ====================-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+        <style>
+            .error {
+                color: red;
+                font-size: 12px; /* Adjust the font size as needed */
+            }
+        </style>
     </head>
 
     <body>
@@ -116,22 +123,24 @@
                         <!-- Modal content-->
                         <div class="modal-content">
                             <h2>Booking Form</h2>
-                            <p>Book now and secure your appointment!</p>
+                            <p>Book now and secure your Court </p>
                             <form method="post" action="{% url 'Guestbooking' %}">
                                 {% csrf_token %}
-                                <div class="booking-form-container">
-                                    <div class="client-name">
-                                        <label for="client-name"><h6>Name:</h6></label>
-                                        <input type="text" id="client-name" name="client-name" required>
-                                    </div>
-                                    <div class="client-email">
-                                        <label for="client-email"><h6>Email:</h6></label>
-                                        <input type="email" id="client-email" name="client-email" required>
-                                    </div>
-                                    <div class="client-phone">
-                                        <label for="client-phone"><h6>Phone:</h6></label>
-                                        <input type="tel" id="client-phone" name="client-phone">
-                                    </div>
+                                <div class="client-name">
+                                    <label for="client-name"><h6>Name:</h6></label>
+                                    <input type="text" id="client-name" name="client-name" required>
+                                    <span id="nameError" class="error"></span><!-- Error message for name -->
+                                </div>
+                                <div class="client-email">
+                                    <label for="client-email"><h6>Email:</h6></label>
+                                    <input type="email" id="client-email" name="client-email" required>
+                                    <span id="emailError" class="error"></span><!-- Error message for email -->
+                                </div>
+                                <div class="client-phone">
+                                    <label for="client-phone"><h6>Phone:</h6></label>
+                                    <input type="tel" id="client-phone" name="client-phone">
+                                    <span id="phoneError" class="error"></span><!-- Error message for phone -->
+                                </div>
                                     <div class="client-phone">
                                         <label for="booking-date"><h6>Booking Date:</h6></label>
                                         <input type="tel" id="booking-date" name="booking-date">
@@ -145,7 +154,8 @@
                                     <input type="hidden" name="booking_date" id="booking-date">
                                     <input type="hidden" name="booking_time" id="booking-time">
                                   
-                                <button type="submit" id="booking-submit-button" style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+                                    <button type="submit" id="booking-submit-button"
+                                    style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
                                 <button type="button" class="close-btn" onclick="closeBookingModal()">&times;</button>
                             </div>
                                 {% comment %} <button type="submit" id="booking-submit-button" style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
@@ -160,9 +170,55 @@
 
         </footer>
         <!-- ... (previous HTML code) ... -->
-
+        
 <!--==================== MAIN JS ====================-->
+<script>
 
+    function validateName() {
+        var name = document.getElementById("client-name").value;
+        var letters = /^[A-Za-z ]*$/;
+        if (!letters.test(name) || name.length < 3) {
+            document.getElementById("nameError").textContent =
+                "Name should only contain alphabets and be at least 3 characters long";
+            return false;
+        } else {
+            document.getElementById("nameError").textContent = "";
+            return true;
+        }
+    }
+    
+    function validateEmail() {
+        var email = document.getElementById("client-email").value;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").textContent =
+                "Please enter a valid email address";
+            return false;
+        } else {
+            document.getElementById("emailError").textContent = "";
+            return true;
+        }
+    }
+    
+    function validateIndianPhoneNumber() {
+        var phone = document.getElementById("client-phone").value;
+        var phonePattern = /^[0-9]*$/;
+        if (!phonePattern.test(phone) || phone.length !== 10) {
+            document.getElementById("phoneError").textContent =
+                "Indian phone number should contain 10 digits";
+            return false;
+        } else {
+            document.getElementById("phoneError").textContent = "";
+            return true;
+        }
+    }
+    
+    // Add event listeners to form fields for real-time validation
+    document.getElementById("client-name").addEventListener("input", validateName);
+    document.getElementById("client-email").addEventListener("input", validateEmail);
+    document.getElementById("client-phone").addEventListener("input", validateIndianPhoneNumber);
+    
+</script>
     
         <!--==================== CALENDAR JS ====================-->
         <script src="{% static 'jsbooking/calendar.js' %}" defer></script>

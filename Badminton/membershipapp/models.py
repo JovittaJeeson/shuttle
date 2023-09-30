@@ -17,6 +17,7 @@ class SubscriptionPlan(models.Model):
     duration = models.CharField(max_length=50)
     # features = models.TextField()
     features = models.TextField(help_text="Enter each feature on a new line")
+    deleted = models.BooleanField(default=False)  # Add the 'deleted' field
 
     def __str__(self):
         return self.title

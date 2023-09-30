@@ -1,3 +1,4 @@
+{% load socialaccount %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -63,14 +64,24 @@
             });
           </script>
           {% endif %} {% endcomment %}
-          <button type="submit" class="btn btn-success" style="background: linear-gradient(135deg, #9bd7ff, #9b59b6); color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Sign In</button>
-          <!-- Rest of your button code -->
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button type="submit" class="btn btn-success" style="text-decoration: none; background: linear-gradient(135deg, #9bd7ff, #9b59b6); color: white; padding: 10px 20px; border-radius: 5px; text-align: center;">Sign In</button>
+        
+            <a href="{% provider_login_url 'google' %}?next=/" style="text-decoration: none; background-color: #4285F4; color: #fff; padding: 10px 20px; border-radius: 5px; text-align: center;">Google</a>
+        </div>
+        
         </div>
         
        
-       
+        
         <div class="signup-link">Not Registered? <a href="{% url 'index_reg' %}">Sign up</a></div><br><br>
-        <div class="forget password"> <a href="{% url 'reset_password' %}">Forgot Password</a></div>
+        <div class="forget password"> <a href="{% url 'reset_password' %}">Forgot Password</a></div><br>
+        
+        <a href="{% url 'index' %} " class="nav-item nav-link active"> Back to Home</a>
+        {% comment %} <h1>Google Login</h1>
+        <a href="{% provider_login_url 'google'%}?next=/">Login with Google</a> {% endcomment %}
+        {% comment %} <h1>Google Login</h1> {% endcomment %}
+
       </form>
     </div>
   </div>
