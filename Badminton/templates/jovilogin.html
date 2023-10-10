@@ -53,9 +53,7 @@
             <input type="text" placeholder="Enter your password" required id="t5" name="pwd" onkeyup="validatePwd()">
             <span id="pw"></span>
           </div> {% endcomment %}
-        </div>
-        <div class="button">
-          {% comment %} {% if messages %}
+            {% comment %} {% if messages %}
           <script>
             swal.fire({
               title: "Login Failed",
@@ -64,8 +62,11 @@
             });
           </script>
           {% endif %} {% endcomment %}
+        </div>
+        <div class="button">
+        
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <button type="submit" class="btn btn-success" style="text-decoration: none; background: linear-gradient(135deg, #9bd7ff, #9b59b6); color: white; padding: 10px 20px; border-radius: 5px; text-align: center;">Sign In</button>
+            <button type="submit" id="login_submit" class="btn btn-success" style="text-decoration: none; background: linear-gradient(135deg, #9bd7ff, #9b59b6); color: white; padding: 10px 20px; border-radius: 5px; text-align: center;">Sign In</button>
         
             <a href="{% provider_login_url 'google' %}?next=/" style="text-decoration: none; background-color: #4285F4; color: #fff; padding: 10px 20px; border-radius: 5px; text-align: center;">Google</a>
         </div>

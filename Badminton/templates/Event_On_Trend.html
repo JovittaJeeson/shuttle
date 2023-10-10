@@ -41,30 +41,10 @@
                     <h6 class="mb-0">+91124567778</h6>
                 </div>
             </div>
-            <!-- <div class="col-lg-5 px-5 text-end">
-                <div class="d-inline-flex align-items-center py-2">
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="btn btn-light btn-square rounded-circle" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div> -->
+      
         </div>
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-            {% comment %} <a href="{% url 'index' %}" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-primary text-uppercase">Badminton Academy</h1>
-            </a> {% endcomment %}
+  
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -405,46 +385,89 @@ ul {
 </nav>
 <div class="tab-content py-3 px-3 px-sm-0 wow fadeInDown  animated" data-animation="fadeInDown animated" data-delay=".2s" id="nav-tabContent" style="visibility: visible; animation-name: fadeInDown;">
 <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="nav-home-tab"> {% endcomment %}
-{% for item in eventUser %}
- <div class="row mb-30">
-<div class="col-lg-2">
-<div class="user">
- <div class="title">
-{% if item.image %}
-<img src="{{ item.image.url }}" alt="img">
-{% endif %}
-{% comment %} <h5>CATEGORY</h5> {% endcomment %}
-<p>❤️All age groups are welcome to participate in badminton events❤️</p> 
-</div>
- <!-- <ul>
-<li>CATEGORY</li>
-<li>UNDER 13 YEARS OLD</li>
-</ul>  -->
-</div>
-</div> 
+    <div class="container">
+        <div class="row justify-content-center my-3">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" id="eventSearch" class="form-control" placeholder="Search events by name">
+                    <div class="input-group-append">
+                        <button id="searchButton" class="btn btn-primary" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="col-lg-10">
-<div class="event-list-content fix">
-<ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class>
-<li>{{ item.location }}</li> 
-<li>{{ item.date|date:"M d D" }}<br>{{ item.time|time:"g:i A" }}</li>
-</ul>
-<h2>{{ item.name }}</h2>
- <p> {{ item.description }} </p> 
- <span>Event ID: {{ item.id }}</span>
- {% if item.is_event_closed or item.current_registrations >= item.max_registrations %}
-  <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Booking Closed</a>
-{% else %}
-  <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Register Now</a>
-{% endif %}
- 
- {% comment %} <a href="{% url 'ProfileVerification' %}" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Verify profile</a> {% endcomment %}
-<!-- <a href="#" class="btn mt-20">Read More</a> -->
-<div class="crical"><i class="fal fa-video"></i> </div>
+   <!-- Event List -->
+   <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="event">
+                <div class="container">
+                    <div class="row">
+                        {% for item in eventUser|dictsortreversed:"date" %}
+                        <div class="event-item col-lg-12 mb-30">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <div class="user">
+                                        <div class="title">
+                                            {% if item.image %}
+                                            <img src="{{ item.image.url }}" alt="img">
+                                            {% endif %}
+                                            <p>❤️All age groups are welcome to participate in badminton events❤️</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="event-list-content fix">
+                                        <ul data-animation="fadeInUp animated" data-delay=".2s"
+                                            style="animation-delay: 0.2s;" class>
+                                            <li>{{ item.location }}</li>
+                                            <li>{{ item.date|date:"M d D" }}<br>{{ item.time|time:"g:i A" }}</li>
+                                        </ul>
+                                        <h2>{{ item.name }}</h2>
+                                        <p> {{ item.description }} </p>
+                                        <span>Event ID: {{ item.id }}</span>
+                                        {% if item.is_event_closed or item.current_registrations >= item.max_registrations %}
+                                        <a href="#" class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i> Booking Closed</a>
+                                        {% else %}
+                                        <a href="{% url 'EventRegform' item.id %}" class="btn mt-20 mr-10"><i
+                                                class="far fa-ticket-alt"></i> Register Now</a>
+                                        {% endif %}
+                                        <div class="crical"><i class="fal fa-video"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div> 
-{% endfor %} 
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const eventSearchInput = document.getElementById('eventSearch');
+        const eventItems = document.querySelectorAll('.event-item');
+
+        eventSearchInput.addEventListener('input', function () {
+            const searchQuery = eventSearchInput.value.toLowerCase();
+
+            eventItems.forEach(function (eventItem) {
+                const eventName = eventItem.querySelector('h2').textContent.toLowerCase();
+                if (eventName.startsWith(searchQuery)) {
+                    eventItem.style.display = 'block';
+                } else {
+                    eventItem.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>

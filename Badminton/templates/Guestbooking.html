@@ -93,7 +93,9 @@
                             <li class="inactive">5</li>
                         </ul>
                     </div>
-                    
+                  
+    
+    
                     <!--==================== BOOKING TIME MODAL ====================-->
                     <div class="booking-time-modal" id="booking-time-modal">
                         <!-- Modal content-->
@@ -153,14 +155,14 @@
 
                                     <input type="hidden" name="booking_date" id="booking-date">
                                     <input type="hidden" name="booking_time" id="booking-time">
-                                  
-                                    <button type="submit" id="booking-submit-button"
+                                    
+                                    <button type="submit" id="booking-submit-button pay-btn"  
                                     style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
                                 <button type="button" class="close-btn" onclick="closeBookingModal()">&times;</button>
+                       
+                                    
                             </div>
-                                {% comment %} <button type="submit" id="booking-submit-button" style="background-color: #0074D9; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
-                            </form>
-                            <button type="button" class="close-btn" onclick="closeBookingModal()">&times;</button> {% endcomment %}
+                                
                         </div>
                     </div>
                 </div>
@@ -173,6 +175,30 @@
         
 <!--==================== MAIN JS ====================-->
 <script>
+    // JavaScript code to disable click events for past and future dates// JavaScript code to disable click events for past and future dates
+function disablePastAndFutureDates() {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
+    const days = document.querySelectorAll(".days li");
+
+    days.forEach((day) => {
+        const date = parseInt(day.innerText);
+        if (
+            (date < today.getDate() && currentMonth === today.getMonth()) ||
+            (currentMonth > today.getMonth() && currentYear === today.getFullYear()) ||
+            (currentYear > today.getFullYear())
+        ) {
+            day.classList.add("inactive");
+            day.removeAttribute("onclick"); // Disable click events
+        }
+    });
+}
+
+// Call the function to disable past and future dates when the page loads
+window.addEventListener("load", disablePastAndFutureDates);
+
+
 
     function validateName() {
         var name = document.getElementById("client-name").value;
@@ -218,8 +244,40 @@
     document.getElementById("client-email").addEventListener("input", validateEmail);
     document.getElementById("client-phone").addEventListener("input", validateIndianPhoneNumber);
     
-</script>
+
+
     
+    
+      var options = {
+         
+        // Enter the Key ID generated from the Dashboard
+        key: "{{ razorpay_merchant_key }}", 
+         
+        // Amount is in currency subunits.
+        // Default currency is INR. Hence, 
+        // 50000 refers to 50000 paise
+        amount: "{{ razorpay_amount }}", 
+        currency: "{{ currency }}",
+         
+        // Your/store name.
+        name: "Dj Razorpay", 
+         
+        // Pass the `id` obtained in the response of Step 1
+        order_id: "{{ razorpay_order_id }}", 
+        callback_url: "{{ callback_url }}",
+      };
+       
+      // initialise razorpay with the options.
+      var rzp1 = new Razorpay(options);
+       
+      // add event listener to the payment button.
+      document.getElementById("pay-btn").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      };
+
+</script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <!--==================== CALENDAR JS ====================-->
         <script src="{% static 'jsbooking/calendar.js' %}" defer></script>
         

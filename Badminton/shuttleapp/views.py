@@ -43,7 +43,10 @@ from .models import EventUser  # Import your EventUser model here
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import EventUser
-
+from django.views.decorators.cache import never_cache
+from django.contrib.auth.decorators import login_required
+@login_required
+@never_cache
 def refere_view(request):
     eventUser = EventUser.objects.filter(status=0)
     
@@ -180,6 +183,49 @@ def member(request):
     for plan in subscription_plans:
         plan.features = plan.features.split('\n')
     return render(request, 'admin/member.html', {'subscription_plans': subscription_plans})
+
+from django.shortcuts import render
+from membershipapp.models import Payment_mem  # Import the Payment_mem model
+
+def member_history(request):
+    # Query the Payment_mem model to get a list of payment instances
+    payments = Payment_mem.objects.all()
+
+    # Create a dictionary to pass data to the template
+    context = {
+        'payments': payments,
+    }
+
+    return render(request, 'admin/member_history.html', context=context)
+
+
+
+from django.http import JsonResponse
+
+from django.http import JsonResponse
+
+def deactivate_member(request, payment_id):
+    try:
+        payment = Payment_mem.objects.get(id=payment_id)
+        # Update the 'status' field to '0' in your Payment_mem model
+        payment.status = '0'
+        payment.save()
+        # Return a success response
+        return JsonResponse({'status': 'success'})
+    except Payment_mem.DoesNotExist:
+        # Return an error response if the payment ID does not exist
+        return JsonResponse({'status': 'error', 'message': 'Payment ID does not exist'})
+def activate_member(request, payment_id):
+    try:
+        payment = Payment_mem.objects.get(id=payment_id)
+        # Update the 'status' field to '1' to activate the member
+        payment.status = '1'
+        payment.save()
+        # Redirect back to the member history page
+        return JsonResponse({'status': 'success'})
+    except Payment_mem.DoesNotExist:
+        # Handle the case where the payment ID does not exist
+        return JsonResponse({'status': 'error', 'message': 'Payment not found'})
 
 
 def edit_member(request, plan_id):
@@ -504,6 +550,10 @@ def get_booking_count_for_time_slot(booking_date, start_time, end_time):
         booking_end_time__gte=end_time,
     ).count()
 
+# views.py
+
+from django.shortcuts import redirect, render
+from django.urls import reverse
 
 def Guestbooking(request):
     if request.method == "POST":
@@ -549,22 +599,16 @@ def Guestbooking(request):
                     booking_end_time=end_datetime.time(),
                 )
 
-                
-                return render(
-                    request,
-                    "booking_success.html",
-                    {
-                        "client_name": client_name,
-                        "booking_count": booking_count + 1,  # Increment the count
-                    },
-                )
+                # Redirect to the 'Guestpayment' view with query parameters
+                redirect_url = reverse('Guestpayment')
+                redirect_url += f'?client_name={client_name}&booking_count={booking_count + 1}'
+                return redirect(redirect_url)
+
             else:
                 return render(
                     request,
-                    "booking_error.html",
-                    {
-                        "error_message": "This time slot is already fully booked.",
-                    },
+                    "Guestbooking.html",
+                    context={'error_message': 'This time slot is already fully booked.'}
                 )
 
     return render(
@@ -576,4 +620,93 @@ def Guestbooking(request):
 
 
 
+from django.shortcuts import render
+import razorpay
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseBadRequest
+
+
+# authorize razorpay client with API Keys.
+razorpay_client = razorpay.Client(
+	auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+
+# views.py
+
+def Guestpayment(request):
+    currency = 'INR'
+    amount = 10000  # Rs. 100
+
+    # Get query parameters
+    client_name = request.GET.get('client_name', '')
+    booking_count = request.GET.get('booking_count', '')
+
+    # Create a Razorpay Order
+    razorpay_order = razorpay_client.order.create(dict(amount=amount,
+                                                      currency=currency,
+                                                      payment_capture='0'))
+
+    # order id of newly created order.
+    razorpay_order_id = razorpay_order['id']
+    callback_url = 'paymenthandler/'
+
+    # we need to pass these details to frontend.
+    context = {}
+    context['razorpay_order_id'] = razorpay_order_id
+    context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
+    context['razorpay_amount'] = amount
+    context['currency'] = currency
+    context['callback_url'] = callback_url
+
+    return render(request, 'index.html', context=context)
+
+
+
+# we need to csrf_exempt this url as
+# POST request will be made by Razorpay
+# and it won't have the csrf token.
+@csrf_exempt
+def paymenthandler(request):
+
+	# only accept POST request.
+	if request.method == "POST":
+		try:
+		
+			# get the required parameters from post request.
+			payment_id = request.POST.get('razorpay_payment_id', '')
+			razorpay_order_id = request.POST.get('razorpay_order_id', '')
+			signature = request.POST.get('razorpay_signature', '')
+			params_dict = {
+				'razorpay_order_id': razorpay_order_id,
+				'razorpay_payment_id': payment_id,
+				'razorpay_signature': signature
+			}
+
+			# verify the payment signature.
+			result = razorpay_client.utility.verify_payment_signature(
+				params_dict)
+			if result is not None:
+				amount = 10000 # Rs. 100
+				try:
+
+					# capture the payemt
+					razorpay_client.payment.capture(payment_id, amount)
+
+					# render success page on successful caputre of payment
+					return render(request, 'booking_success.html')
+				except:
+
+					# if there is an error while capturing payment.
+					return render(request, 'booking_error.html')
+			else:
+
+				# if signature verification fails.
+				return render(request, 'booking_error.html')
+		except:
+
+			# if we don't find the required parameters in POST data
+			return HttpResponseBadRequest()
+	else:
+	# if other than POST request is made.
+		return HttpResponseBadRequest()
 

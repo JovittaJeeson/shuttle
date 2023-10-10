@@ -110,7 +110,11 @@
                             </div> 
                             
                         </div>
+                        {% if user.is_authenticated %}
                         <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">JOIN US</a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">JOIN US</a>
+                        {% endif %}
                     </div>
                 </nav>
             </div>

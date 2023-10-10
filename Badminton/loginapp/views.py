@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from .models import CustomUser
-# Create your views here.
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
@@ -63,59 +62,7 @@ def jovilogin(request):
 
 
 
-#anantha code
-# def jovilogin(request):
-#      # Calculate the date threshold for "new" users (e.g., users created within the last 7 days)
-#     threshold_date = datetime.now() - timedelta(days=7)
 
-#     # Query new users from the database
-#     new_users = CustomUser.objects.filter(date_joined__gte=threshold_date)
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         password = request.POST.get('pwd')
-
-#         if email and password:
-#             user = authenticate(request, email=email, password=password)
-#             if user is not None:
-#                 auth_login(request, user)
-#                 if user.is_refere:
-#                     return redirect("refere")
-#                 elif user.is_customer:
-#                     return redirect('/')
-#                 elif email == 'admin1@gmail.com':
-                    
-#                     return render(request, 'admin/indexadmin.html')
-#                 else:
-#                     return redirect('/')
-#             else:
-#                 messages.error(request, 'Invalid login credentials.')
-
-#     return render(request, 'jovilogin.html')
-
-
-# def jovilogin(request):
-#      # Calculate the date threshold for "new" users (e.g., users created within the last 7 days)
-#     threshold_date = datetime.now() - timedelta(days=7)
-
-#     # Query new users from the database
-#     new_users = CustomUser.objects.filter(date_joined__gte=threshold_date)
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         password = request.POST.get('pwd')
-
-#         if email and password:
-#             user = authenticate(request, email=email, password=password)
-#             if user is not None:
-#                 auth_login(request, user)
-#                 if email == 'admin1@gmail.com':
-                    
-#                     return render(request, 'admin/indexadmin.html')
-#                 else:
-#                     return redirect('/')
-#             else:
-#                 messages.error(request, 'Invalid login credentials.')
-
-#     return render(request, 'jovilogin.html')
 
 
 

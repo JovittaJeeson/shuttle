@@ -30,7 +30,9 @@ urlpatterns=[
      path('new_user/', views.new_user, name='new_user'), 
      path('member/',views.member,name='member'),
      path('add_member/',views.add_member,name='add_member'),
-
+     path('member_history/', views.member_history, name='member_history'),
+     path('deactivate_member/<int:payment_id>/', views.deactivate_member, name='deactivate_member'),
+     path('activate_member/<int:payment_id>/', views.activate_member, name='activate_member'),
 
 
      path('new-user/', views.new_user, name='new_user'),  # For all new users
@@ -58,8 +60,11 @@ urlpatterns=[
      # url of guestbooking page delete action
      path('delete_booking/<int:booking_id>/', views.delete_booking, name='delete_booking'),
 
-
-
+#payment
+     # path('Guestpayment/<str:client_name>/<int:booking_count>/', views.Guestpayment, name='Guestpayment'),
+     path('Guestpayment/', views.Guestpayment, name='Guestpayment'),
+     # path('Guestpayment/',views.Guestpayment,name='Guestpayment'),
+     path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
     
 ]
 if settings.DEBUG:

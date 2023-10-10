@@ -63,6 +63,9 @@
                             <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
                         </li>
                         <li>
+                            <a href="{% url "member_history" %}"><i class="fa fa-user"></i> <span>Members in Academy</span></a>
+                        </li>
+                        <li>
                             <a href="{% url "Eventlist" %}"><i class="fa fa-user fa-lg"></i> <span>Event Listing</span></a>
                         </li>
                         <li>
@@ -121,7 +124,7 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg1"><i class="fa fa-user" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>{{ user_count }}8</h3>
+                                <h3>{{ user_count }}Smashzone</h3>
                                 <span class="widget-title1">Users <i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
@@ -134,8 +137,8 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg2"><i class="fa fa-calendar"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>8</h3>
-                                <span class="widget-title2">Event register list <i class="fa fa-check" aria-hidden="true"></i></span>
+                                <h3>Smashzone</h3>
+                                <span class="widget-title2">Badminton Events <i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
@@ -143,7 +146,7 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg3"><i class="fa fa-users" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>7</h3>
+                                <h3>Smashzone</h3>
                                 <span class="widget-title3">Academy Members <i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
@@ -152,8 +155,8 @@
                         <div class="dash-widget">
                             <span class="dash-widget-bg4"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
                             <div class="dash-widget-info text-right">
-                                <h3>0</h3>
-                                <span class="widget-title4">Payments <i class="fa fa-check" aria-hidden="true"></i></span>
+                                <h3>Smashzone</h3>
+                                <span class="widget-title4">Guest Users <i class="fa fa-check" aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
@@ -211,17 +214,7 @@
 							</div> {% endcomment %}
 						</div>
 					</div>
-                    {% comment %} <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                        <div class="card member-panel">
-							<div class="card-header bg-white">
-								<h4 class="card-title mb-0">Doctors</h4>
-							</div>
-                           
-                            <div class="card-footer text-center bg-white">
-                                <a href="" class="text-muted">View all Doctors</a>
-                            </div>
-                        </div>
-                    </div> {% endcomment %}
+                 
 				</div>
 				<div class="row">
 					<div class="col-12 col-md-6 col-lg-8 col-xl-8">
@@ -237,7 +230,7 @@
                                             {% for user in new_users %}
                                             <tr>
                                                 <td>
-                                                    <img width="28" height="28" class="rounded-circle" src="admin/img/user.jpg" alt="">
+                                                    <img width="28" height="28" class="rounded-circle" src="{% static "images/logo.jpg" %}" alt="">
                                                     <h2>{{ user.name }}</h2>
                                                 </td>
                                                 <td>{{ user.email }}</td>
@@ -256,7 +249,7 @@
 					
 				</div>
             </div> 
-            <div class="notification-box">
+            {% comment %} <div class="notification-box">
                 <div class="msg-sidebar notifications msg-noti">
                     <div class="topnav-dropdown-header">
                         <span>Messages</span>
@@ -281,7 +274,7 @@
                             <li>
                             
                     
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
     </div>

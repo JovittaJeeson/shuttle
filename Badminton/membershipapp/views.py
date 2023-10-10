@@ -14,21 +14,7 @@ def membership(request):
 
 
     return render(request, 'membership.html', {'subscription_plans': subscription_plans})
-# def membership(request):
-#     subscription_plans = SubscriptionPlan.objects.all()
-#     return render(request, 'membership.html', {'subscription_plans': subscription_plans})
-# def membership(request, plan_id):
-#     plan = SubscriptionPlan.objects.get(pk=plan_id)
 
-#     # Split the features text into a list using newline characters
-#     features_list = plan.features.split('\n')
-
-#     context = {
-#         'plan': plan,
-#         'features_list': features_list,
-#     }
-
-#     return render(request, 'membership.html', context)
 # payment
 
 from django.shortcuts import render
@@ -36,7 +22,8 @@ import razorpay
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseBadRequest
- 
+from django.shortcuts import render, redirect
+from django.urls import reverse
  
 # authorize razorpay client with API Keys.
 razorpay_client = razorpay.Client(
@@ -46,8 +33,8 @@ razorpay_client = razorpay.Client(
 def Payment(request,member_id):
     member=SubscriptionPlan.objects.get(pk=member_id)
     currency = 'INR'
-    amount = int(member.price)*100   # Rs. 200
-
+    amount = int(member.price)*100 # Rs. 200
+#
  
     # Create a Razorpay Order
     razorpay_order = razorpay_client.order.create(dict(amount=amount,
@@ -56,11 +43,18 @@ def Payment(request,member_id):
  
     # order id of newly created order.
     razorpay_order_id = razorpay_order['id']
-    callback_url = 'paymenthandler/'
-    # callback_url = 'membership'
- 
+    callback_url = '/paymenthandler/'
+    
+    payment_instance = Payment_mem.objects.create(
+        user=request.user,
+        subscription_plan=member,  
+        razorpay_order_id=razorpay_order_id,
+        amount=amount/100,
+        status='1'
+    )
     # we need to pass these details to frontend.
     context = {}
+    context['amount'] = amount*100
     context['razorpay_order_id'] = razorpay_order_id
     context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
     context['razorpay_amount'] = amount
@@ -69,18 +63,16 @@ def Payment(request,member_id):
  
     return render(request, 'Payment.html', context=context)
  
- 
+from django.shortcuts import redirect
+
 # we need to csrf_exempt this url as
 # POST request will be made by Razorpay
 # and it won't have the csrf token.
 @csrf_exempt
 def paymenthandler(request):
- 
-    # only accept POST request.
+    # Only accept POST request.
     if request.method == "POST":
-        try:
-           
-            # get the required parameters from post request.
+            # Get the required parameters from the POST request.
             payment_id = request.POST.get('razorpay_payment_id', '')
             razorpay_order_id = request.POST.get('razorpay_order_id', '')
             signature = request.POST.get('razorpay_signature', '')
@@ -89,35 +81,47 @@ def paymenthandler(request):
                 'razorpay_payment_id': payment_id,
                 'razorpay_signature': signature
             }
- 
-            # verify the payment signature.
-            result = razorpay_client.utility.verify_payment_signature(
-                params_dict)
+
+            # Verify the payment signature.
+            result = razorpay_client.utility.verify_payment_signature(params_dict)
             if result is not None:
-                amount = 20000  # Rs. 200
-                try:
- 
-                    # capture the payemt
-                    razorpay_client.payment.capture(payment_id, amount)
- 
-                    # render success page on successful caputre of payment
-                    return render(request, 'booking_success.html')
-                except:
- 
-                    # if there is an error while capturing payment.
-                    return render(request, 'booking_error.html')
-            else:
- 
-                # if signature verification fails.
-                return render(request, 'booking_error.html')
-        except:
- 
-            # if we don't find the required parameters in POST data
-            return HttpResponseBadRequest()
-    else:
-       # if other than POST request is made.
-        return HttpResponseBadRequest()
+                    # Get the Payment_mem instance associated with the payment
+                    payment_instance = Payment_mem.objects.get(razorpay_order_id=razorpay_order_id)
 
-   
+                    # Capture the payment using the correct amount from the Payment_mem instance
+                    amount = int(payment_instance.amount)
+                    print(amount)
+                    razorpay_client.payment.capture(payment_id, amount*100)
+
+                    # Redirect to 'membership.html' upon successful payment capture
+                    ...
+                    return redirect('membership')
 
 
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseBadRequest
+from .models import Payment_mem
+from .models import SubscriptionPlan, CustomUser  # Replace 'your_app' with the actual name of your app
+
+def create_payment(request, subscription_plan_id):
+    # Get the SubscriptionPlan and CustomUser instances
+    subscription_plan = get_object_or_404(SubscriptionPlan, pk=subscription_plan_id)
+    user = get_object_or_404(CustomUser)
+
+    # You can customize the amount based on your requirements     , pk=user_id
+    amount = subscription_plan.price
+
+    # Create a Payment_mem instance
+    payment = Payment_mem(
+        subscription_plan=subscription_plan,
+        user=user,
+        # payment_id='your_payment_id',  # You should replace this with the actual payment ID
+        amount=amount,
+        status='Pending'
+    )
+
+    # Save the payment instance to the database
+    payment.save()
+
+    # You can customize the response based on your requirements
+    return HttpResponse(f"Payment created successfully for {subscription_plan.title}.")
