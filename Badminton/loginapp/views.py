@@ -8,8 +8,7 @@ from django.shortcuts import render
 from .models import CustomUser
 from datetime import datetime, timedelta
 
-def jovilogin(request):
-     return render(request,'jovilogin.html')
+
 
 from django.contrib.auth.decorators import login_required
 @login_required(login_url='login')
@@ -38,6 +37,29 @@ def index_reg(request):
             return redirect('login')
     return render(request, 'index_reg.html')
 
+# def jovilogin(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         password = request.POST.get('pwd')
+
+#         if email and password:
+#             user = authenticate(request, email=email, password=password)
+#             if user is not None:
+#                 auth_login(request, user)
+#                 if user.is_refere:
+#                     return redirect("refere")
+#                 elif user.is_customer:
+#                     return redirect('/')
+#                 elif email == 'admin1@gmail.com':
+#                     return render(request, 'admin/indexadmin.html')
+#                 else:
+#                   error_message="invalid login credintials"
+#                   return render(request, 'jovilogin.html',{'error_message': error_message})
+
+#     messages.clear(request)
+#     return render(request, 'jovilogin.html')
+from django.http import JsonResponse
+
 def jovilogin(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -53,11 +75,10 @@ def jovilogin(request):
                     return redirect('/')
                 elif email == 'admin1@gmail.com':
                     return render(request, 'admin/indexadmin.html')
-                else:
-                    messages.error(request, 'Invalid login credentials.')
             else:
-                messages.error(request, 'Invalid login credentials.')
-
+                # Return a JSON response to trigger the pop-up
+                return JsonResponse({'login_failed': True})
+    
     return render(request, 'jovilogin.html')
 
 

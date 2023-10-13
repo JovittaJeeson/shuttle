@@ -182,16 +182,18 @@
 
             function validateDescription() {
                 var description = document.getElementById("event-description").value;
-                var alphanumeric = /^[a-zA-Z0-9\s]+$/;
-                if (!alphanumeric.test(description)) {
+                // You can use a regular expression to allow symbols
+                var validCharacters = /^[a-zA-Z0-9\s ."'#?>]+$/;
+                if (!validCharacters.test(description)) {
                     document.getElementById("descriptionError").textContent =
-                        "Description should only contain letters and numbers";
+                        "Description should only contain letters, numbers, and symbols like .\"'#>";
                     return false;
                 } else {
                     document.getElementById("descriptionError").textContent = "";
                     return true;
                 }
             }
+            
 
             function validateImage() {
                 var image = document.getElementById("event-image").value;

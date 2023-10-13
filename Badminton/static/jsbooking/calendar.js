@@ -94,3 +94,4 @@ document.querySelectorAll('.time-block').forEach(timeBlock => {
         selectTime(selectedTime);
     });
 });
+

@@ -47,21 +47,18 @@
             style="cursor: pointer; margin-top: 5px; display: inline-block; color: #007BFF;"
             >Show</span>
           </div>
-          
-          {% comment %} <div class="input-box" style="margin-bottom: 30px; ">
-            <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required id="t5" name="pwd" onkeyup="validatePwd()">
-            <span id="pw"></span>
-          </div> {% endcomment %}
-            {% comment %} {% if messages %}
-          <script>
-            swal.fire({
-              title: "Login Failed",
-              text: "{{ messages }}", // Display the error message from Django
-              icon: "error",
-            });
-          </script>
-          {% endif %} {% endcomment %}
+         <!-- Remove this section -->
+            {% if error_message %}
+            <script>
+                swal.fire({
+                    title: "Login Failed",
+                    text: "Password is wrong!",
+                    icon: "Fails",  // This should be "error" instead of "Fails"
+                });
+            </script>
+            {% endif %}
+
+        
         </div>
         <div class="button">
         

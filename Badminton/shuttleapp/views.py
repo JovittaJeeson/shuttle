@@ -602,7 +602,7 @@ def Guestbooking(request):
                 # Redirect to the 'Guestpayment' view with query parameters
                 redirect_url = reverse('Guestpayment')
                 redirect_url += f'?client_name={client_name}&booking_count={booking_count + 1}'
-                return redirect(redirect_url)
+                return redirect('Guestpayment')
 
             else:
                 return render(

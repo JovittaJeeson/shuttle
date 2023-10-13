@@ -63,6 +63,7 @@ urlpatterns=[
 #payment
      # path('Guestpayment/<str:client_name>/<int:booking_count>/', views.Guestpayment, name='Guestpayment'),
      path('Guestpayment/', views.Guestpayment, name='Guestpayment'),
+     
      # path('Guestpayment/',views.Guestpayment,name='Guestpayment'),
      path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
     
