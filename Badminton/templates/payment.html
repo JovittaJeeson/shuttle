@@ -64,7 +64,7 @@
         >Pay for us for an exciting and energetic badminton session</small
       >
       <div class="btn_container">
-        <!-- Payment Button -->
+        
         <button class="btn" id="pay-btn">Pay Now❤️</button>
       </div>
     </div>
@@ -75,12 +75,9 @@
   <script>
     var options = {
        
-      // Enter the Key ID generated from the Dashboard
+      
       key: "{{ razorpay_merchant_key }}",
        
-      // Amount is in currency subunits.
-      // Default currency is INR. Hence,
-      // 50000 refers to 50000 paise
       amount: "{{ razorpay_amount }}",
       currency: "{{ currency }}",
        

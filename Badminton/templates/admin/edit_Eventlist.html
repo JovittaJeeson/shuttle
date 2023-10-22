@@ -207,34 +207,44 @@
     
             function validateDescription() {
                 var description = document.getElementById("event-description").value;
-                var alphanumeric = /^[a-zA-Z0-9\s]+$/;
-                if (!alphanumeric.test(description)) {
+                // Update the regular expression to allow periods, single quotes, and double quotes
+                var allowedCharacters = /^[a-zA-Z0-9\s.,'"]+$/;
+                if (!allowedCharacters.test(description)) {
                     document.getElementById("descriptionError").textContent =
-                        "Description should only contain letters and numbers";
+                        "Description can contain letters, numbers, spaces, periods, single quotes, and double quotes";
                     return false;
                 } else {
                     document.getElementById("descriptionError").textContent = "";
                     return true;
                 }
             }
-    
-     // Existing code...
+            
+            function validateImage() {
+                var imageInput = document.getElementById("event-image");
+                var image = imageInput.value;
+            
+                // Check if a new image is selected
+                if (image !== "") {
+                    // Validate the image only if a new image is selected
+                    // You can add your image validation logic here if needed
+                    // If you don't want to validate the image, you can remove this block.
+                    // Otherwise, display an error message if the image is not valid.
+                    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+                    if (!allowedExtensions.exec(image)) {
+                        document.getElementById("imageError").textContent = "Invalid file type. Please select an image (jpg, jpeg, png, gif).";
+                        return false;
+                    } else {
+                        document.getElementById("imageError").textContent = "";
+                        return true;
+                    }
+                } else {
+                    // No new image selected, so no validation is needed
+                    document.getElementById("imageError").textContent = "";
+                    return true;
+                }
+            }
+            
 
-function validateImage() {
-    var imageInput = document.getElementById("event-image");
-    var image = imageInput.value;
-
-    // Check if a new image is selected or there is an existing image
-    if (image === "" && !imageInput.getAttribute("data-existing-image")) {
-        document.getElementById("imageError").textContent = "Image is required";
-        return false;
-    } else {
-        document.getElementById("imageError").textContent = "";
-        return true;
-    }
-}
-
-// Existing code...
 
             function validateDate() {
                 var today = new Date();

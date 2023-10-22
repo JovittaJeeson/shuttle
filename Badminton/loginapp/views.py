@@ -14,28 +14,96 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='login')
 def user_profile(request):
      return render(request,'user_profile.html')
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+from .models import CustomUser
+
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+from .models import CustomUser
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login
+from .models import CustomUser
+
+def jovilogin(request):
+    # Initialize the context variable to False by default
+    register_successful = False
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('pwd')
+
+        if email and password:
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                auth_login(request, user)
+                if user.is_refere:
+                    return redirect("refere")
+                elif user.is_customer:
+                    return redirect('/')
+                elif email == 'admin1@gmail.com':
+                    return render(request, 'admin/indexadmin.html')
+            else:
+                # Set an error message to be displayed in the template
+                messages.error(request, 'Login Failed: Invalid email or password')
+
+    # Check if the 'register_successful' key is in the request's GET parameters
+    if 'register_successful' in request.GET:
+        # Set the context variable to True if 'register_successful' is present
+        register_successful = True
+
+    return render(request, 'jovilogin.html', {'register_successful': register_successful})
+from django.contrib import messages
 
 def index_reg(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         email = request.POST.get('email')
-        name = request.POST.get('fname') 
-        birth = request.POST.get('birth')   
-        password = request.POST.get('pwd')  
-        gender = request.POST.get('gender')  
-        phone = request.POST.get('phone')    
-        
+        name = request.POST.get('fname')
+        birth = request.POST.get('birth')
+        password = request.POST.get('pwd')
+        gender = request.POST.get('gender')
+        phone = request.POST.get('phone')
 
         if CustomUser.objects.filter(email=email).exists():
-            messages.info(request,'Email is already registered')
-            return render(request,"index_reg.html")
+            messages.info(request, 'Email is already registered')
         elif email and name and birth and password and gender and phone:
-            user = CustomUser(email=email,name=name,birth=birth,gender=gender,phone=phone)
-            user.is_customer=True
+            user = CustomUser(email=email, name=name, birth=birth, gender=gender, phone=phone)
+            user.is_customer = True
             user.set_password(password)
             user.save()
-            messages.success(request,"registerd sucessfully")
-            return redirect('login')
+            # Set a success message and clear it from the list of messages
+            messages.get_messages(request)._loaded_data = []
+            # messages.success(request, 'Registered Successfully')
+            return redirect('jovilogin')
+
     return render(request, 'index_reg.html')
+
+
+
+# def index_reg(request):
+#     if request.method=='POST':
+#         email = request.POST.get('email')
+#         name = request.POST.get('fname') 
+#         birth = request.POST.get('birth')   
+#         password = request.POST.get('pwd')  
+#         gender = request.POST.get('gender')  
+#         phone = request.POST.get('phone')    
+        
+
+#         if CustomUser.objects.filter(email=email).exists():
+#             messages.info(request,'Email is already registered')
+#             return render(request,"index_reg.html")
+#         elif email and name and birth and password and gender and phone:
+#             user = CustomUser(email=email,name=name,birth=birth,gender=gender,phone=phone)
+#             user.is_customer=True
+#             user.set_password(password)
+#             user.save()
+#             messages.success(request,"registerd sucessfully")
+#             return redirect('login')
+#     return render(request, 'index_reg.html')
 
 # def jovilogin(request):
 #     if request.method == 'POST':
@@ -58,28 +126,42 @@ def index_reg(request):
 
 #     messages.clear(request)
 #     return render(request, 'jovilogin.html')
-from django.http import JsonResponse
 
-def jovilogin(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('pwd')
 
-        if email and password:
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                auth_login(request, user)
-                if user.is_refere:
-                    return redirect("refere")
-                elif user.is_customer:
-                    return redirect('/')
-                elif email == 'admin1@gmail.com':
-                    return render(request, 'admin/indexadmin.html')
-            else:
-                # Return a JSON response to trigger the pop-up
-                return JsonResponse({'login_failed': True})
-    
-    return render(request, 'jovilogin.html')
+
+
+
+
+#***********************************
+# from django.contrib import messages
+# from django.shortcuts import render, redirect
+# from django.contrib.auth import authenticate, login as auth_login
+
+# def jovilogin(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         password = request.POST.get('pwd')
+
+#         if email and password:
+#             user = authenticate(request, email=email, password=password)
+#             if user is not None:
+#                 auth_login(request, user)
+#                 if user.is_refere:
+#                     return redirect("refere")
+#                 elif user.is_customer:
+#                     return redirect('/')
+#                 elif email == 'admin1@gmail.com':
+#                     return render(request, 'admin/indexadmin.html')
+#             else:
+#                 # Set an error message to be displayed in the template
+#                 messages.error(request, 'Login Failed: Invalid email or password')
+
+#     # For successful registration message
+#     if 'register_successful' in request.GET:
+#         messages.success(request, 'Registered Successfully')
+
+#     return render(request, 'jovilogin.html')
+
 
 
 

@@ -16,8 +16,20 @@
     <div class="content">
       <form method="POST" onsubmit="return checkall()">
         {% csrf_token %}
+  {% comment %} {% if messages %}
+    {% for message in messages %}
+    <script>
+        swal.fire({
+            title: "{% if message.tags %}{{ message.tags }}{% endif %}",
+            text: "{{ message }}",
+            icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% else %}info{% endif %}",
+        });
+    </script>
+    {% endfor %}
+{% endif %}   {% endcomment %}
+
      
-        {% if messages %}
+        {% comment %} {% if messages %}
         {% for message in messages %}
             <script>
                 
@@ -30,7 +42,7 @@
                         })
             </script>
         {% endfor %}
-        {% endif%}
+        {% endif%} {% endcomment %}
 
         <div class="user-details" style="display: flex; flex-direction: column;">
           <div class="input-box">
@@ -48,7 +60,7 @@
             >Show</span>
           </div>
          <!-- Remove this section -->
-            {% if error_message %}
+            {% comment %} {% if error_message %}
             <script>
                 swal.fire({
                     title: "Login Failed",
@@ -56,7 +68,7 @@
                     icon: "Fails",  // This should be "error" instead of "Fails"
                 });
             </script>
-            {% endif %}
+            {% endif %} {% endcomment %}
 
         
         </div>
