@@ -1,0 +1,440 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ... Head section ... -->
+  <title>Doubles Registration Form</title>
+</head>
+<body>
+    <div class="video-container">
+        <video src="{% static 'bg_v.mp4' %}" id="video-slider" loop autoplay muted></video>
+    </div>
+  <!-- ... Video container ... -->
+  <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url('your-background-image.jpg');">
+    <div class="container">
+      <h2>Registration Form (Doubles)</h2>
+      <form id="registration-form" method="post">
+        {% csrf_token %}
+        <select id="registration-type" name="registration-type" disabled>
+          <option value="team" selected>Team</option>
+        </select>
+        <div id="team-fields" class="form-section">
+          <div class="row">
+            <div class="column">
+              <label for="team-name1">Full Name 1:</label>
+              <input type="text" placeholder="Enter Name 1" id="team-name1" name="team-name1">
+              <span class="error" id="team-name1-error"></span> <!-- Error message for team-name1 -->
+            </div>
+            <div class="column">
+              <label for="team-dob1">Date of Birth 1:</label>
+              <input type="date" id="team-dob1" name="team-dob1" >
+              <span class="error" id="team-dob1-error"></span> <!-- Error message for date of birth -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <label for="team-name2">Full Name 2:</label>
+              <input type="text" placeholder="Enter Name 2" id="team-name2" name="team-name2" >
+              <span class "error" id="team-name2-error"></span> <!-- Error message for team-name1 -->
+            </div>
+            <div class="column">
+              <label for="team-dob2">Date of Birth 2:</label>
+              <input type="date" id="team-dob2" name="team-dob2" >
+              <span class="error" id="team-dob2-error"></span> <!-- Error message for team-dob2 -->
+            </div>
+          </div>
+        </div>
+        <input type="tel" placeholder="Contact Number" id="contact-number" name="contact-number">
+<span class="error" id="contact-error"></span>
+     <p class="rules-text">Rules:</p>
+      <div class="rules-section">
+        <p class="rule">
+          <strong>General Rules</strong><br>
+          Eligibility:<br>
+          - Open to players meeting age and skill requirements.<br>
+          - Birth Certificate is required.<br>
+         
+          Scoring:<br>
+          - Games to 21 points, two-point lead.<br>
+          - Tiebreaker at 20-20.<br>
+          Shuttles:<br>
+          - Feather shuttles used.<br>
+
+       <!-- ... additional rules ... -->
+        <label class="declaration-label">
+          <input type="checkbox" id="declaration-checkbox" name="declaration-checkbox">
+          <span class="error" id="declaration-error"></span> <!-- Error message for checkbox -->
+          I have read this
+        </label>
+      </div>
+       <button type="submit">Submit</button> 
+        <!-- ... Other fields ... -->
+        <!-- ... Other fields ... -->
+      </form>
+    </div>
+  </div>
+  <!-- ... Previous HTML code ... -->
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      const registrationType = document.getElementById('registration-type');
+      const singleFields = document.getElementById('single-fields');
+      const teamFields = document.getElementById('team-fields');
+      const teamTable = document.getElementById('team-table');
+    
+      registrationType.addEventListener('change', function () {
+        if (registrationType.value === 'single') {
+          singleFields.style.display = 'block';
+          teamFields.style.display = 'none';
+        } else if (registrationType.value === 'team') {
+          singleFields.style.display = 'none';
+          teamFields.style.display = 'block';
+        }
+      });
+    
+      // Function to validate name input
+      function validateName(inputField, errorElement) {
+        const namePattern = /^[A-Za-z ]{1,}$/; // Regular expression for letters only
+    
+        if (namePattern.test(inputField.value)) {
+          // Name is valid
+          errorElement.textContent = ''; // Clear the error message
+          return true;
+        } else {
+          // Name is invalid
+          errorElement.textContent = 'Please enter a valid name (only letters and 2 spaces are allowed).';
+          return false;
+        }
+      }
+  
+      // Function to validate date of birth
+      function validateDateOfBirth(inputField, errorElement) {
+        const dobValue = inputField.value;
+        console.log('dobValue:', dobValue); // Add this line for debugging
+    
+        if (!dobValue) {
+          errorElement.textContent = 'Date of Birth is required.';
+          return false;
+        }
+    
+        const dobDate = new Date(dobValue);
+        console.log('dobDate:', dobDate); // Add this line for debugging
+    
+        if (isNaN(dobDate.getTime())) {
+          // Invalid date format
+          errorElement.textContent = 'Invalid date format.';
+          return false;
+        }
+    
+        const currentDate = new Date();
+        const age = currentDate.getFullYear() - dobDate.getFullYear();
+    
+        if (age < 10) {
+          errorElement.textContent = 'Age must be at least 10 years old.';
+          return false;
+        } else {
+          errorElement.textContent = '';
+          return true;
+        }
+      }
+    
+      // Function to validate Indian phone number
+      function validatePhoneNumber(inputField, errorElement) {
+        const phoneNumberPattern = /^[6-9]\d{9}$/; // Indian phone number pattern
+    
+        if (phoneNumberPattern.test(inputField.value)) {
+          // Phone number is valid
+          errorElement.textContent = ''; // Clear the error message
+          return true;
+        } else {
+          // Phone number is invalid
+          errorElement.textContent = 'Please enter a valid Indian phone number.';
+          return false;
+        }
+      }
+    
+      // Add event listeners to clear errors when the user interacts with input fields
+      const singleNameInput = document.getElementById('single-name');
+      const singleDobInput = document.getElementById('single-dob');
+      const teamName1Input = document.getElementById('team-name1');
+      const teamName2Input = document.getElementById('team-name2');
+      const teamDob1Input = document.getElementById('team-dob1');
+      const teamDob2Input = document.getElementById('team-dob2');
+      const contactNumberInput = document.getElementById('contact-number');
+      const declarationCheckbox = document.getElementById('declaration-checkbox');
+  
+      singleNameInput.addEventListener('input', function () {
+        const singleNameError = document.getElementById('single-name-error');
+        if (validateName(singleNameInput, singleNameError)) {
+          singleNameError.textContent = ''; // Clear the error message
+        }
+      });
+  
+      singleDobInput.addEventListener('input', function () {
+        const singleDobError = document.getElementById('single-dob-error');
+        if (validateDateOfBirth(singleDobInput, singleDobError)) {
+          singleDobError.textContent = ''; // Clear the error message
+        }
+      });
+  
+      teamName1Input.addEventListener('input', function () {
+        const teamName1Error = document.getElementById('team-name1-error');
+        if (validateName(teamName1Input, teamName1Error)) {
+          teamName1Error.textContent = ''; // Clear the error message
+        }
+      });
+  
+      teamName2Input.addEventListener('input', function () {
+        const teamName2Error = document.getElementById('team-name2-error');
+        if (validateName(teamName2Input, teamName2Error)) {
+          teamName2Error.textContent = ''; // Clear the error message
+        }
+      });
+  
+      teamDob1Input.addEventListener('input', function () {
+        const teamDob1Error = document.getElementById('team-dob1-error');
+        if (validateDateOfBirth(teamDob1Input, teamDob1Error)) {
+          teamDob1Error.textContent = ''; // Clear the error message
+        }
+      });
+  
+      teamDob2Input.addEventListener('input', function () {
+        const teamDob2Error = document.getElementById('team-dob2-error');
+        if (validateDateOfBirth(teamDob2Input, teamDob2Error)) {
+          teamDob2Error.textContent = ''; // Clear the error message
+        }
+      });
+  
+      contactNumberInput.addEventListener('input', function () {
+        const contactError = document.getElementById('contact-error');
+        if (validatePhoneNumber(contactNumberInput, contactError)) {
+          contactError.textContent = ''; // Clear the error message
+        }
+      });
+  
+      declarationCheckbox.addEventListener('change', function () {
+        const declarationError = document.getElementById('declaration-error');
+        declarationError.textContent = ''; // Clear the error message
+      });
+  
+      document.getElementById('registration-form').addEventListener('submit', function (event) {
+        const registrationType = document.getElementById('registration-type');
+    
+        // Variables to store validation results
+        let isFormValid = true;
+    
+        if (registrationType.value === 'single') {
+          // Validate single-fields
+          const singleNameInput = document.getElementById('single-name');
+          const singleDobInput = document.getElementById('single-dob');
+          const singleNameError = document.getElementById('single-name-error');
+          const singleDobError = document.getElementById('single-dob-error');
+    
+          const isSingleNameValid = validateName(singleNameInput, singleNameError);
+          const isSingleDobValid = validateDateOfBirth(singleDobInput, singleDobError);
+    
+          if (!isSingleNameValid || !isSingleDobValid) {
+            isFormValid = false;
+          }
+        } else if (registrationType.value === 'team') {
+          // Validate team-fields
+          const teamName1Input = document.getElementById('team-name1');
+          const teamName2Input = document.getElementById('team-name2');
+          const teamDob1Input = document.getElementById('team-dob1');
+          const teamDob2Input = document.getElementById('team-dob2');
+          const teamName1Error = document.getElementById('team-name1-error');
+          const teamName2Error = document.getElementById('team-name2-error');
+          const teamDob1Error = document.getElementById('team-dob1-error');
+          const teamDob2Error = document.getElementById('team-dob2-error');
+    
+          const isTeamName1Valid = validateName(teamName1Input, teamName1Error);
+          const isTeamName2Valid = validateName(teamName2Input, teamName2Error);
+          const isTeamDob1Valid = validateDateOfBirth(teamDob1Input, teamDob1Error);
+          const isTeamDob2Valid = validateDateOfBirth(teamDob2Input, teamDob2Error);
+    
+          if (!isTeamName1Valid || !isTeamName2Valid || !isTeamDob1Valid || !isTeamDob2Valid) {
+            isFormValid = false;
+          }
+        }
+    
+        // Validate common fields
+        const contactNumberInput = document.getElementById('contact-number');
+        const declarationCheckbox = document.getElementById('declaration-checkbox');
+        const contactNumberError = document.getElementById('contact-error');
+        const declarationError = document.getElementById('declaration-error');
+    
+        const isContactNumberValid = validatePhoneNumber(contactNumberInput, contactNumberError);
+    
+        if (!isContactNumberValid || !declarationCheckbox.checked) {
+          isFormValid = false;
+          if (!declarationCheckbox.checked) {
+            declarationError.textContent = 'Please accept the declaration.';
+          }
+        } else {
+          declarationError.textContent = ''; // Clear the error message
+        }
+    
+        if (!isFormValid) {
+          event.preventDefault(); // Prevent form submission
+        }
+      });
+    });
+    </script>
+  
+  <style>
+   .row {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 15px;
+   }
+   
+   .column {
+     flex: 1;
+     margin-right: 30px;
+   }
+   
+   label {
+     display: block;
+     margin-bottom: 5px;
+   }
+   
+   input[type="text"],
+   input[type="date"],
+   select {
+     width: 100%;
+     padding: 10px;
+     border: none;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     font-size: 16px;
+   }
+   
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      
+    }
+    
+    .container {
+    max-width: 1000px;
+    width: 100%;
+    background-color:rgb(243, 246, 247);
+    opacity: 0.9;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    
+    }
+    
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-section {
+      display: none;
+    }
+    
+    select, input, button {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
+    
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #0056b3;
+    }
+    #team-fields {
+      display: none;
+    }
+    #single-fields {
+      display: block;
+    }
+    /* ... previous CSS code ... */
+    
+    .rules-text {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    label {
+      display: block;
+      margin-top: 5px;
+    }
+    
+    label input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    /* ... previous CSS code ... */
+    
+    .rules-text {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    
+    .rules-section {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    
+    .declaration-label {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    
+    .declaration-label input[type="checkbox"] {
+      margin-right: 5px;
+    }  
+    .video-container video{
+      position: absolute;
+      top:0; left: 0;
+      z-index: -1;
+      height: 100%;
+      width:100%;
+      object-fit: cover;
+    }
+    .error {
+    color: red;
+  }
+  </style>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+   <script src="{% static 'jquery.vide.js' %}"></script>
+  <!-- ... previous HTML code ... -->
+// JavaScript code for singles registration
+
+  <!-- ... Previous HTML code ... -->
+</body>
+</html>
