@@ -610,13 +610,14 @@
                         
                     <a href="{% url 'index' %} " class="nav-item nav-link active">Home</a>
                     <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                    <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Refere name:{{ user.name }}</a>
+                   
                     <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
                     <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
                     <a href=" {% url 'user_logout' %}" class="nav-item nav-link">LOGOUT</a>
-                    <a href=" {% url 'view_history' %}" class="nav-item nav-link">View History</a>
+                    <a href=" {% url 'view_history' %}" class="nav-item nav-link">View History</a><br><br><br>
+                    
                 </div>
-          
+                <a href="#" class="nav-item nav-link " style="font-family: 'Cinzel', cursive; color:#d94800; font-size: 24px;">Referee Name:{{ user.name }}</a>
             </div>
         </nav>
     </div>

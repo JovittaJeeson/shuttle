@@ -680,7 +680,7 @@ def paymenthandler(request):
 			result = razorpay_client.utility.verify_payment_signature(
 				params_dict)
 			if result is not None:
-				amount = 50000 # Rs. 200
+				amount = 10000 # Rs. 200
 				try:
 
 					# capture the payemt
