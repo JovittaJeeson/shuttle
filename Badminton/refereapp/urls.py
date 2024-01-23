@@ -8,6 +8,7 @@ urlpatterns=[
       # path('refere/',views.refere,name='refere'),
       path('register/',views.register,name='register'),
       path('Referelogin/',views.Referelogin,name='Referelogin'),
+      path('trainer_register/', views.trainer_register, name='trainer_register'),
       # path('refere/<int:event_id>/', views.refere, name='refere'),
       path('user_logout/',views.user_logout,name='user_logout'),
 ]

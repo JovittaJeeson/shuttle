@@ -15,7 +15,10 @@
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/select2.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/bootstrap-datetimepicker.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/style.css" %}">
-   
+    <!--[if lt IE 9]>
+		<script src="admin/js/html5shiv.min.js"></script>
+		<script src="admin/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 
 <body>
@@ -105,29 +108,31 @@
             <div class="content">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <h4 class="page-title">Add Winner  Details</h4>
+                        <h4 class="page-title">Add Trainer  Details</h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <div class="form-group">
-                                <label for="title">Title <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" id="title" name="title" required>
-                            </div>
+                           
                             <div class="form-group">
                                 <label for="name">Name <span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="prize">Prize <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" id="prize" name="prize" required>
+                                <label for="prize">Password <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="password" name="password" required>
                             </div>
+                              <div class="form-group">
+                                <label for="title">phone number <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="phone_number" name="phone_number" required>
+                            </div> 
                             <div class="form-group">
-                                <label for="image">Image <span class="text-danger">*</span></label>
-                                <input class="form-control" type="file" id="image" name="image" required>
-                            </div>
+                                <label for="title">Email id <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" id="email" name="email" required>
+                            </div> 
+                       
                             <div class="m-t-20 text-center">
                                 <button class="btn btn-primary submit-btn" type="submit">Save</button>
                             </div>

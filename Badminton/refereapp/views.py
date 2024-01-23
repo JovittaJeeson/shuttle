@@ -8,6 +8,27 @@ from django.contrib import messages
 
 def refere(request):
      return render(request,'refere.html')
+
+def trainer_register(request): 
+    if request.method=='POST': 
+        name = request.POST.get('name')  
+        email = request.POST.get('email') 
+        password = request.POST.get('password')      
+        if email and password: 
+           
+            if CustomUser.objects.filter(email=email).exists():
+                messages.error(request,"Email is already registered")
+            else: 
+                user = CustomUser(name=name,email=email) 
+                user.is_trainer=True
+                
+                user.set_password(password)
+                user.save() 
+                messages.success(request, "Registered Successfully") 
+                return redirect('login') 
+    return render(request, 'Refere/trainer_register.html')
+
+                
 def register(request): 
     if request.method=='POST': 
         name = request.POST.get('name')  
@@ -23,26 +44,11 @@ def register(request):
                 user.set_password(password)
                 user.save() 
                 messages.success(request, "Registered Successfully") 
-                return redirect('Referelogin') 
+                return redirect('login') 
     return render(request, 'Refere/register.html')
 
 
-# def Referelogin(request):
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         password = request.POST.get('pass')
 
-#         if email and password:
-#             user = authenticate(request, email=email, password=password)
-#             if user is not None:
-#                 auth_login(request, user)
-#                 return redirect('refere')
-#             else:
-#                 messages.error(request, 'Invalid login credentials.')
-#                 # Use messages.error to store the error message
-#                 # This message will be available in the template
-
-#     return render(request, 'Refere/Referelogin.html')
 
   
 from django.contrib.auth import login

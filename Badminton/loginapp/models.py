@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
     gender = models.CharField(max_length=128)   
     is_customer = models.BooleanField(default=False)
     is_refere = models.BooleanField(default=False)
-    
+    is_trainer = models.BooleanField(default=False)
     
     REQUIRED_FIELDS = []   
     def __str__(self):    

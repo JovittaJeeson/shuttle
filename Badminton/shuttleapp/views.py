@@ -6,7 +6,7 @@ from membershipapp.models import SubscriptionPlan
 from django.shortcuts import render, redirect
 from membershipapp.models import SubscriptionPlan
 from django.http import HttpResponse
-from shuttleapp.models import Winner
+from shuttleapp.models import Winner,Trainer
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
@@ -78,7 +78,9 @@ def view_history(request):
         'eventUser': eventUser
     }
     return render(request, 'Refere/view_history.html', context)
-
+#**************************************************************TRAINER PANEL VIEWS.py**************************************************************
+def indextrainer(request):
+     return render(request,'trainer/indextrainer.html')
 #**************************************************************ADMIN PANEL VIEWS.py**************************************************************
 #admin panel        
 def indexadmin(request):
@@ -421,6 +423,58 @@ def delete_booking(request, booking_id):
         return redirect('guestbook_player') 
     return render(request, 'delete_booking_confirm.html', {'booking': booking})
 
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import Trainer
+
+def add_trainer(request):
+    if request.method == 'POST':
+        # If the form is submitted, process the form data
+        name = request.POST.get('name')
+        password = request.POST.get('password')
+        phone_number = request.POST.get('phone_number')
+        email = request.POST.get('email')
+
+        # Validate the form data (add your own validation logic as needed)
+        if not name or not password or not phone_number or not email:
+            return HttpResponse('All fields are required.')
+
+        # If the form data is valid, create a Trainer instance and save it
+        trainer = Trainer.objects.create(
+            name=name,
+            password=password,
+            phone_number=phone_number,
+            email=email
+        )
+
+        # Redirect to a success page or the view that displays all trainers
+        return redirect('view_trainer')  # You should replace 'view_trainer' with the actual URL name of your view
+
+    # Render the 'add_trainer.html' template if the request method is GET
+    return render(request, 'admin/add_trainer.html')
+
+
+from .models import Trainer
+def view_trainer(request):
+    # Fetch all trainers from the database
+    trainers = Trainer.objects.all()
+
+    # Pass the trainers to the template for rendering
+    context = {
+        'trainers': trainers
+    }
+
+    return render(request, 'admin/view_trainer.html', context)
+
+
+
+
+
+
+
+
+
+
 
 #**************************************************************************************************************************
 def Gallery(request):
@@ -504,8 +558,6 @@ def RegistrationSucess(request):
 
 def refere(request):
      return render(request,'refere.html')
-
-
 
 
 

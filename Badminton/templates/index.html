@@ -60,31 +60,20 @@
                         </div>
                     
                     </div>
+                    {% if user.is_authenticated %}
                     <div class="col-lg-5 px-5 pr-2 text-end">
-                        <div class="d-inline-flex align-items-center py-2 me-4 ">
-            
-                            
-                            <a class= "h-100 d-inline-flex align-items-center py-2 me-2 " href="">
+                        <div class="d-inline-flex align-items-center py-2 me-4">
+                            <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="">
                                 <h6>{{ user.name }}</h6>
                             </a><br>
                             <div style="height: 10px;"></div>
-                         <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="{% url 'user_profile' %}">
+                            <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="{% url 'user_profile' %}">
                                 <h6>User Profile</h6>
-                            </a><br> 
-                            {% comment %} <a class="h-100 d-inline-flex align-items-center py-2 me-2" href="{% url 'add_event' %}">
-                                <h6>add Event</h6>
-                            </a><br> 
-                             {% endcomment %}
-                             
-                           <!-- <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
-                                <i class="fab fa-instagram"></i>
-                            </a> -->
-                        
+                            </a><br>
                         </div>
                     </div>
+                {% endif %}
+                
                 </div>
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
                     <a href="index.html" class="navbar-brand d-block d-lg-none">
@@ -105,7 +94,8 @@
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{% url 'Referelogin' %}" class="dropdown-item">Refere Login</a>
                                     <a href="{% url 'register' %}" class="dropdown-item">Refere Registration</a>
-                                    
+                                    <a href="{% url 'trainer_register' %}" class="dropdown-item">Trainer Registration</a>
+                                          
                                 </div>
                             </div> 
                             
@@ -121,8 +111,6 @@
         </div>
     </div>
     <!-- Header End -->
-
-
     <!-- Carousel Start -->
     <div class="container-fluid p-0 mb-5">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">

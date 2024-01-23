@@ -1,5 +1,6 @@
 // reg.js
 
+// Function to validate the name field
 function validateName() {
     var nameInput = document.getElementById('t1');
     var nameError = document.getElementById('nc');
@@ -34,7 +35,6 @@ function validateEmail() {
 }
 
 // Function to validate the password field
-
 function validatePwd() {
     var pwdInput = document.getElementById('t3');
     var pwdError = document.getElementById('pwd');
@@ -65,37 +65,35 @@ function validateCpwd() {
     }
 }
 
-
-
 // Function to perform overall form validation before submission
-// function checkall() {
-//     // event.preventDefault();
-//     var name = document.getElementById('t1').value;
-//     var email = document.getElementById('t2').value;
-//     var password = document.getElementById('t3').value;
-//     var confirmPassword = document.getElementById('confirmpassword').value;
+function checkall() {
+    event.preventDefault();
 
-//     if (name && email && password && confirmPassword) {
-//         swal.fire({
-//             title: "Registered Successfully",
-//             text: "Congratulations, you are registered!",
-//             icon: "success",
-//             //allowOutsideClick: false
-            
-//         }).then(function() {
-//             window.location.href = "../templates/login.html";
-//         });
-                
-//     } else {
-//             swal.fire({
-//             title: "Error",
-//             text: "Please fill in all required fields.",
-//             icon: "error",
-//         });
-//     }
-// }
+    var nameValid = validateName();
+    var emailValid = validateEmail();
+    var passwordValid = validatePwd();
+    var confirmPasswordValid = validateCpwd();
+
+    if (nameValid && emailValid && passwordValid && confirmPasswordValid) {
+        swal.fire({
+            title: 'Registered Successfully',
+            text: 'Congratulations, you are registered!',
+            icon: 'success'
+        }).then(function() {
+            // If you want to redirect, you can use window.location.href
+            window.location.href = '../templates/login.html';
+        });
+    } else {
+        swal.fire({
+            title: 'Error',
+            text: 'Please fill in all required fields with valid data.',
+            icon: 'error'
+        });
+    }
+}
+
 // Attach event listeners to input fields to trigger validation
 document.getElementById('t1').addEventListener('keyup', validateName);
 document.getElementById('t2').addEventListener('keyup', validateEmail);
 document.getElementById('t3').addEventListener('keyup', validatePwd);
-document.getElementById('t4').addEventListener('keyup', validateCpwd);
+document.getElementById('confirmpassword').addEventListener('keyup', validateCpwd);

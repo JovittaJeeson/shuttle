@@ -23,7 +23,7 @@ urlpatterns=[
      path('Gallery/',views.Gallery,name='Gallery'),
      # path('Guestbooking/<int:timeslot_id>/', views.Guestbooking, name='Guestbooking'),
      # path('ticket/', views.download_ticket, name='download_ticket'),
-     path('refere/', views.refere_view, name='refere'),
+     
      path('view-history/', views.view_history, name='view_history'),
 #admin panel path
      path('indexadmin/',views.indexadmin,name='indexadmin'),
@@ -37,7 +37,7 @@ urlpatterns=[
 
      path('new-user/', views.new_user, name='new_user'),  # For all new users
      path('new-user/customer/', views.new_user, {'user_type': 'customer'}, name='new_user_customer'),  # For customers
-     path('new-user/referee/', views.new_user, {'user_type': 'referee'}, name='new_user_referee'),  # For referees
+     path('new-user/refere/', views.new_user, {'user_type': 'refere'}, name='new_user_refere'),  # For referees
 
      # path('edit_member/',views.edit_member,name='edit_member'),
      path('edit_member/<int:plan_id>/', views.edit_member, name='edit_member'),
@@ -59,6 +59,12 @@ urlpatterns=[
      path('guestbook_player/', views.guestbook_player,name='guestbook_player'),
      # url of guestbooking page delete action
      path('delete_booking/<int:booking_id>/', views.delete_booking, name='delete_booking'),
+     path('add_trainer/',  views.add_trainer, name='add_trainer'),
+     path('view_trainer/',  views.view_trainer, name='view_trainer'),
+
+
+
+
 
 #payment
      # path('Guestpayment/<str:client_name>/<int:booking_count>/', views.Guestpayment, name='Guestpayment'),
@@ -67,6 +73,11 @@ urlpatterns=[
      # path('Guestpayment/',views.Guestpayment,name='Guestpayment'),
      path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
     
+
+
+#TRAINER 
+path('indextrainer/',views.indextrainer,name='indextrainer'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -42,6 +42,8 @@ def jovilogin(request):
                 auth_login(request, user)
                 if user.is_refere:
                     return redirect("refere")
+                elif user.is_trainer:
+                    return redirect("indextrainer")
                 elif user.is_customer:
                     return redirect('/')
                 elif email == 'admin1@gmail.com':
@@ -77,7 +79,7 @@ def index_reg(request):
             # Set a success message and clear it from the list of messages
             messages.get_messages(request)._loaded_data = []
             # messages.success(request, 'Registered Successfully')
-            return redirect('jovilogin')
+            return redirect('login')
 
     return render(request, 'index_reg.html')
 
