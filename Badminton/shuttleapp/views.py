@@ -78,9 +78,7 @@ def view_history(request):
         'eventUser': eventUser
     }
     return render(request, 'Refere/view_history.html', context)
-#**************************************************************TRAINER PANEL VIEWS.py**************************************************************
-def indextrainer(request):
-     return render(request,'trainer/indextrainer.html')
+
 #**************************************************************ADMIN PANEL VIEWS.py**************************************************************
 #admin panel        
 def indexadmin(request):
@@ -424,48 +422,6 @@ def delete_booking(request, booking_id):
     return render(request, 'delete_booking_confirm.html', {'booking': booking})
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import Trainer
-
-def add_trainer(request):
-    if request.method == 'POST':
-        # If the form is submitted, process the form data
-        name = request.POST.get('name')
-        password = request.POST.get('password')
-        phone_number = request.POST.get('phone_number')
-        email = request.POST.get('email')
-
-        # Validate the form data (add your own validation logic as needed)
-        if not name or not password or not phone_number or not email:
-            return HttpResponse('All fields are required.')
-
-        # If the form data is valid, create a Trainer instance and save it
-        trainer = Trainer.objects.create(
-            name=name,
-            password=password,
-            phone_number=phone_number,
-            email=email
-        )
-
-        # Redirect to a success page or the view that displays all trainers
-        return redirect('view_trainer')  # You should replace 'view_trainer' with the actual URL name of your view
-
-    # Render the 'add_trainer.html' template if the request method is GET
-    return render(request, 'admin/add_trainer.html')
-
-
-from .models import Trainer
-def view_trainer(request):
-    # Fetch all trainers from the database
-    trainers = Trainer.objects.all()
-
-    # Pass the trainers to the template for rendering
-    context = {
-        'trainers': trainers
-    }
-
-    return render(request, 'admin/view_trainer.html', context)
-
 
 
 
@@ -827,3 +783,99 @@ def paymenthandler(request):
                     
                     
 #                     return redirect('index')
+
+#*****************************************************************TRAINER***************************************************
+#**************************************************************TRAINER PANEL VIEWS.py**************************************************************
+def indextrainer(request):
+     return render(request,'trainer/indextrainer.html')
+from django.http import HttpResponse
+from .models import Trainer
+
+def add_trainer(request):
+    if request.method == 'POST':
+        # If the form is submitted, process the form data
+        name = request.POST.get('name')
+        password = request.POST.get('password')
+        phone_number = request.POST.get('phone_number')
+        email = request.POST.get('email')
+
+        # Validate the form data (add your own validation logic as needed)
+        if not name or not password or not phone_number or not email:
+            return HttpResponse('All fields are required.')
+
+        # If the form data is valid, create a Trainer instance and save it
+        trainer = Trainer.objects.create(
+            name=name,
+            password=password,
+            phone_number=phone_number,
+            email=email
+        )
+
+        # Redirect to a success page or the view that displays all trainers
+        return redirect('view_trainer')  # You should replace 'view_trainer' with the actual URL name of your view
+
+    # Render the 'add_trainer.html' template if the request method is GET
+    return render(request, 'admin/add_trainer.html')
+
+
+from .models import Trainer
+def view_trainer(request):
+    # Fetch all trainers from the database
+    trainers = Trainer.objects.all()
+
+    # Pass the trainers to the template for rendering
+    context = {
+        'trainers': trainers
+    }
+
+    return render(request, 'admin/view_trainer.html', context)
+
+def private_shuttleclass(request):
+     return render(request,'trainer/private_shuttleclass.html')
+
+def beginner(request):
+     return render(request,'trainer/beginner.html')
+def intermediate(request):
+     return render(request,'trainer/intermediate.html')
+def expert(request):
+     return render(request,'trainer/expert.html')
+def online_training(request):
+     return render(request,'trainer/online_training.html')
+
+def training_user(request):
+     return render(request,'trainer/training_user.html')
+# views.py
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import TrainingRegistration
+from django.utils.timezone import datetime
+
+def training_register(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        contact_number = request.POST.get('contact-number')
+        game_level = request.POST.get('game-level')
+        dob = request.POST.get('dob')
+        
+        # Check if dob is not None before parsing it
+        if dob:
+            # Convert dob string to a datetime object
+            dob_date = datetime.strptime(dob, '%Y-%m-%d').date()
+        else:
+            dob_date = None
+        
+        # Save data to the database
+        training_registration = TrainingRegistration(
+            name=name,
+            email=email,
+            contact_number=contact_number,
+            game_level=game_level,
+            dob=dob_date
+        )
+        training_registration.save()
+        
+        # Redirect to booking_success.html
+        return redirect('RegistrationSucess')
+    
+    return render(request, 'trainer/training_register.html')

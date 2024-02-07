@@ -4,13 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Badminton Academy</title>
+    <title>Badminton</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{% static 'img/favicon.icon' %}"  rel="icon" >
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,10 +19,10 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="{% static 'lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet ">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -36,7 +36,7 @@
     <div class="container-fluid bg-dark px-0">
         <div class="row gx-0">
             <div class="col-lg-3 bg-dark d-none d-lg-block">
-                <a href="index.html" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+                <a href="{% static 'index.html' %}" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                     <h1 class="m-0 display-4 text-primary text-uppercase">Badminton</h1>
                 </a>
             </div>
@@ -49,13 +49,13 @@
                         </div>
                         <div class="h-100 d-inline-flex align-items-center py-2">
                             <i class="fa fa-phone-alt text-primary me-2"></i>
-                            <h6 class="mb-0">+91124567778</h6>
+                            <h6 class="mb-0">+91 1234567899</h6>
                         </div>
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="d-inline-flex align-items-center py-2">
-                            <a class="btn btn-light btn-square rounded-circle me-2" href=" https://wa.me/+917306233081?text=I'm%20interested%20in%20your%20in%20chat%20About%20Badmintion%20Training">
-                                <i class="fab fa-whatsapp"></i>
+                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                                <i class="fab fa-facebook-f"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-twitter"></i>
@@ -73,8 +73,8 @@
                     </div>
                 </div>
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                    <a href="{% url 'index' %}" class="navbar-brand d-block d-lg-none">
-                        <h1 class="m-0 display-4 text-primary text-uppercase">Badminton Academy</h1>
+                    <a href="index.html" class="navbar-brand d-block d-lg-none">
+                        <h1 class="m-0 display-4 text-primary text-uppercase">SMASHZONE</h1>
                     </a>
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -85,10 +85,10 @@
                             <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
                             <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Events</a>
                             <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
-                            <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
-                         <!-- <a href="class.html" class="nav-item nav-link">Classes</a>
-                            <a href="team.html" class="nav-item nav-link">Trainers</a>-->  
-                        <!--    <div class="nav-item dropdown">
+                         
+                        <!--    <a href="class.html" class="nav-item nav-link">Classes</a>
+                            <a href="team.html" class="nav-item nav-link">Trainers</a>
+                            <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="blog.html" class="dropdown-item">Blog Grid</a>
@@ -96,9 +96,9 @@
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 </div>
                             </div>-->
-                          
+                            <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                         </div>
-                        <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us</a>
+                        <a href="{% url "training_register" %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Elevate Your Game: Register Now!</a>
                     </div>
                 </nav>
             </div>
@@ -111,85 +111,93 @@
     <div class="container-fluid bg-dark p-2 bg-hero mb-2">
         <div class="row py-2">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Contact</h1>
-                {% comment %} <a href="{% url 'index' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                <a href="" class="btn btn-light py-md-3 px-md-5">Contact</a> {% endcomment %}
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Intermediate Level</h1>
+                {% comment %} <a href="{% url 'index' %} " class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
+                <a href="{% url 'about' %}" class="btn btn-light py-md-3 px-md-5">About</a> {% endcomment %}
             </div>
         </div>
     </div>
     <!-- Hero End -->
 
 
-    <!-- Contact Start -->
+    <!-- About Start -->
     <div class="container-fluid p-5">
-        <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">Contact Us</h5>
-            <h1 class="display-3 text-uppercase mb-0">Get In Touch</h1>
-        </div>
-        <div class="row g-5 mb-5">
-            <div class="col-lg-4">
-                <div class="d-flex flex-column align-items-center bg-dark rounded text-center py-5 px-3">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fa fa-map-marker-alt fs-4 text-white"></i>
-                    </div>
-                    <h5 class="text-uppercase text-primary">Visit Us</h5>
-                    <p class="text-secondary mb-0">Pathanamthitta</p>
+        <div class="row gx-5">
+            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded" src="{% static 'images/frndz.jpg' %}" style="object-fit: cover;">
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="d-flex flex-column align-items-center bg-dark rounded text-center py-5 px-3">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fa fa-envelope fs-4 text-white"></i>
-                    </div>
-                    <h5 class="text-uppercase text-primary">Email Us</h5>
-                    <p class="text-secondary mb-0">smashzone@gmail.com</p>
+            <div class="col-lg-7">
+                <div class="mb-4">
+                    {% comment %} <h5 class="text-primary text-uppercase">About Us</h5> {% endcomment %}
+                    <h1 class="display-3 text-uppercase mb-0">Welcome to intermediate Training Academy</h1>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="d-flex flex-column align-items-center bg-dark rounded text-center py-5 px-3">
-                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fa fa-phone fs-4 text-white"></i>
-                    </div>
-                    <h5 class="text-uppercase text-primary">Call Us</h5>
-                    <p class="text-secondary mb-0">+012 345 6789</p>
-                </div>
-            </div>
-        </div>
-        <div class="row g-0">
-            <div class="col-lg-6">
-                <div class="bg-dark p-5">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
-                            </div>
-                            <div class="col-6">
-                                <input type="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Subject" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                            </div>
+                <h4 class="text-body mb-4">Dream, train, conquer  the journey of a badminton star</h4>
+                <p class="mb-4">
+                    Elevate your game! Join our intermediate badminton training to refine your skills, unleash your potential, and dominate the court</p>
+                <div class="rounded bg-dark p-5">
+                    <ul class="nav nav-pills justify-content-between mb-3">
+                        <li class="nav-item w-50">
+                            <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">Meaning of intermediate level</a>
+                        </li>
+                        <li class="nav-item w-50">
+                                <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill" href="#pills-2">What We Offer in Our Intermediate Badminton Class</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pills-1">
+                            <p class="text-secondary mb-0">"At the intermediate level, players exhibit a solid grasp of fundamental techniques and rules, showcasing consistency in shots and footwork. They demonstrate proficiency in executing basic strokes such as clears, drops, smashes, and serves with accuracy and power. Intermediate players display improved court coverage, anticipation, and strategic thinking, enabling them to control rallies and exploit opponent weaknesses. With dynamic footwork and increased confidence, they engage in competitive gameplay while continuously refining their skills.</p>
                         </div>
-                    </form>
+                        <div class="tab-pane fade" id="pills-2">
+                            <p class="text-secondary mb-0">"In our intermediate badminton class, we provide comprehensive training tailored to elevate your game to the next level. Through structured sessions led by experienced coaches, you'll refine your techniques, enhance your court coverage, and develop strategic thinking to outplay opponents. Our focus is on honing advanced skills such as precision shots, tactical positioning, and dynamic footwork to help you compete confidently and excel in challenging gameplay scenarios.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <iframe class="w-100"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16011.713380937228!2d76.78717427925195!3d9.265673780781161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7a9e3a793c7bb%3A0x7ed9ba271ed23e2!2sPathanamthitta%2C%20Kerala!5e0!3m2!1sen!2sin!4v1633687917261!5m2!1sen!2sin"
-
-                    frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
-                    tabindex="0"></iframe>
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+    <!-- About End -->
 
+
+    <!-- Programe Start -->
+    <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
+        <div class="row g-5 gb-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="bg-light rounded text-center p-5">
+                   <!--- <i class="flaticon-six-pack display-1 text-primary"></i>-->
+                    <h3 class="text-uppercase my-4">OUR FACILITIES</h3>
+                    <p>Four badminton courts of international standard, Gymnasium, Air-Conditioned Rooms, Physiotherapist, Sports Psychologist, 24/7 Medical Aid . </p>
+                  <!---  <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>-->
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="bg-light rounded text-center p-5">
+                  <!---  <i class="flaticon-barbell display-1 text-primary"></i>-->
+                    <h3 class="text-uppercase my-4">FREE CONSULATIONS</h3>
+                    <p>o show that we are absolutely sincere in helping you achieve your best, we offer Free Consultation over the phone with no obligation to join us!.</p>
+                   <!--- <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>-->
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="bg-light rounded text-center p-5">
+                   <!--- <i class="flaticon-bodybuilding display-1 text-primary"></i>-->
+                    <h3 class="text-uppercase my-4">Strategic Gameplay</h3>
+                    <p>Beyond just physical training, a deep understanding of tactical and strategic aspects of badminton can elevate a player's game.</p>
+                 <!--   <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>-->
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-6 text-center">
+                <h1 class="text-uppercase text-light mb-4">40% Discount For This Summer</h1>
+                <a href="{% url "training_register" %}" class="btn btn-primary py-3 px-5">Invest in Your Skills<br>Register Now</a>
+            </div>
+        </div>
+    </div>
+    <!-- Programe Start -->
+
+
+    
+    
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary px-5 mt-5">
@@ -200,7 +208,7 @@
                         <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
                         <div class="d-flex mb-2">
                             <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">Pathanamthitta</p>
+                            <p class="mb-0">Ranni,pathanamthitta</p>
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-envelope-open text-primary me-2"></i>
@@ -208,7 +216,7 @@
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-telephone text-primary me-2"></i>
-                            <p class="mb-0">7848956875</p>
+                            <p class="mb-0">+91 1234567888</p>
                         </div>
                         <div class="d-flex mt-4">
                             <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
@@ -241,18 +249,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+          <!--  <div class="col-lg-4 col-md-6">
                 <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
                     <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
                     <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
-                    <p class="text-light">Explore your dreams</p>
+                    <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
                     <form action="">
                         <div class="input-group">
                             <input type="text" class="form-control border-white p-3" placeholder="Your Email">
                             <button class="btn btn-dark">Sign Up</button>
                         </div>
                     </form>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -260,12 +268,12 @@
         <div class="row gx-5">
             <div class="col-lg-8">
                 <div class="py-lg-4 text-center">
-                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">SMASHZONE</a>. All Rights Reserved.</p>
+                    <p class="text-secondary mb-0">&copy; <a class="text-light fw-bold" href="#">Smashzone</a>. All Rights Reserved.</p>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="py-lg-4 text-center credit">
-                    <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="https://htmlcodex.com">Jovitta</a></p>
+                    <p class="text-light mb-0">Designed by <a class="text-light fw-bold" href="#">Jovitta</a></p>
                 </div>
             </div>
         </div>

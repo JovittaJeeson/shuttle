@@ -77,7 +77,13 @@ urlpatterns=[
 
 #TRAINER 
 path('indextrainer/',views.indextrainer,name='indextrainer'),
-
+path('private_shuttleclass/',views.private_shuttleclass,name='private_shuttleclass'),
+path('beginner/',views.beginner,name='beginner'),
+path('intermediate/',views.intermediate,name='intermediate'),
+path('expert/',views.expert,name='expert'),
+path('training_register/',views.training_register,name='training_register'),
+path('online_training/',views.online_training,name='online_training'),
+path('training_user/',views.training_user,name='training_user'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -89,12 +89,22 @@
                             <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Events</a>
                             <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
                             <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Refere</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Refere/Trainer Registration</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="{% url 'Referelogin' %}" class="dropdown-item">Refere Login</a>
+                                    <a href="{% url 'login' %}" class="dropdown-item">Refere/Trainer Login</a>
                                     <a href="{% url 'register' %}" class="dropdown-item">Refere Registration</a>
                                     <a href="{% url 'trainer_register' %}" class="dropdown-item">Trainer Registration</a>
+                                          
+                                </div>
+                            </div> 
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="{% url "private_shuttleclass" %}" class="dropdown-item">Private Badminton class</a>
+                                    <a href="{% url "online_training" %}" class="dropdown-item">Online Training</a>
+                                    <a href="" class="dropdown-item">Trainer Registration</a>
                                           
                                 </div>
                             </div> 
@@ -191,8 +201,65 @@
         </div>
     </div>
     <!-- About End -->
-
-
+ {% comment %} <!--Chatbot-->
+ <div class="chatbot-container">
+    <div class="chatbot-button">
+      <img src={% static "images/chatbot.png" %} alt="Chatbot Icon">
+    </div>
+    <div class="chatbot-iframe">
+      <iframe height="430" width="350" src="https://bot.dialogflow.com/0135667b-c726-42bf-b516-7309a303742d"></iframe>
+    </div>
+  </div>
+  
+    
+      <style>
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+          }
+          
+          .chatbot-button {
+            width: 60px;
+            height: 60px;
+            background-color: #007bff; /* Change color as needed */
+            border-radius: 50%;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .chatbot-button img {
+            width: 50%;
+            height: auto;
+          }
+          
+          .chatbot-iframe {
+            display: none; /* Hide the iframe initially */
+            position: absolute;
+            bottom: 70px; /* Adjust the distance from the button */
+            right: 0;
+          }
+          
+          .chatbot-container.active .chatbot-iframe {
+            display: block; /* Show the iframe when button is clicked */
+          }
+          
+          
+      </style>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const chatbotButton = document.querySelector('.chatbot-button');
+            const chatbotContainer = document.querySelector('.chatbot-container');
+            
+            chatbotButton.addEventListener('click', function() {
+              chatbotContainer.classList.toggle('active');
+            });
+          });
+          
+      </script> {% endcomment %}
     <!-- Programe Start -->
     <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
         <div class="row g-5 gb-5">
@@ -901,10 +968,10 @@
     </div>
     <!-- Footer End -->
 
-
+{% comment %} 
     <!-- Back to Top -->
     <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+ {% endcomment %}
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -916,6 +983,17 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"32929d59b2bd9a2eed2d49fc69de0cfd7","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
 </body>
 
 </html>
