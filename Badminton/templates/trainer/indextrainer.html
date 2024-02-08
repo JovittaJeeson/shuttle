@@ -54,17 +54,17 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="active">
-                            <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                            <a href="{% url "indextrainer" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="{% url "new_user" %}"><i class="fa fa-user"></i> <span>New Users</span></a>
+                            <a href="{% url "training_user" %}"><i class="fa fa-user"></i> <span>New Users :Training</span></a>
                         </li>
-						<li>
+						{% comment %} <li>
                             <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
                         </li>
                         <li>
                             <a href="{% url "member_history" %}"><i class="fa fa-user"></i> <span>Members in Academy</span></a>
-                        </li>
+                        </li> {% endcomment %}
                         <li>
                             <a href="{% url "Eventlist" %}"><i class="fa fa-user fa-lg"></i> <span>Event Listing</span></a>
                         </li>
@@ -91,7 +91,7 @@
                         
 							
 
-                        <li class="submenu">
+                        {% comment %} <li class="submenu">
                             <a href="javascript:void(0);"><i class="fa fa-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <li class="submenu">
@@ -114,7 +114,7 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
         <div class="page-wrapper">

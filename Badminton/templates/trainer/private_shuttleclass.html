@@ -55,10 +55,13 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="d-inline-flex align-items-center py-2">
+                            <a class="btn btn-light btn-square rounded-circle me-2" href=" https://wa.me/+917306233081?text=I'm%20interested%20in%20your%20in%20chat%20About%20Badmintion%20Training">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a class="btn btn-light btn-square rounded-circle me-2" href="">
+                            {% comment %} <a class="btn btn-light btn-square rounded-circle me-2" href="">
                                 <i class="fab fa-twitter"></i>
                             </a>
                             <a class="btn btn-light btn-square rounded-circle me-2" href="">
@@ -69,7 +72,7 @@
                             </a>
                             <a class="btn btn-light btn-square rounded-circle" href="">
                                 <i class="fab fa-youtube"></i>
-                            </a>
+                            </a> {% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -82,7 +85,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href={% url "index" %}class="nav-item nav-link">Home</a>
+                            {% comment %}  {% endcomment %}
                             <a href={% url "about" %} class="nav-item nav-link">About</a>
                            
                             {% comment %} <a href="team.html" class="nav-item nav-link">Trainers</a> {% endcomment %}
@@ -95,6 +98,7 @@
                                 </div>
                             </div> {% endcomment %}
                             <a href={% url "contact" %} class="nav-item nav-link">Contact</a>
+                            <a href={% url "index" %} class="nav-item nav-link">Home</a>
                         </div>
                         <a href={% url "membership" %} class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">Join Us:Getting Membership</a>
                     </div>

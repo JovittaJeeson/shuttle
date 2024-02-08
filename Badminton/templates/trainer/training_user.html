@@ -40,14 +40,14 @@
                             <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                         </li>
                         <li>
-                            <a href="{% url "new_user" %}"><i class="fa fa-user"></i> <span>New Users</span></a>
+                            <a href="{% url "training_user" %}"><i class="fa fa-user"></i> <span>New Users:training</span></a>
                         </li>
-						<li>
+						{% comment %} <li>
                             <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
                         </li>
                         <li>
                             <a href="{% url "member_history" %}"><i class="fa fa-user"></i> <span>Members in Academy</span></a>
-                        </li>
+                        </li> {% endcomment %}
                         <li>
                             <a href="{% url "Eventlist" %}"><i class="fa fa-user fa-lg"></i> <span>Event Listing</span></a>
                         </li>
@@ -72,45 +72,34 @@
                         <h4 class="page-title">Users list</h4>
                     </div>
                 </div>
-                <!-- Your table content -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="btn-group">
-                            <a href="{% url "new_user" %}" class="btn btn-primary">All Users</a>
-                            <a href="{% url "new_user_customer" %}" class="btn btn-success">Customer</a>
-                            <a href="{% url "new_user_refere" %}" class="btn btn-warning">Referee</a>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped custom-table datatable mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        {% if user_type != 'referee' %}
-                                        <th>Phone</th>
-                                    {% endif %}
-                                        {% comment %} <th>Phone</th> {% endcomment %}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for user in new_users %}
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" class="rounded-circle" src="{% static 'admin/img/user.jpg' %}" alt="">
-                                            <h2>{{ user.name }}</h2>
-                                        </td>
-                                        <td>{{ user.email }}</td>
-                                        {% if user_type != 'referee' %}
-                                        <td>{{ user.phone }}</td>
-                                    {% endif %}
-                                        {% comment %} <td>{{ user.phone }}</td> {% endcomment %}
-                                        <!-- You can add more columns here as needed -->
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped custom-table datatable mb-0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact Number</th> <!-- Updated column header -->
+                                <th>Game Level</th> <!-- Updated column header -->
+                                <th>Date of Birth</th> <!-- Updated column header -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in training_users %}
+                            <tr>
+                                <td>
+                                    <img width="28" height="28" class="rounded-circle" src="{% static 'admin/img/user.jpg' %}" alt="">
+                                    <h2>{{ user.name }}</h2>
+                                </td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.contact_number }}</td> <!-- Display contact number -->
+                                <td>{{ user.game_level }}</td> <!-- Display game level -->
+                                <td>{{ user.dob }}</td> <!-- Display date of birth -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
                 </div>
             </div>
         </div>

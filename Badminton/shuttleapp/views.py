@@ -842,8 +842,22 @@ def expert(request):
 def online_training(request):
      return render(request,'trainer/online_training.html')
 
+from django.shortcuts import render
+from .models import TrainingRegistration
+
 def training_user(request):
-     return render(request,'trainer/training_user.html')
+    # Retrieve training registrations from the database
+    training_users = TrainingRegistration.objects.all()
+    
+    # Pass the training users to the template context
+    context = {
+        'training_users': training_users,
+    }
+    
+    # Render the template with the context data
+    return render(request, 'trainer/training_user.html', context)
+
+
 # views.py
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
