@@ -36,11 +36,11 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Main</li>
-                        <li class="active">
-                            <a href="{% url "indexadmin" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
-                        </li>
-                        <li>
-                            <a href="{% url "training_user" %}"><i class="fa fa-user"></i> <span>New Users:training</span></a>
+                        {% comment %} <li class="active">
+                            <a href="{% url "indextrainer" %}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        </li> {% endcomment %}
+                        <li  class="active">
+                            <a href="{% url "training_user" %}"><i class="fa fa-user"></i> <span>New Users :Training</span></a>
                         </li>
 						{% comment %} <li>
                             <a href="{% url "member" %}"><i class="fa fa-user"></i> <span>Membership</span></a>
@@ -55,10 +55,10 @@
                             <a href="{% url "event_reg_player" %}"><i class="fa fa-calendar"></i> <span>Event Registered players</span></a>
                         </li>
                         <li>
-                            <a href="{% url "winner_Gallery" %}"><i class="fa fa-calendar-check-o"></i> <span>Winners</span></a>
+                            <a href="{% url "view_trainer_trainingvideo" %}"><i class="fa fa-calendar-check-o"></i> <span>add Training video</span></a>
                         </li>
                         <li>
-                            <a href="{% url "guestbook_player" %}"><i class="fa fa-user fa-lg"></i> <span>Guest user Booking</span></a>
+                            <a href="{% url "guestbook_player" %}"><i class="fa fa-user fa-lg"></i> <span>Guest user Booking list</span></a>
                         </li>
                         
                     </ul>

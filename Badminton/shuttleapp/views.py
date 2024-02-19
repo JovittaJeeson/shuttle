@@ -893,3 +893,68 @@ def training_register(request):
         return redirect('RegistrationSucess')
     
     return render(request, 'trainer/training_register.html')
+
+from .models import TrainingVideo  # Assuming TrainingVideo is the model for training videos
+
+from django.shortcuts import render, redirect
+from .models import TrainingVideo
+
+def add_trainingvideo(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        trainer = request.POST.get('trainer')
+        video_file = request.FILES.get('video_file')  # Ensure it matches the name attribute in the HTML form
+
+        TrainingVideo.objects.create(title=title, trainer=trainer, video_file=video_file)
+
+        return redirect('view_trainer_trainingvideo')
+
+    return render(request, 'trainer/add_trainingvideo.html')
+
+def view_trainer_trainingvideo(request):
+    videos = TrainingVideo.objects.all()
+    return render(request, 'trainer/view_trainer_trainingvideo.html', {'videos': videos})
+
+
+def video_tutorial(request):
+    # Fetch all training videos from the database
+    videos = TrainingVideo.objects.all()
+
+    # Render the video tutorial page template and pass the videos data to it
+    return render(request, 'video_tutorial.html', {'videos': videos})
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import TrainingVideo  # Import the TrainingVideo model
+
+def edit_trainingvideo(request, video_id):
+    video = get_object_or_404(TrainingVideo, id=video_id)
+
+    if request.method == 'POST':
+        title = request.POST.get('title', video.title)
+        trainer = request.POST.get('trainer', video.trainer)
+        image = request.FILES.get('image')
+
+        video.title = title
+        video.trainer = trainer
+        if image:
+            video.image = image
+        video.save()
+
+        return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page or any other desired page
+
+    return render(request, 'trainer/edit_trainingvideo.html', {'video': video})
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import TrainingVideo  # Import the TrainingVideo model
+
+def delete_trainingvideo(request, video_id):
+    video = get_object_or_404(TrainingVideo, pk=video_id)
+
+    if request.method == 'POST':
+        # Handle the deletion logic when the user confirms deletion
+        video.delete()
+        return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page after deletion
+
+    return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page if the request method is not POST

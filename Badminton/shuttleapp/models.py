@@ -134,3 +134,13 @@ class TrainingRegistration(models.Model):
     contact_number = models.CharField(max_length=15)
     game_level = models.CharField(max_length=20)
     dob = models.DateField()
+
+from django.db import models
+
+class TrainingVideo(models.Model):
+    title = models.CharField(max_length=100)
+    trainer = models.CharField(max_length=100)  # Assuming the trainer's name is stored as a CharField
+    video_file = models.FileField(upload_to='training_videos/')  # Assuming the video file is uploaded as a file
+
+    def __str__(self):
+        return self.title

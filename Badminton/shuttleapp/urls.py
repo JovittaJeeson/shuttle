@@ -84,6 +84,13 @@ path('expert/',views.expert,name='expert'),
 path('training_register/',views.training_register,name='training_register'),
 path('online_training/',views.online_training,name='online_training'),
 path('training_user/',views.training_user,name='training_user'),
+path('view_trainer_trainingvideo/',views.view_trainer_trainingvideo,name='view_trainer_trainingvideo'),
+path('add_trainingvideo/',views.add_trainingvideo,name='add_trainingvideo'),
+path('video_tutorial/',views.video_tutorial,name='video_tutorial'),
+ path('edit_trainingvideo/<int:video_id>/', views.edit_trainingvideo, name='edit_trainingvideo'),
+    # Delete training video
+    path('delete_trainingvideo/<int:video_id>/', views.delete_trainingvideo, name='delete_trainingvideo'),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
