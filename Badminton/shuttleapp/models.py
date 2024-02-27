@@ -144,3 +144,22 @@ class TrainingVideo(models.Model):
 
     def __str__(self):
         return self.title
+
+
+from django.db import models
+from .models import CustomUser
+
+class Feedback(models.Model):
+    f_id = models.AutoField(primary_key=True)
+    can_id = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
+    status = models.BooleanField('status', default=True) 
+    feedback = models.TextField(null=True)
+    percentage = models.FloatField(blank=True, null=True)
+    good = models.BooleanField('good', default=True)
+    bad = models.BooleanField('bad', default=True)
+    neutral = models.BooleanField('neutral', default=True)
+    rating = models.CharField(max_length=100,null=True)
+
+    @property
+    def username(self):
+        return self.can_id.name

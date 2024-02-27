@@ -89,6 +89,7 @@
                             <a href="{% url 'Event_On_Trend' %}" class="nav-item nav-link">Events</a>
                             <a href="{% url 'Gallery' %}" class="nav-item nav-link">Gallery</a>
                             <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                            <a href=" {% url 'my_form' %}" class="nav-item nav-link">Feedback</a>
                             
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Refere/Trainer Registration</a>
@@ -104,8 +105,12 @@
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{% url "private_shuttleclass" %}" class="dropdown-item">Private Badminton class</a>
                                     <a href="{% url "online_training" %}" class="dropdown-item">Online Training</a>
-                                  <a href="" class="dropdown-item">Badminton Products</a>
-                                          
+                                  {% comment %} <a href="{% url 'fixture' fixture_id %}" class="dropdown-item">Badminton Fixture</a> {% endcomment %}
+                                  {% comment %} <a href="" class="dropdown-item">Badminton Fixture</a>     {% endcomment %}
+                                  <!-- index.html -->
+
+<a href="http://127.0.0.1:8001/" target="_blank" class="dropdown-item">Badminton Fixture</a>
+ 
                                 </div>
                             </div> 
                             

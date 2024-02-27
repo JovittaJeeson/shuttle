@@ -90,6 +90,10 @@ path('video_tutorial/',views.video_tutorial,name='video_tutorial'),
  path('edit_trainingvideo/<int:video_id>/', views.edit_trainingvideo, name='edit_trainingvideo'),
     # Delete training video
     path('delete_trainingvideo/<int:video_id>/', views.delete_trainingvideo, name='delete_trainingvideo'),
+  # feedback
+    path('feedbacks', views.feedbacks, name='feedbacks'),
+    path('my_form', views.my_form, name='my_form'),
+    path('my_post', views.my_post, name='my_post'),
 ]
 
 if settings.DEBUG:
