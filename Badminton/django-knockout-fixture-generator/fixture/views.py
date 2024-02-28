@@ -7,7 +7,7 @@ import json
 # Create your views here.
 
 
-def indexf(request, fixture_id):
+def index(request, fixture_id):
     fixture = Fixture.objects.filter(id=fixture_id).prefetch_related(
         "matches").prefetch_related("players").get()
     fixture.match_list = fixture.matches.filter(

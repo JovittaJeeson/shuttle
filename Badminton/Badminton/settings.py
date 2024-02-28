@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'shuttleapp',
     'membershipapp',
     'refereapp',
-    'fixture',
 
     'django.contrib.sites', # must
     'allauth', # must
@@ -114,9 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-AUTH_USER_MODEL = 'loginapp.CustomUser'
 
 
 # Internationalization

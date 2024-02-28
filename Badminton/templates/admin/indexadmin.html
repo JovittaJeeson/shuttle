@@ -78,13 +78,25 @@
                             <a href="{% url 'feedbacks' %}"><i class="fa fa-user"></i> <span>Feedback of Members</span></a>
                             
                         </li>
-   
+                        <li>
+                            <a href="{% url 'addproductadmin' %}"><i class="fa fa-user"></i> <span>Add Product</span></a>
+                            
+                        </li>
+                        <li>
+                            <a href="{% url 'viewproduct' %}"><i class="fa fa-user"></i> <span>View Product</span></a>
+                            
+                        </li>
+                      
                         {% comment %} <li>
                             <a href="{% url "guestbook_player" %}"><i class="fa fa-user fa-lg"></i> <span>Guest user Booking list</span></a>
                         </li> {% endcomment %}
                         <li>
                             <a href="{% url "view_trainer" %}"><i class="fa fa-user fa-lg"></i> <span>Add Trainers</span></a>
                         </li>
+                        <li>
+                            <a href="{% url "view_trainer" %}"><i class="fa fa-user fa-lg"></i> <span>Add Cateogry</span></a>
+                        </li>
+                      
 						{% comment %} <li class="submenu">
 							<a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">

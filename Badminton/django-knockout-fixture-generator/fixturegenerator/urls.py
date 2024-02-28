@@ -23,6 +23,6 @@ from django.conf import settings
 urlpatterns = [
     path('', include('fixture.urls')),
     path('admin/', admin.site.urls),  # Use path instead of url
-    path('', views.indexf),  # Use path instead of url
+    path('', views.index),  # Use path instead of url
     path('fixture/', include('fixture.urls')),  # Use path instead of url
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
-from .models import EventUser,Winner,Registration,CustomUser,Winner,Booking
+from .models import EventUser,Winner,Registration,CustomUser,Winner,Booking,Product
 from loginapp.models import CustomUser
 from membershipapp.models import SubscriptionPlan
 from django.shortcuts import render, redirect
@@ -960,6 +960,12 @@ def delete_trainingvideo(request, video_id):
     return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page if the request method is not POST
 
 
+
+
+
+
+
+
 #feedback
 import pyttsx3
 import re
@@ -1162,3 +1168,44 @@ def feedbacks(request):
     feed = Feedback.objects.all()
     context = {'feed': feed}
     return render(request, "feedbackview.html", context)
+
+
+
+#productts&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+def customerproduct(request):
+    stdata = Product.objects.filter(status=False)
+    return render(request, "products/customerproduct.html", {'stdata': stdata})
+
+
+from django.shortcuts import render, redirect
+from .models import Product  # Import your Product model
+
+def addproductadmin(request):
+    if request.method == 'POST':
+        # Create a new Product instance and assign values
+        new_product = Product(
+            product_name=request.POST.get('product_name'),
+            product_description=request.POST.get('product_description'),
+            price=request.POST.get('price'),
+            product_images1=request.FILES.get('product_images1'),
+            # Add other fields as needed
+        )
+        new_product.save()
+        return redirect("viewproduct")  # Redirect to viewproduct URL after saving
+        
+    return render(request, "admin/addproductadmin.html")
+
+def viewproduct(request):
+    stdata = Product.objects.filter(status=False)
+    return render(request, "admin/viewproduct.html", {'stdata': stdata})
+
+
+def addcategory(request):
+    return render(request,'admin/addcategory.html')
+
+    
+def product_list(request):
+    # Filter products where the 'category' field is "bed"
+    products = Product.objects.filter(category='food')
+    

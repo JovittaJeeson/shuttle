@@ -90,11 +90,28 @@ path('video_tutorial/',views.video_tutorial,name='video_tutorial'),
  path('edit_trainingvideo/<int:video_id>/', views.edit_trainingvideo, name='edit_trainingvideo'),
     # Delete training video
     path('delete_trainingvideo/<int:video_id>/', views.delete_trainingvideo, name='delete_trainingvideo'),
-  # feedback
+
+
+
+    # feedback
     path('feedbacks', views.feedbacks, name='feedbacks'),
     path('my_form', views.my_form, name='my_form'),
     path('my_post', views.my_post, name='my_post'),
+
+
+
+
+
+    #product s  ecomm
+    path('customerproduct/',views.customerproduct,name='customerproduct'),
+    path('addproductadmin/',views.addproductadmin,name='addproductadmin'),
+    path('viewproduct/',views.viewproduct,name='viewproduct'),
+    path('addcategory/', views.addcategory, name='addcategory'),
+    path('product-list/', views.product_list, name='product_list'),
+#     path('cart/',views.cart,name='cart'),
+
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,7 +4,7 @@ from django.template import loader
 from fixture.models import Fixture, Match
 
 
-def indexf(request):
+def index(request):
     fixture_list = Fixture.objects.order_by('-pub_date')
     match_list = []
     for fixture in fixture_list:
@@ -12,7 +12,7 @@ def indexf(request):
         matches['fixture'] = fixture
         matches['matches'] = Match.objects.filter(fixture=fixture, status ="Scheduled").order_by('-date').all()
         match_list.append(matches)
-    template = loader.get_template('fixture/indexf.html')
+    template = loader.get_template('fixture/index.html')
     context = {
         'fixture_list': fixture_list,
         'match_list': match_list,

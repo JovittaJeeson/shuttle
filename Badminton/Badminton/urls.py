@@ -26,11 +26,6 @@ urlpatterns = [
     path('',include('refereapp.urls')),
     path('accounts/', include('allauth.urls')),
 
-
-    path('', include('fixture.urls')),
-    # path('admin/', admin.site.urls),  # Use path instead of url
-    # path('', views.index),  # Use path instead of url
-    path('fixture/', include('fixture.urls')),  # Use path instead of url
     
 ]
 
