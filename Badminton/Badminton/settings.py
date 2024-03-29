@@ -28,7 +28,7 @@ DEBUG = True
 
 USE_X_FORWARDED_HOST = True
 
-ALLOWED_HOSTS = ['13.60.31.83', 'localhost']
+ALLOWED_HOSTS = ['13.60.31.83:8000', 'localhost']
 
 
 # Application definition
