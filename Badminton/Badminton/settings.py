@@ -28,7 +28,7 @@ DEBUG = True
 
 # settings.py
 
-ALLOWED_HOSTS = ['yourdomain.com', 'localhost', '127.0.0.1', '[::1]', '13.60.31.83']
+ALLOWED_HOSTS = ['yourdomain.com', 'localhost', '127.0.0.1', '[::1]', '13.60.31.83', '*']
 
 # Application definition
 
