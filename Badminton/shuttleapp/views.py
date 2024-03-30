@@ -795,77 +795,7 @@ def paymenthandler(request):
 	else:
 	# if other than POST request is made.
 		return HttpResponseBadRequest()
-# from django.shortcuts import render
-# import razorpay
-# from django.conf import settings
-# from django.views.decorators.csrf import csrf_exempt
-# from django.http import HttpResponseBadRequest
 
-
-# # authorize razorpay client with API Keys.
-# razorpay_client = razorpay.Client(
-# 	auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
-
-# # views.py
-
-# def Guestpayment(request):
-#     currency = 'INR'
-#     amount = 10000  # Rs. 100
-
-#     # Get query parameters
-#     client_name = request.GET.get('client_name', '')
-#     booking_count = request.GET.get('booking_count', '')
-
-#     # Create a Razorpay Order
-#     razorpay_order = razorpay_client.order.create(dict(amount=amount,
-#                                                       currency=currency,
-#                                                       payment_capture='0'))
-
-#     # order id of newly created order.
-#     razorpay_order_id = razorpay_order['id']
-#     callback_url = 'paymenthandler/'
-
-#     # we need to pass these details to frontend.
-#     context = {}
-#     context['razorpay_order_id'] = razorpay_order_id
-#     context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
-#     context['razorpay_amount'] = amount
-#     context['currency'] = currency
-#     context['callback_url'] = callback_url
-
-#     return render(request, 'Payment.html', context=context)
-
-
-
-# # we need to csrf_exempt this url as
-# # POST request will be made by Razorpay
-# # and it won't have the csrf token.
-# @csrf_exempt
-# def paymenthandler(request):
-#     # Only accept POST request.
-#     if request.method == "POST":
-#             # Get the required parameters from the POST request.
-#             payment_id = request.POST.get('razorpay_payment_id', '')
-#             razorpay_order_id = request.POST.get('razorpay_order_id', '')
-#             signature = request.POST.get('razorpay_signature', '')
-#             params_dict = {
-#                 'razorpay_order_id': razorpay_order_id,
-#                 'razorpay_payment_id': payment_id,
-#                 'razorpay_signature': signature
-#             }
-
-#             # Verify the payment signature.
-#             result = razorpay_client.utility.verify_payment_signature(params_dict)
-#             if result is not None:
-#                     # Get the Payment_mem instance associated with the payment
-#                     payment_instance = Payment_mem.objects.get(razorpay_order_id=razorpay_order_id)
-
-                  
-#                     razorpay_client.payment.capture(payment_id)
-
-                    
-                    
-#                     return redirect('index')
 
 #*****************************************************************TRAINER***************************************************
 #**************************************************************TRAINER PANEL VIEWS.py**************************************************************
@@ -973,7 +903,7 @@ def training_register(request):
         training_registration.save()
         
         # Redirect to booking_success.html
-        return redirect('RegistrationSucess')
+        return redirect('index')
     
     return render(request, 'trainer/training_register.html')
 
@@ -1041,3 +971,208 @@ def delete_trainingvideo(request, video_id):
         return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page after deletion
 
     return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page if the request method is not POST
+
+
+# from django.shortcuts import render
+# import razorpay
+# from django.conf import settings
+# from django.views.decorators.csrf import csrf_exempt
+# from django.http import HttpResponseBadRequest
+
+
+# # authorize razorpay client with API Keys.
+# razorpay_client = razorpay.Client(
+# 	auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))
+
+
+# def trainerpayment(request):
+# 	currency = 'INR'
+# 	amount = 20000 # Rs. 200
+
+# 	# Create a Razorpay Order
+# 	razorpay_order = razorpay_client.order.create(dict(amount=amount,
+# 													currency=currency,
+# 													payment_capture='0'))
+
+# 	# order id of newly created order.
+# 	razorpay_order_id = razorpay_order['id']
+# 	callback_url = 'paymenthandler/'
+
+# 	# we need to pass these details to frontend.
+# 	context = {}
+# 	context['razorpay_order_id'] = razorpay_order_id
+# 	context['razorpay_merchant_key'] = settings.RAZOR_KEY_ID
+# 	context['razorpay_amount'] = amount
+# 	context['currency'] = currency
+# 	context['callback_url'] = callback_url
+
+# 	return render(request, 'Payment.html', context=context)
+
+
+# # we need to csrf_exempt this url as
+# # POST request will be made by Razorpay
+# # and it won't have the csrf token.
+# @csrf_exempt
+# def paymenthandlerr(request):
+
+# 	# only accept POST request.
+# 	if request.method == "POST":
+# 		try:
+		
+# 			# get the required parameters from post request.
+# 			payment_id = request.POST.get('razorpay_payment_id', '')
+# 			razorpay_order_id = request.POST.get('razorpay_order_id', '')
+# 			signature = request.POST.get('razorpay_signature', '')
+# 			params_dict = {
+# 				'razorpay_order_id': razorpay_order_id,
+# 				'razorpay_payment_id': payment_id,
+# 				'razorpay_signature': signature
+# 			}
+
+# 			# verify the payment signature.
+# 			result = razorpay_client.utility.verify_payment_signature(
+# 				params_dict)
+# 			if result is not None:
+# 				amount = 10000 # Rs. 200
+# 				try:
+
+# 					# capture the payemt
+# 					razorpay_client.payment.capture(payment_id, amount)
+                    
+# 					# render success page on successful caputre of payment
+# 					return redirect('/')
+
+# 				except:
+
+# 					# if there is an error while capturing payment.
+# 					return render(request, 'paymentfail.html')
+# 			else:
+
+# 				# if signature verification fails.
+# 				return render(request, 'paymentfail.html')
+# 		except:
+
+# 			# if we don't find the required parameters in POST data
+# 			return HttpResponseBadRequest()
+# 	else:
+# 	# if other than POST request is made.
+# 		return HttpResponseBadRequest()
+
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$MACHINE LEARNING#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+from django.shortcuts import render
+from django.conf import settings
+from django.http import HttpResponse
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import os
+import warnings
+
+warnings.filterwarnings("ignore")
+
+UPLOAD_FOLDER = os.path.join(settings.BASE_DIR, 'static/uploads')
+ALLOWED_EXTENSIONS = {'csv'}
+
+def index1(request):
+    return render(request, 'index1.html')
+
+def display(request):
+    filename = os.path.join(UPLOAD_FOLDER, 'input.csv')
+    new_df = pd.read_csv(filename)
+    headers = new_df.columns
+    data = new_df.to_dict('records')
+    return render(request, 'display.html', {'headers': headers, 'data': data})
+
+
+from .ml_model import generate_strategies  # Import the function that generates predictions
+
+def upload(request):
+    if request.method == 'POST':
+        file = request.FILES['file']
+        if file:
+            filename = os.path.join(UPLOAD_FOLDER, file.name)
+            with open(filename, 'wb') as f:
+                for chunk in file.chunks():
+                    f.write(chunk)
+
+            # Process the file and generate predictions
+            predictions_dict = generate_strategies(filename)  # Adjust this according to your implementation
+
+            # Define context with any data you want to pass to the template
+            context = {
+                'message': 'File uploaded successfully!',
+                'predictions_dict': predictions_dict,  # Pass the predictions_dict to the template
+            }
+
+            return render(request, 'index2.html', context)  # Render appropriate template with results
+    return render(request, 'index1.html')
+
+# import os
+# from django.shortcuts import render
+
+# def upload(request):
+#     if request.method == 'POST':
+#         file = request.FILES['file']
+#         if file:
+#             filename = os.path.join(UPLOAD_FOLDER, file.name)
+#             with open(filename, 'wb') as f:
+#                 for chunk in file.chunks():
+#                     f.write(chunk)
+
+#             # Process the file, perform ML predictions, etc.
+#             # (Put your processing code here)
+
+#             # Define context with any data you want to pass to the template
+#             context = {
+#                 'message': 'File uploaded successfully!'
+#             }
+
+#             return render(request, 'index2.html', context)  # Render appropriate template with results
+#     return render(request, 'index1.html')
+
+
+
+from .ml_model import load_dataset, preprocess_data, train_model, evaluate_model
+from django.shortcuts import render
+
+# def train_and_evaluate(request):
+#     # Load dataset
+#     data = load_dataset("datasets/dataset.csv")
+
+#     # Preprocess data
+#     data = preprocess_data(data)
+#     # Select features and target variable
+#     X = data.drop(columns=['target_column'])
+#     y = data['target_column']
+#     # Train the model
+#     model = train_model(X, y)
+#     # Evaluate the model
+#     accuracy, report = evaluate_model(model, X_test, y_test)
+#     return render(request, 'display.html', {'accuracy': accuracy, 'report': report})
+
+from sklearn.model_selection import train_test_split
+
+def train_and_evaluate(request):
+    # Load dataset
+    data = load_dataset("datasets/dataset.csv")
+
+    # Preprocess data
+    data = preprocess_data(data)
+    
+    # Select features and target variable
+    X = data.drop(columns=['target_column'])
+    y = data['target_column']
+    
+    # Split the data into train and test sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # Train the model
+    model = train_model(X_train, y_train)
+    
+    # Evaluate the model
+    accuracy, report = evaluate_model(model, X_test, y_test)
+    
+    return render(request, 'display.html', {'accuracy': accuracy, 'report': report})
+

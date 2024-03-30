@@ -72,6 +72,8 @@ urlpatterns=[
      
      # path('Guestpayment/',views.Guestpayment,name='Guestpayment'),
      path('paymenthandler/', views.paymenthandler, name='paymenthandler'),
+     # path('trainerpayment/', views.trainerpayment, name='trainerpayment'),
+     # path('paymenthandlerr/', views.paymenthandlerr, name='paymenthandlerr'),
     
 
 
@@ -97,6 +99,14 @@ path('video_tutorial/',views.video_tutorial,name='video_tutorial'),
     path('feedbacks', views.feedbacks, name='feedbacks'),
     path('my_form', views.my_form, name='my_form'),
     path('my_post', views.my_post, name='my_post'),
+
+    #machine learning
+     
+    path('index1/', views.index1, name='index1'),
+#     path('index2/', views.index2, name='index2'),
+        
+    path('upload/', views.upload, name='upload'),
+    path('display/', views.display, name='display'),
 
 ]
 

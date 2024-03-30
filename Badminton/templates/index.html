@@ -94,6 +94,19 @@
                             <a href=" {% url 'contact' %}" class="nav-item nav-link">Contact</a>
                             <a href=" {% url 'my_form' %}" class="nav-item nav-link">Feedback</a>
                             
+                          
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="{% url "private_shuttleclass" %}" class="dropdown-item">Private Badminton class</a>
+                                    <a href="{% url "online_training" %}" class="dropdown-item">Online Training</a>
+                                  <a href="{% url 'shop' %}" class="dropdown-item">Badminton Products</a>
+                                  <a href="{% url 'fixture' %}" class="dropdown-item">Fixture</a>
+                                  <a href="{% url 'index1' %}" class="dropdown-item">Analyze your Game Stratergy</a>
+                                          
+                                </div>
+                            </div> 
+                            
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Refere/Trainer Registration</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -103,17 +116,6 @@
                                           
                                 </div>
                             </div> 
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Services</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="{% url "private_shuttleclass" %}" class="dropdown-item">Private Badminton class</a>
-                                    <a href="{% url "online_training" %}" class="dropdown-item">Online Training</a>
-                                  <a href="{% url 'shop' %}" class="dropdown-item">Badminton Products</a>
-                                  <a href="{% url 'fixture' %}" class="dropdown-item">Fixture</a>
-                                          
-                                </div>
-                            </div> 
-                            
                         </div>
                         {% if user.is_authenticated %}
                         <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 d-none d-lg-block">JOIN US</a>

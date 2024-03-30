@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Data</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/styleml.css' %}">
+  <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+
+    nav {
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      padding: 15px;
+      text-align: left;
+    }
+
+    td {
+      padding: 15px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 28px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">SMASHZONE</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{% url 'index1' %}">Let's predict again</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="section" id="index-banner">
+    <div class="container">
+      <h1 class="header center orange-text">GAME STRATEGY GENERATOR</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Craft winning badminton strategies with our Game Strategy Generator, tailored to enhance your gameplay and outsmart your opponents</h5>
+      </div>
+    </div>
+  </div>
+
+
+  <table>
+    <tr>
+      {% for header in headers %}
+      <th>{{ header }}</th>
+      {% endfor %}
+    </tr>
+    {% for row in data %}
+    <tr>
+      {% for value in row.values %}
+      <td>{{ value }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+
+</html>

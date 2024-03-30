@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -16,7 +17,7 @@
   <style>
   body {
     background-color: #f7f7f7;
-  }
+  } 
 
   #navbar {
     background-color: #3e454c;
@@ -201,7 +202,7 @@
         <div class="container">
             <div class="row row1">
                 <ul class="largenav pull-right">
-
+                    <li class="upper-links"><a class="links" href="{% url 'index' %}">Home page</a></li>
                     <li class="upper-links"><a class="links" href="{% url 'my-order' %}">Track Orders</a></li>
                     <li class="upper-links"><a class="links" href="{% url 'user_profile' %}">Profile</a></li>
                       <li class="upper-links"><a class="links" href="{% url 'logout' %}">Logout</a></li>

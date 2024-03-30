@@ -1,0 +1,598 @@
+PlayerID,GameType,PlayerName,SkillLevel,ForehandAccuracy,BackhandAccuracy,Speed,Stamina,Reflexes,PositionalAwareness,Weakness,PreferredPosition,OpponentName,OpponentSkillLevel,CourtType,RallyLength,ShotsPerRally,WinningShotsRatio,Positioning,ServeStyle,TacticalApproach
+1,Singles,PlayerA,Advanced,0.85,0.78,4.5,0.85,0.9,0.92,Stamina,Front,OpponentB,Intermediate,Hard,15,10,0.7,Front,Short,Aggressive at the net
+2,Doubles,PlayerB,Intermediate,0.72,0.64,3.8,0.75,0.82,0.8,Backhand,Rear,OpponentD,Beginner,Grass,20,15,0.45,Rear,Long,Focus on longer rallies
+3,Doubles,PlayerC,Expert,0.92,0.88,4.9,0.9,0.95,0.95,None,Middle,OpponentE,Intermediate,Hard,22,18,0.7,Middle,Short,Balanced net and baseline
+4,Doubles,PlayerD,Advanced,0.88,0.8,4.6,0.88,0.92,0.9,Stamina,Front,OpponentG,Intermediate,Clay,14,11,0.65,Front,Short,Quick net play with opponent weaknesses
+5,Singles,PlayerE,Intermediate,0.75,0.68,4,0.78,0.85,0.78,Backhand,Rear,OpponentI,Beginner,Grass,22,14,0.48,Rear,Long,"Patient game, exploit opponent mistakes"
+6,Singles,PlayerF,Intermediate,0.78,0.72,4.2,0.8,0.86,0.82,Stamina,Front,OpponentJ,Beginner,Clay,18,12,0.6,Front,Short,Mix of aggression and baseline play
+7,Doubles,PlayerG,Advanced,0.88,0.82,4.6,0.87,0.92,0.88,Backhand,Rear,OpponentK,Intermediate,Hard,21,16,0.75,Rear,Long,Aggressive net play with strategic positioning
+8,Singles,PlayerH,Expert,0.94,0.9,5,0.92,0.96,0.94,None,Middle,OpponentL,Intermediate,Grass,20,13,0.85,Middle,Short,"Patient game, exploit opponent weaknesses"
+9,Doubles,PlayerI,Intermediate,0.75,0.68,4,0.78,0.85,0.78,Backhand,Rear,OpponentM,Beginner,Hard,16,10,0.55,Rear,Long,Balanced net and baseline
+10,Singles,PlayerJ,Advanced,0.87,0.8,4.4,0.88,0.91,0.89,Stamina,Front,OpponentN,Intermediate,Clay,19,14,0.68,Front,Short,Quick net play and aggressive baseline shots
+11,Doubles,PlayerK,Intermediate,0.77,0.7,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentO,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+12,Singles,PlayerL,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentP,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+13,Doubles,PlayerM,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentN,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+14,Singles,PlayerN,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentO,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+15,Doubles,PlayerO,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentP,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+16,Singles,PlayerP,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentQ,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+17,Doubles,PlayerQ,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentR,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+18,Singles,PlayerR,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentS,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+19,Doubles,PlayerS,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentT,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+20,Singles,PlayerT,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentU,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+21,Doubles,PlayerU,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentV,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+22,Singles,PlayerV,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentW,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+23,Doubles,PlayerW,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentX,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+24,Singles,PlayerX,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentY,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+25,Doubles,PlayerY,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentZ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+26,Singles,PlayerZ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentAA,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+27,Doubles,PlayerAA,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentAB,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+28,Singles,PlayerAB,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentAC,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+29,Doubles,PlayerAC,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentAD,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+30,Singles,PlayerAD,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentAE,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+31,Doubles,PlayerAE,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentAF,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+32,Singles,PlayerAF,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentAG,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+33,Doubles,PlayerAG,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentAH,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+34,Singles,PlayerAH,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentAI,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+35,Doubles,PlayerAI,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentAJ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+36,Singles,PlayerAJ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentAK,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+37,Doubles,PlayerAK,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentAL,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+38,Singles,PlayerAL,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentAM,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+40,Singles,PlayerUJ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentUK,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+41,Doubles,PlayerAO,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentAP,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+42,Singles,PlayerAP,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentAQ,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+43,Doubles,PlayerAQ,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentAR,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+44,Singles,PlayerAR,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentAS,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+45,Doubles,PlayerAS,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentAT,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+46,Singles,PlayerAT,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentAU,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+47,Doubles,PlayerAU,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentAV,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+48,Singles,PlayerAV,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentAW,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+49,Doubles,PlayerAW,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentAX,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+50,Singles,PlayerAX,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentAY,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+51,Doubles,PlayerAY,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentAZ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+52,Singles,PlayerAZ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentBA,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+53,Doubles,PlayerBA,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentBB,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+54,Singles,PlayerBB,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentBC,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+55,Doubles,PlayerBC,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentBD,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+56,Singles,PlayerBD,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentBE,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+57,Doubles,PlayerBE,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentBF,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+58,Singles,PlayerBF,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentBG,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+59,Doubles,PlayerBG,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentBH,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+60,Singles,PlayerBH,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentBI,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+61,Doubles,PlayerBI,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentBJ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+62,Singles,PlayerBJ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentBK,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+63,Doubles,PlayerBK,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentBL,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+64,Singles,PlayerBL,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentBM,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+65,Doubles,PlayerBM,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentBN,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+66,Singles,PlayerBN,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentBO,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+67,Doubles,PlayerBO,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentBP,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+68,Singles,PlayerCH,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentCI,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+69,Doubles,PlayerCI,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentCJ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+70,Singles,PlayerCJ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentCK,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+71,Doubles,PlayerCK,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentCL,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+72,Singles,PlayerCL,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentCM,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+73,Doubles,PlayerCM,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentCN,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+74,Singles,PlayerCN,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentCO,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+75,Doubles,PlayerCO,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentCP,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+76,Singles,PlayerCP,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentCQ,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+77,Doubles,PlayerCQ,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentCR,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+78,Singles,PlayerCR,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentCS,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+79,Doubles,PlayerCS,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentCT,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+80,Singles,PlayerCT,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentCU,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+81,Doubles,PlayerCU,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentCV,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+82,Singles,PlayerCV,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentCW,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+84,Singles,PlayerCX,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentCY,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+85,Doubles,PlayerCY,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentCZ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+86,Singles,PlayerCZ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentDA,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+87,Doubles,PlayerDA,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentDB,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+88,Singles,PlayerDB,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentDC,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+89,Doubles,PlayerDC,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentDD,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+90,Singles,PlayerDD,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentDE,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+91,Doubles,PlayerDE,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentDF,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+92,Singles,PlayerDF,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentDG,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+93,Doubles,PlayerDG,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentDH,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+94,Singles,PlayerDH,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentDI,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+95,Doubles,PlayerDI,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentDJ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+96,Singles,PlayerDJ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentDK,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+97,Doubles,PlayerDK,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentDL,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+98,Singles,PlayerDL,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentDM,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+99,Doubles,PlayerDM,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentDN,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+100,Singles,PlayerDN,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentDO,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+101,Doubles,PlayerDO,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentDP,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+102,Singles,PlayerDP,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentDQ,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+103,Doubles,PlayerDQ,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentDR,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+104,Singles,PlayerDR,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentDS,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+105,Doubles,PlayerDS,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentDT,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+106,Singles,PlayerDT,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentDU,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+107,Doubles,PlayerDU,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentDV,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+108,Singles,PlayerDV,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentDW,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+109,Doubles,PlayerDW,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentDX,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+110,Singles,PlayerDX,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentDY,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+111,Doubles,PlayerDY,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentDZ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+112,Singles,PlayerDZ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentEA,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+113,Doubles,PlayerEA,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentEB,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+114,Singles,PlayerEB,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentEC,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+115,Doubles,PlayerEC,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentED,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+116,Singles,PlayerED,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentEE,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+117,Doubles,PlayerEE,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentEF,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+118,Singles,PlayerEF,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentEG,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+119,Doubles,PlayerEG,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentEH,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+120,Singles,PlayerEH,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentEI,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+121,Doubles,PlayerEI,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentEJ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+122,Singles,PlayerEJ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentEK,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+123,Doubles,PlayerEK,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentEL,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+124,Singles,PlayerEL,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentEM,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+125,Doubles,PlayerEM,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentEN,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+126,Singles,PlayerEN,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentEO,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+127,Doubles,PlayerEO,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentEP,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+128,Singles,PlayerEP,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentEQ,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+129,Doubles,PlayerEQ,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentER,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+130,Singles,PlayerER,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentES,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+131,Doubles,PlayerES,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentET,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+132,Singles,PlayerET,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentEU,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+133,Doubles,PlayerEU,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentEV,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+134,Singles,PlayerEV,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentEW,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+135,Doubles,PlayerEW,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentEX,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+136,Singles,PlayerEX,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentEY,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+137,Doubles,PlayerEY,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentEZ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+138,Singles,PlayerEZ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentFA,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+139,Doubles,PlayerFA,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentFB,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+140,Singles,PlayerFB,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentFC,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+141,Doubles,PlayerFC,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentFD,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+142,Singles,PlayerFD,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentFE,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+143,Doubles,PlayerFE,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentFF,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+144,Singles,PlayerFF,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentFG,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+145,Doubles,PlayerFG,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentFH,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+146,Singles,PlayerFH,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentFI,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+147,Doubles,PlayerFI,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentFJ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+148,Singles,PlayerFJ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentFK,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+149,Doubles,PlayerFK,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentFL,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+150,Singles,PlayerFL,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentFM,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+151,Doubles,PlayerFM,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentFN,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+152,Singles,PlayerFN,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentFO,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+153,Doubles,PlayerFO,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentFP,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+154,Singles,PlayerFP,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentFQ,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+155,Doubles,PlayerFQ,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentFR,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+156,Singles,PlayerFR,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentFS,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+157,Doubles,PlayerFS,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentFT,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+158,Singles,PlayerFT,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentFU,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+159,Doubles,PlayerFU,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentFV,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+160,Singles,PlayerFV,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentFW,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+161,Doubles,PlayerFW,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentFX,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+162,Singles,PlayerFX,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentFY,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+163,Doubles,PlayerFY,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentFZ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+164,Singles,PlayerFZ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentGA,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+165,Doubles,PlayerGA,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentGB,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+166,Singles,PlayerGB,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentGC,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+167,Doubles,PlayerGC,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentGD,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+168,Singles,PlayerGD,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentGE,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+169,Doubles,PlayerGE,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentGF,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+170,Singles,PlayerGF,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentGG,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+171,Doubles,PlayerGG,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentGH,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+172,Singles,PlayerGH,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentGI,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+173,Doubles,PlayerGI,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentGJ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+174,Singles,PlayerGJ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentGK,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+175,Doubles,PlayerGK,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentGL,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+176,Singles,PlayerGL,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentGM,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+177,Doubles,PlayerGM,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentGN,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+178,Singles,PlayerGN,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentGO,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+179,Doubles,PlayerGO,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentGP,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+180,Singles,PlayerGP,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentGQ,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+181,Doubles,PlayerGQ,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentGR,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+182,Singles,PlayerGR,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentGS,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+183,Doubles,PlayerGS,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentGT,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+184,Singles,PlayerGT,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentGU,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+185,Doubles,PlayerGU,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentGV,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+186,Singles,PlayerGV,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentGW,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+187,Doubles,PlayerGW,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentGX,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+188,Singles,PlayerGX,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentGY,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+189,Doubles,PlayerGY,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentGZ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+190,Singles,PlayerGZ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentHA,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+191,Doubles,PlayerHA,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentHB,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+192,Singles,PlayerHB,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentHC,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+193,Doubles,PlayerHC,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentHD,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+194,Singles,PlayerHD,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentHE,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+195,Doubles,PlayerHE,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentHF,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+196,Singles,PlayerHF,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentHG,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+197,Doubles,PlayerHG,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentHH,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+198,Singles,PlayerHH,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentHI,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+199,Doubles,PlayerHI,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentHJ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+200,Singles,PlayerHJ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentHK,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+201,Doubles,PlayerHK,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentHL,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+202,Singles,PlayerHL,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentHM,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+203,Doubles,PlayerHM,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentHN,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+204,Singles,PlayerHN,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentHO,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+205,Doubles,PlayerHO,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentHP,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+206,Singles,PlayerHP,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentHQ,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+207,Doubles,PlayerHQ,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentHR,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+208,Singles,PlayerHR,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentHS,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+209,Doubles,PlayerHS,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentHT,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+210,Singles,PlayerHT,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentHU,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+211,Doubles,PlayerHU,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentHV,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+212,Singles,PlayerHV,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentHW,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+213,Doubles,PlayerHW,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentHX,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+214,Singles,PlayerHX,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentHY,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+215,Doubles,PlayerHY,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentHZ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+216,Singles,PlayerHZ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentIA,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+217,Doubles,PlayerIA,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentIB,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+218,Singles,PlayerIB,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentIC,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+219,Doubles,PlayerIC,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentID,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+220,Singles,PlayerID,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentIE,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+221,Doubles,PlayerIE,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentIF,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+222,Singles,PlayerIF,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentIG,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+223,Doubles,PlayerIG,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentIH,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+224,Singles,PlayerIH,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentII,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+225,Doubles,PlayerII,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentIJ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+226,Singles,PlayerIJ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentIK,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+227,Doubles,PlayerIK,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentIL,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+228,Singles,PlayerIL,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentIM,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+229,Doubles,PlayerIM,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentIN,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+230,Singles,PlayerIN,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentIO,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+231,Doubles,PlayerIO,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentIP,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+232,Singles,PlayerIP,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentIQ,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+233,Doubles,PlayerIQ,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentIR,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+234,Singles,PlayerIR,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentIS,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+235,Doubles,PlayerIS,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentIT,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+236,Singles,PlayerIT,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentIU,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+237,Doubles,PlayerIU,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentIV,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+238,Singles,PlayerIV,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentIW,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+239,Doubles,PlayerIW,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentIX,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+240,Singles,PlayerIX,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentIY,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+241,Doubles,PlayerIY,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentIZ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+242,Singles,PlayerIZ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentJA,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+243,Doubles,PlayerJA,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentJB,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+244,Singles,PlayerJB,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentJC,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+245,Doubles,PlayerJC,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentJD,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+246,Singles,PlayerJD,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentJE,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+247,Doubles,PlayerJE,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentJF,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+248,Singles,PlayerJF,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentJG,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+249,Doubles,PlayerJG,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentJH,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+250,Singles,PlayerJH,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentJI,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+251,Doubles,PlayerJI,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentJJ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+252,Singles,PlayerJJ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentJK,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+253,Doubles,PlayerJK,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentJL,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+254,Singles,PlayerJL,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentJM,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+255,Doubles,PlayerJM,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentJN,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+256,Singles,PlayerJN,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentJO,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+257,Doubles,PlayerJO,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentJP,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+258,Singles,PlayerJP,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentJQ,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+259,Doubles,PlayerJQ,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentJR,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+260,Singles,PlayerJR,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentJS,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+261,Doubles,PlayerJS,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentJT,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+262,Singles,PlayerJT,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentJU,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+263,Doubles,PlayerJU,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentJV,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+264,Singles,PlayerJV,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentJW,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+265,Doubles,PlayerJW,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentJX,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+266,Singles,PlayerJX,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentJY,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+267,Doubles,PlayerJY,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentJZ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+268,Singles,PlayerJZ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentKA,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+269,Doubles,PlayerKA,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentKB,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+270,Singles,PlayerKB,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentKC,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+271,Doubles,PlayerKC,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentKD,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+272,Singles,PlayerKD,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentKE,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+273,Doubles,PlayerKE,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentKF,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+274,Singles,PlayerKF,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentKG,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+275,Doubles,PlayerKG,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentKH,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+276,Singles,PlayerKH,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentKI,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+277,Doubles,PlayerKI,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentKJ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+278,Singles,PlayerKJ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentKK,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+279,Doubles,PlayerKK,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentKL,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+280,Singles,PlayerKL,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentKM,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+281,Doubles,PlayerKM,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentKN,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+282,Singles,PlayerKN,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentKO,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+283,Doubles,PlayerKO,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentKP,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+284,Singles,PlayerKP,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentKQ,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+285,Doubles,PlayerKQ,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentKR,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+286,Singles,PlayerKR,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentKS,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+287,Doubles,PlayerKS,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentKT,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+288,Singles,PlayerKT,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentKU,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+289,Doubles,PlayerKU,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentKV,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+290,Singles,PlayerKV,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentKW,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+291,Doubles,PlayerKW,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentKX,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+292,Singles,PlayerKX,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentKY,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+293,Doubles,PlayerKY,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentKZ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+294,Singles,PlayerKZ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentLA,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+295,Doubles,PlayerLA,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentLB,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+296,Singles,PlayerLB,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentLC,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+297,Doubles,PlayerLC,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentLD,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+298,Singles,PlayerLD,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentLE,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+299,Doubles,PlayerLE,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentLF,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+300,Singles,PlayerLF,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentLG,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+301,Doubles,PlayerLG,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentLH,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+302,Singles,PlayerLH,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentLI,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+303,Doubles,PlayerLI,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentLJ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+304,Singles,PlayerLJ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentLK,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+305,Doubles,PlayerLK,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentLL,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+306,Singles,PlayerLL,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentLM,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+307,Doubles,PlayerLM,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentLN,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+308,Singles,PlayerLN,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentLO,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+309,Doubles,PlayerLO,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentLP,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+310,Singles,PlayerLP,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentLQ,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+311,Doubles,PlayerLQ,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentLR,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+312,Singles,PlayerLR,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentLS,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+313,Doubles,PlayerLS,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentLT,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+314,Singles,PlayerLT,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentLU,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+315,Doubles,PlayerLU,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentLV,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+316,Singles,PlayerLV,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentLW,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+317,Doubles,PlayerLW,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentLX,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+318,Singles,PlayerLX,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentLY,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+319,Doubles,PlayerLY,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentLZ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+320,Singles,PlayerLZ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentMA,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+321,Doubles,PlayerMA,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentMB,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+322,Singles,PlayerMB,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentMC,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+323,Doubles,PlayerMC,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentMD,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+324,Singles,PlayerMD,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentME,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+325,Doubles,PlayerME,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentMF,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+326,Singles,PlayerMF,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentMG,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+327,Doubles,PlayerMG,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentMH,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+328,Singles,PlayerMH,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentMI,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+329,Doubles,PlayerMI,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentMJ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+330,Singles,PlayerMJ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentMK,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+331,Doubles,PlayerMK,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentML,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+332,Singles,PlayerML,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentMM,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play
+333,Doubles,PlayerMM,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentMN,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+334,Singles,PlayerMN,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentMO,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+335,Doubles,PlayerMO,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentMP,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+336,Singles,PlayerMP,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentMQ,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+337,Doubles,PlayerMQ,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentMR,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+338,Singles,PlayerMR,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentMS,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+339,Doubles,PlayerMS,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentMT,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+340,Singles,PlayerMT,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentMU,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+341,Doubles,PlayerMU,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentMV,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+342,Singles,PlayerMV,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentMW,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+343,Doubles,PlayerMW,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentMX,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+344,Singles,PlayerMX,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentMY,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+345,Doubles,PlayerMY,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentMZ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+346,Singles,PlayerMZ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentNA,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+347,Doubles,PlayerNA,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentNB,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+348,Singles,PlayerNB,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentNC,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+349,Doubles,PlayerNC,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentND,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+350,Singles,PlayerND,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentNE,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+351,Doubles,PlayerNE,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentNF,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+352,Singles,PlayerNF,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentNG,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+353,Doubles,PlayerNG,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentNH,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+354,Singles,PlayerNH,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentNI,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+355,Doubles,PlayerNI,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentNJ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+356,Singles,PlayerNJ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentNK,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+357,Doubles,PlayerNK,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentNL,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+358,Singles,PlayerNL,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentNM,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+359,Doubles,PlayerNM,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentNN,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+360,Singles,PlayerNN,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentNO,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+361,Doubles,PlayerNO,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentNP,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+362,Singles,PlayerNP,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentNQ,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+363,Doubles,PlayerNQ,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentNR,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+364,Singles,PlayerNR,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentNS,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+365,Doubles,PlayerNS,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentNT,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+366,Singles,PlayerNT,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentNU,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+367,Doubles,PlayerNU,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentNV,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+368,Singles,PlayerNV,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentNW,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+369,Doubles,PlayerNW,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentNX,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+370,Singles,PlayerNX,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentNY,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+371,Doubles,PlayerNY,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentNZ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+372,Singles,PlayerNZ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentOA,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+373,Doubles,PlayerOA,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentOB,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+374,Singles,PlayerOB,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentOC,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+375,Doubles,PlayerOC,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentOD,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+376,Singles,PlayerOD,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentOE,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+377,Doubles,PlayerOE,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentOF,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+378,Singles,PlayerOF,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentOG,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+379,Doubles,PlayerOG,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentOH,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+380,Singles,PlayerOH,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentOI,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+381,Doubles,PlayerOI,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentOJ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+382,Singles,PlayerOJ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentOK,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+383,Doubles,PlayerOK,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentOL,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+384,Singles,PlayerOL,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentOM,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+385,Doubles,PlayerOM,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentON,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+386,Singles,PlayerON,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentOO,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+387,Doubles,PlayerOO,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentOP,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+388,Singles,PlayerOP,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentOQ,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+389,Doubles,PlayerOQ,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentOR,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+390,Singles,PlayerOR,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentOS,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+391,Doubles,PlayerOS,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentOT,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+392,Singles,PlayerOT,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentOU,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+393,Doubles,PlayerOU,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentOV,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+394,Singles,PlayerOV,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentOW,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+395,Doubles,PlayerOW,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentOX,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+396,Singles,PlayerOX,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentOY,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+397,Doubles,PlayerOY,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentOZ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+398,Singles,PlayerOZ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentPA,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+399,Doubles,PlayerPA,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentPB,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+400,Singles,PlayerPB,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentPC,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+401,Doubles,PlayerPC,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentPD,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+402,Singles,PlayerPD,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentPE,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+403,Doubles,PlayerPE,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentPF,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+404,Singles,PlayerPF,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentPG,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+405,Doubles,PlayerPG,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentPH,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+406,Singles,PlayerPH,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentPI,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+407,Doubles,PlayerPI,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentPJ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+408,Singles,PlayerPJ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentPK,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+409,Doubles,PlayerPK,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentPL,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+410,Singles,PlayerPL,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentPM,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+411,Doubles,PlayerPM,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentPN,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+412,Singles,PlayerPN,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentPO,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+413,Doubles,PlayerPO,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentPP,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+414,Singles,PlayerPP,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentPQ,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+415,Doubles,PlayerPQ,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentPR,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+416,Singles,PlayerPR,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentPS,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+417,Doubles,PlayerPS,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentPT,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+418,Singles,PlayerPT,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentPU,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+419,Doubles,PlayerPU,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentPV,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+420,Singles,PlayerPV,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentPW,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+421,Doubles,PlayerPW,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentPX,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+422,Singles,PlayerPX,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentPY,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+423,Doubles,PlayerPY,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentPZ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+424,Singles,PlayerPZ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentQA,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+425,Doubles,PlayerQA,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentQB,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+426,Singles,PlayerQB,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentQC,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+427,Doubles,PlayerQC,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentQD,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+428,Singles,PlayerQD,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentQE,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+429,Doubles,PlayerQE,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentQF,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+430,Singles,PlayerQF,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentQG,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+431,Doubles,PlayerQG,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentQH,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+432,Singles,PlayerQH,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentQI,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+433,Doubles,PlayerQI,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentQJ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+434,Singles,PlayerQJ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentQK,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+435,Doubles,PlayerQK,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentQL,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+436,Singles,PlayerQL,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentQM,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+437,Doubles,PlayerQM,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentQN,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+438,Singles,PlayerQN,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentQO,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+439,Doubles,PlayerQO,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentQP,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+440,Singles,PlayerQP,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentQQ,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+441,Doubles,PlayerQQ,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentQR,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+442,Singles,PlayerQR,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentQS,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+443,Doubles,PlayerQS,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentQT,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+444,Singles,PlayerQT,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentQU,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+445,Doubles,PlayerQU,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentQV,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+446,Singles,PlayerQV,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentQW,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+447,Doubles,PlayerQW,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentQX,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+448,Singles,PlayerQX,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentQY,Intermediate,Grass,19,12,0.8,Middle,Short,Versatile gameplay
+449,Doubles,PlayerQY,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentQZ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+450,Singles,PlayerQZ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentRA,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+451,Doubles,PlayerRA,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentRB,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+452,Singles,PlayerRB,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentRC,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+453,Doubles,PlayerRC,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentRD,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+454,Singles,PlayerRD,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentRE,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+455,Doubles,PlayerRE,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentRF,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+456,Singles,PlayerRF,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentRG,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+457,Doubles,PlayerRG,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentRH,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+458,Singles,PlayerRH,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentRI,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+459,Doubles,PlayerRI,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentRJ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+460,Singles,PlayerRJ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentRK,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+461,Doubles,PlayerRK,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentRL,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+462,Singles,PlayerRL,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentRM,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+463,Doubles,PlayerRM,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentRN,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+464,Singles,PlayerRN,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentRO,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+465,Doubles,PlayerRO,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentRP,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+466,Singles,PlayerRP,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentRQ,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+467,Doubles,PlayerRQ,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentRR,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+468,Singles,PlayerRR,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentRS,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+469,Doubles,PlayerRS,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentRT,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+470,Singles,PlayerRT,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentRU,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+471,Doubles,PlayerRU,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentRV,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+472,Singles,PlayerRV,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentRW,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+473,Doubles,PlayerRW,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentRX,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+474,Singles,PlayerRX,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentRY,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+475,Doubles,PlayerRY,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentRZ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+476,Singles,PlayerRZ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentSA,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+477,Doubles,PlayerSA,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentSB,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+478,Singles,PlayerSB,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentSC,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+479,Doubles,PlayerSC,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentSD,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+480,Singles,PlayerSD,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentSE,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+481,Doubles,PlayerSE,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentSF,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+482,Singles,PlayerSF,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentSG,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+483,Doubles,PlayerSG,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentSH,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+484,Singles,PlayerSH,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentSI,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+485,Doubles,PlayerSI,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentSJ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+486,Singles,PlayerSJ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentSK,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+487,Doubles,PlayerSK,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentSL,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+488,Singles,PlayerSL,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentSM,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+489,Doubles,PlayerSM,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentSN,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+490,Singles,PlayerSN,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentSO,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+491,Doubles,PlayerSO,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentSP,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+492,Singles,PlayerSP,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentSQ,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+493,Doubles,PlayerSQ,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentSR,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+494,Singles,PlayerSR,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentSS,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+495,Doubles,PlayerSS,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentST,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+496,Singles,PlayerST,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentSU,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+497,Doubles,PlayerSU,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentSV,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+498,Singles,PlayerSV,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentSW,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+499,Doubles,PlayerSW,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentSX,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+500,Singles,PlayerSX,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentSY,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+501,Doubles,PlayerSY,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentSZ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+502,Singles,PlayerSZ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentTA,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+503,Doubles,PlayerTA,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentTB,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+504,Singles,PlayerTB,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentTC,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+505,Doubles,PlayerTC,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentTD,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+506,Singles,PlayerTD,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentTE,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+507,Doubles,PlayerTE,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentTF,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+508,Singles,PlayerTF,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentTG,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+509,Doubles,PlayerTG,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentTH,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+510,Singles,PlayerTH,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentTI,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+511,Doubles,PlayerTI,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentTJ,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+512,Singles,PlayerTJ,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentTK,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+513,Doubles,PlayerTK,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentTL,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+514,Singles,PlayerTL,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentTM,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+515,Doubles,PlayerTM,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentTN,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+516,Singles,PlayerTN,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentTO,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+517,Doubles,PlayerTO,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentTP,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+518,Singles,PlayerTP,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentTQ,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+519,Doubles,PlayerTQ,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentTR,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+520,Singles,PlayerTR,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentTS,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+521,Doubles,PlayerTS,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentTT,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+522,Singles,PlayerTT,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentTU,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+523,Doubles,PlayerTU,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentTV,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+524,Singles,PlayerTV,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentTW,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+525,Doubles,PlayerTW,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentTX,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+526,Singles,PlayerTX,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentTY,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+527,Doubles,PlayerTY,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentTZ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+528,Singles,PlayerTZ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentUA,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+529,Doubles,PlayerUA,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentUB,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+530,Singles,PlayerUB,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentUC,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+531,Doubles,PlayerUC,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentUD,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+532,Singles,PlayerUD,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentUE,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+533,Doubles,PlayerUE,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentUF,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+534,Singles,PlayerUF,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentUG,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+535,Doubles,PlayerUG,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentUH,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+536,Singles,PlayerUH,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentUI,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+537,Doubles,PlayerUI,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentUJ,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+538,Singles,PlayerUJ,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentUK,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+539,Doubles,PlayerUU,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentUV,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+540,Singles,PlayerUV,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentUW,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+541,Doubles,PlayerUW,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentUX,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+542,Singles,PlayerUX,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentUY,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+543,Doubles,PlayerUY,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentUZ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+544,Singles,PlayerUZ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentVA,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+545,Doubles,PlayerVA,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentVB,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+546,Singles,PlayerVB,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentVC,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+547,Doubles,PlayerVC,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentVD,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+548,Singles,PlayerVD,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentVE,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+549,Doubles,PlayerVE,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentVF,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+550,Singles,PlayerVF,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentVG,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+551,Doubles,PlayerVG,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentVH,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+552,Singles,PlayerVH,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentVI,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+553,Doubles,PlayerVI,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentVJ,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+554,Singles,PlayerVJ,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentVK,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+555,Doubles,PlayerVK,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentVL,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+556,Singles,PlayerVL,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentVM,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+557,Doubles,PlayerVM,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentVN,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+558,Singles,PlayerVN,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentVO,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+559,Doubles,PlayerVO,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentVP,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+560,Singles,PlayerVP,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentVQ,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+561,Doubles,PlayerVQ,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentVR,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+562,Singles,PlayerVR,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentVS,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+563,Doubles,PlayerVS,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentVT,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+564,Singles,PlayerVT,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentVU,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+565,Doubles,PlayerVU,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentVV,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+566,Singles,PlayerVV,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentVW,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+567,Doubles,PlayerVW,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentVX,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+568,Singles,PlayerVX,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentVY,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+569,Doubles,PlayerVY,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentVZ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+570,Singles,PlayerVZ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentWA,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+571,Doubles,PlayerWA,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentWB,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+572,Singles,PlayerWB,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentWC,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+573,Doubles,PlayerWC,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentWD,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+574,Singles,PlayerWD,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentWE,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+575,Doubles,PlayerWE,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentWF,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+576,Singles,PlayerWF,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentWG,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+577,Doubles,PlayerWG,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentWH,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+578,Singles,PlayerWH,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentWI,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+579,Doubles,PlayerWI,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentWJ,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+580,Singles,PlayerWJ,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentWK,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+581,Doubles,PlayerWK,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentWL,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline play with net coverage
+582,Singles,PlayerWL,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentWM,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+583,Doubles,PlayerWM,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentWN,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+584,Singles,PlayerWN,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentWO,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+585,Doubles,PlayerWO,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentWP,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+586,Singles,PlayerWP,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentWQ,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+587,Doubles,PlayerWQ,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentWR,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+588,Singles,PlayerWR,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentWS,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+589,Doubles,PlayerWS,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentWT,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies
+590,Singles,PlayerWT,Advanced,0.85,0.79,4.3,0.86,0.9,0.87,Stamina,Front,OpponentWU,Intermediate,Clay,17,13,0.68,Front,Short,Quick net play with aggressive shots
+591,Doubles,PlayerWU,Intermediate,0.77,0.71,4.1,0.79,0.84,0.81,Backhand,Rear,OpponentWV,Beginner,Grass,17,12,0.58,Rear,Long,Strategic baseline
+592,Singles,PlayerWV,Advanced,0.86,0.79,4.3,0.87,0.9,0.88,Stamina,Front,OpponentWW,Intermediate,Hard,16,11,0.72,Front,Short,Aggressive net play with fast serves
+593,Doubles,PlayerWW,Expert,0.94,0.89,5.1,0.93,0.95,0.94,None,Middle,OpponentWX,Intermediate,Clay,23,19,0.78,Middle,Short,"Versatile gameplay, adapting to opponents"
+594,Singles,PlayerWX,Intermediate,0.76,0.71,4,0.78,0.83,0.8,Backhand,Rear,OpponentWY,Beginner,Hard,18,13,0.65,Rear,Long,Balanced approach with focus on opponent weaknesses
+595,Doubles,PlayerWY,Advanced,0.85,0.78,4.5,0.85,0.89,0.87,Stamina,Front,OpponentWZ,Intermediate,Grass,19,15,0.62,Front,Short,Quick net play and coordinated strategies
+596,Singles,PlayerWZ,Intermediate,0.78,0.73,4.2,0.8,0.85,0.82,Backhand,Rear,OpponentXA,Beginner,Clay,20,14,0.55,Rear,Long,Patient baseline game with focus on consistency
+597,Doubles,PlayerXA,Advanced,0.87,0.81,4.4,0.86,0.91,0.88,None,Middle,OpponentXB,Intermediate,Hard,22,18,0.73,Middle,Short,Aggressive net play with strategic court positioning
+598,Singles,PlayerXB,Expert,0.93,0.88,5,0.92,0.95,0.93,None,Middle,OpponentXC,Intermediate,Grass,19,12,0.8,Middle,Short,"Versatile gameplay, adapting to opponent's style"
+599,Doubles,PlayerXC,Intermediate,0.76,0.7,4.1,0.78,0.83,0.8,Backhand,Rear,OpponentXD,Beginner,Hard,15,10,0.6,Rear,Long,Balanced net and baseline strategies

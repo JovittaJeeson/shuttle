@@ -1,0 +1,67 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styleml.css' %}">
+  <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/index1" class="brand-logo">SMASHZONE</a>
+    </div>
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">GAME STRATEGY GENERATOR</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Craft winning badminton strategies with our Game Strategy Generator, tailored to enhance your gameplay and outsmart your opponents</h5>
+      </div>
+
+      <div class="row">
+        <form action="/upload/" method="POST" class="col s12" enctype="multipart/form-data">
+         {% csrf_token %}
+        {% comment %} <form action="/upload" method="POST" class="col s12" enctype="multipart/form-data"> {% endcomment %}
+          <div class="row">
+            <div class="file-field input-field col s12">
+              <div class="btn">
+                <span>Upload File</span>
+                <input type="file" name="file" accept=".csv" required onchange="displayFileName(this)">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" id="file-path" type="text" placeholder="No file chosen" readonly>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row center">
+            <button type="submit" value="upload" class="btn-large waves-effect waves-light orange">GENERATE STRATEGY</button>
+          </div>
+        </form>
+      </div>
+  
+      <script>
+        function displayFileName(input) {
+          var fileName = input.files[0].name;
+          document.getElementById('file-path').value = fileName;
+        }
+      </script>
+    </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+</body>
+</html>
