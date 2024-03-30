@@ -903,7 +903,7 @@ def training_register(request):
         training_registration.save()
         
         # Redirect to booking_success.html
-        return redirect('index')
+        return redirect('RegistrationSucess')
     
     return render(request, 'trainer/training_register.html')
 
