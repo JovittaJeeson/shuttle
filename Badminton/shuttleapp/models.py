@@ -149,7 +149,6 @@ class TrainingVideo(models.Model):
 
 
 
-
 from django.db import models
 from .models import CustomUser
 
@@ -167,29 +166,3 @@ class Feedback(models.Model):
     @property
     def username(self):
         return self.can_id.name
-
-
-#product
-    from django.db import models
-from loginapp.models import CustomUser
-class Product(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    product_name = models.CharField(max_length=255, null=True)
-    product_description = models.TextField(max_length=255, null=True)
-    price = models.CharField(max_length=255, null=True)
-    product_images1 = models.FileField(upload_to='sample/', null=True, blank=True, max_length=255)
-    product_images2 = models.FileField(upload_to='sample/', null=True, blank=True, max_length=255)
-    product_images3 = models.FileField(upload_to='sample/', null=True, blank=True, max_length=255)
-    category = models.CharField(max_length=255, null=True)
-    brand_name = models.CharField(max_length=255, null=True)
-    sizeQuantity = models.CharField(max_length=255, null=True)
-    petCompatibility = models.CharField(max_length=255, null=True)
-    agesizesuitability = models.CharField(max_length=255, null=True)
-    colorsVariations = models.CharField(max_length=255, null=True)
-      # You can create a separate Category model if needed
-   
-    status=models.BooleanField(default=False)
-
-    def str(self):
-        return self.product_name
-    

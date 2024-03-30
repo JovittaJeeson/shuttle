@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
-from .models import EventUser,Winner,Registration,CustomUser,Winner,Booking,Product
+from .models import EventUser,Winner,Registration,CustomUser,Winner,Booking
 from loginapp.models import CustomUser
 from membershipapp.models import SubscriptionPlan
 from django.shortcuts import render, redirect
@@ -519,6 +519,89 @@ def refere(request):
 
 
 
+#feedback
+import pyttsx3
+import re
+from .models import CustomUser, Feedback
+
+from nltk.corpus import stopwords
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+# views.py
+def my_form(request):
+    engine = pyttsx3.init()
+    engine.say('Hello, Welcome to the feedback section.')
+    engine.runAndWait()
+    return render(request,'form.html')
+ 
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def my_post(request):
+    if request.method == 'POST':
+        stop_words = stopwords.words('english')
+        # my contribution
+        stop_words.remove('very')
+        stop_words.remove('not')
+        
+        #convert to lowercase
+        text1 = request.POST['text1'].lower()
+        
+        # my contribution
+        text_final = ''.join(i for i in text1 if not i.isdigit())
+        net_txt=re.sub('[^a-zA-Z0-9\n]', ' ',text_final)
+        
+        #remove stopwords    
+        processed_doc1 = ' '.join([i for i in net_txt.split() if i not in stop_words])
+
+        sa = SentimentIntensityAnalyzer()
+        dd = sa.polarity_scores(text=processed_doc1)
+        compound = round((1 + dd['compound'])/2, 2)
+        final=compound*100
+        
+        if "enough" in text1 or "sufficient" in text1 or "ample" in text1 or "abudant" in text1:
+            engine = pyttsx3.init()
+            engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
+            engine.runAndWait()
+            feeds = Feedback(feedback=text1, percentage=final, good=True, bad=True, neutral=False, can_id=request.user)
+            feeds.save()
+            return render(request, 'form.html', {'final': final, 'text1': net_txt})
+        
+        elif final == 50:
+            engine = pyttsx3.init()
+            engine.say('Please enter an adequate response, Thank You')
+            engine.runAndWait()
+            return render(request, 'form.html', {'final': final, 'text1': net_txt})
+        
+        else:
+            engine = pyttsx3.init()
+            engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
+            engine.runAndWait()
+            if final > 50:
+                feeds = Feedback(feedback=text1, percentage=final, good=False, bad=True, neutral=True, can_id=request.user)
+                feeds.save()
+                return render(request, 'form.html', {'final': final, 'text1': net_txt})
+            elif final < 50:
+                feeds = Feedback(feedback=text1, percentage=final, bad=False, good=True, neutral=True, can_id=request.user)
+                feeds.save()
+                return render(request, 'form.html', {'final': final, 'text1': net_txt})
+            else:
+                feeds = Feedback(feedback=text1, percentage=final)
+                feeds.save()
+                return render(request, 'form.html', {'final': final, 'text1': net_txt})
+    else:
+        return redirect('my_form')
+
+from django.shortcuts import render
+from .models import Feedback
+
+def feedbacks(request):
+    feed = Feedback.objects.all()
+    context = {'feed': feed}
+    return render(request, "feedbackview.html", context)
+
+
 
 
 
@@ -958,254 +1041,3 @@ def delete_trainingvideo(request, video_id):
         return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page after deletion
 
     return redirect('view_trainer_trainingvideo')  # Redirect to the training video list page if the request method is not POST
-
-
-
-
-
-
-
-
-#feedback
-import pyttsx3
-import re
-from .models import CustomUser, Feedback
-
-from nltk.corpus import stopwords
-from nltk.sentiment import SentimentIntensityAnalyzer
-
-# views.py
-def my_form(request):
-    engine = pyttsx3.init()
-    engine.say('Hello, Welcome to the feedback section.')
-    engine.runAndWait()
-    return render(request,'form.html')
- 
-
-from django.contrib.auth.decorators import login_required
-
-@login_required
-def my_post(request):
-    if request.method == 'POST':
-        stop_words = stopwords.words('english')
-        # my contribution
-        stop_words.remove('very')
-        stop_words.remove('not')
-        
-        #convert to lowercase
-        text1 = request.POST['text1'].lower()
-        
-        # my contribution
-        text_final = ''.join(i for i in text1 if not i.isdigit())
-        net_txt=re.sub('[^a-zA-Z0-9\n]', ' ',text_final)
-        
-        #remove stopwords    
-        processed_doc1 = ' '.join([i for i in net_txt.split() if i not in stop_words])
-
-        sa = SentimentIntensityAnalyzer()
-        dd = sa.polarity_scores(text=processed_doc1)
-        compound = round((1 + dd['compound'])/2, 2)
-        final=compound*100
-        
-        if "enough" in text1 or "sufficient" in text1 or "ample" in text1 or "abudant" in text1:
-            engine = pyttsx3.init()
-            engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-            engine.runAndWait()
-            feeds = Feedback(feedback=text1, percentage=final, good=True, bad=True, neutral=False, can_id=request.user)
-            feeds.save()
-            return render(request, 'form.html', {'final': final, 'text1': net_txt})
-        
-        elif final == 50:
-            engine = pyttsx3.init()
-            engine.say('Please enter an adequate response, Thank You')
-            engine.runAndWait()
-            return render(request, 'form.html', {'final': final, 'text1': net_txt})
-        
-        else:
-            engine = pyttsx3.init()
-            engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-            engine.runAndWait()
-            if final > 50:
-                feeds = Feedback(feedback=text1, percentage=final, good=False, bad=True, neutral=True, can_id=request.user)
-                feeds.save()
-                return render(request, 'form.html', {'final': final, 'text1': net_txt})
-            elif final < 50:
-                feeds = Feedback(feedback=text1, percentage=final, bad=False, good=True, neutral=True, can_id=request.user)
-                feeds.save()
-                return render(request, 'form.html', {'final': final, 'text1': net_txt})
-            else:
-                feeds = Feedback(feedback=text1, percentage=final)
-                feeds.save()
-                return render(request, 'form.html', {'final': final, 'text1': net_txt})
-    else:
-        return redirect('my_form')
-
-# def my_post(request):
-#     if request.method == 'POST':
-#         stop_words = stopwords.words('english')
-#         # my contribution
-#         stop_words.remove('very')
-#         stop_words.remove('not')
-        
-#         #convert to lowercase
-#         text1 = request.POST['text1'].lower()
-        
-#         # my contribution
-#         text_final = ''.join(i for i in text1 if not i.isdigit())
-#         net_txt=re.sub('[^a-zA-Z0-9\n]', ' ',text_final)
-        
-#         #remove stopwords    
-#         processed_doc1 = ' '.join([i for i in net_txt.split() if i not in stop_words])
-
-#         sa = SentimentIntensityAnalyzer()
-#         dd = sa.polarity_scores(text=processed_doc1)
-#         compound = round((1 + dd['compound'])/2, 2)
-#         final=compound*100
-        
-#         if "enough" in text1 or "sufficient" in text1 or "ample" in text1 or "abudant" in text1:
-#             engine = pyttsx3.init()
-#             engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-#             engine.runAndWait()
-#             feeds = Feedback(feedback=text1,percentage=final,good=True,bad=True,neutral=False)
-#             feeds.can_id =request.user
-#             feeds.save()
-#             return render(request,'form.html',{'final': final,'text1':net_txt})
-            
-#         elif final == 50:
-#             engine = pyttsx3.init()
-#             engine.say('Please enter an adequate resposnse, Thank You')
-#             engine.runAndWait()
-#             return render(request,'form.html',{'final': final,'text1':net_txt})
-#         else:
-#             engine = pyttsx3.init()
-#             engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-#             engine.runAndWait()
-#             if final > 50:
-#                 feeds = Feedback(feedback=text1,percentage=final,good=False,bad=True,neutral=True)
-#                 feeds.can_id =request.user
-#                 feeds.save()
-#                 return render(request,'form.html',{'final': final,'text1':net_txt})
-#             elif final < 50:
-#                 feeds = Feedback(feedback=text1,percentage=final,bad=False,good=True,neutral=True)
-#                 feeds.can_id =request.user
-#                 feeds.save()
-#                 return render(request,'form.html',{'final': final,'text1':net_txt})
-#             else:
-#                 feeds = Feedback(feedback=text1,percentage=final)
-#                 feeds.can_id =request.user
-#                 feeds.save()
-#                 return render(request,'form.html',{'final': final,'text1':net_txt})
-#     else:
-#        return redirect('my_form')
-
-# def my_post(request):
-#         if request.method == 'POST':
-#                 stop_words = stopwords.words('english')
-#                 # my contribution
-#                 stop_words.remove('very')
-#                 stop_words.remove('not')
-                
-#                 #convert to lowercase
-#                 text1 = request.POST['text1'].lower()
-                
-#                 # my contribution
-#                 text_final = ''.join(i for i in text1 if not i.isdigit())
-#                 net_txt=re.sub('[^a-zA-Z0-9\n]', ' ',text_final)
-                
-#                 #remove stopwords    
-#                 processed_doc1 = ' '.join([i for i in net_txt.split() if i not in stop_words])
-
-#                 sa = SentimentIntensityAnalyzer()
-#                 dd = sa.polarity_scores(text=processed_doc1)
-#                 compound = round((1 + dd['compound'])/2, 2)
-#                 final=compound*100
-                
-#                 if "enough" in text1 or "sufficient" in text1 or "ample" in text1 or "abudant" in text1:
-#                    engine = pyttsx3.init()
-#                    engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-#                    engine.runAndWait()
-#                    feeds = feedback(feedback=text1,percentage=final,good=True,bad=True,neutral=False)
-#                    feeds.can_id =request.user
-#                    feeds.save()
-#                    return render(request,'form.html',{'final': final,'text1':net_txt})
-                   
-#                 elif final == 50:
-#                    engine = pyttsx3.init()
-#                    engine.say('Please enter an adequate resposnse, Thank You')
-#                    engine.runAndWait()
-#                    return render(request,'form.html',{'final': final,'text1':net_txt})
-#                 else:
-#                    engine = pyttsx3.init()
-#                    engine.say('You liked us by'+str(final)+'% Thank you for your valuable response')
-#                    engine.runAndWait()
-#                    if final > 50:
-#                       feeds = feedback(feedback=text1,percentage=final,good=False,bad=True,neutral=True)
-#                       feeds.can_id =request.user
-#                       feeds.save()
-#                       return render(request,'form.html',{'final': final,'text1':net_txt})
-#                    elif final < 50:
-#                       feeds = feedback(feedback=text1,percentage=final,bad=False,good=True,neutral=True)
-#                       feeds.can_id =request.user
-#                       feeds.save()
-#                       return render(request,'form.html',{'final': final,'text1':net_txt})
-#                    else:
-#                        feeds = feedback(feedback=text1,percentage=final)
-#                        feeds.can_id =request.user
-#                        feeds.save()
-#                        return render(request,'form.html',{'final': final,'text1':net_txt})
-#         else:
-#            return redirect('my_form')
-
-# def feedbacks(request):
-#     feed=feedback.objects.all()
-#     context = {'feed': feed}
-#     return render(request,"feedbackview.html", context)
-    # views.py
-from django.shortcuts import render
-from .models import Feedback
-
-def feedbacks(request):
-    feed = Feedback.objects.all()
-    context = {'feed': feed}
-    return render(request, "feedbackview.html", context)
-
-
-
-#productts&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-def customerproduct(request):
-    stdata = Product.objects.filter(status=False)
-    return render(request, "products/customerproduct.html", {'stdata': stdata})
-
-
-from django.shortcuts import render, redirect
-from .models import Product  # Import your Product model
-
-def addproductadmin(request):
-    if request.method == 'POST':
-        # Create a new Product instance and assign values
-        new_product = Product(
-            product_name=request.POST.get('product_name'),
-            product_description=request.POST.get('product_description'),
-            price=request.POST.get('price'),
-            product_images1=request.FILES.get('product_images1'),
-            # Add other fields as needed
-        )
-        new_product.save()
-        return redirect("viewproduct")  # Redirect to viewproduct URL after saving
-        
-    return render(request, "admin/addproductadmin.html")
-
-def viewproduct(request):
-    stdata = Product.objects.filter(status=False)
-    return render(request, "admin/viewproduct.html", {'stdata': stdata})
-
-
-def addcategory(request):
-    return render(request,'admin/addcategory.html')
-
-    
-def product_list(request):
-    # Filter products where the 'category' field is "bed"
-    products = Product.objects.filter(category='food')
-    

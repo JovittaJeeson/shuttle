@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +34,7 @@
 </head>
 
 <body>
+    
     <!-- Header Start -->
     <div class="container-fluid bg-dark px-0">
         <div class="row gx-0">
@@ -105,13 +108,9 @@
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="{% url "private_shuttleclass" %}" class="dropdown-item">Private Badminton class</a>
                                     <a href="{% url "online_training" %}" class="dropdown-item">Online Training</a>
-                                    <a href="{% url "customerproduct" %}" class="dropdown-item">Badminton products</a>
-                                  {% comment %} <a href="{% url 'fixture' fixture_id %}" class="dropdown-item">Badminton Fixture</a> {% endcomment %}
-                                  {% comment %} <a href="" class="dropdown-item">Badminton Fixture</a>     {% endcomment %}
-                                  <!-- index.html -->
-
-<a href="http://127.0.0.1:8001/" target="_blank" class="dropdown-item">Badminton Fixture</a>
- 
+                                  <a href="{% url 'shop' %}" class="dropdown-item">Badminton Products</a>
+                                  <a href="{% url 'fixture' %}" class="dropdown-item">Fixture</a>
+                                          
                                 </div>
                             </div> 
                             
@@ -137,7 +136,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase">Best Badminton Academy</h5>
                             <h1 class="display-2 text-white text-uppercase mb-md-4">Elevate your game at our badminton academy</h1>
-                            <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Become A Memeber</a>
+                            <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Become A Member</a>
                             <a href="{% url 'Guestbooking' %}" class="btn btn-light py-md-3 px-md-5">Guest Users Court Booking</a>
                         </div>
                     </div>
@@ -148,7 +147,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase">Best Badminton Academy</h5>
                             <h1 class="display-2 text-white text-uppercase mb-md-4">Your path to badminton greatness starts here</h1>
-                            <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Become a Memeber</a>
+                            <a href="{% url 'membership' %}" class="btn btn-primary py-md-3 px-md-5 me-3">Become a Member</a>
                             <a href="{% url 'Guestbooking' %}" class="btn btn-light py-md-3 px-md-5">JOIN US GUEST</a>
                             
                         </div>
@@ -206,66 +205,7 @@
             </div>
         </div>
     </div>
-    <!-- About End -->
- {% comment %} <!--Chatbot-->
- <div class="chatbot-container">
-    <div class="chatbot-button">
-      <img src={% static "images/chatbot.png" %} alt="Chatbot Icon">
-    </div>
-    <div class="chatbot-iframe">
-      <iframe height="430" width="350" src="https://bot.dialogflow.com/0135667b-c726-42bf-b516-7309a303742d"></iframe>
-    </div>
-  </div>
-  
     
-      <style>
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-          }
-          
-          .chatbot-button {
-            width: 60px;
-            height: 60px;
-            background-color: #007bff; /* Change color as needed */
-            border-radius: 50%;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-          
-          .chatbot-button img {
-            width: 50%;
-            height: auto;
-          }
-          
-          .chatbot-iframe {
-            display: none; /* Hide the iframe initially */
-            position: absolute;
-            bottom: 70px; /* Adjust the distance from the button */
-            right: 0;
-          }
-          
-          .chatbot-container.active .chatbot-iframe {
-            display: block; /* Show the iframe when button is clicked */
-          }
-          
-          
-      </style>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const chatbotButton = document.querySelector('.chatbot-button');
-            const chatbotContainer = document.querySelector('.chatbot-container');
-            
-            chatbotButton.addEventListener('click', function() {
-              chatbotContainer.classList.toggle('active');
-            });
-          });
-          
-      </script> {% endcomment %}
     <!-- Programe Start -->
     <div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 135px;">
         <div class="row g-5 gb-5">
@@ -1000,6 +940,7 @@
     })(document, window.kommunicate || {});
 /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
 </script>
+
 </body>
 
 </html>

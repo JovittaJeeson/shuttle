@@ -25,6 +25,8 @@ class Payment_mem(models.Model):
         return f"Payment for {self.subscription_plan.title}"
 
 
-
+#do this also bro if i subscribed i need to see who subscribed ! in admin panal ! also booking . 
+    
+#i think that is simple . i will pay 500 . after only u do work ...wait a sec bro balance 500 wait mujhe code ka bta do kaha par hai apke apne pc ke sath kya kar rakha h 
 
 

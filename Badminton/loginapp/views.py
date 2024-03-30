@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.shortcuts import render
 from .models import CustomUser
 from datetime import datetime, timedelta
+from django.contrib.auth.models import Group
+from ecom.models import Customer
 
 
 
@@ -28,8 +30,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from .models import CustomUser
 
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from .models import CustomUser
+
 def jovilogin(request):
-    # Initialize the context variable to False by default
     register_successful = False
 
     if request.method == 'POST':
@@ -39,7 +45,7 @@ def jovilogin(request):
         if email and password:
             user = authenticate(request, email=email, password=password)
             if user is not None:
-                auth_login(request, user)
+                login(request, user)  # Use Django's login function
                 if user.is_refere:
                     return redirect("refere")
                 elif user.is_trainer:
@@ -49,15 +55,15 @@ def jovilogin(request):
                 elif email == 'admin1@gmail.com':
                     return render(request, 'admin/indexadmin.html')
             else:
-                # Set an error message to be displayed in the template
-                messages.error(request, 'Login Failed: Invalid email or password')
+                messages.error(request, 'Login Failed: Invalid email or password') #here iska code base template me hona chahiye 
+        else:
+            messages.error(request, 'Email and password are required')
 
-    # Check if the 'register_successful' key is in the request's GET parameters
     if 'register_successful' in request.GET:
-        # Set the context variable to True if 'register_successful' is present
         register_successful = True
 
     return render(request, 'jovilogin.html', {'register_successful': register_successful})
+
 from django.contrib import messages
 
 def index_reg(request):
@@ -69,17 +75,28 @@ def index_reg(request):
         gender = request.POST.get('gender')
         phone = request.POST.get('phone')
 
-        if CustomUser.objects.filter(email=email).exists():
-            messages.info(request, 'Email is already registered')
-        elif email and name and birth and password and gender and phone:
-            user = CustomUser(email=email, name=name, birth=birth, gender=gender, phone=phone)
-            user.is_customer = True
-            user.set_password(password)
-            user.save()
-            # Set a success message and clear it from the list of messages
-            messages.get_messages(request)._loaded_data = []
-            # messages.success(request, 'Registered Successfully')
-            return redirect('login')
+        # Validate input data
+        if not (email and name and birth and password and gender and phone):
+            messages.error(request, 'All fields are required')
+        elif CustomUser.objects.filter(email=email).exists():
+            messages.error(request, 'Email is already registered')
+        else:
+            try:
+                user = CustomUser.objects.create_user(email=email, name=name, birth=birth, gender=gender, phone=phone, password=password)
+                user.is_customer = True
+                user.save()
+
+                # Retrieve or create the "CUSTOMER" group
+                my_customer_group, created = Group.objects.get_or_create(name='CUSTOMER')
+
+                # Add the user to the "CUSTOMER" group
+                my_customer_group.user_set.add(user)
+                for_shop = Customer.objects.create(user=user, mobile=phone)
+
+                messages.success(request, 'Registered Successfully')
+                return redirect('/login/')
+            except Exception as e:
+                messages.error(request, f'An error occurred: {str(e)}')
 
     return render(request, 'index_reg.html')
 
